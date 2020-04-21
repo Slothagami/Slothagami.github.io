@@ -1,3 +1,10 @@
+@media (max-width: 600px) {
+    nav, article {
+        width:  100%;
+        height: auto;
+    }
+}
+
 p {
 	color: white
 }
@@ -6,10 +13,16 @@ body {
 	font-family: Arial, Helvetica, sans-serif
 }
 
-header {
-	/*background-color: #474747;*/
-	padding:              1px;
+.head {
+	padding:              5px;
 	text-align:        center;
 	font-size:           35px;
 	color:              white
+}
+
+#mainbody {
+	background-color: #303030;
+	width:                80%;
+	position:        absolute;
+	left: 10%;
 }
