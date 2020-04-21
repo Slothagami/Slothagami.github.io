@@ -57,7 +57,7 @@ body {
 	right:        40px;
 }
 
-@media only screen and (max-device-width: 480px) {/* 600px */
+@media only screen and (max-device-width: 600px) {/* 600px */
     nav, article {
         width:  100%;
         height: auto;
