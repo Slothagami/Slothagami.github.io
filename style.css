@@ -20,9 +20,44 @@ body {
 	color:              white
 }
 
-#mainbody {
+#navbar {
 	background-color: #303030;
-	width:                80%;
-	position:        absolute;
-	left: 10%;
+	padding:             15px;
+	position:           fixed;
+	left:                   0;
+	top:                    0;
+	width:               100%;
+}
+
+/* navbuttons */
+.navbutton:link {
+	color: white;
+	background-color: #303030;
+}
+
+.navbutton:visited {
+	color: white;
+	background-color: #303030;
+}
+
+.navbutton:hover {
+	color: #bbb;
+	background-color: #202020;
+}
+
+.navbutton:active {
+	color: white;
+	background-color: #303030;
+}
+
+/* all navbuttons have */
+.navbutton {
+	padding: 15px;
+	text-decoration: none;
+}
+
+#toplogo {
+	width: 2%;
+	padding: 0px;
+	position: absolute;
 }
