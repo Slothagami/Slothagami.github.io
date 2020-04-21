@@ -40,6 +40,33 @@ body {
 	width:               100%;
 }
 
+/* download buttons */
+.download-button:link {
+	color: white;
+	background-color: #303030;
+}
+
+.download-button:visited {
+	color: white;
+	background-color: #303030;
+}
+
+.download-button:hover {
+	color: #bbb;
+	background-color: #202020;
+}
+
+.download-button:active {
+	color: white;
+	background-color: #303030;
+}
+.download-button {
+	color: white;
+	background-color: #303030;
+	padding:10px;
+	display:inline-block;
+}
+
 /* navbuttons */
 .navbutton:link {
 	color: white;
@@ -143,8 +170,25 @@ a {
 	background-color: #303030;
 }
 
+/* all navbuttons have */
+.navbutton {
+	padding: 15px;
+	text-decoration: none;
+}
+
+.gamedesc-bottom {
+	padding: 5px;
+	font-weight: normal;
+	background-color: #303030;
+	position:absolute;
+	width:50%;
+	bottom:0px;
+	left: 50%;
+	text-align:center;
+}
+
 @media (max-width: 1000px) {/* 600px */
-    nav, article {
+    nav, article, div {
         width:  100%;
         height: auto;
     }
