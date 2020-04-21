@@ -57,7 +57,7 @@ body {
 	right:        40px;
 }
 
-@media (max-device-width: 1000px) {/* 600px */
+@media (max-device-width: 600px) {/* 600px */
     nav, article {
         width:  100%;
         height: auto;
