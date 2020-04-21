@@ -1,3 +1,8 @@
+/* scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 p {
 	color: white;
 }
@@ -92,6 +97,7 @@ body {
 .navbutton {
 	padding: 15px;
 	text-decoration: none;
+	font-weight:bold;
 }
 
 /* links */
@@ -191,6 +197,7 @@ a {
     nav, article, div {
         width:  100%;
         height: auto;
+		float:  none;
     }
 	
 	.navbutton {
