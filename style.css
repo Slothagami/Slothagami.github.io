@@ -50,9 +50,11 @@ body {
 }
 
 #toplogo {
-	width: 2%;
+	height: 70%;
 	padding: 0px;
 	position: absolute;
+	top: 18%;
+	right:40px;
 }
 
 @media (max-width: 600px) {
