@@ -10,16 +10,17 @@ body {
 	padding:              5px;
 	text-align:        center;
 	font-size:           35px;
-	color:              white
+	color:              white;
 }
 
 .quote {
-	color:white;
-	text-align:center;
-	font-weight:bold;
-	width:50%;
-	position:absolute;
-	left:25%;
+	color:       white;
+	text-align: center;
+	font-weight:  bold;
+	width:         33%;
+	position: absolute;
+	left:          33%;
+	font-size: 2vw;
 }
 
 #navbar {
@@ -74,7 +75,7 @@ body {
 	width:100%;
 }
 
-@media only screen and ( device-width: 736px ) {/* 600px */
+@media (max-width: 1000px) {/* 600px */
     nav, article {
         width:  100%;
         height: auto;
@@ -83,7 +84,7 @@ body {
 	.navbutton {
 		padding:         15px;
 		text-decoration: none;
-		font-size:       64px;
+		font-size:       40px;
 	}
 }
 
