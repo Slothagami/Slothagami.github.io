@@ -50,22 +50,33 @@ body {
 }
 
 #toplogo {
-	height: 70%;
-	padding: 0px;
+	height:        70%;
+	padding:       0px;
 	position: absolute;
-	top: 18%;
-	right:40px;
+	top:           18%;
+	right:        40px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {/* 600px */
     nav, article {
         width:  100%;
         height: auto;
     }
 	
 	.navbutton {
-		padding: 15px;
+		padding:         15px;
 		text-decoration: none;
-		font-size: 26px;
+		font-size:       26px;
+	}
+}@media handheld (max-width: 700px) {/* 600px */
+    nav, article {
+        width:  100%;
+        height: auto;
+    }
+	
+	.navbutton {
+		padding:         15px;
+		text-decoration: none;
+		font-size:       26px;
 	}
 }
