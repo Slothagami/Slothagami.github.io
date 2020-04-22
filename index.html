@@ -6,7 +6,56 @@
 		<link rel="stylesheet" type="text/css" href="style.css?v=2">
 	</head>
 	<body style="background-color:#000">
+	
+	<!-- Slideshow -->
+	<div class="slideshow-container">
+			
+			<div class="mySlides fade">
+			  <img class="slide" src="images/banner.jpg" style="width:100%">
+			</div>
+			
+			<div class="mySlides fade">
+			  <img class="slide" src="images/unended_cover_wide.png" style="width:100%">
+			</div>
+			
+			<div class="mySlides fade">
+			  <img class="slide" src="images/placeholder.png" style="width:100%">
+			</div>
+			
+			</div>
+			<br>
+			
+			<div style="text-align:center">
+			  <span class="dot"></span> 
+			  <span class="dot"></span> 
+			  <span class="dot"></span> 
+			</div>
+			
+			<script>
+				var slideIndex = 0;
+				showSlides();
+				
+				function showSlides() {
+				  var i;
+				  var slides = document.getElementsByClassName("mySlides");
+				  var dots = document.getElementsByClassName("dot");
+				  for (i = 0; i < slides.length; i++) {
+				    slides[i].style.display = "none";  
+				  }
+				  slideIndex++;
+				  if (slideIndex > slides.length) {slideIndex = 1}    
+				  for (i = 0; i < dots.length; i++) {
+				    dots[i].className = dots[i].className.replace(" active", "");
+				  }
+				  slides[slideIndex-1].style.display = "block";  
+				  dots[slideIndex-1].className += " active";
+				  setTimeout(showSlides, 5000); // Change image every 5 seconds
+				}
+			</script>
+			
 		<div id="bodydiv">
+			
+			<!-- Slideshow Text -->
 			<h1 class="head"> Making games for four years. </h1>
 			<p class="quote">Ok so that might not be very impressive compared to some other people, but I made this cool website! that's got to count for something!</p>
 			<br><br><br><br><br><br><br><br><br><br>
