@@ -29,27 +29,27 @@ graph = new_image(),
 ignore_first_values = true;
 
 function next_value(current_value) {
-    return r*current_value*(1-current_value); // The equation
+    return r * current_value * (1 - current_value); <span style="color:#5da363">// The equation </span>
 }
 
 r = 0;
 
 var i = 0;
-repeat some_large_number { // I used 4,700, you can use for loop here instead
+repeat some_large_number { <span style="color:#5da363">// I used 4,700, you can use for loop here instead </span>
     var population = starting_poluation;
     if ignore_first_values {
-        repeat another_large_number { // I used 500
+        repeat another_large_number { <span style="color:#5da363">// I used 500 </span>
             population = next_value(population);
         }
     }
 
-    repeat ammount_of_detail_per_column { // I used 50
+    repeat ammount_of_detail_per_column { <span style="color:#5da363"> // I used 50 </span>
         population = next_value(population);
        
-        draw_to_image(); // Use i as x and population * something as y
+        draw_to_image(); <span style="color:#5da363">// Use i as x and population * something as y </span>
     }
 
-    r += horizontal_detail; // I used 0.0009
+    r += horizontal_detail; <span style="color:#5da363"> // I used 0.0009 </span>
     i++;
 }
 
