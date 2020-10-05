@@ -16,35 +16,28 @@
 				<p> So, I didn't have anything to actually put on this website, so I decided to just post some updates on what I'm doing here. </p>
 				<!-- POST #1 -->
 				<h2 class="game-head"> Logistic Map </h2>
-				<p> I spent a few hour's making a program to plot it. It takes the equation <span class="comment">x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</span>  (a population modelling equation that mostly stabilises as a consistent value or a cycle of values), and plots the results of a few hundred iterations on one column of the diagram, and then increases the variable <span class="comment">r</span> (the reproductive number) by a small amount before repeating the process for the next column. The top variation has the equation plotted only after the results stabilise, and the bottom version includes the points before the stabilisation as well. </p>
+				<p> I spent a few hour's making a program to plot it. It takes the equation <span class="comment">x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</span> or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> written in pseudocode (a population modelling equation that mostly stabilises as a consistent value or a cycle of values), and plots the results of a few hundred iterations on one column of the diagram, and then increases the variable <span class="comment">r</span> (the reproductive number) by a small amount before repeating the process for the next column. The top variation has the equation plotted only after the results stabilise, and the bottom version includes the points before the stabilisation as well. </p>
 				<img src="images/Logistic Maps.png" style="width:100%" />
 				<p> Here is a Pseudocode explanation of how I did it </p>
 				<br />
+				
 				<div class="codeexample">
-					<code>
-var
-r = 0,
+					<code>r = 0,
 starting_poluation = 0.4,
 graph = new_image(),
 ignore_first_values = true;
 
-function next_value(current_value) {
-    return r * current_value * (1 - current_value); <span class="comment">// The equation </span>
-}
-
-r = 0;
-
 var i = 0;
-repeat some_large_number { <span class="comment">// I used 4,700, you can use for loop here instead </span>
+repeat ammount_of_columns { <span class="comment">// I used 4,700, you can use for loop here instead </span>
     var population = starting_poluation;
-    if ignore_first_values {
-        repeat another_large_number { <span class="comment">// I used 500 </span>
-            population = next_value(population);
+    if ignore_first_values { <span class="comment">// This part is optional </span>
+        repeat a_large_number { <span class="comment">// I used 500 </span>
+            population = run_equation(population);
         }
     }
 
     repeat ammount_of_detail_per_column { <span class="comment"> // I used 50 </span>
-        population = next_value(population);
+        population = run_equation(population);
        
         draw_to_image(); <span class="comment">// Use i as x and population * something as y </span>
     }
@@ -53,8 +46,7 @@ repeat some_large_number { <span class="comment">// I used 4,700, you can use fo
     i++;
 }
 
-save_the_image();
-					</code>
+save_the_image();</code>
 				</div>
 				
 			</div>

@@ -27,6 +27,14 @@ code {
 	padding:10px;
 }
 
+.textcodeexample {
+	text-align: left;
+	width: 70%;
+	background-color: #202020;
+	margin:auto;
+	padding:2px;
+}
+
 .comment {
 	color:#5da363;
 }
