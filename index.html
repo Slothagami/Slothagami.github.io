@@ -10,20 +10,21 @@
 		<div id="bodydiv">
 			<div id="Posts">
 				<!-- POST HEADER -->
-				<h3 class="game-head">
-					Posts
-				</h3>
-				<p> So, I didn't have anything to actually put on this website, so I decided to just post some updates on what I'm doing here. </p>
+				<h3 class="game-head"> Posts </h3>
+				<p> This is a place for me to post the odd coding projects that I am doing, and explain how I did them in case anyone wants to do it for themselves. </p>
+				
+				<!-- MAKE AN INDEX FOR POSTS HERE -->
+				
 				<!-- POST #1 -->
 				<h2 class="game-head"> Logistic Map </h2>
-				<p> I spent a few hour's making a program to plot it. It takes the equation <span class="comment">x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</span> or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> written in pseudocode (a population modelling equation that mostly stabilises as a consistent value or a cycle of values), and plots the results of a few hundred iterations on one column of the diagram, and then increases the variable <span class="comment">r</span> (the reproductive number) by a small amount before repeating the process for the next column. The top variation has the equation plotted only after the results stabilise, and the bottom version includes the points before the stabilisation as well. </p>
+				<p> I spent a few hour's making a program to plot it. It takes the equation <span class="comment">x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</span> or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> written in pseudocode (a population modelling equation that mostly stabilises as a consistent value or a cycle of values), and plots the results of a few hundred iterations on one column of the diagram, and then increases the variable <span class="comment">r</span> (the reproductive number) by a small amount before repeating the process for the next column. The top variation has the equation plotted only after the results stabilise (<span class="textcodeexample"><code> ignore_first_values = true </code></span>), and the bottom version includes the points before the stabilisation as well (<span class="textcodeexample"><code> ignore_first_values = false </code></span>).</p>
 				<img src="images/Logistic Maps.png" style="width:100%" />
 				<p> Here is a Pseudocode explanation of how I did it </p>
 				<br />
 				
 				<div class="codeexample">
 					<code>r = 0,
-starting_poluation = 0.4,
+starting_poluation = 0.4, <span class="comment"> // The starting population doesn't matter too much </span>
 graph = new_image(),
 ignore_first_values = true;
 
@@ -48,6 +49,45 @@ repeat ammount_of_columns { <span class="comment">// I used 4,700, you can use f
 
 save_the_image();</code>
 				</div>
+				<!-- POST #2 -->
+				<h3 class="game-head"> Inverse Kinematics (Wiggly Version) </h3>
+				<p> 
+					This version of inverse kinematics isn't the most accurate, but it's easier so understand compared
+					to the other version, and has the benefit of being able to bend each individual joint in any 
+					direction, at the cost of not being able to control that direction.
+				</p>
+				<br />
+				<p>
+					It works by looping through each segment from front to back, and for each one, pointing in the direction
+					of it's target (either the main target or the end of the previous segment) and moving one end to meet
+					it there. It then moves the whole thing back to the anchored position.
+				</p>
+				<img src="images/wigglyIKrecording.gif" width="40%" />
+				<p> Pseudocode explanation </p>
+				<br />
+				<div class="codeexample">
+<code>
+for i, loop_through_all_segments { <span class="comment">// Start with the 'hand' end</span>
+	update_target_position();
+	
+	if i != 0 {
+		set_target_to_the_end_of_next_segment[segment i-1];
+	}
+
+	<span class="comment">// move to where b = target </span>
+	first_end = target - sin/cos(angle_to_target) * segment_length;
+	second_end = target;
+}
+
+find_distance_to_anchor();
+loop_through_and_move_everything_back();
+
+draw_each_segment_as_line_from(first_end, to second_end);
+</code>
+				</div>
+				<!-- POST #3 -->
+				<h3 class="game-head"> Inverse Kinematics (Fancy Math Version) </h3>
+				<!-- POST #4 -->
 				
 			</div>
 			<!-- FOOTER -->
