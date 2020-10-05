@@ -3,7 +3,7 @@ html {
   scroll-behavior: smooth;
 }
 
-p {
+p, h3 {
 	color: white;
 	width: 95%;
 	text-align: center;
