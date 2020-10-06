@@ -25,7 +25,7 @@ p {
 	padding:4px;
 }
 
-h3 {
+h3, h4 {
 	color:white;
 }
 
@@ -83,6 +83,11 @@ code {
     display: none;
 }
 /* Math Division */
+
+ul {
+	margin: 0;
+	padding: 15px;
+}
 
 .head {
 	padding:              5px;
@@ -181,7 +186,7 @@ code {
 
 /* links */
 a:link {
-	color: white;
+	color: #eeffee;
 }
 
 a:visited {
@@ -189,7 +194,7 @@ a:visited {
 }
 
 a:hover {
-	color: #bbb;
+	color: #777;
 }
 
 a:active {

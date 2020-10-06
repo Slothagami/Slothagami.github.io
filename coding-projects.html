@@ -13,10 +13,18 @@
 				<h3 class="game-head"> Coding Projects </h3>
 				<p> This is a place for me to post the odd coding projects that I am doing, and explain how I did them in case anyone wants to do it for themselves. </p>
 				
-				<!-- MAKE AN INDEX FOR POSTS HERE -->
+				<!-- POST INDEX -->
+				<div style="text-align:left">
+				<h4> Posts </h4>
+				<ul>
+					<li><a href="#logmap"> Logistic Map </a></li>
+					<li><a href="#wigglyIK"> Inverse Kinematics (Wiggly Version) </a></li>
+					<li><a href="#trigIK"> Inverse Kinematics (Fancy Math Version) </a></li>
+				</ul>
+				</div>
 				
 				<!-- POST #1 -->
-				<h2 class="game-head"> Logistic Map </h2>
+				<h2 class="game-head" id="logmap"> Logistic Map </h2>
 				<p> 
 					I spent a few hour's making a program to plot it. It takes the equation 
 					<em>x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</em> 
@@ -68,7 +76,7 @@ save_the_image();</code>
 					<li><a target="_blank" href="https://www.youtube.com/watch?v=ovJcsL7vyrk&t=398s"> YouTube - This equation will change how you see the world (the logistic map) </a></li>
 				</ul>
 				<!-- POST #2 -->
-				<h3 class="game-head"> Inverse Kinematics (Wiggly Version) </h3>
+				<h3 class="game-head" id="wigglyIK"> Inverse Kinematics (Wiggly Version) </h3>
 				<p> 
 					This version of inverse kinematics isn't the most accurate, but it's easier so understand compared
 					to the other version, and has the benefit of being able to bend each individual joint in any 
@@ -109,7 +117,7 @@ draw_each_segment_as_line_from(first_end, to second_end);
 				</ul>
 				
 				<!-- POST #3 -->
-				<h3 class="game-head"> Inverse Kinematics (Fancy Math Version) </h3>
+				<h3 class="game-head" id="trigIK"> Inverse Kinematics (Fancy Math Version) </h3>
 				
 				<p>
 					This version of inverse kinematics is more complicated to make than the one above, 
