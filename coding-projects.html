@@ -18,8 +18,9 @@
 				
 				<!-- POST INDEX -->
 				<div style="text-align:left">
-				<h4> Posts </h4>
-				<ul>
+				<br />
+				<h4 id="postHeader"> Posts </h4>
+				<ul id="postList">
 					<li><a href="#logmap"> Logistic Map </a></li>
 					<li><a href="#wigglyIK"> Inverse Kinematics (Wiggly Version) </a></li>
 					<li><a href="#trigIK"> Inverse Kinematics (Fancy Math Version) </a></li>
@@ -42,7 +43,6 @@
 					(<span class="textcodeexample"><code> ignore_first_values = false </code></span>).
 				</p>
 				<img src="images/posts/Logistic Maps.png" style="width:100%" />
-				<p> Here is a Pseudocode explanation of how I did it </p>
 				<br />
 				
 				<div class="codeexample">
@@ -92,7 +92,6 @@ save_the_image();</code>
 					it there. It then moves the whole thing back to the anchored position.
 				</p>
 				<img src="images/posts/wigglyIKrecording.gif" width="40%" />
-				<p> Pseudocode explanation </p>
 				<br />
 				<div class="codeexample">
 <code>for i, loop_through_all_segments { <span class="comment">// Start with the 'hand' end</span>
