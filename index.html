@@ -17,7 +17,19 @@
 				
 				<!-- POST #1 -->
 				<h2 class="game-head"> Logistic Map </h2>
-				<p> I spent a few hour's making a program to plot it. It takes the equation <span class="comment">x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</span> or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> written in pseudocode (a population modelling equation that mostly stabilises as a consistent value or a cycle of values), and plots the results of a few hundred iterations on one column of the diagram, and then increases the variable <span class="comment">r</span> (the reproductive number) by a small amount before repeating the process for the next column. The top variation has the equation plotted only after the results stabilise (<span class="textcodeexample"><code> ignore_first_values = true </code></span>), and the bottom version includes the points before the stabilisation as well (<span class="textcodeexample"><code> ignore_first_values = false </code></span>).</p>
+				<p> 
+					I spent a few hour's making a program to plot it. It takes the equation 
+					<em>x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</em> 
+					or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> 
+					written in code (a population modelling equation that mostly stabilises as a consistent 
+					value or a cycle of values), and plots the results of a few hundred iterations on one 
+					column of the diagram, and then increases the variable <em>r</em> (the reproductive 
+					number) by a small amount before repeating the process for the next column. The top 
+					variation has the equation plotted only after the results stabilise 
+					(<span class="textcodeexample"><code> ignore_first_values = true </code></span>), and 
+					the bottom version includes the points before the stabilisation as well 
+					(<span class="textcodeexample"><code> ignore_first_values = false </code></span>).
+				</p>
 				<img src="images/posts/Logistic Maps.png" style="width:100%" />
 				<p> Here is a Pseudocode explanation of how I did it </p>
 				<br />
@@ -94,12 +106,98 @@ draw_each_segment_as_line_from(first_end, to second_end);
 				<h3>Rescources</h3>
 				<ul>
 					<li><a target="_blank" href="https://www.youtube.com/watch?v=hbgDqyy8bIw"> YouTube - Coding Challenge #64.2: Inverse Kinematics </a></li>
-					<li><a target="_blank" href="https://www.youtube.com/watch?v=qYwYgEGMdLA"> YouTube - How to make a Limbo-style spider in Godot using procedural animation </a></li>
 				</ul>
+				
 				<!-- POST #3 -->
 				<h3 class="game-head"> Inverse Kinematics (Fancy Math Version) </h3>
+				
+				<p>
+					This version of inverse kinematics is more complicated to make than the one above, 
+					the benifit being that you can flip the direction the arm bends, and it is far
+					more accurate than the other version.
+				</p>
+				<br />
+				<p>
+					This version of inverse kinematics works with Trigonometry, 
+					using the <em> Law of Cosines </em> to work 
+					out the angles of the joints rather than the positions of each end.
+				</p>
+				<br />
+				<p>
+					The Law of Cosines says that 
+					<span class="textcodeexample"> 
+						&theta; = 
+						<span class="function"> cos <sup> -1 </sup></span>
+						 (
+						 <span class="frac">
+						 	<span>a<sup>2</sup> + b<sup>2</sup> - c<sup>2</sup> </span>
+							<span class="symbol"> / </span>
+							<span class="bottom"> 2ab </span>
+						 </span>
+						 ) 
+					</span>
+					where a, b and c are the side lengths of the triangle and &theta; is the angle. In code it looks like this: 
+					<span class="textcodeexample"><code>theta = <span class="function">arccos</span>((a^2 + b^2 - c^2) / (2*a*b))</code></span>
+					<em> c is the side opposite the angle you want </em> the a & b can be either of the remaining sides.
+				</p>
+				<br />
+				<p>
+					<em>
+					I am currently working on this, so the explanation here is not complete yet. 
+					I will continue to update this post as I learn for myself how it works.
+					</em>
+				</p>
+				
+				<img />
+				
+				<!-- div class="codeexample">
+					<code>
+						
+					</code>
+				</div -->
+				
+				<h3> Rescources </h3>
+				<ul>
+					<li><a target="_blank" href="https://www.youtube.com/watch?v=qYwYgEGMdLA"> YouTube - How to make a Limbo-style spider in Godot using procedural animation </a></li>
+					<li><a target="_blank" href="https://www.mathsisfun.com/algebra/trig-cosine-law.html"> Math is Fun - The law of Cosines </a></li>
+				</ul>
+				
 				<!-- POST #4 -->
 				
+				
+				<!-- TEMPLATE POST -->
+				<template>
+					<h3 class="game-head">  </h3>
+					
+					<p>
+					
+					</p>
+					
+					<img src="" />
+					
+					<div class="codeexample">
+						<code>
+						
+						</code>
+					</div>
+					
+					<h3>Rescources</h3>
+					<ul>
+						<li><a target="_blank" href="">  </a></li>
+					</ul>
+				</template>
+				<!--
+					REFERENCES
+					<em>                            italics & green, for emphasis
+					<span class="comment">          green
+					<span class="function">         yellow
+					<span class="number">           red
+					<span class="textcodeexample">  gray background, for in paragraph
+					<span class="codeexample">      gray background, for entirely code paragraphs
+					<code>                          inside above two, monospaced
+					
+				-->
+				<!-- END TEMPLATE POST -->
 			</div>
 			<!-- FOOTER -->
 			<h1 class="game-header" style="height:200px" > </h1>

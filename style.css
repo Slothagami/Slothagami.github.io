@@ -3,11 +3,16 @@ html {
   scroll-behavior: smooth;
 }
 
-p, h3 {
+p {
 	color: white;
 	width: 95%;
-	text-align: center;
+	text-align: left;
 	margin:auto;
+	padding:4px;
+}
+
+h3 {
+	color:white;
 }
 
 body {
@@ -35,9 +40,33 @@ code {
 	padding:2px;
 }
 
-.comment {
+.comment, em {
 	color:#5da363;
 }
+.function {
+	color:#d1a862;
+}
+.number {
+	color:#d16262;
+}
+
+.frac {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    letter-spacing: 0.001em;
+    text-align: center;
+}
+.frac > span {
+    display: block;
+    padding: 0.1em;
+}
+.frac span.bottom {
+    border-top: thin solid white;
+}
+.frac span.symbol {
+    display: none;
+} 
 
 .head {
 	padding:              5px;
