@@ -38,6 +38,10 @@ code {
 	white-space: pre-wrap;
 }
 
+codeTitle {
+	color:red;
+}
+
 .codeexample {
 	text-align: left;
 	width: 70%;

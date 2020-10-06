@@ -11,43 +11,14 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		jQuery(this).next("ul").slideToggle();
 	});
 	
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) { // ckeck for mobile
-		jQuery("p").style.font-size = 32;
-	}
+	// Add bit to code sections
+	jQuery(".codeexample").prepend("<p> Pseudocode Example </p>");
+	jQuery(".codeexample").next("p").addClass("codeTitle");
 	
-	/*
-	// Keep put scroll in a variable
-	jQuery(window).scroll(function() { // every time you sroll
-		var windowHeight = jQuery(window).height();
-		var windowScroll = jQuery(window).scrollTop();
-		var windowBottom = windowHeight + windowScroll;
-	});
-	
-	// make a function
-	jQuery.fn.myFunction = function() {
-		return this.each(function() { // run relative to the current object
-			// can use the 'this' keyword in here.
-			
+	// Check for mobile
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		jQuery("p").css({
+			"font-size" : 32
 		});
 	}
-	*/
-	
-	
-	/*
-		jQuery(this).parents(".classname").method();
-		jQuery(thing).append("<HTML>"); // adds html
-		
-		METHODS
-		theThing.methodName();
-		hide
-		fadeOut
-		slideUp
-		slideDown
-		slideToggle
-		click(function(){  }) // when clicked
-		next("typeOfThing") // goes to child
-		addClass("className")
-		append("<html>") // adds html
-		load("filename class")
-	*/
 });
