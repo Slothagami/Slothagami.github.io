@@ -17,14 +17,30 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		// change font sizes
 		jQuery("p").css({
 			"font-size" : 48
 		});
-		jQuery("code").css({
+		jQuery("h3").css({
 			"font-size" : 48
 		});
+		jQuery("code").css({
+			"font-size" : 32
+		});
+		// update widths
 		jQuery("bodydiv").css({
 			"width" : "100%"
+		});
+		jQuery("game-head").css({
+			"width" : "100%",
+			"font-size":50
+		});
+		// update navbar to mobile version
+		jQuery("#navbar a").css({
+			"font-size":48
+		});
+		jQuery("#navbar img").css({
+			"font-size":48
 		});
 	}
 });
