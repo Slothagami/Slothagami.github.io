@@ -11,6 +11,10 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		jQuery(this).next("ul").slideToggle();
 	});
 	
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) { // ckeck for mobile
+		jQuery("p").style.font-size = 32;
+	}
+	
 	/*
 	// Keep put scroll in a variable
 	jQuery(window).scroll(function() { // every time you sroll
