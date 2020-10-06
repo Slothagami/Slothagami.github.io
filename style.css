@@ -84,6 +84,12 @@ code {
 }
 /* Math Division */
 
+.resources {
+	padding: 0px;
+	margin: 0px;
+	cursor:pointer;
+}
+
 ul {
 	margin: 0;
 	padding: 15px;
