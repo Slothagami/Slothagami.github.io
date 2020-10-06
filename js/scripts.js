@@ -42,5 +42,10 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		jQuery("#navbar img").css({
 			"font-size":48
 		});
+		// Update homepage
+		jQuery("#gamesButton").css({
+			"float":"none",
+			"width":"100%"
+		});
 	}
 });
