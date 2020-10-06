@@ -12,13 +12,13 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	});
 	
 	// Add bit to code sections
-	jQuery(".codeexample").prepend("<p> Pseudocode Example </p>");
-	jQuery(".codeexample").next("p").addClass("codeTitle");
+	//jQuery(".codeexample").prepend("<p> Pseudocode Example: </p>");
+	//jQuery(".codeexample").next("p").addClass("codeTitle");
 	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		jQuery("p").css({
-			"font-size" : 32
+		jQuery("p code").css({
+			"font-size" : 64
 		});
 	}
 });
