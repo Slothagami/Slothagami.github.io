@@ -1,4 +1,18 @@
-/* scrolling */
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #000; 
+}
+::-webkit-scrollbar-thumb {
+	background: #303030; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #404040; 
+}
+
+/* General */
 html {
   scroll-behavior: smooth;
 }
@@ -50,6 +64,7 @@ code {
 	color:#d16262;
 }
 
+/* Math Division */
 .frac {
     display: inline-block;
     position: relative;
@@ -66,7 +81,8 @@ code {
 }
 .frac span.symbol {
     display: none;
-} 
+}
+/* Math Division */
 
 .head {
 	padding:              5px;
@@ -201,7 +217,7 @@ a {
 #bodydiv {
 	/*background-color: #aaa;*/
 	position:        absolute;
-	top: 220px;
+	top: 110px;
 	left:0px;
 	width:100%;
 }
@@ -243,6 +259,7 @@ a {
 .navbutton {
 	padding: 15px;
 	text-decoration: none;
+	font-size:        1.5vw;
 }
 
 .gamedesc-bottom {
@@ -262,12 +279,6 @@ a {
         height: auto;
 		float:  none;
     }
-	
-	.navbutton {
-		padding:         15px;
-		text-decoration: none;
-		font-size:       40px;
-	}
 	
 	.quote {
 		font-size: 4vw;
