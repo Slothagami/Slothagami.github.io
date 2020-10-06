@@ -18,10 +18,7 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		// change font sizes
-		jQuery("p").css({
-			"font-size" : 48
-		});
-		jQuery("h3").css({
+		jQuery("h3, h2, p").css({
 			"font-size" : 48
 		});
 		jQuery("code").css({
@@ -36,10 +33,7 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 			"font-size":50
 		});
 		// update navbar to mobile version
-		jQuery("#navbar a").css({
-			"font-size":48
-		});
-		jQuery("#navbar img").css({
+		jQuery("#navbar a, #navbar img").css({
 			"font-size":48
 		});
 		// Update homepage
