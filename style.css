@@ -176,6 +176,10 @@ ul {
 	margin: auto;
 }
 
+ol {
+	list-style-position: inside;
+}
+
 /* download buttons */
 .download-button:link {
 	color: white;
