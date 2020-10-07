@@ -55,6 +55,12 @@
 							as 'off'.
 						</p>
 						<br />
+						
+						
+						<img src="images/posts/cellCaves.png" class="square-image" />
+						
+						<br />
+						<br />
 						<p>
 							The process is started by randomly filling the grid with 'on' and 'off' cells.
 							You can use a random chance <em>(I tended to use 47%)</em> or use some
@@ -63,8 +69,6 @@
 							but you might want to do it as many as 16 times.
 						</p>
 						<br />
-						
-						<img src="images/posts/cellCaves.png" class="square-image" />
 						
 						<div class="codeexample">
 							<code>generating_initial_noise = true;
@@ -159,12 +163,17 @@ save_the_image();</code>
 						direction, at the cost of not being able to control that direction.
 					</p>
 					<br />
+					
+					<img src="images/posts/wigglyIKrecording.gif" class="square-image" id="wIKimg" />
+					
+					<br />
+					<br />
 					<p>
 						It works by looping through each segment from front to back, and for each one, pointing in the direction
 						of it's target (either the main target or the end of the previous segment) and moving one end to meet
 						it there. It then moves the whole thing back to the anchored position.
 					</p>
-					<img src="images/posts/wigglyIKrecording.gif" class="square-image" id="wIKimg" />
+					
 					<br />
 					<div class="codeexample">
 <code>for i, loop_through_all_segments { <span class="comment">// Start with the 'hand' end</span>
