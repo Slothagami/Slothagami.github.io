@@ -24,6 +24,13 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		jQuery(this).next("code").slideToggle();
 	});
 	
+	// recolor code keywords
+	// Works
+	//$('.codeexample code').each(function(){
+    //	var word = $(this).text().replace(/var|repeat|for|{|}|if/g,"<span class='function'>$&</span>");
+    //	$(this).html(word);
+	//});
+	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		// change font sizes

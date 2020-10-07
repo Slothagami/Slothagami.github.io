@@ -198,14 +198,14 @@ draw_each_segment_as_line_from(first_end, to second_end);
 				<div class="project-article">
 					<p>
 						This version of inverse kinematics is more complicated to make than the one above, 
-						the benifit being that you can flip the direction the arm bends, and it is far
+						the benifit being that you can flip the direction the arm bends, and it is
 						more accurate than the other version.
 					</p>
 					<br />
 					<p>
 						This version of inverse kinematics works with Trigonometry, 
-						using the <em> Law of Cosines </em> to work 
-						out the angles of the joints rather than the positions of each end.
+						using the <em> Law of Cosines </em> to compute
+						the angles of the joints.
 					</p>
 					<br />
 					<p>
@@ -222,15 +222,15 @@ draw_each_segment_as_line_from(first_end, to second_end);
 							 ) 
 						</span>
 						where a, b and c are the side lengths of the triangle and &theta; is the angle. In code it looks like this: 
-						<span class="textcodeexample"><code>theta = <span class="function">arccos</span>((a^2 + b^2 - c^2) / (2*a*b))</code></span>
-						<em> c is the side opposite the angle you want </em> the a & b can be either of the remaining sides.
+						<span class="textcodeexample"><code>&theta; = <span class="function">arccos</span>((a^2 + b^2 - c^2) / (2*a*b))</code></span>
+						<em> c is the side length opposite the angle you want </em> the a & b can be either of the remaining sides.
 					</p>
 					<br />
 					<p>
-						<em>
+						<span class="number">
 						I am currently working on this, so the explanation here is not complete yet. 
 						I will continue to update this post as I learn for myself how it works.
-						</em>
+						</span>
 					</p>
 					
 					<img />
