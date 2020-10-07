@@ -44,7 +44,8 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		// Update homepage
 		jQuery("#gamesButton, #postsButton").css({
 			"float":"none",
-			"width":"100%"
+			"width":"100%",
+			"padding":"5px 5px 70px 5px"
 		});
 		jQuery("#wIKimg").css({
 			"width":"90%"
