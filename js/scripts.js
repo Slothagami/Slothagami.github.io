@@ -12,8 +12,12 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	});
 	
 	// Add bit to code sections
-	jQuery(".codeexample").prepend("<p class='codeTitle'> Pseudocode Explanation: </p>");
-	//jQuery(".codeexample").next("p").addClass("codeTitle");
+	jQuery(".codeexample").prepend("<p class='codeTitle'> <b>Pseudocode Explanation:</b> </p>");
+	
+	// Make the new text ^above^ a button to slideToggle() the code example (start hidden on mobile)
+	jQuery(".codeTitle").click(function() {
+		jQuery(this).next("code").slideToggle();
+	});
 	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -50,5 +54,11 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		});
 		// Add space at top
 		jQuery("#bodydiv").prepend("<br /><br /><br />");
+		// Hide code boxes
+		jQuery(".codeexample code").hide();
+		
+		jQuery(".codeexample").css({
+			"width":"97%"
+		});
 	}
 });
