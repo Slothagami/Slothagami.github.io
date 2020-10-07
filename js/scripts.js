@@ -71,6 +71,8 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		// Hide code boxes
 		jQuery(".codeexample code").hide();
 		
+		$(".codeexample code").prepend("<span class='number'> Code may not display properly on mobile. </span><br />");
+		
 		jQuery(".codeexample").css({
 			"width":"97%"
 		});
