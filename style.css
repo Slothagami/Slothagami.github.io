@@ -146,6 +146,10 @@ ul {
 	background-color: #202020;
 }
 
+.square-image {
+	width:40%;
+}
+
 .quote {
 	color:       white;
 	text-align: center;

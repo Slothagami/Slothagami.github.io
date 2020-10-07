@@ -52,7 +52,7 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 			"width":"100%",
 			"padding":"5px 5px 70px 5px"
 		});
-		jQuery("#wIKimg").css({
+		jQuery(".square-image").css({
 			"width":"90%"
 		});
 		// big title bigger

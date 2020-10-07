@@ -16,7 +16,8 @@
 				<h3 class="game-head"> Coding Projects </h3>
 				<p>
 					This is a place for me to post the odd coding projects that I am doing, 
-					and explain how I did it for those who want to do it for themselves. I 
+					and explain how I did it for those who want to do it for themselves 
+					regardless of the programming language you use. I 
 					include all the resources that I used to figure it out, as well as explain
 					it myself. I hope someone finds this helpful.
 				</p>
@@ -32,6 +33,70 @@
 				</ul>
 				</div-->
 				
+				<!-- POST #0 -->
+				<h3 class="project-head"> Cellular Automata Caves </h3> <!-- 15july2020 -->
+					<div class="project-article">
+						<p>
+							A version of <em>Cellular Automata</em> that can be used for making cave or 
+							island shapes. This one isn't too difficult to do, but there are 
+							some tricks to it.
+						</p>
+						<br />
+						<p>
+							It is done by looping through each pixel, and applying the following 
+							rule to it. if there are more than the threshhold of the same type pixels ajacent
+							to it (diagonals included),
+							the current pixel is unchanged, if the number of different pixels is more
+							than the threshold, its type is swapped. <em>Set the threshold to 4 or 5 for 
+							best results</em> making the shapes above, but some interesting shapes can be made
+							by using other numbers as well. <em>You have to leave a buffer around the edge of the 
+							pattern as well</em>, and preform the rule excluding the edge peices. This can also 
+							be used to determine what the outside counts as, I generally prefer to leave the edges
+							as 'off'.
+						</p>
+						<br />
+						<p>
+							The process is started by randomly filling the grid with 'on' and 'off' cells.
+							You can use a random chance <em>(I tended to use 47%)</em> or use some
+							other method like perlin noise to distribute them. Then the above rule is applied 
+							<em>multiple times</em> to the cells, 4-5 times is usually enough for decent results 
+							but you might want to do it as many as 16 times.
+						</p>
+						<br />
+						
+						<img src="images/posts/cellCaves.png" class="square-image" />
+						
+						<div class="codeexample">
+							<code>generating_initial_noise = true;
+applying_the_rule = false;
+
+repeat ammount_of_detail {
+	for every_pixel {
+		if generating_initial_noise {
+			this_pixel.type = xx%_chance<span class="comment"> // Chance of being 'on' or 'off'</span>
+		}
+		
+		if applying_the_rule {
+			neighbors = count_ajacent_pixels_of_same(type);
+			
+			if neighbors > threshold {
+				this_pixel.type = !this_pixel.type; <span class="comment"> // Swap the type</span>
+			}
+			
+			draw_to_display();
+		}
+	}
+	generating_initial_noise = false;
+	applying_the_rule = true;
+}
+</code>
+						</div>
+						<br />
+						<h3 class="resources">Resources</h3>
+						<ul>
+							<li><a target="_blank" href="https://youtu.be/Yt27yQtGpBQ?t=205"> Creating a World for my Indie Game (Procedural Generation) || Keeper Devlog 1 </a></li>
+						</ul>
+					</div>
 				<!-- POST #1 -->
 				<h2 class="project-head" id="logmap"> Logistic Map </h2> <!-- 18sept2020 -->
 				<div class="project-article">
@@ -99,7 +164,7 @@ save_the_image();</code>
 						of it's target (either the main target or the end of the previous segment) and moving one end to meet
 						it there. It then moves the whole thing back to the anchored position.
 					</p>
-					<img src="images/posts/wigglyIKrecording.gif" width="40%" id="wIKimg" />
+					<img src="images/posts/wigglyIKrecording.gif" class="square-image" id="wIKimg" />
 					<br />
 					<div class="codeexample">
 <code>for i, loop_through_all_segments { <span class="comment">// Start with the 'hand' end</span>
@@ -187,7 +252,7 @@ draw_each_segment_as_line_from(first_end, to second_end);
 				
 				<!-- TEMPLATE POST -->
 				<template>
-					<h3 class="project-head">  </h3>
+					<h3 class="project-head">  </h3> <!-- dateCompleted -->
 					<div class="project-article">
 						<p>
 						
@@ -200,7 +265,7 @@ draw_each_segment_as_line_from(first_end, to second_end);
 							
 							</code>
 						</div>
-						
+						<br />
 						<h3 class="resources">Resources</h3>
 						<ul>
 							<li><a target="_blank" href="">  </a></li>
