@@ -30,7 +30,8 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		});
 		// update widths
 		jQuery("bodydiv").css({
-			"width" : "100%"
+			"width" : "100%",
+			"display": "block"
 		});
 		jQuery("game-head").css({
 			"width" : "100%",
