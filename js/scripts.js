@@ -10,6 +10,11 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	jQuery("#postHeader").click(function() {
 		jQuery(this).next("ul").slideToggle();
 	});
+	// Project show/hide buttons
+	jQuery(".project-article").hide();
+	jQuery(".project-head").click(function() {
+		jQuery(this).next(".project-article").slideToggle();
+	});
 	
 	// Add bit to code sections
 	jQuery(".codeexample").prepend("<p class='codeTitle'> <b>Pseudocode Explanation:</b> </p>");
@@ -33,7 +38,7 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 			"width" : "100%",
 			"display": "block"
 		});
-		jQuery("game-head").css({
+		jQuery("project-head").css({
 			"width" : "100%",
 			"font-size":50
 		});

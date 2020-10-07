@@ -14,10 +14,15 @@
 			<div id="Posts">
 				<!-- POST HEADER -->
 				<h3 class="game-head"> Coding Projects </h3>
-				<p> This is a place for me to post the odd coding projects that I am doing, and explain how I did them in case anyone wants to do it for themselves. </p>
+				<p>
+					This is a place for me to post the odd coding projects that I am doing, 
+					and explain how I did it for those who want to do it for themselves. I 
+					include all the resources that I used to figure it out, as well as explain
+					it myself. I hope someone finds this helpful.
+				</p>
 				
 				<!-- POST INDEX -->
-				<div style="text-align:left">
+				<!--div style="text-align:left">
 				<br />
 				<h4 id="postHeader"> Posts </h4>
 				<ul id="postList">
@@ -25,28 +30,29 @@
 					<li><a href="#wigglyIK"> Inverse Kinematics (Wiggly Version) </a></li>
 					<li><a href="#trigIK"> Inverse Kinematics (Fancy Math Version) </a></li>
 				</ul>
-				</div>
+				</div-->
 				
 				<!-- POST #1 -->
-				<h2 class="game-head" id="logmap"> Logistic Map </h2>
-				<p> 
-					I spent a few hour's making a program to plot it. It takes the equation 
-					<em>x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</em> 
-					or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> 
-					written in code (a population modelling equation that mostly stabilises as a consistent 
-					value or a cycle of values), and plots the results of a few hundred iterations on one 
-					column of the diagram, and then increases the variable <em>r</em> (the reproductive 
-					number) by a small amount before repeating the process for the next column. The top 
-					variation has the equation plotted only after the results stabilise 
-					(<span class="textcodeexample"><code> ignore_first_values = true </code></span>), and 
-					the bottom version includes the points before the stabilisation as well 
-					(<span class="textcodeexample"><code> ignore_first_values = false </code></span>).
-				</p>
-				<img src="images/posts/Logistic Maps.png" style="width:100%" />
-				<br />
-				
-				<div class="codeexample">
-					<code>r = 0,
+				<h2 class="project-head" id="logmap"> Logistic Map </h2> <!-- 18sept2020 -->
+				<div class="project-article">
+					<p> 
+						I spent a few hour's making a program to plot it. It takes the equation 
+						<em>x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>)</em> 
+						or <span class="textcodeexample"><code> new_value = r * current_value * (1 - current_value) </code></span> 
+						written in code (a population modelling equation that mostly stabilises as a consistent 
+						value or a cycle of values), and plots the results of a few hundred iterations on one 
+						column of the diagram, and then increases the variable <em>r</em> (the reproductive 
+						number) by a small amount before repeating the process for the next column. The top 
+						variation has the equation plotted only after the results stabilise 
+						(<span class="textcodeexample"><code> ignore_first_values = true </code></span>), and 
+						the bottom version includes the points before the stabilisation as well 
+						(<span class="textcodeexample"><code> ignore_first_values = false </code></span>).
+					</p>
+					<img src="images/posts/Logistic Maps.png" style="width:100%" />
+					<br />
+					
+					<div class="codeexample">
+						<code>r = 0,
 starting_poluation = 0.4, <span class="comment"> // The starting population doesn't matter too much </span>
 graph = new_image(),
 ignore_first_values = true;
@@ -71,29 +77,31 @@ repeat ammount_of_columns { <span class="comment">// I used 4,700, you can use f
 }
 
 save_the_image();</code>
+					</div>
+					<br />
+					<h3 class="resources">Resources</h3>
+					<ul>
+						<li><a target="_blank" href="https://www.youtube.com/watch?v=_BvAkyuWhOI&t=884s"> YouTube - Simulating the Logistic Map in MatLab </a></li>
+						<li><a target="_blank" href="https://www.youtube.com/watch?v=ovJcsL7vyrk&t=398s"> YouTube - This equation will change how you see the world (the logistic map) </a></li>
+					</ul>
 				</div>
-				<br />
-				<h3 class="resources">Resources</h3>
-				<ul>
-					<li><a target="_blank" href="https://www.youtube.com/watch?v=_BvAkyuWhOI&t=884s"> YouTube - Simulating the Logistic Map in MatLab </a></li>
-					<li><a target="_blank" href="https://www.youtube.com/watch?v=ovJcsL7vyrk&t=398s"> YouTube - This equation will change how you see the world (the logistic map) </a></li>
-				</ul>
 				<!-- POST #2 -->
-				<h3 class="game-head" id="wigglyIK"> Inverse Kinematics (Wiggly Version) </h3>
-				<p> 
-					This version of inverse kinematics isn't the most accurate, but it's easier so understand compared
-					to the other version, and has the benefit of being able to bend each individual joint in any 
-					direction, at the cost of not being able to control that direction.
-				</p>
-				<br />
-				<p>
-					It works by looping through each segment from front to back, and for each one, pointing in the direction
-					of it's target (either the main target or the end of the previous segment) and moving one end to meet
-					it there. It then moves the whole thing back to the anchored position.
-				</p>
-				<img src="images/posts/wigglyIKrecording.gif" width="40%" id="wIKimg" />
-				<br />
-				<div class="codeexample">
+				<h3 class="project-head" id="wigglyIK"> Inverse Kinematics (Wiggly Version) </h3> <!-- 23sept2020 -->
+				<div class="project-article">
+					<p> 
+						This version of inverse kinematics isn't the most accurate, but it's easier so understand compared
+						to the other version, and has the benefit of being able to bend each individual joint in any 
+						direction, at the cost of not being able to control that direction.
+					</p>
+					<br />
+					<p>
+						It works by looping through each segment from front to back, and for each one, pointing in the direction
+						of it's target (either the main target or the end of the previous segment) and moving one end to meet
+						it there. It then moves the whole thing back to the anchored position.
+					</p>
+					<img src="images/posts/wigglyIKrecording.gif" width="40%" id="wIKimg" />
+					<br />
+					<div class="codeexample">
 <code>for i, loop_through_all_segments { <span class="comment">// Start with the 'hand' end</span>
 	update_target_position();
 	
@@ -111,90 +119,93 @@ loop_through_and_move_everything_back();
 
 draw_each_segment_as_line_from(first_end, to second_end);
 </code>
+					</div>
+					<br />
+					<h3 class="resources">Resources</h3>
+					<ul>
+						<li><a target="_blank" href="https://www.youtube.com/watch?v=hbgDqyy8bIw"> YouTube - Coding Challenge #64.2: Inverse Kinematics </a></li>
+					</ul>
 				</div>
-				<br />
-				<h3 class="resources">Resources</h3>
-				<ul>
-					<li><a target="_blank" href="https://www.youtube.com/watch?v=hbgDqyy8bIw"> YouTube - Coding Challenge #64.2: Inverse Kinematics </a></li>
-				</ul>
 				
 				<!-- POST #3 -->
-				<h3 class="game-head" id="trigIK"> Inverse Kinematics (Fancy Math Version) </h3>
+				<h3 class="project-head" id="trigIK"> Inverse Kinematics (Fancy Math Version) </h3> <!-- Unfinished -->
 				
-				<p>
-					This version of inverse kinematics is more complicated to make than the one above, 
-					the benifit being that you can flip the direction the arm bends, and it is far
-					more accurate than the other version.
-				</p>
-				<br />
-				<p>
-					This version of inverse kinematics works with Trigonometry, 
-					using the <em> Law of Cosines </em> to work 
-					out the angles of the joints rather than the positions of each end.
-				</p>
-				<br />
-				<p>
-					The Law of Cosines says that 
-					<span class="textcodeexample"> 
-						&theta; = 
-						<span class="function"> cos <sup> -1 </sup></span>
-						 (
-						 <span class="frac">
-						 	<span>a<sup>2</sup> + b<sup>2</sup> - c<sup>2</sup> </span>
-							<span class="symbol"> / </span>
-							<span class="bottom"> 2ab </span>
-						 </span>
-						 ) 
-					</span>
-					where a, b and c are the side lengths of the triangle and &theta; is the angle. In code it looks like this: 
-					<span class="textcodeexample"><code>theta = <span class="function">arccos</span>((a^2 + b^2 - c^2) / (2*a*b))</code></span>
-					<em> c is the side opposite the angle you want </em> the a & b can be either of the remaining sides.
-				</p>
-				<br />
-				<p>
-					<em>
-					I am currently working on this, so the explanation here is not complete yet. 
-					I will continue to update this post as I learn for myself how it works.
-					</em>
-				</p>
-				
-				<img />
-				
-				<!-- div class="codeexample">
-					<code>
-						
-					</code>
-				</div -->
-				
-				<h3 class="resources"> Resources </h3>
-				<ul>
-					<li><a target="_blank" href="https://www.youtube.com/watch?v=qYwYgEGMdLA"> YouTube - How to make a Limbo-style spider in Godot using procedural animation </a></li>
-					<li><a target="_blank" href="https://www.mathsisfun.com/algebra/trig-cosine-law.html"> Math is Fun - The law of Cosines </a></li>
-				</ul>
-				
+				<div class="project-article">
+					<p>
+						This version of inverse kinematics is more complicated to make than the one above, 
+						the benifit being that you can flip the direction the arm bends, and it is far
+						more accurate than the other version.
+					</p>
+					<br />
+					<p>
+						This version of inverse kinematics works with Trigonometry, 
+						using the <em> Law of Cosines </em> to work 
+						out the angles of the joints rather than the positions of each end.
+					</p>
+					<br />
+					<p>
+						The Law of Cosines says that 
+						<span class="textcodeexample"> 
+							&theta; = 
+							<span class="function"> cos <sup> -1 </sup></span>
+							 (
+							 <span class="frac">
+							 	<span>a<sup>2</sup> + b<sup>2</sup> - c<sup>2</sup> </span>
+								<span class="symbol"> / </span>
+								<span class="bottom"> 2ab </span>
+							 </span>
+							 ) 
+						</span>
+						where a, b and c are the side lengths of the triangle and &theta; is the angle. In code it looks like this: 
+						<span class="textcodeexample"><code>theta = <span class="function">arccos</span>((a^2 + b^2 - c^2) / (2*a*b))</code></span>
+						<em> c is the side opposite the angle you want </em> the a & b can be either of the remaining sides.
+					</p>
+					<br />
+					<p>
+						<em>
+						I am currently working on this, so the explanation here is not complete yet. 
+						I will continue to update this post as I learn for myself how it works.
+						</em>
+					</p>
+					
+					<img />
+					
+					<!-- div class="codeexample">
+						<code>
+							
+						</code>
+					</div -->
+					
+					<h3 class="resources"> Resources </h3>
+					<ul>
+						<li><a target="_blank" href="https://www.youtube.com/watch?v=qYwYgEGMdLA"> YouTube - How to make a Limbo-style spider in Godot using procedural animation </a></li>
+						<li><a target="_blank" href="https://www.mathsisfun.com/algebra/trig-cosine-law.html"> Math is Fun - The law of Cosines </a></li>
+					</ul>
+				</div>
 				<!-- POST #4 -->
 				
 				
 				<!-- TEMPLATE POST -->
 				<template>
-					<h3 class="game-head">  </h3>
-					
-					<p>
-					
-					</p>
-					
-					<img src="" />
-					
-					<div class="codeexample">
-						<code>
+					<h3 class="project-head">  </h3>
+					<div class="project-article">
+						<p>
 						
-						</code>
+						</p>
+						
+						<img src="" />
+						
+						<div class="codeexample">
+							<code>
+							
+							</code>
+						</div>
+						
+						<h3 class="resources">Resources</h3>
+						<ul>
+							<li><a target="_blank" href="">  </a></li>
+						</ul>
 					</div>
-					
-					<h3 class="resources">Resources</h3>
-					<ul>
-						<li><a target="_blank" href="">  </a></li>
-					</ul>
 				</template>
 				<!--
 					REFERENCES

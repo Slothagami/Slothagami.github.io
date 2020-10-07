@@ -47,6 +47,7 @@ code {
 }
 .codeTitle:hover {
 	color:#aaa;
+	background-color: #202020;
 }
 
 #postHeader {
@@ -109,7 +110,6 @@ code {
 .resources {
 	padding: 0px;
 	margin: 0px;
-	cursor:pointer;
 }
 
 ul {
@@ -130,6 +130,20 @@ ul {
 	font-size:           35px;
 	color:              white;
 	background-color: #303030;
+}
+
+.project-head {
+	padding:             10px;
+	text-align:        center;
+	font-size:           35px;
+	color:              white;
+	background-color: #303030;
+	cursor: pointer;
+}
+
+.project-head:hover {
+	color: #aaa;
+	background-color: #202020;
 }
 
 .quote {
