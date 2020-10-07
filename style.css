@@ -44,6 +44,10 @@ code {
 	white-space: pre-wrap;
 }
 
+.codeexample code {
+	white-space: pre;
+}
+
 .codeTitle {
 	margin:0;
 	background-color: #404040;
@@ -73,6 +77,7 @@ code {
 	background-color: #202020;
 	margin:auto;
 	padding:10px;
+	overflow-x:scroll;
 }
 
 .textcodeexample {
