@@ -41,7 +41,7 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 			"font-size" : 32
 		});
 		// update widths
-		jQuery("bodydiv").css({
+		jQuery("#bodydiv, #Posts").css({
 			"width" : "100%",
 			"display": "block"
 		});
@@ -51,7 +51,7 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		});
 		// update navbar to mobile version
 		jQuery("#navbar a").css({
-			"font-size":48
+			"font-size":50
 		});
 		// Update homepage
 		jQuery("#gamesButton, #postsButton").css({
