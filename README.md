@@ -1,3 +1,3 @@
 # Slothagami.github.io
 The Slothagami Website
-This is the website I made to promote my games and things rather than use itch.io, I also just wanted my own website.
+This is the where I post explanations about how I accomplish my odd programming projects and Have Downloads to the games I've made.
