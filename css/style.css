@@ -1,0 +1,426 @@
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: #000; 
+}
+::-webkit-scrollbar-thumb {
+	background: #303030; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #404040; 
+}
+
+/* General */
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+	color: white;
+	width: 95%;
+	text-align: left;
+	margin:auto;
+	padding:4px;
+}
+
+h3, h4 {
+	color:white;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color:black;
+	background-image: url('../images/DarkBackground.jpg');
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+code {
+	color:white;
+	white-space: pre-wrap;
+}
+
+.codeexample code {
+	white-space: pre;
+}
+
+.codeTitle {
+	margin:0;
+	background-color: #404040;
+	width: 100%;
+	padding: 8px;
+	cursor:pointer;
+}
+.codeTitle:hover {
+	color:#aaa;
+	background-color: #202020;
+}
+
+#postHeader {
+	padding: 10;
+	margin: 0;
+	cursor: pointer;
+	color: white;
+}
+
+#postHeader:hover {
+	color: #aaa;
+}
+
+.codeexample {
+	text-align: left;
+	width: 70%;
+	background-color: #202020;
+	margin:auto;
+	padding:10px;
+	overflow-x:scroll;
+}
+
+.textcodeexample {
+	text-align: left;
+	width: 70%;
+	background-color: #202020;
+	margin:auto;
+	padding:1px;
+}
+
+.comment, em {
+	color:#5da363;
+}
+.function {
+	color:#d1a862;
+}
+.number {
+	color:#d16262;
+}
+
+/* Math Division */
+.frac {
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    letter-spacing: 0.001em;
+    text-align: center;
+}
+.frac > span {
+    display: block;
+    padding: 0.1em;
+}
+.frac span.bottom {
+    border-top: thin solid white;
+}
+.frac span.symbol {
+    display: none;
+}
+/* Math Division */
+
+.resources {
+	padding: 0px;
+	margin: 0px;
+}
+
+ul {
+	margin: 0;
+	padding: 15px;
+}
+
+.head {
+	padding:              5px;
+	text-align:        center;
+	font-size:           35px;
+	color:              white;
+}
+
+.head {
+	padding:             10px;
+	text-align:        center;
+	font-size:           35px;
+	color:              white;
+	background-color: #303030;
+}
+
+.project-head {
+	padding:             10px;
+	text-align:        center;
+	font-size:           35px;
+	color:              white;
+	background-color: #303030;
+	cursor: pointer;
+}
+
+.project-head:hover {
+	color: #aaa;
+	background-color: #202020;
+}
+
+.square-image {
+	width:40%;
+}
+
+.quote {
+	color:       white;
+	text-align: center;
+	font-weight:  bold;
+	width:         33%;
+	position: absolute;
+	left:          33%;
+	font-size:     2vw;
+}
+
+#navbar {
+	background-color: #303030;
+	padding:             15px;
+	position:           fixed;
+	left:                   0;
+	top:                    0;
+	width:               100%;
+	border-bottom: 5px solid black;
+}
+
+#Posts {
+	width: 90%;
+	text-align: center;
+	margin: auto;
+}
+
+ol {
+	list-style-position: inside;
+}
+
+/* download buttons */
+.download-button {
+	color: white;
+	background-color: #303030;
+	padding:20px;
+	display:inline-block;
+	width:100%;
+	text-align:center;
+	font-weight:bold;
+	font-size:25px;
+}
+
+.download-button:hover {
+	color: #bbb;
+	background-color: #202020;
+}
+
+/* navbuttons */
+.navbutton:link {
+	color: white;
+	background-color: #303030;
+}
+
+.navbutton:visited {
+	color: white;
+	background-color: #303030;
+}
+
+.navbutton:hover {
+	color: #bbb;
+	background-color: #202020;
+}
+
+.navbutton:active {
+	color: white;
+	background-color: #303030;
+}
+
+/* all navbuttons have */
+.navbutton {
+	padding: 15px;
+	text-decoration: none;
+	font-weight:bold;
+}
+
+/* links */
+a:link {
+	color: #ddd;
+}
+
+a:visited {
+	color: #aaa;
+}
+
+a:hover {
+	color: #777;
+}
+
+a:active {
+	color: white;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* all navbuttons have */
+.navbutton {
+	padding: 15px;
+	text-decoration: none;
+}
+
+
+
+#toplogo {
+	height:        70%;
+	padding:       0px;
+	position: absolute;
+	top:           18%;
+	right:        40px;
+}
+
+#bodydiv {
+	/*background-color: #aaa;*/
+	position:        absolute;
+	top: 110px;
+	left:0px;
+	width:100%;
+}
+
+.gamepic {
+	width:100%;
+}
+
+.gamepic-left {
+	width:50%;
+	float:left;
+}
+.gamepic-right {
+	width:50%;
+	float:right;
+}
+
+.gamedesc-left {
+	width:50%;
+	float:left;
+	text-align:center;
+}
+.gamedesc-right {
+	width:50%;
+	float:right;
+	text-align:center;
+}
+.gamedesc-p {
+	padding: 15px;
+	font-weight: normal;
+}
+.gamedesc-emphasis {
+	padding: 15px;
+	font-weight: normal;
+	background-color: #303030;
+}
+
+/* all navbuttons have */
+.navbutton {
+	padding: 15px;
+	text-decoration: none;
+	font-size:        1.5vw;
+}
+
+.gamedesc-bottom {
+	padding: 5px;
+	font-weight: normal;
+	background-color: #303030;
+	position:absolute;
+	width:50%;
+	bottom:0px;
+	left: 50%;
+	text-align:center;
+}
+
+@media (max-width: 1000px) {/* 600px */
+    nav, article, div {
+        width:  100%;
+        height: auto;
+		float:  none;
+    }
+	
+	.quote {
+		font-size: 4vw;
+		width: 70%;
+		left: 15%;
+	}
+}
+
+/* Slideshow */
+
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {
+	display: none;
+	position:absolute;
+	left:0px;
+	top:40px;
+	/*width:100%;*/
+}
+.slide {
+	vertical-align: middle;
+	height: 40%;/* 810px */
+	width: auto;
+	filter: brightness(40%);
+}
+
+/* Slideshow container */
+.slideshow-container {
+  /*max-width: 1000px;*/
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+

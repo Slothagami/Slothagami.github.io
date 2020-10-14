@@ -24,15 +24,34 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		jQuery(this).next("code").slideToggle();
 	});
 	
-	// recolor code keywords
-	// Works
-	//$('.codeexample code').each(function(){
-    //	var word = $(this).text().replace(/var|repeat|for|{|}|if/g,"<span class='function'>$&</span>");
-    //	$(this).html(word);
-	//});
+	
+	/*
+	$(window).resize(function() {
+		if($(window).width() < 900) {
+			// Games page
+			$(".game-box").css({
+				"width":"100%",
+				"height":"auto",
+				"float":"none"
+			});
+			$(".game-box img").css({
+				"width":"100%",
+				"height":"auto"
+			});
+			$(".game-box-container").css({
+				"width":"100%",
+				"height":"auto"
+			});
+		}
+	});
+	*/
+	
 	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		
+		
+		
 		// change font sizes
 		jQuery("h3, h2, p, ul, ol, #postHeader, .categoryName").css({
 			"font-size" : 48
@@ -76,5 +95,22 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		jQuery(".codeexample").css({
 			"width":"97%"
 		});
+		
+		// Games page
+			$(".game-box").css({
+				"width":"100%",
+				"height":"auto",
+				"float":"none"
+			});
+			$(".game-box img").css({
+				"width":"100%",
+				"height":"auto"
+			});
+			$(".game-box-container").css({
+				"width":"100%",
+				"height":"auto"
+			});
+		
+		
 	}
 });

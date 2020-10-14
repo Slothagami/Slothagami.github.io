@@ -1,0 +1,31 @@
+/* The code for the game boxes */
+
+.game-box-container {width:100%}
+.game-box {
+	background-color:black;
+	border:2px solid black;
+	width:100%;
+	height:450px;
+	overflow:hidden;
+}
+
+/*.game-box:hover {}*/
+
+.game-box img {
+	height: 100%; 
+	width: 100%; 
+	object-fit: contain;
+}
+.game-box img:hover {opacity:0.65}
+
+.left   {float:left  }
+.right  {float:right }
+.top    {float:top   }
+.bottom {float:bottom}
+.half   {width:50%   }
+.thalf  {height:50%  }
+.empty {background-color:#151515}
+.empty:hover {background-color:#202020}
+
+/* Other */
+#bodydiv {top: 58px}
