@@ -100,7 +100,8 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 			$(".game-box").css({
 				"width":"100%",
 				"height":"auto",
-				"float":"none"
+				"float":"none",
+				"border-color":"#303030"
 			});
 			$(".game-box img").css({
 				"width":"100%",
