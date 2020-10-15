@@ -107,9 +107,6 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		$(".empty").css({
 			"display":"none"
 		});
-		$("#video").css({
-			"right":"50%"
-		});
 		
 		// General
 		$("div").css({
