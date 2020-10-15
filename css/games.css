@@ -27,5 +27,11 @@
 .empty {background-color:#151515}
 .empty:hover {background-color:#202020}
 
+.game-box-name {
+	position:absolute;
+	bottom: 23%;
+	left: 10px;
+}
+
 /* Other */
 #bodydiv {top: 58px}

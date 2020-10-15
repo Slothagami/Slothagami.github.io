@@ -20,7 +20,6 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		jQuery(this).next("code").slideToggle();
 	});
 	
-	
 	/*
 	$(window).resize(function() {
 		if($(window).width() < 900) {
@@ -41,7 +40,6 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		}
 	});
 	*/
-	
 	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
