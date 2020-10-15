@@ -1,9 +1,6 @@
 // <script type="text/javascript" src="Scripts.js"></script>
 
-// Linked files run on load
-//alert("Hello");
-
-jQuery(document).ready(function() { // wait untill jQuery is ready and run code in brackets.
+jQuery(document).ready(function() { // wait until jQuery is ready and run code in brackets.
 	// Start by hiding rescources
 	jQuery("#postHeader").next("ul").hide();
 	// Handle showing resources
@@ -18,7 +15,6 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	
 	// Add bit to code sections
 	jQuery(".codeexample").prepend("<p class='codeTitle'> <b>Pseudocode Explanation:</b> </p>");
-	
 	// Make the new text ^above^ a button to slideToggle() the code example (start hidden on mobile)
 	jQuery(".codeTitle").click(function() {
 		jQuery(this).next("code").slideToggle();
@@ -49,9 +45,6 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 	
 	// Check for mobile
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		
-		
-		
 		// change font sizes
 		jQuery("h3, h2, p, ul, ol, #postHeader, .categoryName").css({
 			"font-size" : 48
@@ -97,21 +90,28 @@ jQuery(document).ready(function() { // wait untill jQuery is ready and run code 
 		});
 		
 		// Games page
-			$(".game-box").css({
-				"width":"100%",
-				"height":"auto",
-				"float":"none",
-				"border-color":"#303030"
-			});
-			$(".game-box img").css({
-				"width":"100%",
-				"height":"auto"
-			});
-			$(".game-box-container").css({
-				"width":"100%",
-				"height":"auto"
-			});
+		$(".game-box").css({
+			"width":"100%",
+			"height":"auto",
+			"float":"none",
+			"border":"5px solid #303030"
+		});
+		$(".game-box img").css({
+			"width":"100%",
+			"height":"auto"
+		});
+		$(".game-box-container").css({
+			"width":"100%",
+			"height":"auto"
+		});
+		$(".empty").css({
+			"display":"none"
+		});
 		
-		
+		// General
+		$("img, div").css({
+			"width":"100%",
+			"float":"none"
+		});
 	}
 });
