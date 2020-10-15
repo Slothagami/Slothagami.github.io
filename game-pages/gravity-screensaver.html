@@ -7,6 +7,38 @@
 		
 		<script rel="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 		<script rel="text/javascript" src="../js/scripts.js"></script>
+		
+		<style>
+			/* Page Spesific Styling */
+			#video {
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				min-width: 100%; 
+				min-height: 100%;
+			}
+			
+			#over {
+				/* position over video */
+				position: fixed;
+				left:43%;
+				bottom:2%;
+				width: 100%;
+				padding: 20px;
+				color:white;
+			}
+			
+			#top {
+				position:fixed;
+				bottom:5%;
+				width:100%;
+				color:white;
+				font-weight:bold;
+				font-size:10vw;
+				padding:20px;
+			}
+			
+		</style>
 	</head>
 	<body>
 		<div id="bodydiv">
@@ -14,9 +46,13 @@
 					Big video or seamless gif of screensaver in background, darker then usual
 					Download button in center of video (with some text?)
 				-->
+				<video autoplay muted loop id="video">
+					<source src="../images/games/gravity-screensaver-vid.mp4" type="video/mp4" />
+					Your browser doesn't support HTML5 Video.
+				</video>
 				
-				
-				<a href="" class="download-button" style="width:auto"> Download </a>
+				<h1 id="top"> Gravity Screensaver </h1>
+				<a href="" class="download-button" id="over" style="width:auto"> Download </a>
 		</div>
 		
 		<!-- Navbar at top of page -->
