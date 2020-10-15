@@ -94,7 +94,7 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 			"width":"100%",
 			"height":"auto",
 			"float":"none",
-			"border":"5px solid #303030"
+			"border":"7px solid #303030"
 		});
 		$(".game-box img").css({
 			"width":"100%",
@@ -109,7 +109,7 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		});
 		
 		// General
-		$("img, div").css({
+		$("div").css({
 			"width":"100%",
 			"float":"none"
 		});
