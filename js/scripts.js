@@ -138,7 +138,15 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		
 		// side bar
 		$(".bar-link").css({
-			"font-size":60
+			"font-size":80
+		});
+		$("#bar-toggle").css({
+			"width":"8%"
+		});
+		$("#bar-toggle").hover(function{
+			$(this).css({
+				"width":"7%"
+			});
 		});
 		
 		// General
