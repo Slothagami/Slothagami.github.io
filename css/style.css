@@ -181,6 +181,43 @@ ul {
 	border-bottom: 5px solid black;
 }
 
+/* Side Slide Navbar */
+
+#side-bar, .bar-link, #bar-close {
+	color:white;
+	padding:20px;
+	width:100%;
+	
+	background-color:#303030;
+}
+#bar-close {width:auto;float:right;}
+#bar-close:hover {background-color:#202020;}
+#side-bar {
+	position:fixed;
+	left:0;
+	top:0;
+	margin:auto;
+	padding:10px;
+	width:20%;
+	height:100%;
+	border-right: 5px solid black;
+}
+.bar-link, bar-list li {font-weight:bold;width:100%;}
+.bar-link:hover {background-color:#202020;}
+.bar-link {display:block;width:100%;white-space:pre;}
+.bar-link:visited {color:white;}
+
+#bar-toggle {
+	width:5%;
+	position:fixed;
+	top:10px;
+	cursor:pointer;
+}
+
+#bar-toggle:hover {width:4.8%;}
+
+/* Side Slide Navbar */
+
 #Posts {
 	width: 90%;
 	text-align: center;

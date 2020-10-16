@@ -1,6 +1,21 @@
 // <script type="text/javascript" src="Scripts.js"></script>
 
 jQuery(document).ready(function() { // wait until jQuery is ready and run code in brackets.
+	// Build page
+	var html = 
+'<img id="bar-toggle" src="../images/logo.png" /><div id="side-bar"><p id="bar-close" > &times; </p><a class="bar-link" href="../index.html" > Home </a><a class="bar-link" href="../games.html" > Games </a><a class="bar-link" href="../coding-projects.html" > Projects </a><a class="bar-link" href="https://slothagami.itch.io/" > Itch.io </a><a class="bar-link" href="https://www.patreon.com/Slothagami" > Patreon </a></div>';
+    //Build the html through the function
+    //In the end...
+    $('#side-in').empty().append(html);
+	
+	// for pages not in folders
+	var html = 
+'<img id="bar-toggle" src="images/logo.png" /><div id="side-bar"><p id="bar-close" > &times; </p><a class="bar-link" href="index.html" > Home </a><a class="bar-link" href="games.html" > Games </a><a class="bar-link" href="coding-projects.html" > Projects </a><a class="bar-link" href="https://slothagami.itch.io/" > Itch.io </a><a class="bar-link" href="https://www.patreon.com/Slothagami" > Patreon </a></div>';
+    //Build the html through the function
+    //In the end...
+    $('#side-base').empty().append(html);
+	
+	
 	// Start by hiding rescources
 	jQuery("#postHeader").next("ul").hide();
 	// Handle showing resources
@@ -20,21 +35,14 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		jQuery(this).next("code").slideToggle();
 	});
 	
-	
+	$('#side-bar').animate({width: 'toggle'}, 0);
 	// Navbar (css to hide navbar (width:0; display:none) buttons too
-	/*
-	$(".head").click(function() {
-		$("#navbar").css({
-			"width":"100%",
-			"display":"block"
-		});
-		$(".navbutton").css({
-			"display":"block"
-		});
+	$("#bar-toggle").click(function() {
+		$('#side-bar').animate({"width": 'toggle'});
 	});
-	*/
-	
-	// Insert navbar html in this file?
+	$("#bar-close").click(function() {
+		$('#side-bar').animate({"width": 'toggle'});
+	});
 	
 	/*
 	$(window).resize(function() {
@@ -57,8 +65,11 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 	});
 	*/
 	
+	var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	//mobile = true;
+	
 	// Check for mobile
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	if( mobile ) {
 		// change font sizes
 		jQuery("h3, h2, p, ul, ol, #postHeader, .categoryName").css({
 			"font-size" : 48
@@ -123,6 +134,11 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		});
 		$(".empty").css({
 			"display":"none"
+		});
+		
+		// side bar
+		$(".bar-link").css({
+			"font-size":60
 		});
 		
 		// General
