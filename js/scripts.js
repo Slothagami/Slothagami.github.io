@@ -20,6 +20,22 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		jQuery(this).next("code").slideToggle();
 	});
 	
+	
+	// Navbar (css to hide navbar (width:0; display:none) buttons too
+	/*
+	$(".head").click(function() {
+		$("#navbar").css({
+			"width":"100%",
+			"display":"block"
+		});
+		$(".navbutton").css({
+			"display":"block"
+		});
+	});
+	*/
+	
+	// Insert navbar html in this file?
+	
 	/*
 	$(window).resize(function() {
 		if($(window).width() < 900) {
@@ -88,6 +104,9 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		});
 		
 		// Games page
+		$(".game-box-name").css({
+			"display":"none"
+		});
 		$(".game-box").css({
 			"width":"100%",
 			"height":"auto",

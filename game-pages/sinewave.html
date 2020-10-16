@@ -7,23 +7,58 @@
 		
 		<script rel="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
 		<script rel="text/javascript" src="../js/scripts.js"></script>
+		
+		<style>
+			/* Unique Page Styling */
+			#download {
+				padding:  15px;
+				background-color: #ff9521;
+				color:black;
+				border-radius: 5px;
+				cursor:pointer;
+				border: 2px solid black;
+			}
+			#download:hover {background-color: #c24e00;}
+			
+			#maindesc {
+				padding:70px 30px;
+				transform:rotate(-2deg);
+				text-align:center;
+				line-height:28px;
+				/* Positioning */
+				position: absolute;
+				bottom:35%;
+				left:10px;
+			}
+			#bg {
+				min-width:100%;
+				min-height:100%;
+			}
+			#lowresjam {color: #ff9521;}
+			#lowresjam:hover {color: #c24e00;}
+			p {font-weight:bold;}
+			#topdesc {background-color:black;padding:5px;}
+		</style>
 	</head>
 	<body>
 		<div id="bodydiv">
-				<img src="../images/games/sinewave-banner.gif" width="100%" />
-				<div style="width:70%;float:left">
-					<!-- Content -->
-					<p style="padding:70px 30px">
-						Sinewave is a rythum game made in two weeks for the 
-						<a href="https://itch.io/jam/lowrezjam-2020" target="_blank">LOWRES JAM 2020</a>!
-						With three unique levels to master! why don't you try your luck?
-					</p>
-					
-					<a href="../game-downloads/Sinwave.zip" class="download-button"> Download for Windows </a>
-				</div>
-				<div style="width:30%;float:right">
-					<img src="../images/games/sinewave-screenshots.png" width="100%" />
-				</div>
+				<!-- Content -->
+				<img id="bg" src="../images/games/sinewave-page.png" />
+				<p id="maindesc">
+					<img src="../images/games/sinewave-banner.gif" style="width:100%" />
+					<span id="topdesc">
+						Sinewave is a bullet hell rythum game made in two weeks for the 
+						<a href="https://itch.io/jam/lowrezjam-2020" target="_blank" id="lowresjam">LOWRES JAM 2020</a>!
+						With three unique levels to master!
+					</span>
+					<br />
+					<br />
+					<br />
+					<a id="download"> Download for Windows </a>
+				</p>
+				
+				<!--a style="transform:rotate(-2deg);width:auto;left:50%;" href="../game-downloads/Sinwave.zip" class="download-button"> Download for Windows </a-->
+				<!--img src="../images/games/sinewave-screenshots.png" width="100%" /-->
 		</div>
 		
 		<!-- Navbar at top of page -->
