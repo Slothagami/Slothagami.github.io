@@ -141,13 +141,13 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 			"font-size":80
 		});
 		$("#bar-toggle").css({
-			"width":"8%"
+			"width":"10%"
 		});
-		$("#bar-toggle").hover(function{
-			$(this).css({
-				"width":"7%"
-			});
-		});
+		//$("#bar-toggle").hover(function{
+			//$(this).css({
+				//"width":"7%"
+			//});
+		//});
 		
 		// General
 		$("div").css({
