@@ -137,17 +137,15 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		});
 		
 		// side bar
-		$(".bar-link").css({
+		$(".bar-link, #bar-close").css({
 			"font-size":80
 		});
 		$("#bar-toggle").css({
-			"width":"10%"
+			"width":"20%"
 		});
-		//$("#bar-toggle").hover(function{
-			//$(this).css({
-				//"width":"7%"
-			//});
-		//});
+		$("#topdesc").css({
+			"line-height":"1.4"
+		});
 		
 		// General
 		$("div").css({
