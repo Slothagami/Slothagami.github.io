@@ -201,7 +201,7 @@ ul {
 	width:20%;
 	height:100%;
 	border-right: 5px solid black;
-	min-width:250px;
+	/*min-width:250px;*/
 }
 .bar-link, bar-list li {font-weight:bold;width:100%;}
 .bar-link:hover {background-color:#202020;}
