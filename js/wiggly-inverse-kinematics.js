@@ -53,6 +53,7 @@ function Segment(x, y, angle, length, targ) {
 	this.targ = targ;
 	
 	this.update = function() {
+		this.length = canvas.width/(2 * segmentCount);
 		// update angle
 		this.angle = an(this.x, this.y, this.targ.x, this.targ.y);
 		// move so other side is target pos
@@ -105,7 +106,7 @@ function resize() {
 	
 	// randomize segment number
 	var minSegments = 2;
-	segmentCount = randomRange(minSegments, maxSegments);
+	segmentCount = Math.ceil(randomRange(minSegments, maxSegments));
 	
 	// remake arm
 	segments = [];
@@ -113,10 +114,10 @@ function resize() {
 }
 function setupSegments() {
 	// loop to make [segmentCount] segments at [canvas.width/2] as max length
-	segments.push(new Segment(0, 0, Math.PI/2, canvas.width/(2 * segmentCount), mouse));
+	segments.push(new Segment(0, 0, Math.PI/2, 1, mouse));
 	
 	for(var i = 1; i < segmentCount; i++) {
-		segments.push(new Segment(0, 0, Math.PI/2, canvas.width/(2 * segmentCount), segments[i-1]));
+		segments.push(new Segment(0, 0, Math.PI/2, 1, segments[i-1]));
 	}
 }
 
