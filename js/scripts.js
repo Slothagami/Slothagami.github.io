@@ -152,5 +152,13 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 			"width":"100%",
 			"float":"none"
 		});
+		
+		// disable interavtives
+		$(".square-image").css({
+			"display":"block"
+		});
+		$("#wik-canvas").css({
+			"display":"none"
+		})
 	}
 });
