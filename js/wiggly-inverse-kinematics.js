@@ -73,6 +73,9 @@ function Segment(x, y, angle, length, targ) {
 		c.lineTo(x2, y2);
 		
 		c.stroke();
+		
+		colorCircle(this.x, this.y, lineW/2, lineC);
+		colorCircle(x2, y2, lineW/2, lineC);
 	}
 	this.moveBack = function() {
 		// move all the segments back
