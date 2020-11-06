@@ -159,8 +159,9 @@ ul {
 
 .square-image {
 	width:40%;
-	display:none;
 }
+
+.interactive-replacement {display:none;}
 
 .quote {
 	color:       white;

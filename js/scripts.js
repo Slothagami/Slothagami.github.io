@@ -154,10 +154,10 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		});
 		
 		// disable interavtives
-		$(".square-image").css({
+		$(".interactive-replacement").css({
 			"display":"block"
 		});
-		$("#wik-canvas").css({
+		$(".interactive").css({
 			"display":"none"
 		})
 	}
