@@ -43,5 +43,6 @@ var sg = {
 		canvas.height = window.innerHeight;
 	},
 	lerp:function(value, target, ammount){return value+(target-value)*ammount;},
-	choose:function(){return arguments[Math.floor(Math.random()*(arguments.length))];}
+	choose:function(){return arguments[Math.floor(Math.random()*(arguments.length))];},
+	onMobile: function(){return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);}
 }
