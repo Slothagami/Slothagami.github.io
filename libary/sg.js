@@ -1,7 +1,7 @@
 /*
 	unverified-scripts: none
 	
-	<script type="text/javascript" src="sg.js"></script>  in head
+	<script type="text/javascript" src="https://slothagami.github.io/libary/sg.js"></script>
 	
 	Checklist
 	Check for mobile
