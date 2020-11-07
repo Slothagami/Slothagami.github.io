@@ -11,8 +11,11 @@
 		
 		<style>
 			#bodydiv {top:0;}
+			#Posts {text-align:left;}
 			body {background-color:black;background-image:none;}
 			canvas {border:1px solid yellow;position:fixed;}
+			.h1 {font-size:32px;}
+			* {color:white;}
 		</style>
 	</head>
 	<body>
@@ -20,7 +23,17 @@
 		<div id="bodydiv">
 				<canvas id="doc-canvas-title"></canvas>
 				<script src="../js/doc.js"></script>
-				
+				<div id="Posts">
+					<p>
+						This is a documentation of the functions and agruments 
+						of my libary, feel free to use it for yourself, you can test any
+						of the functions in the console.
+					</p>
+					<h1> sg.clamp(value, min, max) </h1>
+					<h1> sg.randomRange(min, max) </h1>
+					<h1> sg.angDist(x1, y1, x2, y2) </h1>
+					<h1> sg.ang(x1, y1, x2, y2) </h1>
+				</div>
 		</div>
 		
 		<div id="side-in"></div>
