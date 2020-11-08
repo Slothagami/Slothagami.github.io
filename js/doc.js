@@ -61,7 +61,7 @@ function main() {
 }
 function resize() {
 	canvas.style.position = "static";
-	canvas.width = window.innerWidth;
+	canvas.width = window.innerWidth - 12;
 	canvas.height = sg.onMobile()? 650: 300;
 	
 	titleHeight = canvas.height*0.3;
