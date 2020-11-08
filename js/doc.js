@@ -2,6 +2,8 @@
 	Todo:
 	clean up code
 	have thin rectangles move up to meet mouse from left side, like the audio thing
+	or the orbital thing, radius based off mouse?
+	push commits
 */
 
 // all the canvases in the doc page
@@ -58,7 +60,8 @@ function main() {
 	}
 }
 function resize() {
-	canvas.width = window.innerWidth;
+	canvas.style.position = "static";
+	canvas.width = window.innerWidth - 12;
 	canvas.height = sg.onMobile()? 650: 300;
 	
 	titleHeight = canvas.height*0.3;
