@@ -7,6 +7,17 @@
 */
 
 // all the canvases in the doc page
+
+// responsiveness stuff
+$(document).ready(function() {
+	if(sg.onMobile()) {
+		$("h1").css({
+			"font-size":"50px"
+		});
+	}
+});
+
+// Canvas stuff
 var canvas = document.getElementById("doc-canvas-title");
 var c = canvas.getContext("2d");
 
