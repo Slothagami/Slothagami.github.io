@@ -82,7 +82,7 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		// Add space at top
 		jQuery("#bodydiv").prepend("<br /><br /><br />");
 		// Hide code boxes
-		jQuery(".codeexample code").hide();
+		//jQuery(".codeexample code").hide();
 		
 		//$(".codeexample code").prepend("<span class='number'> Code may not display properly on mobile. </span><br />");
 		
