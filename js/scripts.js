@@ -44,32 +44,8 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		$('#side-bar').animate({"width": 'toggle'});
 	});
 	
-	/*
-	$(window).resize(function() {
-		if($(window).width() < 900) {
-			// Games page
-			$(".game-box").css({
-				"width":"100%",
-				"height":"auto",
-				"float":"none"
-			});
-			$(".game-box img").css({
-				"width":"100%",
-				"height":"auto"
-			});
-			$(".game-box-container").css({
-				"width":"100%",
-				"height":"auto"
-			});
-		}
-	});
-	*/
-	
-	var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-	//mobile = true;
-	
 	// Check for mobile
-	if( mobile ) {
+	if(sg.onMobile()) {
 		// change font sizes
 		jQuery("h3, h2, p, ul, ol, #postHeader, .categoryName").css({
 			"font-size" : 48

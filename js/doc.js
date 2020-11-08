@@ -1,12 +1,9 @@
 /*
 	Todo:
-	clean up code
 	have thin rectangles move up to meet mouse from left side, like the audio thing
 	or the orbital thing, radius based off mouse?
 	push commits
 */
-
-// all the canvases in the doc page
 
 // responsiveness stuff
 $(document).ready(function() {
