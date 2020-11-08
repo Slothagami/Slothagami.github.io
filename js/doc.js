@@ -27,7 +27,6 @@ var descHeight  = canvas.height*0.7;
 window.onload = function() {
 	resize();
 	window.addEventListener("resize", resize);
-	document.getElementById("Posts").style.marginTop = canvas.height * 1.1 + "px";
 	setInterval(main, 1000/fps);
 }
 
@@ -61,6 +60,7 @@ function main() {
 	}
 }
 function resize() {
+	canvas.style.position = "static";
 	canvas.width = window.innerWidth;
 	canvas.height = sg.onMobile()? 650: 300;
 	
