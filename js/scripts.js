@@ -3,32 +3,21 @@ jQuery(document).ready(function(){
 	var html='<img id="bar-toggle" src="../images/logo.png" /><div id="side-bar"><p id="bar-close" > &times; </p><a class="bar-link" href="../index.html" > Home </a><a class="bar-link" href="../games.html" > Games </a><a class="bar-link" href="../coding-projects.html" > Projects </a><a class="bar-link" href="https://slothagami.itch.io/" > Itch.io </a><a class="bar-link" href="https://www.patreon.com/Slothagami" > Patreon </a></div>';
     //In the end...
     $('#side-in').empty().append(html);
-	
 	// for pages not in folders
 	var html='<img id="bar-toggle" src="images/logo.png" /><div id="side-bar"><p id="bar-close" > &times; </p><a class="bar-link" href="index.html" > Home </a><a class="bar-link" href="games.html" > Games </a><a class="bar-link" href="coding-projects.html" > Projects </a><a class="bar-link" href="https://slothagami.itch.io/" > Itch.io </a><a class="bar-link" href="https://www.patreon.com/Slothagami" > Patreon </a></div>';
     //In the end...
     $('#side-base').empty().append(html);
-	
-	
 	// Start by hiding rescources
 	jQuery("#postHeader").next("ul").hide();
 	// Handle showing resources
-	jQuery("#postHeader").click(function() {
-		jQuery(this).next("ul").slideToggle();
-	});
+	jQuery("#postHeader").click(function(){jQuery(this).next("ul").slideToggle();});
 	// Project show/hide buttons
 	jQuery(".project-article").hide();
-	jQuery(".project-head").click(function() {
-		jQuery(this).next(".project-article").slideToggle();
-	});
-	
+	jQuery(".project-head").click(function(){jQuery(this).next(".project-article").slideToggle();});
 	// Add bit to code sections
 	jQuery(".pseudo").prepend("<p class='codeTitle'> <b>Pseudocode Explanation:</b> </p>");
 	// Make the new text ^above^ a button to slideToggle() the code example (start hidden on mobile)
-	jQuery(".codeTitle").click(function() {
-		jQuery(this).next("code").slideToggle();
-	});
-	
+	jQuery(".codeTitle").click(function(){jQuery(this).next("code").slideToggle();});
 	$('#side-bar').animate({width: 'toggle'}, 0);
 	// Navbar (css to hide navbar (width:0; display:none) buttons too
 	$("#bar-toggle").click(function() {
