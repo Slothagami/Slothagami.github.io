@@ -5,9 +5,51 @@
 	push commits
 */
 
-// Canvas stuff
-var canvas = document.getElementById("doc-canvas-title");
+// Background Canvas Stuff
+var canvas = document.getElementById("background-canvas");
 var c = canvas.getContext("2d");
+
+const BGfps = 30;
+const cellS = 80;
+
+var mouse = {x:0, y:0};
+var cp = {x:0, y:0};
+
+window.onload = function() {
+	// Title Stuff
+	resize();
+	window.addEventListener("resize", resize);
+	setInterval(main, 1000/fps);
+	
+	// Background Stuff
+	window.addEventListener("mousemove", function(e) {
+		mouse.x = e.x;
+		mouse.y = e.y;
+		
+		cp.x = Math.floor(mouse.x / cellS) * cellS;
+		cp.y = Math.floor(mouse.y / cellS) * cellS;
+	});
+	setInterval(bg, 1000/BGfps);
+}
+function bg() {
+	colorRect(cp.x, cp.y, cellS, cellS, "red");
+	
+	c.strokeStyle = "black";
+	c.lineWidth = "10px";
+	c.strokeRect(cp.x, cp.y, cellS, cellS);
+	
+	colorRect(0, 0, canvas.width, canvas.height, "rgba(0, 0, 0, 0.1)");
+	
+}
+
+function colorRect(x, y, width, height, color) {
+	c.fillStyle = color;
+	c.fillRect(x, y, width, height);
+}
+
+// Title Canvas stuff
+var tcanvas = document.getElementById("doc-canvas-title");
+var tc = tcanvas.getContext("2d");
 
 const message = "sg.js";
 const desc = "My first JavaScript Libary.";
@@ -22,12 +64,6 @@ var title = false;
 
 var titleHeight = canvas.height*0.3;
 var descHeight  = canvas.height*0.7;
-
-window.onload = function() {
-	resize();
-	window.addEventListener("resize", resize);
-	setInterval(main, 1000/fps);
-}
 
 function main() {
 	if(!title) {
@@ -44,8 +80,8 @@ function main() {
 		}
 		
 		// draw
-		c.clearRect(0, 0, canvas.width, canvas.height);		
-		text(padding, titleHeight, displayMessage, canvas.width/10, "white");
+		tc.clearRect(0, 0, tcanvas.width, tcanvas.height);		
+		text(padding, titleHeight, displayMessage, tcanvas.width/10, "white");
 	}else{
 		displayMessage = desc.substring(0, letters);
 		letters++;
@@ -53,22 +89,26 @@ function main() {
 		if(letters < desc.length + 1) displayMessage += "|";
 		
 		// draw
-		c.clearRect(0, 0, canvas.width, canvas.height);
-		text(padding, titleHeight, message, canvas.width/10, "white");
-		text(padding, descHeight, displayMessage, canvas.width/20, "#505050");
+		tc.clearRect(0, 0, tcanvas.width, tcanvas.height);
+		text(padding, titleHeight, message, tcanvas.width/10, "white");
+		text(padding, descHeight, displayMessage, tcanvas.width/20, "#505050");
 	}
 }
 function resize() {
-	canvas.style.position = "static";
-	canvas.width = window.innerWidth - 12;
-	canvas.height = sg.onMobile()? 650: 300;
+	sg.resize(canvas);
+	canvas.style.position = "fixed";
 	
-	titleHeight = canvas.height*0.3;
-	descHeight  = canvas.height*0.7;
+	// Title
+	tcanvas.style.position = "static";
+	tcanvas.width = window.innerWidth - 12;
+	tcanvas.height = sg.onMobile()? 650: 300;
+	
+	titleHeight = tcanvas.height*0.3;
+	descHeight  = tcanvas.height*0.7;
 }
 function text(x, y, string, fontSize, color) {
-	c.fillStyle = color;
-	c.font = fontSize + "px Arial";
-	c.textBaseline = "middle";
-	c.fillText(string, x, y);
+	tc.fillStyle = color;
+	tc.font = fontSize + "px Arial";
+	tc.textBaseline = "middle";
+	tc.fillText(string, x, y);
 }

@@ -12,7 +12,7 @@
 		<style>
 			#bodydiv {top:0;padding-bottom:300px;}
 			#Posts {text-align:left;}
-			body {background-color:black;background-image:none;}
+			body {background-color:black;background-image:none;margin:0;}
 			canvas {position:fixed;}
 			h1 {font-size:18px;}
 			* {color:white;}
@@ -29,6 +29,7 @@
 	</head>
 	<body>
 		<!-- SG.JS DOUMENTATION -->
+		<canvas id="background-canvas"></canvas>
 		<div id="bodydiv">
 				<canvas id="doc-canvas-title"></canvas>
 				<script src="../js/doc.js"></script>
@@ -54,6 +55,7 @@ a = sg.clamp(a, 0, 1); <span class="comment">// will set a to 1</span>
 var b = -1;
 b = sg.clamp(b, 0, 1); <span class="comment">// will set b to 0</span></code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.randomRange(min, max) </h1>
@@ -65,6 +67,7 @@ b = sg.clamp(b, 0, 1); <span class="comment">// will set b to 0</span></code>
 					<div class="codeexample">
 						<code>var a = sg.randomRange(1, 5); <span class="comment">// will set a to a random value from 1 to 5</span></code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.angDist(x1, y1, x2, y2) </h1>
@@ -78,6 +81,7 @@ return Math.hypot(xdif, ydif); </code>
 					<div class="codeexample">
 						<code>var a = sg.angDist(0, 0, 1, 1) <span class="comment">// will set a to ~1.414s</span></code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.ang(x1, y1, x2, y2) </h1>
@@ -93,6 +97,7 @@ return angle;</code>
 					<div class="codeexample">
 						<code>var a = sg.ang(0, 0, 1, 1); <span class="comment">// will set a to &pi;/2</span></code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.overshootInc(value, incriment, limit) </h1>
@@ -117,6 +122,7 @@ a = sg.overshootInc(a, 10, 5); <span class="comment">// will set a to 5</span>
 var b = 5;
 b = sg.overshootInc(b, -10, 0); <span class="comment">// will set b to 0</span></code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.resize(canvas) </h1>
@@ -130,6 +136,7 @@ canvas.height = window.innerHeight;</code>
 					<div class="codeexample">
 						<code>sg.resize(document.getElementsByTagName("canvas")[0])<span class="comment">// will resize the first canvas on the document to fit the screen.</span></code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.lerp(value, target, ammount) </h1>
@@ -141,6 +148,7 @@ canvas.height = window.innerHeight;</code>
 					<div class="codeexample">
 						<code>var a = sg.lerp(1, 2, 0.5);  <span class="comment">// will set a to 1.5</span></code>
 					</div>
+					<br />
 					
 					<h1> sg.choose(...) </h1>
 					<p>Returns a random agrument that was given.</p>
@@ -151,6 +159,7 @@ canvas.height = window.innerHeight;</code>
 					<div class="codeexample">
 						<code>var a = sg.choose(1, 5, 3, "red", object, function(){console.log("hi")});</code>
 					</div>
+					<br />
 					
 					
 					<h1> sg.onMobile() </h1>
