@@ -14,7 +14,7 @@
 			#Posts {text-align:left;}
 			body {background-color:black;background-image:none;}
 			canvas {border:1px solid yellow;position:fixed;}
-			.h1 {font-size:32px;}
+			h1 {font-size:20px;}
 			* {color:white;}
 			p {padding:5px;}
 		</style>
@@ -30,7 +30,22 @@
 						of my libary, feel free to use it for yourself, you can test any
 						of the functions in the console.
 					</p>
+					<br />
 					<h1> sg.clamp(value, min, max) </h1>
+					<p>
+						Takes a value and keeps it within the given range.
+					</p>
+					<br />
+					<div class="codeexample">
+						<code>var a = 2;
+a = sg.clamp(a, 0, 1);
+// willl set a to 1
+
+var b = -1;
+b = sg.clamp(b, 0, 1);
+// willl set b to 0</code>
+					</div>
+					
 					<h1> sg.randomRange(min, max) </h1>
 					<h1> sg.angDist(x1, y1, x2, y2) </h1>
 					<h1> sg.ang(x1, y1, x2, y2) </h1>

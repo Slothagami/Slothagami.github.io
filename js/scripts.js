@@ -29,7 +29,7 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 	});
 	
 	// Add bit to code sections
-	jQuery(".codeexample").prepend("<p class='codeTitle'> <b>Pseudocode Explanation:</b> </p>");
+	jQuery(".pseudo").prepend("<p class='codeTitle'> <b>Pseudocode Explanation:</b> </p>");
 	// Make the new text ^above^ a button to slideToggle() the code example (start hidden on mobile)
 	jQuery(".codeTitle").click(function() {
 		jQuery(this).next("code").slideToggle();
