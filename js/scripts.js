@@ -47,7 +47,7 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 	// Check for mobile
 	if(sg.onMobile()) {
 		// change font sizes
-		jQuery("h3, h2, p, ul, ol, #postHeader, .categoryName").css({
+		jQuery("h3, h2, h1, p, ul, ol, #postHeader, .categoryName").css({
 			"font-size" : 48
 		});
 		jQuery("code").css({
