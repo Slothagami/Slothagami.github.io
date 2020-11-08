@@ -3,6 +3,8 @@
 	have thin rectangles move up to meet mouse from left side, like the audio thing
 	or the orbital thing, radius based off mouse?
 	push commits
+
+	// make bubbles reset on resize
 */
 
 // Background Canvas Stuff
@@ -10,10 +12,17 @@ var canvas = document.getElementById("background-canvas");
 var c = canvas.getContext("2d");
 
 const BGfps = 30;
-const cellS = 80;
+const cellS = 10;
 
 var mouse = {x:0, y:0};
-var cp = {x:0, y:0};
+var bubble = {
+	rad: {min:30,max:60},
+	color: ["#151515", "#101010"],
+	number: 60,
+	speed: {min:0.02, max:0.1},
+	grow: {ammount:1.2, speed:0.2}
+}
+var bubbles = [];
 
 window.onload = function() {
 	// Title Stuff
@@ -21,30 +30,80 @@ window.onload = function() {
 	window.addEventListener("resize", resize);
 	setInterval(main, 1000/fps);
 	
+	// make bubbles
+	for(var i = 0; i < bubble.number; i++) {
+		var hs, vs, an, ra, sp;
+		an = Math.random() * Math.PI*2;
+		hs = Math.sin(an);
+		vs = Math.cos(an);
+		ra = sg.randomRange(bubble.rad.min, bubble.rad.max);
+		sp = sg.randomRange(bubble.speed.min, bubble.speed.max);
+		
+		
+		bubbles.push(new Bubble(
+			sg.randomRange(ra, canvas.width-ra), 
+			sg.randomRange(ra, canvas.height-ra),
+			ra,
+			hs * sp, vs * sp,
+			bubble.color[Math.floor(Math.random() * bubble.color.length)]
+		));
+	}
+	
 	// Background Stuff
 	window.addEventListener("mousemove", function(e) {
 		mouse.x = e.x;
 		mouse.y = e.y;
-		
-		cp.x = Math.floor(mouse.x / cellS) * cellS;
-		cp.y = Math.floor(mouse.y / cellS) * cellS;
 	});
 	setInterval(bg, 1000/BGfps);
 }
 function bg() {
-	colorRect(cp.x, cp.y, cellS, cellS, "red");
+	c.clearRect(0, 0, canvas.width, canvas.height);
 	
-	c.strokeStyle = "black";
-	c.lineWidth = "10px";
-	c.strokeRect(cp.x, cp.y, cellS, cellS);
-	
-	colorRect(0, 0, canvas.width, canvas.height, "rgba(0, 0, 0, 0.1)");
-	
+	for(var i = 0; i < bubbles.length; i++) {
+		bubbles[i].update();
+	}
+	//colorCircle(mouse.x, mouse.y, 10, "red")
 }
 
 function colorRect(x, y, width, height, color) {
 	c.fillStyle = color;
 	c.fillRect(x, y, width, height);
+}
+function colorCircle(x, y, rad, color) {
+	c.beginPath();
+	//c.strokeStyle = color;
+	c.fillStyle = color;
+	c.arc(x, y, rad, 0, Math.PI*2, false);
+	//c.stroke();
+	c.fill();
+}
+
+// Objects
+function Bubble(x, y, rad, hs, vs, color) {
+	this.x = x;
+	this.y = y;
+	this.rad = rad;
+	this.dRad = rad;
+	this.hs = hs;
+	this.vs = vs;
+	this.color = color;
+	
+	this.update = function() {
+		this.x += this.hs;
+		this.y += this.vs;
+		
+		if(this.x + this.rad >= canvas.width || this.x - this.rad <= 0) this.hs *= -1;
+		if(this.y + this.rad >= canvas.height || this.y - this.rad <= 0) this.vs *= -1;
+		
+		if(sg.angDist(mouse.x, mouse.y, this.x, this.y) <= this.rad) {
+			this.rad = sg.lerp(this.rad, this.dRad * bubble.grow.ammount, bubble.grow.speed);
+		} else this.rad = sg.lerp(this.rad, this.dRad, bubble.grow.speed);
+		
+		this.draw();
+	}
+	this.draw = function() {
+		colorCircle(this.x, this.y, this.rad, this.color);
+	}
 }
 
 // Title Canvas stuff
