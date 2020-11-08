@@ -87,7 +87,8 @@ jQuery(document).ready(function() { // wait until jQuery is ready and run code i
 		//$(".codeexample code").prepend("<span class='number'> Code may not display properly on mobile. </span><br />");
 		
 		jQuery(".codeexample").css({
-			"width":"97%"
+			"width":"97%",
+			"padding":"60px"
 		});
 		
 		// Games page
