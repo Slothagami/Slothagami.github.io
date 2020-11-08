@@ -46,7 +46,7 @@ function main() {
 		
 		// draw
 		c.clearRect(0, 0, canvas.width, canvas.height);		
-		text(padding, titleHeight, displayMessage, canvas.height/3, "white");
+		text(padding, titleHeight, displayMessage, canvas.width/10, "white");
 	}else{
 		displayMessage = desc.substring(0, letters);
 		letters++;
@@ -55,8 +55,8 @@ function main() {
 		
 		// draw
 		c.clearRect(0, 0, canvas.width, canvas.height);
-		text(padding, titleHeight, message, canvas.height/3, "white");
-		text(padding, descHeight, displayMessage, canvas.height/8, "#505050");
+		text(padding, titleHeight, message, canvas.width/10, "white");
+		text(padding, descHeight, displayMessage, canvas.width/20, "#505050");
 	}
 }
 function resize() {
