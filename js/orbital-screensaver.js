@@ -7,12 +7,12 @@ var center = {x:canvas.width/2, y:canvas.height/2};
 var mouse = {x:center.x,y:center.y};
 
 const point = {
-	count:      900,//40, 900
+	count:      1000,//40, 900
 	color:      sg.choose("#21b9ff", "red", "green"),
 	rad:        1.5,// 6, 1.5
 	lerpsp:     0.2,// 0.2, 0.2
 	minDist:    4,// 150, 4
-	speed:      {min:Math.PI/200,max:Math.PI/100},
+	speed:      {min:Math.PI/270,max:Math.PI/170},
 	ringChance: 0.3,
 	target:     center // center or mouse
 }
