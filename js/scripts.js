@@ -30,12 +30,8 @@ jQuery(document).ready(function(){
 	// Check for mobile
 	if(sg.onMobile()) {
 		// change font sizes
-		jQuery("h3, h2, h1, p, ul, ol, #postHeader, .categoryName").css({
-			"font-size" : 48
-		});
-		jQuery("code").css({
-			"font-size" : 32
-		});
+		$("h3, h2, h1, p, ul, ol, #postHeader, .categoryName").css({"font-size" : 48});
+		$("code").css({"font-size" : 32});
 		// update widths
 		jQuery("#bodydiv, #Posts").css({
 			"width" : "100%",

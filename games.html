@@ -11,81 +11,59 @@
 		<script rel="text/javascript" src="libary/sg.js"></script>
 		
 		<script>
-			var canvas, c;
-			const fps = 30;
+			var gamesCount = 5,
+				fps = 30,
+				mouse = {
+					y:0,
+					perc:0 // percent down the screen
+				}, 
+				starg = 0,
+				s = 0,
+				list,
+				scrperc;
 				
 			window.onload = function() {
-				canvas = document.getElementById("bg-canvas");
-				c = canvas.getContext("2d");
-				console.log(c);
-			
-				resize();
-				setInterval(main, 1000 / fps);
-				window.addEventListener("resize", resize);
+				if(sg.onMobile()){
+					// just draw the list
+					document.body.style.overflow = "visible";
+					$("img").css({"filter":"brightness(100%)"});
+				}else{
+					// do scroll thing
+					list = document.getElementById("list");
+					setInterval(main, 1000 / fps);
+					
+					window.addEventListener("mousemove", function(e) {
+						mouse.y = e.y;
+						mouse.perc = mouse.y / window.innerHeight;
+						starg = mouse.perc * $("#list").height() * -1;
+					});
+				}
 			}
 			
 			function main() {
-				
-			}
-			
-			function resize() {
-				sg.resize(canvas);
-				canvas.style.border = "1px solid yellow";
-				canvas.style.position = "fixed";
+				// #list {transform: translate(0, lerp(starg)))
+				s = sg.lerp(s, starg, 0.2);
+				s = sg.clamp(s, -($("#list").height() - window.innerHeight), 0);
+				list.style.transform = "translate(0px," + s + "px)";
 			}
 		</script>
 		<style> 
-			#bodydiv{top:0} 
-			a{border:1px solid green;position:fixed;width:100%;height:20%;/* 100/ammount_of_games_on_page */} 
+			body {overflow:hidden;}
+			#bodydiv {top:0} 
+			img {width:100%;display:block;filter:brightness(50%);}
+			#list {transform: translate(0, 0)}
+			img:hover {filter: brightness(100%);}
+			#bar-toggle {filter:brightness(100%)}
 			</style>
 		
-		<!-- 
-			Hover with mouse to scroll, use mouse y to open a image
-		 -->
+		<!-- Hover with mouse to scroll, use mouse y to open a image -->
 	</head>
 	<body>
-		<div id="bodydiv">
-			<canvas id="bg-canvas"></canvas>
-				<a></a>
-				<!-- First Layer --
-				<div class="game-box-container">
-					<div class="game-box left" style="width:60%">
-						<a href="game-pages/sinewave.html">
-							<img src="images/games/sinewave-cover.png"/>
-						</a>
-					</div>
-					<div class="game-box right" style="width:40%">
-						<a href="game-pages/unended.html">
-							<img src="images/games/unended-cover.jpg" />
-						</a>
-					</div>
-				</div>
-				<!-- Second Layer --
-				<div class="game-box-container">
-					<div class="game-box right half empty" style="height:350px">
-						
-					</div>
-					<!--div class="game-box right" style="width:40%"--
-					<div class="game-box-container left half" style="height:350px">
-						<div class="game-box-container top thalf">
-							<div class="game-box right empty" style="width:70%;height:100%">
-								
-							</div>
-							<div class="game-box left" style="width:30%;height:100%">
-								<a href="game-pages/gravity-screensaver.html">
-									<img src="images/games/gravity-screensaver-cover.jpg" />
-									<div class="game-box-name"> Gravity Screensaver </div>
-								</a>
-							</div>
-						</div>
-						<div class="game-box-container bottom thalf">
-							<div class="game-box empty" style="height:100%">
-							
-							</div>
-						</div>
-					</div>
-				</div>
-		</div-->
+		<div id="list">
+			<a href="game-pages/sinewave.html"> <img src="images/games/sinewave-cover.png" /> </a>
+			<a href="game-pages/unended.html"> <img src="images/games/unended-cover.jpg" /> </a>
+			<a href="game-pages/gravity-screensaver.html"> <img src="images/games/gravity-screensaver-cover.jpg" /> </a>
+		</div>
 		
 		<div id="side-base"></div>
 	</body>
