@@ -11,55 +11,35 @@
 		<script rel="text/javascript" src="libary/sg.js"></script>
 		
 		<script>
-			var fps = 30,
-				mouse = {
-					y:0,
-					perc:0 // percent down the screen
-				}, 
-				starg = 0,
-				s = 0,
-				list,
-				lh,
-				scrperc;
-				
+			var fps=30,mouse={y:0,perc:0},starg=0,s=0,list,scrperc;
 			window.onload = function() {
-				if(sg.onMobile()){
-					// just draw the list
-					$("img").css({"filter":"brightness(100%)"});
-				}else{
-					// do scroll thing
+				if(sg.onMobile()) $("img").css({"filter":"brightness(100%)"}); else{
 					window.scroll(0, 0);
 					document.body.style.overflow = "hidden";
 					
 					list = document.getElementById("list");
-					setInterval(main, 1000 / fps);
-					lh = $("#list").height();
+					setInterval(main,1000/fps);
 					
-					window.addEventListener("mousemove", function(e) {
-						mouse.y = e.y;
-						mouse.perc = mouse.y / window.innerHeight;
-						starg = mouse.perc * lh * -1;
+					window.addEventListener("mousemove",function(e){
+						mouse.y=e.y;
+						mouse.perc=mouse.y/window.innerHeight;
+						starg=mouse.perc*$("#list").height()*-1;
 					});
 				}
 			}
-			
 			function main() {
-				s = sg.lerp(s, starg, 0.15);
-				s = sg.clamp(s, -1 * (lh - window.innerHeight), 0);
-				list.style.transform = "translate(0px," + s + "px)";
+				s=sg.lerp(s,starg,0.15);
+				s=sg.clamp(s,-1*($("#list").height()-window.innerHeight),0);
+				list.style.transform="translate(0px,"+s+"px)";
 			}
 		</script>
 		<style> 
-			@keyframes fadeIn {
-				from {filter: brightness(50%)}
-				to {filter: brightness(100%)}
-			}
-		
-			#bodydiv {top:0} 
-			img {width:100%;display:block;filter:brightness(50%);}
-			img:hover {animation-name:fadeIn;animation-duration:0.25s;filter:brightness(100%)}
-			#bar-toggle {filter:brightness(100%)}
-			.padding-block {width:100%;height:100px}
+			@keyframes fadeIn{from{filter:brightness(50%)}to{filter:brightness(100%)}}
+			#bodydiv{top:0} 
+			img{width:100%;display:block;filter:brightness(50%);}
+			img:hover{animation-name:fadeIn;animation-duration:0.4s;filter:brightness(100%)}
+			#bar-toggle{filter:brightness(100%)}
+			.padding-block{width:100%;height:100px}
 		</style>
 		
 		<!-- Hover with mouse to scroll, use mouse y to open a image -->
