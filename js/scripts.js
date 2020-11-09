@@ -26,91 +26,36 @@ jQuery(document).ready(function(){
 	$("#bar-close").click(function() {
 		$('#side-bar').animate({"width": 'toggle'});
 	});
-	
 	// Check for mobile
 	if(sg.onMobile()) {
 		// change font sizes
 		$("h3, h2, h1, p, ul, ol, #postHeader, .categoryName").css({"font-size" : 48});
 		$("code").css({"font-size" : 32});
 		// update widths
-		jQuery("#bodydiv, #Posts").css({
-			"width" : "100%",
-			"display": "block"
-		});
-		jQuery("project-head").css({
-			"width" : "100%",
-			"font-size":50
-		});
+		$("#bodydiv, #Posts").css({"width" : "100%","display": "block"});
+		$("project-head").css({"width" : "100%","font-size":50});
 		// update navbar to mobile version
-		jQuery("#navbar a").css({
-			"font-size":50
-		});
+		$("#navbar a").css({"font-size":50});
 		// Update homepage
-		jQuery("#gamesButton, #postsButton").css({
+		$("#gamesButton, #postsButton").css({
 			"float":"none",
 			"width":"100%",
 			"padding":"5px 5px 70px 5px"
 		});
-		jQuery(".square-image").css({
-			"width":"90%"
-		});
+		$(".square-image").css({"width":"90%"});
 		// big title bigger
-		jQuery("#bigTitle").css({
-			"font-size":"10vw"
-		});
+		$("#bigTitle").css({"font-size":"10vw"});
 		// Add space at top
-		jQuery("#bodydiv").prepend("<br /><br /><br />");
-		
-		jQuery(".codeexample").css({
-			"width":"97%",
-			"padding":"60px"
-		});
-		
-		// Games page
-		$(".game-box-name").css({
-			"display":"none"
-		});
-		$(".game-box").css({
-			"width":"100%",
-			"height":"auto",
-			"float":"none",
-			"border":"7px solid #303030"
-		});
-		$(".game-box img").css({
-			"width":"100%",
-			"height":"auto"
-		});
-		$(".game-box-container").css({
-			"width":"100%",
-			"height":"auto"
-		});
-		$(".empty").css({
-			"display":"none"
-		});
-		
+		$("#bodydiv").prepend("<br /><br /><br />");
+		$(".codeexample").css({"width":"97%","padding":"60px"});
 		// side bar
-		$(".bar-link, #bar-close").css({
-			"font-size":80
-		});
-		$("#bar-toggle").css({
-			"width":"20%"
-		});
-		$("#topdesc").css({
-			"line-height":"1.4"
-		});
-		
+		$(".bar-link, #bar-close").css({"font-size":80});
+		$("#bar-toggle").css({"width":"20%"});
+		$("#topdesc").css({"line-height":"1.4"});
 		// General
-		$("div").css({
-			"width":"100%",
-			"float":"none"
-		});
-		
+		$("div").css({"width":"100%","float":"none"});
 		// disable interavtives
-		$(".interactive-replacement").css({
-			"display":"block"
-		});
-		$(".interactive").css({
-			"display":"none"
-		})
+		$(".interactive-replacement").css({"display":"block"});
+		$(".interactive").css({"display":"none"})
 	}
 });

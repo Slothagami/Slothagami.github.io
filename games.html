@@ -34,15 +34,14 @@
 					
 					window.addEventListener("mousemove", function(e) {
 						mouse.y = e.y;
-						mouse.perc = mouse.y / window.innerHeight;
+						mouse.perc = mouse.y / (window.innerHeight);
 						starg = mouse.perc * $("#list").height() * -1;
 					});
 				}
 			}
 			
 			function main() {
-				// #list {transform: translate(0, lerp(starg)))
-				s = sg.lerp(s, starg, 0.2);
+				s = sg.lerp(s, starg, 0.15);
 				s = sg.clamp(s, -($("#list").height() - window.innerHeight), 0);
 				list.style.transform = "translate(0px," + s + "px)";
 			}
@@ -51,10 +50,10 @@
 			body {overflow:hidden;}
 			#bodydiv {top:0} 
 			img {width:100%;display:block;filter:brightness(50%);}
-			#list {transform: translate(0, 0)}
+			#list {transform: translate(0, 0);}
 			img:hover {filter: brightness(100%);}
 			#bar-toggle {filter:brightness(100%)}
-			</style>
+		</style>
 		
 		<!-- Hover with mouse to scroll, use mouse y to open a image -->
 	</head>
