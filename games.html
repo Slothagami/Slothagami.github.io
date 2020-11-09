@@ -10,16 +10,44 @@
 		<script rel="text/javascript" src="js/scripts.js"></script>
 		<script rel="text/javascript" src="libary/sg.js"></script>
 		
-		<!-- 
-			Games list page, each game has own page, this lists them like yoyogames.com
-			Each one different size and shape based on how likely someone would want to find it.
+		<script>
+			var canvas, c;
+			const fps = 30;
+				
+			window.onload = function() {
+				canvas = document.getElementById("bg-canvas");
+				c = canvas.getContext("2d");
+				console.log(c);
 			
-			Each game page has the style of the unended game in itch.io (with the same navbar)
+				resize();
+				setInterval(main, 1000 / fps);
+				window.addEventListener("resize", resize);
+			}
+			
+			function main() {
+				
+			}
+			
+			function resize() {
+				sg.resize(canvas);
+				canvas.style.border = "1px solid yellow";
+				canvas.style.position = "fixed";
+			}
+		</script>
+		<style> 
+			#bodydiv{top:0} 
+			a{border:1px solid green;position:fixed;width:100%;height:20%;/* 100/ammount_of_games_on_page */} 
+			</style>
+		
+		<!-- 
+			Hover with mouse to scroll, use mouse y to open a image
 		 -->
 	</head>
 	<body>
 		<div id="bodydiv">
-				<!-- First Layer -->
+			<canvas id="bg-canvas"></canvas>
+				<a></a>
+				<!-- First Layer --
 				<div class="game-box-container">
 					<div class="game-box left" style="width:60%">
 						<a href="game-pages/sinewave.html">
@@ -32,12 +60,12 @@
 						</a>
 					</div>
 				</div>
-				<!-- Second Layer -->
+				<!-- Second Layer --
 				<div class="game-box-container">
 					<div class="game-box right half empty" style="height:350px">
 						
 					</div>
-					<!--div class="game-box right" style="width:40%"-->
+					<!--div class="game-box right" style="width:40%"--
 					<div class="game-box-container left half" style="height:350px">
 						<div class="game-box-container top thalf">
 							<div class="game-box right empty" style="width:70%;height:100%">
@@ -57,16 +85,8 @@
 						</div>
 					</div>
 				</div>
-		</div>
-		
-		<div id="side-base"></div>
-		<!-- Navbar at top of page ->
-		<div id="navbar">
-			<a href="index.html" class="navbutton"> Home </a>
-			<a target="_blank" href="https://slothagami.itch.io/" class="navbutton"> Itch.io </a>
-			<a target="_blank" href="https://www.patreon.com/Slothagami" class="navbutton"> Patreon </a>
-			<img id="toplogo" src="images/logo.png" />
 		</div-->
 		
+		<div id="side-base"></div>
 	</body>
 </html>
