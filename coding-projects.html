@@ -10,12 +10,19 @@
 		<script rel="text/javascript" src="libary/sg.js"></script>
 	</head>
 	
-	<body style="background-color:#000">
-			
+	<body style="background-color:#000;background-image:none;margin:0">
+	
+		<canvas id="bg-canvas"></canvas>
+		<script src="js/bubble-background.js"></script>
+		<script src="js/projects.js"></script>
+		
 		<div id="bodydiv">
 			<div id="Posts">			
-				<!-- POST HEADER -->
-				<h3 class="head"> Coding Projects </h3>
+				<!-- Finished Projects -->
+				<h3 class="head"> Projects </h3>
+				
+				<!-- Explanations -->
+				<h3 class="head" id="explanations"> Coding Explanations </h3>
 				<p>
 					This is a place for me to post the odd coding projects that I am doing, 
 					and explain how I did it for those who want to do it for themselves 
@@ -170,7 +177,6 @@ save_the_image();</code>
 					<img src="images/posts/wigglyIKrecording.gif" class="square-image interactive-replacement" id="wIKimg" />
 					<!-- WIGGLY IK CANVAS (show instead of image on desktop) -->
 					<canvas id="wik-canvas" class="interactive"></canvas>
-					<script src="js/wiggly-inverse-kinematics.js"></script>
 					
 					<br />
 					<br />

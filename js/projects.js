@@ -27,6 +27,9 @@ window.onload = function() {
 	
 	resize();
 	window.addEventListener("resize", resize);
+	window.addEventListener("mousemove", function(e) {
+		bubbleMouseMove(e);
+	});
 	canvas.addEventListener("mousemove", function(e) {
 		// Get mouse pos reletive to canvas:
 		var rect = canvas.getBoundingClientRect();
@@ -42,6 +45,7 @@ window.onload = function() {
 	
 	setupSegments();
 	setInterval(step, 1000/fps);
+	bubbleSetup();
 }
 
 // objects
@@ -74,8 +78,8 @@ function Segment(x, y, angle, length, targ) {
 		
 		c.stroke();
 		
-		colorCircle(this.x, this.y, lineW/2, lineC);
-		colorCircle(x2, y2, lineW/2, lineC);
+		colorCircleIK(this.x, this.y, lineW/2, lineC);
+		colorCircleIK(x2, y2, lineW/2, lineC);
 	}
 	this.moveBack = function() {
 		// move all the segments back
@@ -98,7 +102,7 @@ function step() {
 function draw() {
 	c.clearRect(0, 0, canvas.width, canvas.height);
 	
-	colorCircle(canvas.width/2, canvas.height/2, canvas.width/2, bgColor);
+	colorCircleIK(canvas.width/2, canvas.height/2, canvas.width/2, bgColor);
 	
 	for(var i = 0; i < segments.length; i++) {
 		segments[i].draw();
@@ -114,6 +118,7 @@ function resize() {
 	// remake arm
 	segments = [];
 	setupSegments();
+	bubbleResize();
 }
 function setupSegments() {
 	// loop to make [segmentCount] segments at [canvas.width/2] as max length
@@ -144,7 +149,7 @@ function randomRange(min, max) {
 }
 
 // draw functions
-function colorCircle(x, y, rad, color) {
+function colorCircleIK(x, y, rad, color) {
 	c.beginPath();
 	c.fillStyle = color;
 	c.arc(x, y, rad, 0, Math.PI*2, false);
