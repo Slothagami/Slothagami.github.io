@@ -13,8 +13,9 @@ p{
 	padding:4px;
 }
 h3,h4{color:white;}
+*{box-sizing:border-box}
 body{
-	font-family:Arial,Helvetica,sans-serif;
+	font-family:Verdana,sans-serif;
 	background-color:black;
 	background-image:url('../images/DarkBackground.jpg');
 	background-attachment:fixed;
@@ -24,7 +25,7 @@ body{
 }
 code{color:white;white-space:pre-wrap;}
 .codeexample code{white-space:pre;}
-.codeTitle {
+.codeTitle{
 	margin:0;
 	background-color:#404040;
 	width:100%;
@@ -58,7 +59,7 @@ code{color:white;white-space:pre-wrap;}
 .function{color:#d1a862;}
 .number{color:#d16262;}
 /* Math Division */
-.frac {
+.frac{
     display:inline-block;
     position:relative;
     vertical-align:middle;
@@ -89,15 +90,6 @@ ul{margin:0;padding:15px;}
 .project-head:hover{color:#aaa;background-color:#202020;}
 .square-image{width:40%;}
 .interactive-replacement{display:none;}
-.quote{
-	color:white;
-	text-align:center;
-	font-weight:bold;
-	width:33%;
-	position:absolute;
-	left:33%;
-	font-size:2vw;
-}
 #navbar{
 	background-color:#303030;
 	padding:15px;
@@ -156,12 +148,11 @@ iframe{width:100%;height:300px;border:2px solid black;}
 }
 .download-button:hover{color:#bbb;background-color:#202020;}
 /* navbuttons */
+.navbutton{padding:15px;text-decoration:none;font-size:1.5vw;}
 .navbutton:link{color:white;background-color:#303030;}
 .navbutton:visited{color:white;background-color:#303030;}
 .navbutton:hover{color:#bbb;background-color:#202020;}
 .navbutton:active{color:white;background-color:#303030;}
-/* all navbuttons have */
-.navbutton{padding:15px;text-decoration:none;font-weight:bold;}
 /* links */
 a:link{color:#ddd;}
 a:visited{color:#aaa;}
@@ -169,7 +160,7 @@ a:hover{color:#777;}
 a:active{color:white;}
 a{text-decoration:none;}
 /* all navbuttons have */
-.navbutton{padding:15px;text-decoration:none;}
+.navbutton{padding:15px;text-decoration:none;font-weight:bold;}
 #toplogo{
 	height:70%;
 	padding:0px;
@@ -184,77 +175,7 @@ a{text-decoration:none;}
 	left:0px;
 	width:100%;
 }
-.gamepic{width:100%;}
-.gamepic-left{width:50%;float:left;}
-.gamepic-right{width:50%;float:right;}
-.gamedesc-left{width:50%;float:left;text-align:center;}
-.gamedesc-right{width:50%;float:right;text-align:center;}
-.gamedesc-p{padding:15px;font-weight:normal;}
-.gamedesc-emphasis{padding:15px;font-weight:normal;background-color:#303030;}
-/* all navbuttons have */
-.navbutton{padding:15px;text-decoration:none;font-size:1.5vw;}
-.gamedesc-bottom{
-	padding:5px;
-	font-weight:normal;
-	background-color:#303030;
-	position:absolute;
-	width:50%;
-	bottom:0px;
-	left:50%;
-	text-align:center;
-}
 @media (max-width:1000px){/* 600px */
     nav,article,div{width:100%;height:auto;float:none;}
 	.quote{font-size:4vw;width:70%;left:15%;}
 }
-/* Slideshow */
-*{box-sizing:border-box}
-body{font-family:Verdana,sans-serif}
-.mySlides{
-	display:none;
-	position:absolute;
-	left:0px;
-	top:40px;
-	/*width:100%;*/
-}
-.slide{
-	vertical-align: middle;
-	height:40%;/* 810px */
-	width:auto;
-	filter:brightness(40%);
-}
-/* Slideshow container */
-.slideshow-container{position:relative;margin:auto;}
-/* Caption text */
-.text{
-  color:#f2f2f2;
-  font-size:15px;
-  padding:8px 12px;
-  position:absolute;
-  bottom:8px;
-  width:100%;
-  text-align:center;
-}
-/* Number text (1/3 etc) */
-.numbertext{
-  color:#f2f2f2;
-  font-size:12px;
-  padding:8px 12px;
-  position:absolute;
-  top:0;
-}
-/* The dots/bullets/indicators */
-.dot{
-  height:15px;
-  width:15px;
-  margin:0 2px;
-  background-color:#bbb;
-  border-radius:50%;
-  display:inline-block;
-  transition:background-color 0.6s ease;
-}
-.active{background-color:#717171;}
-/* Fading animation */
-.fade{-webkit-animation-name:fade;-webkit-animation-duration:1.5s;animation-name:fade;animation-duration:1.5s;}
-@-webkit-keyframes fade{from{opacity:.4}to{opacity:1}}
-@keyframes fade{from {opacity:.4}to{opacity:1}}
