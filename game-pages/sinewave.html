@@ -22,70 +22,44 @@
 			#download:hover {background-color: #c24e00;}
 			
 			#maindesc {
-				padding:70px 30px;
+				padding:30px;
 				transform:rotate(-2deg);
 				text-align:center;
 				line-height:28px;
 				/* Positioning */
 				position: absolute;
-				bottom:35%;
 				left:10px;
-			}
-			#bg {
-				min-width:100%;
-				min-height:100%;
 			}
 			#lowresjam {color: #ff9521;}
 			#lowresjam:hover {color: #c24e00;}
 			p {font-weight:bold;}
 			#topdesc {background-color:black;padding:5px;}
+			body{background-image:url('../images/games/sinewave-page.png')}
 		</style>
 	</head>
 	<body>
 		<script>
 			jQuery(document).ready(function() {
-				var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-				//mobile = true;
-				
-				if(mobile){
-					$("#bodydiv").css({
-						"top":"450px"
-					});
-					$("#bg").css({
-						"width":"100%"
-					});
+				if(sg.onMobile()){
+					$("#bodydiv").css({"top":"450px"});
+					//$("#bg").css({"width":"100%"});
 				}
 			});
 		</script>
 	
-		<div id="bodydiv">
-				<!-- Content -->
-				<img id="bg" src="../images/games/sinewave-page.png" />
-				<p id="maindesc">
-					<img src="../images/games/sinewave-banner.gif" style="width:100%" />
-					<span id="topdesc">
-						Sinewave is a bullet hell rythum game made in two weeks for the 
-						<a href="https://itch.io/jam/lowrezjam-2020" target="_blank" id="lowresjam">LOWRES JAM 2020</a>!
-						With three unique levels to master!
-					</span>
-					<br />
-					<br />
-					<br />
-					<a id="download"> Download for Windows </a>
-				</p>
-				
-				<!--a style="transform:rotate(-2deg);width:auto;left:50%;" href="../game-downloads/Sinwave.zip" class="download-button"> Download for Windows </a-->
-				<!--img src="../images/games/sinewave-screenshots.png" width="100%" /-->
-		</div>
+		<p id="maindesc">
+			<img src="../images/games/sinewave-banner.gif" style="width:100%" />
+			<span id="topdesc">
+				Sinewave is a bullet hell rythum game made in two weeks for the 
+				<a href="https://itch.io/jam/lowrezjam-2020" target="_blank" id="lowresjam">LOWRES JAM 2020</a>!
+				With three unique levels to master!
+			</span>
+			<br />
+			<br />
+			<br />
+			<a id="download"> Download for Windows </a>
+		</p>
 		
 		<div id="side-in"></div>
-		<!-- Navbar at top of page ->
-		<div id="navbar">
-			<a href="../index.html" class="navbutton"> Home </a>
-			<a target="_blank" href="https://slothagami.itch.io/" class="navbutton"> Itch.io </a>
-			<a target="_blank" href="https://www.patreon.com/Slothagami" class="navbutton"> Patreon </a>
-			<img id="toplogo" src="../images/logo.png" />
-		</div-->
-		
 	</body>
 </html>
