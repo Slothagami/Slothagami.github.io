@@ -39,32 +39,11 @@
 			}
 			
 			function main(){
-				// get canvas hover over
-				
-				var gRect=g.canvas.getBoundingClientRect(),
-					pRect=p.canvas.getBoundingClientRect(),
-					hg=hp=false;
-				/*
-				if(pointInRect(mouse.x, mouse.y, gRect.left, gRect.top, gRect.right, gRect.bottom))hg=true;else hg=false;
-				if(pointInRect(mouse.x, mouse.y, pRect.left, pRect.top, pRect.right, pRect.bottom))hp=true;else hp=false;
-				if(hg&&hp)hover=-1;else hover=hg?"g":"p";
-				if(!hg && !hp)hover=-1;
-				*/
-				var sideOfLine;
-				// find point on line that y == mouse.y, then ckeck x for side
-				// get triangle side
-				var a = mouse.y - gRect.top,
-					A = slant,
-					B = Math.PI/2;
-					C = 180 - A+B;
-					side = a * (Math.sin(B)/Math.sin(C));
+				var m = Math.sin(Math.PI/2 + slant) / Math.cos(Math.PI/2 + slant),
+					b = g.canvas.width * Math.abs(m),
+					lineY = m*mouse.x+b;
 					
-					
-				
-				var xx = g.canvas.width + Math.cos(Math.PI + slant) * side,
-					yy = Math.cos(Math.PI + slant) * side;
-				
-				// change link.href based on side of line mouse is on
+				if(mouse.y > lineY) link.href = "coding-projects.html"; else link.href = "games.html";
 				
 				draw();
 			}
@@ -83,19 +62,6 @@
 					
 					g.c.clearRect(sx, sy, g.canvas.width*0.5, g.canvas.height*1.5);
 				g.c.rotate(-slant);
-				
-				
-				var gRect=g.canvas.getBoundingClientRect();
-				var a = mouse.y - gRect.top,
-					A = slant,
-					B = Math.PI/2;
-					C = 180 - A+B;
-					side = a * (Math.sin(A)/Math.sin(C));
-					
-				var xx = g.canvas.width + Math.cos(Math.PI/2+slant) * side *-1,
-					yy = Math.sin(Math.PI/2+slant) * side *-1;
-				g.c.fillStyle = "red"
-				g.c.fillRect(xx, yy, 5, 5);
 				
 				// project canvas draw
 				p.c.clearRect(0, 0, p.canvas.width, p.canvas.height);
