@@ -17,17 +17,17 @@
 			#bigTitle{text-align:center;font-size:5vw;color:white;margin:35px 0px}
 			#bodydiv{top:0px;}
 			body{background-image:none}
-			canvas{border:1px solid rgba(255, 255, 51, 0.4)}
 			table{border-collapse:collapse}
 			#projects-canvas{position:absolute;right:0px;transform:translate(0,-50.3%)}
 			.category-container{position:relative}
 		</style>
 		
 		<script>
-			var g={canvas:0,c:0},p={canvas:0,c:0},slant=20*(Math.PI/180),mouse={x:0,y:0},fps=30,hover="";
+			var g={canvas:0,c:0},p={canvas:0,c:0},slant=0,mouse={x:0,y:0},fps=30,hover="",clearbox={width:0,height:0},link;
 			window.onload=function(){
 				g.canvas=document.getElementById("games-canvas");p.canvas=document.getElementById("projects-canvas");
 				g.c=g.canvas.getContext("2d");p.c=p.canvas.getContext("2d");
+				link=document.getElementById("category-link");
 				
 				resize();
 				setInterval(main, 1000/fps);
@@ -40,14 +40,31 @@
 			
 			function main(){
 				// get canvas hover over
+				
 				var gRect=g.canvas.getBoundingClientRect(),
 					pRect=p.canvas.getBoundingClientRect(),
 					hg=hp=false;
-				
+				/*
 				if(pointInRect(mouse.x, mouse.y, gRect.left, gRect.top, gRect.right, gRect.bottom))hg=true;else hg=false;
 				if(pointInRect(mouse.x, mouse.y, pRect.left, pRect.top, pRect.right, pRect.bottom))hp=true;else hp=false;
 				if(hg&&hp)hover=-1;else hover=hg?"g":"p";
 				if(!hg && !hp)hover=-1;
+				*/
+				var sideOfLine;
+				// find point on line that y == mouse.y, then ckeck x for side
+				// get triangle side
+				var a = mouse.y - gRect.top,
+					A = slant,
+					B = Math.PI/2;
+					C = 180 - A+B;
+					side = a * (Math.sin(B)/Math.sin(C));
+					
+					
+				
+				var xx = g.canvas.width + Math.cos(Math.PI + slant) * side,
+					yy = Math.cos(Math.PI + slant) * side;
+				
+				// change link.href based on side of line mouse is on
 				
 				draw();
 			}
@@ -55,23 +72,55 @@
 				// game canvas draw
 				g.c.clearRect(0, 0, g.canvas.width, g.canvas.height);
 				
-				//g.c.fillStyle = "red";
-				//g.c.fillRect(0, 0, g.canvas.width, g.canvas.height);
+				g.c.fillStyle = "#202020";
+				g.c.fillRect(0, 0, g.canvas.width, g.canvas.height);
 				
 				// clear edge
 				g.c.fillStyle="white";
 				g.c.rotate(slant);
-					g.c.fillRect(g.canvas.width, -100, 100, g.canvas.height*1.5);
+					var sx = Math.cos(-slant) * g.canvas.width,
+						sy = Math.sin(-slant) * g.canvas.width;
+					
+					g.c.clearRect(sx, sy, g.canvas.width*0.5, g.canvas.height*1.5);
 				g.c.rotate(-slant);
+				
+				
+				var gRect=g.canvas.getBoundingClientRect();
+				var a = mouse.y - gRect.top,
+					A = slant,
+					B = Math.PI/2;
+					C = 180 - A+B;
+					side = a * (Math.sin(A)/Math.sin(C));
+					
+				var xx = g.canvas.width + Math.cos(Math.PI/2+slant) * side *-1,
+					yy = Math.sin(Math.PI/2+slant) * side *-1;
+				g.c.fillStyle = "red"
+				g.c.fillRect(xx, yy, 5, 5);
 				
 				// project canvas draw
 				p.c.clearRect(0, 0, p.canvas.width, p.canvas.height);
+				
+				p.c.fillStyle = "#151515";
+				p.c.fillRect(0, 0, p.canvas.width, p.canvas.height)
 			}
 			function pointInRect(px,py,x1,y1,x2,y2){if(px>x1&&px<x2&&py>y1&&py<y2)return true;else return false;}
 			function resize(){
-				var wd=window.innerWidth*.6,he=window.innerHeight*.67;
+				var wd=window.innerWidth*.6,he=window.innerHeight*.75;
 				p.canvas.width=wd;p.canvas.height=he;
 				g.canvas.width=wd;g.canvas.height=he;
+				
+				p.canvas.style.zIndex = -1;
+				
+				// calculate slant
+				var c = p.canvas.width*2-window.innerWidth,
+					b = p.canvas.height;
+					a = Math.sqrt(Math.pow(b, 2) + Math.pow(c, 2));
+				
+				slant = Math.acos((Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2)) / (2*a*b));
+				
+				//scale box
+				clearbox.width = c;
+				clearbox.height = a;
 			}
 		</script>
 	</head>
@@ -80,10 +129,12 @@
 				<h3 id="bigTitle"> Slothagami </h3>
 				<!-- Include links to: games.html, coding-projects.html -->
 				<div id="category-container">
-					<table><tr>
-							<th><canvas id="games-canvas" class="category-canvas"></canvas></th>
-							<th><canvas id="projects-canvas" class="category-canvas"></canvas></th>
-					</tr></table>
+					<a id="category-link">
+						<table><tr>
+								<th><canvas id="games-canvas" class="category-canvas"></canvas></th>
+								<th><canvas id="projects-canvas" class="category-canvas"></canvas></th>
+						</tr></table>
+					</a>
 				</div>
 		</div>
 		
