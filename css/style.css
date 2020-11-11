@@ -86,7 +86,7 @@ ul{margin:0;padding:15px;}
 }
 /*Side Slide Navbar*/
 #side-bar,.bar-link,#bar-close{color:white;padding:20px;width:100%;background-color:#303030;}
-#bar-close{width:auto;float:right;}
+#bar-close{width:auto;float:right;background-color:transparent;cursor:pointer}
 #bar-close:hover{background-color:#202020;}
 #side-bar{
 	position:fixed;
