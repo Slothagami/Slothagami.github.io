@@ -73,7 +73,7 @@ ul{margin:0;padding:15px;}
 	cursor:pointer;
 }
 .project-head:hover{background-color:rgba(50,50,50,.7);}/*#202020*/
-.square-image{width:40%;}
+.square-image{width:40%;float:center;}
 .interactive-replacement{display:none;}
 #navbar{
 	background-color:#303030;
