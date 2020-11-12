@@ -14,11 +14,10 @@
 		<meta name="author" content="Slothagami">
 		
 		<script>
-			var g={canvas:0,c:0},p={canvas:0,c:0},slant=0,mouse={x:0,y:0},fps=30,hover="",clearbox={width:0,height:0},link;
+			var g={canvas:0,c:0},p={canvas:0,c:0},slant=0,mouse={x:0,y:0},fps=30,hover="",clearbox={width:0,height:0};
 			window.onload=function(){
 				g.canvas=document.getElementById("games-canvas");p.canvas=document.getElementById("projects-canvas");
 				g.c=g.canvas.getContext("2d");p.c=p.canvas.getContext("2d");
-				link=document.getElementById("category-link");
 				
 				resize();
 				setInterval(main, 1000/fps);
@@ -34,13 +33,10 @@
 				if(pointInRect(mouse.x,mouse.y, 0,rect.top,window.innerWidth,rect.bottom)){
 					// if mouse hovering the canvases
 					// set hover, rotate mouse and slice back and check collisions normally
+					var boxX = Math.cos(-slant) * g.canvas.width,mouseX = Math.cos(-slant) * sg.angDist(0, 0, mouse.x, mouse.y);
+					if(mouseX > boxX){hover="p"}else{hover="g"}
+					if(hover=="p")pMain();else gMain();
 				}
-				var m = Math.sin(Math.PI/2 + slant) / Math.cos(Math.PI/2 + slant),
-					b = g.canvas.width * m * -1,
-					lineY = m*mouse.x+b;
-					// fix it not quite matching the screens
-				//if(mouse.y > lineY) link.href = "coding-projects.html"; else link.href = "games.html";
-				
 				draw();
 			}
 			function draw() {
@@ -71,6 +67,12 @@
 				var linkTable=document.getElementById("link-table");
 				linkTable.style.height = he + "px";
 				linkTable.style.top = $("#bigTitle").outerHeight(true) + "px";
+			}
+			function pMain() {
+				
+			}
+			function gMain() {
+				
 			}
 		</script>
 		
