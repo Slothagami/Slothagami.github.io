@@ -1,7 +1,7 @@
 var g = {canvas:0, c:0,title:"Games"},
 	p = {canvas:0, c:0,title:"Projects",
 		codeLines:[],indentSize:50,lineHeight:20,cindent:0,maxCindent:7,
-		col:{bg:"#303030",text:"#404040",comment:"#005500",commentChance:0.15,breakChance:0.2,previous:0}
+		col:{bg:pageColors.dark1,text:pageColors.light1,comment:pageColors.green,commentChance:0.15,breakChance:0.2,previous:0}
 	},
 	textMoveSp = 0.3,
 	mouse = {x:0, y:0},
@@ -91,7 +91,7 @@ function draw(clear) {
 	if(clear) {
 		// canvas clear and backgrounds
 		g.c.clearRect(0, 0, g.canvas.width, g.canvas.height);
-		colorRect(g.c, 0, 0, g.canvas.width, g.canvas.height, "#505050");
+		colorRect(g.c, 0, 0, g.canvas.width, g.canvas.height, pageColors.dark2);
 		
 		p.c.clearRect(0, 0, p.canvas.width, p.canvas.height);
 		colorRect(p.c, 0, 0, p.canvas.width, p.canvas.height, p.col.bg);
@@ -101,7 +101,7 @@ function draw(clear) {
 		// game canvas draw
 		
 		// draw
-		colorRect(g.c, format.padding, format.padding, g.canvas.width-dPadd-format.padding, g.canvas.height-format.padding*2, "#404040");
+		colorRect(g.c, format.padding, format.padding, g.canvas.width-dPadd-format.padding, g.canvas.height-format.padding*2, pageColors.light1);
 		// clear edge
 		g.c.fillStyle = "white";
 		g.c.rotate(format.slant);

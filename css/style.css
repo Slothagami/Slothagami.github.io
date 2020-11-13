@@ -1,29 +1,14 @@
 /*Variables*/
 :root{
-	--bg-color:      #000;
-	--color-dark-1:  #202020;
-	--color-dark-2:  #303030;
-	--color-light-1: #404040;
+	--bg-color:      #0A0B0D;
+	--color-dark-1:  #131418;
+	--color-dark-2:  #1D1E22;
+	--color-light-1: #2C303B;
 	--color-green:   #5BA68A;
 	--color-blue:    #698997;
 	--color-yellow:  #BFB47A;
 	--color-red:     #8C3503;
 	--color-orange:  #F26A1B;
-	/*
-		Nice Colors:
-		#303540 (lighest)
-		#2C303B
-		#1D1E22
-		#131418
-		#0A0B0D (darkest)
-		
-		#212226 (bg)
-		#5BA68A (green)
-		#698997 (blue)
-		#BFB47A (yellow)
-		#8C3503 (red)
-		#F26A1B (orange)
-	*/
 }
 
 /*Scrollbar*/
