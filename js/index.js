@@ -1,25 +1,35 @@
-var g = {canvas:0, c:0,title:"Games"},
+var g = {canvas:0, c:0,title:"Games",
+		col:{bg:pageColors.dark2,sub:pageColors.dark1}
+	},
 	p = {canvas:0, c:0,title:"Projects",
 		codeLines:[],indentSize:50,lineHeight:20,cindent:0,maxCindent:7,lineBottom:0,lineSep:1.5,
 		indentPerc:0.07,
-		col:{bg:pageColors.dark1,text:pageColors.light1,breakChance:0.2,previous:0,chances:{
-			comment:0.1,color:0.05
-		}}
+		col:{
+			bg:pageColors.dark1,text:pageColors.light1,
+			breakChance:0.2,previous:0,
+			chances:{comment:0.08,color:0.03}
+		}
 	},
+	coin = {
+		x:500,y:200,size:20
+	}
+	scrollsp = 4,
 	textMoveSp = 0.3,
 	mouse = {x:0, y:0},
 	hover = "",
 	clearbox = {width:0, height:0},
 	canvasesHover = false,
-	format = {slant:0,padding:0,slantW:0,fps:30,messageSp:1},
+	format = {slant:0,padding:0,slantW:0,fps:30,messageSp:3},
 	font = {size:70,font:"Sans-serif",color:pageColors.text};
 	
 /* 
 	Todo:	
-		make bg darker on the hover one 
-			make dark color over inactive one, slightly blue?
-			make both the same bg color etc
-				color object shared between them
+		make games animation
+			coins explode into particles on contact with mouse?
+		fix mouse wierdness
+			mouse selesting projects if too low
+			line mit matching up with line
+				its in a curve from the bottom of the screen to the top intersection
 */
 
 // Main Functions
@@ -36,33 +46,55 @@ window.onload = function() {
 	
 	window.addEventListener("resize", resize);
 	window.addEventListener("mousemove", function(e) {
-		mouse.x = e.x;
-		mouse.y = e.y;
+		var rect = g.canvas.getBoundingClientRect();
+		var root = document.documentElement;
+		
+		// get pos reletive to canvas
+		mouse.x = event.clientX - rect.left - root.scrollLeft;
+		mouse.y = event.clientY - rect.top - root.scrollTop;
+		
 	})
 }
 function main() {
 	var rect = p.canvas.getBoundingClientRect();
-	canvasesHover = pointInRect(mouse.x, mouse.y, 0, rect.top, window.innerWidth, rect.bottom);
+	canvasesHover = Math.abs(mouse.x) == mouse.x && Math.abs(mouse.y) == mouse.y;//pointInRect(mouse.x, mouse.y, 0, rect.top, window.innerWidth, window.innerHeight);
 	if(canvasesHover) {
 		// if mouse hovering the canvases
 		// set hover, rotate mouse and slice back and check collisions normally
-		var boxX = Math.cos(-format.slant) * g.canvas.width,
-			mouseX = Math.cos(-format.slant) * sg.angDist(0, 0, mouse.x, mouse.y);
+		var boxX = Math.cos(-format.slant) * g.canvas.width,// this is the mouse problem
+			mouseX = Math.cos(-format.slant) * sg.angDist(0, 0, mouse.x, mouse.y);// this is the mouse problem
 		
 		if(mouseX > boxX) {hover = "p"} else {hover = "g"}
+		
+		// Recolor hover things
+		if(hover=="g"){
+			p.col.bg = pageColors.dark2;
+			p.col.text = pageColors.dark1;
+			
+			g.col.bg = pageColors.dark1;
+			g.col.sub = pageColors.dark2;
+		}else{
+			p.col.bg = pageColors.dark1;
+			p.col.text = pageColors.light1;
+			
+			g.col.bg = pageColors.dark2;
+			g.col.sub = pageColors.dark1;
+		}
 	}
 	
 	draw(true);
 	for(var i = 0; i < p.codeLines.length; i++) {
 		p.codeLines[i].update();
 	}
+	if(hover=="g"&&canvasesHover)updateCoin();
+	drawCoin();
 	draw(false);
 }
 function draw(clear) {
 	if(clear) {
 		// canvas clear and backgrounds
 		g.c.clearRect(0, 0, g.canvas.width, g.canvas.height);
-		colorRect(g.c, 0, 0, g.canvas.width, g.canvas.height, pageColors.dark2);
+		colorRect(g.c, 0, 0, g.canvas.width, g.canvas.height, g.col.bg);
 		
 		p.c.clearRect(0, 0, p.canvas.width, p.canvas.height);
 		colorRect(p.c, 0, 0, p.canvas.width, p.canvas.height, p.col.bg);
@@ -71,8 +103,8 @@ function draw(clear) {
 			format.padding = format.slantW * 0.2;
 		// game canvas draw
 		
-		// draw
-		colorRect(g.c, format.padding, format.padding, g.canvas.width-dPadd-format.padding, g.canvas.height-format.padding*2, pageColors.light1);
+		
+		
 		// clear edge
 		g.c.fillStyle = "white";
 		g.c.rotate(format.slant);
@@ -87,17 +119,9 @@ function draw(clear) {
 		colorRect(p.c, 0, p.canvas.height-format.padding, p.canvas.width, format.padding, p.col.bg);
 		
 		// p title
-		p.c.fillStyle = font.color;
-		p.c.font = font.size + "px " + font.font;
-		p.c.textBaseline = "bottom";
-		p.c.fillText(p.title, dPadd*0.4, p.canvas.height - format.padding/3);
-		
+		outlinedText(p.c, p.title, dPadd*0.4, p.canvas.height - format.padding/3, pageColors.dark1, "bottom", "left");
 		// g title
-		g.c.fillStyle = font.color;
-		g.c.font = font.size + "px " + font.font;
-		g.c.textBaseline = "top";
-		g.c.textAlign = "right";
-		g.c.fillText(g.title, g.canvas.width - dPadd*0.4, format.padding/3);
+		outlinedText(g.c, g.title, g.canvas.width - dPadd*0.4, format.padding/3, pageColors.dark1, "top", "right");
 	}
 }
 
@@ -116,22 +140,54 @@ function CodeLine(indent,length,y,color) {
 		this.draw();
 	}
 	this.draw = function(){
-		colorRect(
-			p.c, 
-			this.indent*p.indentSize, 
-			this.y, 
-			this.length*(p.canvas.width-this.indent*p.indentSize-format.padding), 
-			p.lineHeight, 
-			this.color
-		);
+		if(p.col.text == pageColors.dark1) {
+			colorRect(
+				p.c, 
+				this.indent*p.indentSize, 
+				this.y, 
+				this.length*(p.canvas.width-this.indent*p.indentSize-format.padding), 
+				p.lineHeight, 
+				pageColors.dark1
+			);
+		}else{
+			colorRect(
+				p.c, 
+				this.indent*p.indentSize, 
+				this.y, 
+				this.length*(p.canvas.width-this.indent*p.indentSize-format.padding), 
+				p.lineHeight, 
+				this.color
+			);
+		}
 	}
+}
+
+function updateCoin() {
+	coin.x -= scrollsp;
+	if(coin.x < -coin.size || sg.angDist(coin.x, coin.y, mouse.x, mouse.y) <= 20){
+		coin.x = g.canvas.width+coin.size;
+		coin.y = sg.randomRange(coin.size*2, g.canvas.height-coin.size*2);
+	}
+	colorRect(g.c, mouse.x, mouse.y, 3, 3, "red");
+}
+function drawCoin() {
+	g.c.beginPath();
+		g.c.moveTo(coin.x, coin.y-coin.size);
+		g.c.lineTo(coin.x+coin.size, coin.y);
+		g.c.lineTo(coin.x, coin.y+coin.size);
+		g.c.lineTo(coin.x-coin.size, coin.y);
+	g.c.closePath();
+	
+	g.c.fillStyle = g.col.bg==pageColors.dark1?pageColors.yellow:pageColors.dark1;
+	g.c.fill();
 }
 
 // Functions
 function pointInRect(px,py,x1,y1,x2,y2){if(px>x1&&px<x2&&py>y1&&py<y2)return true;else return false;}
 function resize(){
 	var wd = window.innerWidth * 0.6,
-		he = window.innerHeight * 0.75;
+		//he = window.innerHeight * 0.75;
+		he = window.innerHeight - g.canvas.getBoundingClientRect().top;
 	
 	p.canvas.width = wd;
 	p.canvas.height = he;
@@ -163,7 +219,7 @@ function resize(){
 function colorRect(c,x,y,width,height,color){c.fillStyle=color;c.fillRect(x,y,width,height);}
 function makeLines() {
 	// generate a looping pattern 5x the screen height's of lines(tab ends withth 1 of start value)
-	var minTab = 2,
+	var minTab = 3,
 		tab = minTab,
 		lineCount = (p.canvas.height / p.lineHeight) * 5,
 		minWid = 0.03,
@@ -174,13 +230,12 @@ function makeLines() {
 		for(var j=0;j<p.codeLines.length;j++)p.codeLines[j].y+=p.lineHeight*p.lineSep;
 		
 		// make new one
-		if(tab == 1) tab += Math.round(Math.random()); else if(tab == p.maxCindent) tab += Math.round(sg.randomRange(-1, 0)); else tab += Math.round(sg.randomRange(-1, 1));
+		if(tab == minTab) tab += Math.round(Math.random()); else if(tab == p.maxCindent) tab += Math.round(sg.randomRange(-1, 0)); else tab += Math.round(sg.randomRange(-1, 1));
 		
 		col = p.col.text;
 		if(Math.random() < p.col.chances.comment) col = pageColors.green;
 		if(Math.random() < p.col.chances.color) col = sg.choose(
 			pageColors.red,
-			pageColors.green,
 			pageColors.blue,
 			pageColors.orange,
 			pageColors.yellow
@@ -190,4 +245,16 @@ function makeLines() {
 		
 	}
 	p.lineBottom = p.codeLines[0].y;
+}
+function outlinedText(c, string, x, y, outlineCol, baseline, align) {
+	c.fillStyle = font.color;
+	c.font = font.size + "px " + font.font;
+	c.textBaseline = baseline;
+	c.textAlign = align;
+	
+	c.lineWidth = 10;
+	c.strokeStyle = outlineCol;
+	c.strokeText(string, x, y);
+	
+	c.fillText(string, x, y);
 }
