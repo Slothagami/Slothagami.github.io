@@ -1,34 +1,25 @@
 var g = {canvas:0, c:0,title:"Games"},
 	p = {canvas:0, c:0,title:"Projects",
-		codeLines:[],indentSize:50,lineHeight:20,cindent:0,maxCindent:7,
-		col:{bg:pageColors.dark1,text:pageColors.light1,comment:pageColors.green,commentChance:0.15,breakChance:0.2,previous:0}
+		codeLines:[],indentSize:50,lineHeight:20,cindent:0,maxCindent:7,lineBottom:0,lineSep:1.5,
+		indentPerc:0.07,
+		col:{bg:pageColors.dark1,text:pageColors.light1,breakChance:0.2,previous:0,chances:{
+			comment:0.1,color:0.05
+		}}
 	},
 	textMoveSp = 0.3,
 	mouse = {x:0, y:0},
 	hover = "",
 	clearbox = {width:0, height:0},
 	canvasesHover = false,
-	format = {slant:0,padding:0,slantW:0,fps:30,messageSp:3},
-	font = {size:70,font:"Sans-serif",color:"white"};
+	format = {slant:0,padding:0,slantW:0,fps:30,messageSp:1},
+	font = {size:70,font:"Sans-serif",color:pageColors.text};
 	
 /* 
 	Todo:	
-		Make title in center/side (top/bottom based on side):
-			grows/moves right on canvas hover
-	
-		Make mobile version pretty too:
-			Make window roughly phone screen ratio.
-			Test everything to make it stay pretty.
-	
-		Prefill With lines
-			Make sure there are always lines on the whole screen.
-	
 		make bg darker on the hover one 
-			(draw ~0.4 alpha black over top)
+			make dark color over inactive one, slightly blue?
 			make both the same bg color etc
 				color object shared between them
-	Bugs:
-		Irregular gaps & incinsistant across screen ratios
 */
 
 // Main Functions
@@ -40,7 +31,8 @@ window.onload = function() {
 	
 	resize();
 	setInterval(main, 1000/format.fps);
-	setInterval(pMain, Math.floor(1000/format.messageSp));
+	
+	makeLines();
 	
 	window.addEventListener("resize", resize);
 	window.addEventListener("mousemove", function(e) {
@@ -58,7 +50,6 @@ function main() {
 			mouseX = Math.cos(-format.slant) * sg.angDist(0, 0, mouse.x, mouse.y);
 		
 		if(mouseX > boxX) {hover = "p"} else {hover = "g"}
-		if(hover == "g") gMain();
 	}
 	
 	draw(true);
@@ -66,26 +57,6 @@ function main() {
 		p.codeLines[i].update();
 	}
 	draw(false);
-}
-function pMain() {
-	if(hover == "p" && canvasesHover && document.hasFocus()){
-		var len = Math.round(sg.randomRange(p.indentSize, (p.canvas.width-p.indentSize*p.cindent-format.padding) * 0.8));
-		len = Math.floor(len / (p.indentSize / 2)) * (p.indentSize/2);
-		
-		var col = p.col.text;
-		if(Math.random() <= p.col.commentChance) col = p.col.comment; 
-		if(Math.random() <= p.col.breakChance && p.col.previous != p.col.bg) col = p.col.bg; 
-		p.col.previous = col;
-		
-		p.codeLines.push(new CodeLine(p.cindent, len, 5, p.canvas.height, col));
-		
-		if(p.cindent > 0)p.cindent += Math.round(sg.randomRange(-1, 1)); else p.cindent += Math.round(Math.random());
-		if(p.cindent == p.maxCindent) p.cindent += Math.round(sg.randomRange(0, 1));
-		p.cindent = sg.clamp(p.cindent, 3, p.maxCindent);
-	}
-}
-function gMain() {
-	
 }
 function draw(clear) {
 	if(clear) {
@@ -131,22 +102,29 @@ function draw(clear) {
 }
 
 // Objects
-function CodeLine(indent, length, width, y, color) {
-	this.indent = indent;
-	this.length = length;
-	this.width = width;
-	this.y = y;
-	this.ty = y - p.lineHeight;
-	this.color = color;
+function CodeLine(indent,length,y,color) {
+	this.indent=indent;
+	this.length=length;
+	this.y=y;
+	this.color=color;
 	
-	this.update = function(){
-		if(hover == "p" && canvasesHover){
-			this.y -= Math.floor((p.lineHeight / (format.messageSp + 1)) * 0.6);
-			if(this.y < -p.lineHeight * 2) p.codeLines.shift();
+	this.update=function(){
+		if(hover=="p"&&canvasesHover){
+			this.y-=format.messageSp;
+			if(this.y<-p.lineHeight*2)this.y=p.lineBottom-(p.lineHeight*p.lineSep-p.lineHeight);
 		}
 		this.draw();
 	}
-	this.draw = function(){colorRect(p.c, this.indent * p.indentSize, this.y, this.length, p.lineHeight, this.color);}
+	this.draw = function(){
+		colorRect(
+			p.c, 
+			this.indent*p.indentSize, 
+			this.y, 
+			this.length*(p.canvas.width-this.indent*p.indentSize-format.padding), 
+			p.lineHeight, 
+			this.color
+		);
+	}
 }
 
 // Functions
@@ -172,11 +150,44 @@ function resize(){
 	clearbox.width = c;
 	clearbox.height = a;
 	format.slantW = c;
-	p.indentSize = c/6;
-	p.lineHeight = c/12;
+	font.size = p.canvas.width / 8;
+	
+	// resize code things
+	p.indentSize = p.canvas.width * p.indentPerc;
+	p.lineHeight = p.canvas.height / 35;
 	
 	var linkTable = document.getElementById("link-table");
 	linkTable.style.height = he + "px";
 	linkTable.style.top = $("#bigTitle").outerHeight(true) + "px";
 }
 function colorRect(c,x,y,width,height,color){c.fillStyle=color;c.fillRect(x,y,width,height);}
+function makeLines() {
+	// generate a looping pattern 5x the screen height's of lines(tab ends withth 1 of start value)
+	var minTab = 2,
+		tab = minTab,
+		lineCount = (p.canvas.height / p.lineHeight) * 5,
+		minWid = 0.03,
+		col;
+	
+	for(var i=0;i<lineCount;i++){
+		// move previous ones up
+		for(var j=0;j<p.codeLines.length;j++)p.codeLines[j].y+=p.lineHeight*p.lineSep;
+		
+		// make new one
+		if(tab == 1) tab += Math.round(Math.random()); else if(tab == p.maxCindent) tab += Math.round(sg.randomRange(-1, 0)); else tab += Math.round(sg.randomRange(-1, 1));
+		
+		col = p.col.text;
+		if(Math.random() < p.col.chances.comment) col = pageColors.green;
+		if(Math.random() < p.col.chances.color) col = sg.choose(
+			pageColors.red,
+			pageColors.green,
+			pageColors.blue,
+			pageColors.orange,
+			pageColors.yellow
+		);
+		
+		p.codeLines.push(new CodeLine(tab, Math.max(Math.random(), minWid), format.padding, col));
+		
+	}
+	p.lineBottom = p.codeLines[0].y;
+}
