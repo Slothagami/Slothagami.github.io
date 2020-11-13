@@ -1,3 +1,6 @@
+// get doc colors from style.css
+function getCssVar(name){return getComputedStyle(document.documentElement).getPropertyValue(name)}
+pageColors={bg:getCssVar("--bg-color"),dark1:getCssVar("--color-dark-1"),dark2:getCssVar("--color-dark-2"),light1:getCssVar("--color-light-1"),green:getCssVar("--color-green"),blue:getCssVar("--color-blue"),yellow:getCssVar("--color-yellow"),red:getCssVar("--color-red"),orange:getCssVar("--color-orange")}
 jQuery(document).ready(function(){
 	var html='<img id="bar-toggle" src="../images/logo.png" /><div id="side-bar"><p id="bar-close" > &times; </p><a class="bar-link" href="../index.html" > Home </a><a class="bar-link" href="../games.html" > Games </a><a class="bar-link" href="../coding-projects.html" > Projects </a><a class="bar-link" href="https://slothagami.itch.io/" > Itch.io </a><a class="bar-link" href="https://www.patreon.com/Slothagami" > Patreon </a></div>';
     $('#side-in').empty().append(html);
