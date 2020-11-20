@@ -13,74 +13,39 @@
 		<meta name="keywords" content="Gamemaker, Coding, Games, Free Games, Unblocked Games, Slothagami, slothagami, Slotha">
 		<meta name="author" content="Slothagami">
 		
-		<style>
-			/* Page Exclusive styles */			
-			#bigTitle {
-				text-align:        center;
-				font-size:          8vw;
-				color:              white;
-			}
-			
-			#gamesButton, #postsButton {
-				/*position: absolute;*/
-				width: 50%;
-			}
-			
-			.categoryButton {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				margin-top: 0px;
-				width: 40%;
-			}
-			.categoryButton:hover {
-				width: 38%;
-			}
-			#gamesButton {
-				float: left;
-			}
-			#postsButton {
-				float: right;
-			}
-			
-			#bodydiv {
-				top: 0px;
-			}
-			
-			.categoryName {
-				font-size: 3vw;
-				color: white;
-				text-align: center;
-			}
+		<script rel="text/javascript" src="js/index.js"></script>
+		
+		<style>		
+			#bigTitle{text-align:center;font-size:5vw;color:white;margin:35px 0px}
+			#bodydiv{top:0px;}
+			body{background-image:none;overflow:hidden}
+			table{border-collapse:collapse}
+			#projects-canvas{position:absolute;right:0px;transform:translate(0,-50.3%)}
+			.category-container{position:relative}
+			span{width:100%;height:100px}
+			#link-table{position:absolute;top:10px}
+			.l-a{width:100%;height:100%;display:block}
 		</style>
+		
 	</head>
 	<body>
 		<div id="bodydiv">
 				<h3 id="bigTitle"> Slothagami </h3>
-				
-				<a href="games.html">
-					<div id="gamesButton">
-						<img class="categoryButton" src="images/gamesPic1.png" />
-						<h1 class="categoryName"> Games </h1>
-					</div>
-				</a>
-				
-				<a href="coding-projects.html">
-				<div id="postsButton">
-					<img class="categoryButton" src="images/projectPic1.png" />
-					<h1 class="categoryName"> Projects </h1>
+				<!-- Include links to: games.html, coding-projects.html -->
+				<div id="category-container">
+					<table><tr>
+						<th><canvas id="games-canvas" class="category-canvas"></canvas></th>
+						<th><canvas id="projects-canvas" class="category-canvas"></canvas></th>
+					</tr></table>
+						
+					<table id="link-table" style="width:100%"><tr>
+						<th><a class="l-a" href="games.html"></a></th>
+						<th><a class="l-a" href="coding-projects.html"></a></th>
+					</tr></table>
 				</div>
-				</a>
+				<!--img src="images/placeholder.png" style="width:100%;margin-top:100px" /-->
 		</div>
 		
 		<div id="side-base"></div>
-		
-		<!-- Navbar at top of page ->
-		<div id="navbar">
-			<a target="_blank" href="https://slothagami.itch.io/" class="navbutton"> Itch.io </a>
-			<a target="_blank" href="https://www.patreon.com/Slothagami" class="navbutton"> Patreon </a>
-			<img id="toplogo" src="images/logo.png" />
-		</div-->
-		
 	</body>
 </html>
