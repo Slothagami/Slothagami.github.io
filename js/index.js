@@ -20,15 +20,13 @@ var g = {canvas:0, c:0,title:"Games",
 	clearbox = {width:0, height:0},
 	canvasesHover = false,
 	format = {slant:0,padding:0,slantW:0,fps:30,messageSp:3},
-	font = {size:70,font:"Sans-serif",color:pageColors.text};
+	font = {size:70,font:"Sans-serif",color:pageColors.text},
+	particles=[];
 	
 /* 
 	Todo:	
-		make games animation
-			coins explode into particles on contact with mouse?
 		fix mouse wierdness
-			mouse selesting projects if too low
-			line mit matching up with line
+			mouse collision not matching up with line on screen
 				its in a curve from the bottom of the screen to the top intersection
 */
 
@@ -61,10 +59,10 @@ function main() {
 	if(canvasesHover) {
 		// if mouse hovering the canvases
 		// set hover, rotate mouse and slice back and check collisions normally
-		var boxX = Math.cos(-format.slant) * g.canvas.width,// this is the mouse problem
-			mouseX = Math.cos(-format.slant) * sg.angDist(0, 0, mouse.x, mouse.y);// this is the mouse problem
+		//var boxX = Math.cos(format.slant) * g.canvas.width,
+		//	mouseX = Math.cos(format.slant) * mouse.x;
 		
-		if(mouseX > boxX) {hover = "p"} else {hover = "g"}
+		if(mouse.x > g.canvas.width-format.slantW/2) {hover = "p"} else {hover = "g"}
 		
 		// Recolor hover things
 		if(hover=="g"){
@@ -87,7 +85,9 @@ function main() {
 		p.codeLines[i].update();
 	}
 	if(hover=="g"&&canvasesHover)updateCoin();
-	drawCoin();
+	
+	drawCoin(coin.x, coin.y, coin.size);
+	for(var i = 0; i < particles.length; i++) particles[i].update();
 	draw(false);
 }
 function draw(clear) {
@@ -161,21 +161,47 @@ function CodeLine(indent,length,y,color) {
 		}
 	}
 }
+function CoinParticle(x, y) {
+	this.x = x;
+	this.y = y;
+	this.an = Math.random()*Math.PI*2;
+	this.sp = sg.randomRange(3, 9);
+	this.rad = sg.randomRange(3, 10);
+	
+	this.update = function() {
+		if(hover=="g"){
+			this.rad -= this.sp*.1;
+			this.x += Math.cos(this.an) * this.sp;
+			this.y += Math.sin(this.an) * this.sp;
+			
+			if(this.rad <= 0)this.die();
+		}
+		// draw
+		drawCoin(this.x, this.y, this.rad);
+	}
+	this.die = function() {
+		particles.splice(particles.indexOf(this), 1);
+	}
+}
 
 function updateCoin() {
 	coin.x -= scrollsp;
-	if(coin.x < -coin.size || sg.angDist(coin.x, coin.y, mouse.x, mouse.y) <= 20){
+	if(coin.x < -coin.size/2 || sg.angDist(coin.x, coin.y, mouse.x, mouse.y) <= 20){
+		// make particles
+		for(var i = 0; i < 100; i++) {particles.push(new CoinParticle(coin.x, coin.y))}
+		
 		coin.x = g.canvas.width+coin.size;
 		coin.y = sg.randomRange(coin.size*2, g.canvas.height-coin.size*2);
 	}
+	
 	colorRect(g.c, mouse.x, mouse.y, 3, 3, "red");
 }
-function drawCoin() {
+function drawCoin(x, y, size) {
 	g.c.beginPath();
-		g.c.moveTo(coin.x, coin.y-coin.size);
-		g.c.lineTo(coin.x+coin.size, coin.y);
-		g.c.lineTo(coin.x, coin.y+coin.size);
-		g.c.lineTo(coin.x-coin.size, coin.y);
+		g.c.moveTo(x, y-size);
+		g.c.lineTo(x+size, y);
+		g.c.lineTo(x, y+size);
+		g.c.lineTo(x-size, y);
 	g.c.closePath();
 	
 	g.c.fillStyle = g.col.bg==pageColors.dark1?pageColors.yellow:pageColors.dark1;
