@@ -280,6 +280,64 @@ draw_each_segment_as_line_from(first_end, to second_end);
 				</div>
 				<!-- POST #4 -->
 				
+				<h3 class="project-head"> Mandlebrot Set </h3> <!-- 20th of November 2020 -->
+				<div class="project-article">
+					<p>
+						This one has a little bit of fancy math involved, but it's actually not that bad!
+						The Mandlebrot set is generated using only one equation!
+						<em> z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c </em>
+						Where <em>z & c are complex numbers</em>.
+						<em>z is the number to be ckecked against</em> and 
+						<em>c is the position of the point</em> to be checked.					
+					</p>
+					<br />
+					<p>
+						Hold on, What are complex numbers? <em>complex numbers are like an x and a y value in the same number</em>
+						They are usually written as r + mi, Where <em>r stands for the real (x)</em> component, and 
+						<em>m stands for the imaginary
+						(y)</em> component of the number. and i is the imaginary number (we can pretty much ignore that though). an example
+						of a complex number would be 5 + 7i. 
+					</p>
+					<br />
+					<p>
+						Each point of the set is a result of a test based on the equation above, run about 200-300 times, 
+						and mapped to the screen. <em>(the set starts at -2 and ends at 2 on both axes)</em>
+						Basically for every point you run the equation a few hundred times, and test the angular distance to 0,0 
+						to see if it's greater than 2, if it is, you can color that point the background color, otherwise, it's in
+						the set! you can color it the set color!
+					</p>
+					<br />
+					
+					<img src="images/posts/Mandlebrot set.png" />
+					
+					<br />
+					<p>
+						<em>But that will only get you the inner part.</em> To get the colors on the outside, the parts that
+						go out further than two, you need to <em>count how many iterations it took to get that far away</em>
+						(you can just return the 'i' in your for loop when it get's too far away) and color the outside pixels 
+						based on that number.
+					</p>
+					<br />
+					
+					<div class="codeexample pseudo">
+						<code>
+							------COMPLETE THIS-------
+						</code>
+					</div>
+					<br />
+					<h3 class="resources">Resources</h3>
+					<ul>
+						<li><a target="_blank" href="https://fractaltodesktop.com/mandelbrot-set-basics/index.html"> Mandlebrot Set Basics - Fractal to Desktop </a></li>
+						<li><a target="_blank" href="https://www.mathsisfun.com/numbers/complex-numbers.html"> Complex Numbers - Math is Fun </a></li>
+						<li><a target="_blank" href="https://www.symbolab.com/solver/complex-numbers-calculator/"> Complex Numbers Calculator - Symbolab </a></li>
+						<li><a target="_blank" href="https://www.geeksforgeeks.org/product-of-complex-numbers-using-three-multiplication-operation/"> Product of Complex Numbers Code - GeeksForGeeks </a></li>
+						<li><a target="_blank" href="https://www.mathsisfun.com/algebra/complex-plane.html"> Complex Plane - Math is Fun </a></li>
+						<li><a target="_blank" href="https://www.mathsisfun.com/numbers/imaginary-numbers.html"> Imaginary Numbers - Math is Fun </a></li>
+					</ul>
+				</div>
+				
+				<!-- POST #5 -->
+				
 				
 				<!-- TEMPLATE POST -->
 				<template>
