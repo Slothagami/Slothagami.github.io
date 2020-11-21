@@ -321,8 +321,32 @@ draw_each_segment_as_line_from(first_end, to second_end);
 					
 					<div class="codeexample pseudo">
 						<code>
-							------COMPLETE THIS-------
-						</code>
+var incriment = 4/precision, <span class="comment">// The Mandlebrot set is ~4 units wide on both axes</span>
+
+for(var _x = -2; _x < 2; _x += incriment) {
+	for(var _y = -2; _y < 2; _y += incriment) {
+		co.x = _x; <span class="comment">// move position (c in the equation) to current position on the set</span>
+		co.y = _y;
+		z = {x:0, y:0};
+		
+		var test = iterate(limit);
+		if(test === true) drawPointHere(); else drawPointShaded(test);
+	}
+}
+
+function iterate(generations) {
+	for(var i=0; i < generations; i++) {
+		z = theEquation();
+		if(distance_from_z_to_origin >= 2) return i;<span class="comment">// "z > 2"</span>
+	}
+	return true;
+}
+
+function theEquation() {
+	<span class="comment">// you can make the cpmplex number addition and multiplication scripts with the resources below</span>
+	var ca = complexAddition(complexSquare(z), co);<span class="comment">// z^2 + co</span>
+	return {x:ca.x, y:ca.y}
+}</code>
 					</div>
 					<br />
 					<h3 class="resources">Resources</h3>
