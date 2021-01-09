@@ -22,8 +22,8 @@
 			}
 			h1,p{text-align:center}
 			p{color:var(--color-text-2);font-weight:bold}
-			#instructions{
-				width:66%;
+			.section{
+				width:80%;
 				margin:auto;
 				margin-top:30px;
 				margin-bottom:30px;
@@ -33,9 +33,11 @@
 				border-radius:20px;
 			}
 			em{color:var(--color-text-2)}
-			#instructions a{color:var(--color-orange);text-decoration:underline}
-			#instructions a:hover{color:var(--color-red)}
-			#instructions em{color:var(--color-orange)}
+			.section a{color:var(--color-orange);text-decoration:underline}
+			.section a:hover{color:var(--color-red)}
+			.section em{color:var(--color-orange)}
+			.section h1{font-size:25px}
+			img{width:100%}
 		</style>
 	</head>
 	<body>
@@ -44,26 +46,63 @@
 				<h1>Better SIMON</h1>
 				<p>Uses Python to Generate a better looking version of SIMON</p>
 				<br />
-				<p><span style='color:var(--color-orange)'>
-					This Program has quite the installation process, 
-					if you need help with any part, message me on Discord.
-				</span></p>
+				<p>If you need help installing this program, ask me on Discord.</p>
 				
-				<div id='instructions'>
+				<div class='section'>
 					<h1>Installation Instructions:</h1>
 					<p> 
-						First, Install 
-						<a href='https://www.python.org/downloads/'> Python 3.9.1 </a>
+						First, if its not already, Install 
+						<a href='https://www.python.org/downloads/' target='_blank'> Python 3.9.1 </a>
 						<br />
-						<em>Make sure to check 'add Python to PATH' when the installer opens</em>
+						<em>Make sure to select the 'add Python to PATH' checkbox when the installer opens
+							or it won't work.</em>
 						<br />
-						<br />
-						Then, Extract the downloaded files
+						Then press Install Now
 						
+						<br />
+						<br />
+						<img src='images/pythonInstaller.jpg' />	
+						
+						<br />
+						<br />
+						Then, Extract the downloaded files. Run the setup file to install
+						all the nescicary things to run the program.
 					</p>
 				</div>
 				
-				<a href="./DiscordHelper.zip" class="download-button"> Download </a>
+				<div class='section'>
+					<h1>Using the Program</h1>
+					<p>
+						Open the file called BetterSimon,
+						it will ask for your SIMON login
+						details, it needs them to check 
+						your timetable every day.
+						<br />
+						<br />
+						<em>Leave the Program Open</em>, It can't 
+						give you your timetable if it's not
+						running!
+						<br />
+						I suggest moving the proram to a new desktop
+						(Press Windows + Tab to manage desktops) so
+						that it's out of the way as you go about your
+						buiseness.
+						<br />
+						<br />
+					</p>
+					<h1 style='font-size:18px'>Changing the Background</h1>
+					<p>
+						To change the background, go to the New Timetable
+						folder, and replace background.png with the image 
+						you want for the background.
+						<br />
+						<br />
+						Right now, the background has to be a .png image,
+						and it MUST be called background.png to work.
+					</p>
+				</div>
+				
+				<a href="./Downloads/BetterSimon-1.0.zip" class="download-button"> Download </a>
 			</div>
 		</div>
 		
