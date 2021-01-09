@@ -18,19 +18,27 @@
 				width:50%;
 				margin:auto;
 				margin-bottom:100px;
+				min-width:500px;
 			}
-			h1{text-align:center}
-			ul{
-				list-style-type:none;
-				text-align:center;
-				font-weight:bold;
-				font-size:20px;
-			}
-			li{margin:20px 0px}
+			h1{text-align:center;margin-top:0}
 			p{text-align:center;font-weight:bold;color:var(--color-text-2)}
-			a,a:visited{color:var(--color-text-1)}
-			a:hover{color:var(--color-text-2)}
-			span{color:var(--color-text-2)}
+			.block a,.block a:visited{
+				color:var(--color-text-1);
+				padding:15px;
+				border-radius:10px;
+				width:100%;
+				display:block;
+				text-align:center;
+				margin:5px 0px;
+				font-weight:bold;
+			}
+			.block a:hover{background-color:var(--bg-color)}
+			span{color:#555}
+			#explanation{
+				background-color:var(--color-dark-2);
+				padding:20px;
+				border-radius:10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -38,21 +46,14 @@
 				
 			<div class='block'>
 				<h1>Small Programs</h1>
-				<p> This page will list all the programs I mention on Discord,
-					once they're easily distributable. </p>
-				<br />
-				<p> If you have any problems installing or using any of theese
-					programs, ask me on Discord.</p>
-				<br />
-				<p> If you want a program made for you, email me at
-					<a href='mailto:slothagami+makeMeAThing@gmail.com'>slothagami+makeMeAThing@gmail.com</a>
-					or ask me on Discord. </p>
-					
-				<ul>
-					<li><a href='./discordHelper.html'>Discord Helper</a></li>
-					<li><a href='#'>Better SIMON <span>Coming Soon</span></a></li>
-					<li><a href='#'>Desktop FNaF Game <span>Coming Soon</span></a></li>
-				</ul>
+				<div id='explanation' style='margin-bottom:20px'>
+					<p> If you have any problems installing or using any of theese
+						programs, ask me on Discord.</p>
+				</div>
+				
+					<a href='./discordHelper.html'>Discord Helper</a>
+					<a href='#'>Better SIMON <span>Coming Soon</span></a>
+					<a href='#'>Desktop FNaF Game <span>Coming Soon</span></a>
 			</div>
 				
 		</div>
