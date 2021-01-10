@@ -10,7 +10,6 @@
 		<script rel="text/javascript" src="../liabry/sg.js"></script>
 		
 		<style>
-			.download-button{width:100%;padding:20px;border-radius:20px}
 			#DocumentationBox{
 				padding:20px;
 				background-color:var(--color-dark-1);
@@ -33,18 +32,52 @@
 				border-radius:20px;
 			}
 			em{color:var(--color-text-2)}
-			#DocumentationBox a{color:var(--color-orange);text-decoration:underline}
-			#DocumentationBox a:hover{color:var(--color-red)}
+			#DocumentationBox p a{color:var(--color-orange);text-decoration:underline}
+			#DocumentationBox p a:hover{color:var(--color-red)}
 			.section em{color:var(--color-orange)}
-			.section h1{font-size:25px}
-			img{width:100%}
+			.section h1{font-size:25px;margin:10px}
+			img{width:100%;border-radius:5px}
+			.download-button{
+				width:100%;
+				padding:20px;
+				border-radius:20px;
+				color:var(--text-1);
+			}
+			.toggleButton:hover{
+				color:#777;
+			}
 		</style>
+		<script>function toggleContent(id){
+			var element = document.getElementById(id);
+			switch(element.style.display){
+				case 'block': element.style.display='none';  break;
+				case 'none':  element.style.display='block'; break;
+			}
+		}</script>
 	</head>
 	<body>
 		<div id="bodydiv">
 			<div id='DocumentationBox'>
 				<h1>Better SIMON</h1>
-				<p>Uses Python to Generate a better looking version of SIMON</p>
+				
+				<img src='./images/betterSimon.png' />
+				
+				<div class='section'>
+					<style>li{margin-bottom:10px}</style>
+					<h1 onclick='toggleContent("fs")' class='toggleButton'>
+						Features
+					</h1>
+					<ul id='fs' style='display:block'>
+						<li><em>Timetable in english</em> instead of the wierd Codes.</li>
+						<li><em>Automatically detect Sports classes</em> and highlights them
+							to help you know what uniform to wear.</li>
+						<li>Look better than SIMON</li>
+						<li>Have the exact same timetable as SIMON</li>
+						<li>It still includes the Teachers name and Room the class is in.</li>
+						<li>Have a <em>customiseable background.</em></li>
+					</ul>
+				</div>
+				
 				<br />
 				<p>If you need help installing this program, ask me on Discord.</p>
 				<p><a href='InstallPythonProgram.html' style='font-weight:bold'>
@@ -52,34 +85,28 @@
 				</a></p>
 				
 				<div class='section'>
-					<h1>Using the Program</h1>
-					<p>
+					<h1 onclick='toggleContent("usage")' class='toggleButton'>Using the Program</h1>
+					<p id='usage' style='display:none'>
 						Open the file called BetterSimon,
-						it will ask for your SIMON login
-						details, it needs them to check 
-						your timetable every day.
+						enter your SIMON Login, and
+						<em>Leave the Program Open.</em>
 						<br />
-						<br />
-						<em>Leave the Program Open</em>, It can't 
-						give you your timetable if it's not
-						running!
 						<br />
 						I suggest moving the proram to a new desktop
-						(Press Windows + Tab to manage desktops) so
-						that it's out of the way as you go about your
-						buiseness.
+						(Press Windows + Tab to manage desktops)
 						<br />
 						<br />
 					</p>
-					<h1 style='font-size:18px'>Changing the Background</h1>
-					<p>
-						To change the background, go to the New Timetable
-						folder, and replace background.png with the image 
-						you want for the background.
+				</div>
+				<div class='section'>
+					<h1 onclick='toggleContent("cbg")' class='toggleButton'>Changing the Background</h1>
+					<p id='cbg' style='display:none'>
+						Go to the New Timetable
+						folder, and replace background.png with the new background.
 						<br />
 						<br />
-						Right now, the background has to be a .png image,
-						and <em>it MUST be called background.png</em> to work.
+						Right now, the background has to be a .png,
+						and <em>it MUST be called background.</em>
 					</p>
 				</div>
 				
