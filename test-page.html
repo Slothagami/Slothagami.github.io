@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>New Style Test</title>
+		<script rel="text/javascript" src="libary/sg.js"></script>
 		<style>
 			:root{
 				--theme-color      :#F03401;
@@ -20,6 +21,7 @@
 			::-webkit-scrollbar-thumb:hover{background:var(--theme-color-dark)}
 			
 			body{background-color:var(--color-dark-1);margin:0;overflow-x:hidden}
+			html{overflow-x:hidden}
 			*{color:white;font-family:sans-serif}
 			.light-box::before,.theme-box::before{
 				content:'';
@@ -67,33 +69,46 @@
 			a{
 				color:var(--theme-color);
 				font-weight:bold;
+				display:inline;
 			}
 			a:hover{color:var(--theme-color-dark)}
 			.button{
 				text-align:center;
 				text-decoration:none;
 				display:block;
-				padding:20px;
+				padding:20px 40px;
 				font-size:var(--text-size);
 				background-color:var(--theme-color);
 				color:white;
-				margin:20px;
+				margin:20px auto;
 				border-radius:5px;
 				width:fit-content;
+				float:center;
 			}
 			.right{float:right}
+			.left{float:left}
 			.button:hover{color:white;background-color:var(--theme-color-dark)}
+			p .button{display:inline;margin:0 5px;}
 		</style>
 		<script>
-			window.onload=function(){window.addEventListener('resize',updateLayout);onMobile=false}
+			window.onload=function(){
+				window.addEventListener('resize',updateLayout);
+			}
 			function updateLayout(){
-				if(window.innerWidth <= 830 || onMobile){// When its too thin to show the tables properly or on mobile
+				elements=document.getElementsByTagName('*');
+				if(window.innerWidth<=830||sg.onMobile()){// When its too thin to show the tables properly or on mobile
 					// update to phone-style layout
-					elements=document.getElementsByTagName('*');
 					for(var i = 0; i < elements.length; i++) {
 						e=elements[i]
 						if(e.tagName!='STYLE'&&e.tagName!='TITLE'&&e.tagName!='SCRIPT'){
 							e.style.display='block'
+						}
+					}
+				}else{
+					for(var i = 0; i < elements.length; i++) {
+						e=elements[i]
+						if(e.tagName!='STYLE'&&e.tagName!='TITLE'&&e.tagName!='SCRIPT'){
+							e.style.display=''
 						}
 					}
 				}
@@ -131,7 +146,10 @@
 		
 		<p>Lorem ipsum sed risus ultricies tristique nulla aliquet enim. Tortor pretium viverra suspendisse potenti nullam. Bibendum est ultricies integer quis auctor. Habitant morbi tristique senectus et netus. Quisque non tellus orci ac auctor augue.</p>
 		<p>This is <a href='#'>a link</a> inside a paragraph.</p>
-		<a href='#' class='button'>Button</a>
-		<a href='#' class='right button'>Button</a>
+		
+			<a href='#' class='button'>Button</a>
+			<a href='#' class='button'>Button</a>
+		
+		<p>This is an <a class='button'>inline button</a></p>
 	</body>
 </html>
