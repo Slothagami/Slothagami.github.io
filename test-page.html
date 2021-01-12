@@ -93,23 +93,41 @@
 		<script>
 			window.onload=function(){
 				window.addEventListener('resize',updateLayout);
-			}
-			function updateLayout(){
-				elements=document.getElementsByTagName('*');
-				if(window.innerWidth<=830||sg.onMobile()){// When its too thin to show the tables properly or on mobile
+				// if on mobile, make text bigger
+				if(sg.onMobile()){// on mobile
+					elements=document.getElementsByTagName('*');
 					// update to phone-style layout
 					for(var i = 0; i < elements.length; i++) {
 						e=elements[i]
-						if(e.tagName!='STYLE'&&e.tagName!='TITLE'&&e.tagName!='SCRIPT'){
+						if(validElement(e)){
 							e.style.display='block'
+							if(e.tagName=='P'||e.tagName=='IMG'||e.tagName=='A'){
+								e.style.width='95%';
+								e.style.fontSize='35px';
+								e.style.transform='translate(4%)';
+							}
 						}
+					}
+				}
+			}
+			function validElement(e) {
+				if(e.tagName!='STYLE'&&e.tagName!='TITLE'&&e.tagName!='SCRIPT'&&e.tagName!='A'){
+					return true
+				}
+				return false
+			}
+			function updateLayout(){
+				elements=document.getElementsByTagName('*');
+				if(window.innerWidth<=830){// When its too thin to show the tables properly or on mobile
+					// update to phone-style layout
+					for(var i = 0; i < elements.length; i++) {
+						e=elements[i]
+						if(validElement(e))e.style.display='block'
 					}
 				}else{
 					for(var i = 0; i < elements.length; i++) {
 						e=elements[i]
-						if(e.tagName!='STYLE'&&e.tagName!='TITLE'&&e.tagName!='SCRIPT'){
-							e.style.display=''
-						}
+						if(validElement(e))e.style.display=''
 					}
 				}
 			}
