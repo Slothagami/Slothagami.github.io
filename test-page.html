@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>New Style Test</title>
+		<style>
+			:root{
+				--theme-color      :#F03401;
+				--theme-color-dark :#D9190B;
+				--color-dark-1     :#202020;
+				--color-dark-2     :#505050;
+				
+				--text-size : 20px;
+				--page-title-size: 6vw;
+				--title-size: 3vw;
+				
+				--page-angle: 4deg;
+			}
+			::-webkit-scrollbar{width:7px}
+			::-webkit-scrollbar-thumb{background:var(--theme-color);border-radius:5px}
+			::-webkit-scrollbar-thumb:hover{background:var(--theme-color-dark)}
+			
+			body{background-color:var(--color-dark-1);margin:0;overflow-x:hidden}
+			*{color:white;font-family:sans-serif}
+			.light-box::before,.theme-box::before{
+				content:'';
+				position:absolute;
+				width: 200%;
+				height: 140%;
+				top: -20%;
+				left: -50%;
+				z-index: -1;
+				background-color:var(--color-dark-2);
+				padding:1px;
+				transform:rotate(var(--page-angle))
+			}
+			.theme-box::before{background-color:var(--theme-color)}
+			.theme-box,.light-box{position:relative;padding:0px;margin:200px auto;}
+			h1{font-size:var(--page-title-size);text-align:center;padding:0}
+			.top{margin:0;margin-bottom:100px;padding:1px}
+			.top::before{top:-23%}
+			p{
+				width:60%;
+				margin:105px auto;
+				font-size:var(--text-size)
+			}
+			h2{
+				text-align:center;
+				font-size:var(--title-size);
+			}
+			img{width:60%;border-radius:6px;transform:translate(33%)}
+			table{padding:0 80px}
+			.table-image{width:100%;transform:translate(0)}
+			th p{font-weight:normal}
+			code{
+				font-family:Monospace, Monaco;
+				white-space:pre;
+				background-color:black;
+				display:block;
+				width:60%;
+				margin:30px auto;
+				padding:30px;
+				border-radius:5px;
+				overflow-x:scroll;
+				color:var(--theme-color);
+				box-shadow: 0 0 0 1pt var(--theme-color);/*Add curved outline*/
+			}
+			a{
+				color:var(--theme-color);
+				font-weight:bold;
+			}
+			a:hover{color:var(--theme-color-dark)}
+			.button{
+				text-align:center;
+				text-decoration:none;
+				display:block;
+				padding:20px;
+				font-size:var(--text-size);
+				background-color:var(--theme-color);
+				color:white;
+				margin:20px;
+				border-radius:5px;
+				width:fit-content;
+			}
+			.right{float:right}
+			.button:hover{color:white;background-color:var(--theme-color-dark)}
+		</style>
+		<script>
+			window.onload=function(){window.addEventListener('resize',updateLayout);onMobile=false}
+			function updateLayout(){
+				if(window.innerWidth <= 830 || onMobile){// When its too thin to show the tables properly or on mobile
+					// update to phone-style layout
+					elements=document.getElementsByTagName('*');
+					for(var i = 0; i < elements.length; i++) {
+						e=elements[i]
+						if(e.tagName!='STYLE'&&e.tagName!='TITLE'&&e.tagName!='SCRIPT'){
+							e.style.display='block'
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class='theme-box top'><h1>Large Heading</h1></div>
+		<p>Lorem ipsum sed risus ultricies tristique nulla aliquet enim. Tortor pretium viverra suspendisse potenti nullam. Bibendum est ultricies integer quis auctor. Habitant morbi tristique senectus et netus. Quisque non tellus orci ac auctor augue.</p>
+		<img src='images/DarkBackground.jpg' />
+		<p>Lorem ipsum sed risus ultricies tristique nulla aliquet enim. Tortor pretium viverra suspendisse potenti nullam. Bibendum est ultricies integer quis auctor. Habitant morbi tristique senectus et netus. Quisque non tellus orci ac auctor augue.</p>
+		
+		<div class='light-box'>
+			<h2>Normal Title</h2>
+			<table>
+				<tr>
+					<th>
+						<p>Lorem ipsum sed risus ultricies tristique nulla aliquet enim. Tortor pretium viverra suspendisse potenti nullam. Bibendum est ultricies integer quis auctor. Habitant morbi tristique senectus et netus. Quisque non tellus orci ac auctor augue.</p>
+					</th><th>
+						<img class='table-image' src='images/DarkBackground.jpg' />
+					</th>
+				</tr>
+			</table>
+		</div>
+		
+		<p>Lorem ipsum sed risus ultricies tristique nulla aliquet enim. Tortor pretium viverra suspendisse potenti nullam. Bibendum est ultricies integer quis auctor. Habitant morbi tristique senectus et netus. Quisque non tellus orci ac auctor augue.</p>
+		<code>if(expression){
+	// do a thing:
+	make_stuff_happen();
+	if(its_too_late){
+		stop_it_now();
+	}
+}</code>
+			
+		
+		<p>Lorem ipsum sed risus ultricies tristique nulla aliquet enim. Tortor pretium viverra suspendisse potenti nullam. Bibendum est ultricies integer quis auctor. Habitant morbi tristique senectus et netus. Quisque non tellus orci ac auctor augue.</p>
+		<p>This is <a href='#'>a link</a> inside a paragraph.</p>
+		<a href='#' class='button'>Button</a>
+		<a href='#' class='right button'>Button</a>
+	</body>
+</html>
