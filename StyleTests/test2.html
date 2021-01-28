@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Style Test 2</title>
+		<style>
+			:root{
+				--bg:   #101010;
+				--lbg:  #202020;
+				--llbg: #303030;
+			}
+			*{color:white;font-size:30px;font-family:sans-serif}
+			body{background-color:var(--bg)}
+			
+			.box{
+				background-color:var(--lbg);
+				padding:20px;
+			}
+			.left::before{
+				width:100%;
+				height:100%
+			}
+			.right::before{
+				content:'';
+				position:absolute;
+				width: 90%;
+				height: 100%;
+				right:5%;
+				top:0;
+				z-index: -1;
+				background-color:var(--llbg);
+			}
+			
+			#main{width:90%;margin:auto}
+		</style>
+	</head>
+	<body>
+		<div id='main'>
+			<div class='box right'>
+				<h1>Large Heading</h1>
+			</div>
+		</div>
+	</body>
+</html>
