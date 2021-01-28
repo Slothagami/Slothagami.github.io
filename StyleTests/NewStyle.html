@@ -1,67 +1,15 @@
 <html>
 	<head>
 		<title>Style Test 2</title>
-		<style>
-			:root{
-				--dbg:    #090909;
-				--bg:     #101010;
-				--lbg:    #202020;
-				--llbg:   #b0b0b0;
-				--lllbg:  #dddddd;
-				--theme:  #F03401;
-				--dtheme: #D9190B;
-			}
-			*{
-				color:var(--lllbg);font-size:20px;
-				font-family:sans-serif;line-height:1.6;
-			}
-			body{background-color:var(--bg);margin:15px 0px;	}
-			
-			.box, h1, h2{
-				background-color:var(--lbg);
-				padding:20px 50px;
-				width:90%;
-				margin:10px 0px;
-			}
-			h1{width:70%;font-size:60px;padding:30px 60px;background-color:var(--theme)}
-			h2{width:70%;font-size:30px}
-			.left{margin-left:0;text-align:right}
-			.right{margin-left:auto}
-			
-			p{
-				width:90%;
-				margin:60px auto;
-			}
-			
-			img{width:65%;margin:auto;display:block;}
-			
-			code{
-				font-size:15px;
-				white-space:pre;
-				font-family:Monospace, Monaco;
-				display:block;
-				overflow-x:auto;
-				width:70%;
-				margin: 50px auto;
-				
-				background-color:var(--dbg);
-				color:var(--theme);
-				padding:20px;
-			}
-			
-			a{color:var(--theme)}
-			a:hover{color:var(--dtheme)}
-			
-			em{color:var(--dtheme)}
-			
-			p code{
-				display: inline;
-				padding: 6px;
-				color: var(--llbg);
-			}
-		</style>
+		
+		<script src='bgAnim.js'></script>
+		<script src='allPages.js'></script>
+		
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
+		<canvas id='bgcanvas'></canvas>
+		
 		<h1 class='left'>Large Heading</h1>
 		<p><em>This is a place for me to post the odd coding projects that I am doing</em>, and explain how I did it for those who want to do it for themselves regardless of the programming language you use. I include all the resources that I used to figure it out, as well as explain it myself. I hope someone finds this helpful.</p>
 		<img src='DarkBackground.jpg' />
@@ -92,19 +40,21 @@ repeat ammount_of_detail {
 	applying_the_rule = true;
 }</code>
 		
-		<p>
+		<p>	
 			I spent a few hour's making a <a href="#">This is a Link</a> 
 			program to plot it. It takes the equation xn+1 = rxn(1 - xn) or  
-			<code>new_value = r * current_value * (1 - current_value)</code>  written in 
-			code (a population modelling equation that mostly stabilises as a 
-			consistent value or a cycle of values), and plots the results of 
-			 few hundred iterations on one column of the diagram, and then 
-			 increases the variable r <em>(the reproductive number)</em> by 
-			 a small amount before repeating the process for the next column. 
-			 The top variation has the equation plotted only after the results 
-			 stabilise (<code>ignore_first_values = true</code>), and the bottom version 
-			 includes the points before the stabilisation as well 
-			 (<code>ignore_first_values = false</code>).</p>
+			<code>new_value = r * current_value * (1 - current_value)</code> 
+			written in code (a population modelling equation that mostly stabilises 
+			as a consistent value or a cycle of values), and plots the results of 
+			few hundred iterations on one column of the diagram, and then 
+			increases the variable r <em>(the reproductive number)</em> by 
+			a small amount before repeating the process for the next column. 
+			The top variation has the equation plotted only after the results 
+			stabilise (<code>ignore_first_values = true</code>), and the bottom 
+			version includes the points before the stabilisation as well 
+			(<code>ignore_first_values = false</code>).
+		</p>
+		
 		
 	</body>
 </html>
