@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Japaneese</title>
+        <style>
+            :root{--bg:#202020}
+            *{
+                font-family:sans-serif;text-align:center;
+                color:white;
+            }
+            h1{font-size:90px}
+            body{background-color:var(--bg);margin-top:15%;overflow-x:hidden}
+            input{
+                background: var(--bg);
+                border: none;
+                width: 100%;
+                color: #666;
+                font-size: 50px;
+            }
+            input:focus{outline:none}
+        </style>
+    </head>
+    <body>
+        <h1 id='phrase'></h1> <!-- 日本語 -->
+        <input id='translation' />
+        
+        <script src='./characters.js'></script>
+        <script src='./program.js'></script>
+    </body>
+</html>
