@@ -246,5 +246,25 @@ const vocab = [
     new phrase(
         ['みつけました', 'みつけた'],
         ['i found you', 'found you']
+    ),
+    new phrase(
+        ['だいこん'],
+        ['radish']
+    ),
+    new phrase(
+        ['せいれい'],
+        ['ghost', 'soul', 'spirit']
+    ),
+    new phrase(
+        ['ことば'],
+        ['word', 'words', 'phrase', 'language']
+    ),
+    new phrase(
+        ['やくそく'],
+        ['promise']
+    ),
+    new phrase(
+        ['はずかしい'],
+        ['embarrased', 'ashamed']
     )
 ]
