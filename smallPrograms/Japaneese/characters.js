@@ -265,6 +265,14 @@ const vocab = [
     ),
     new phrase(
         ['はずかしい'],
-        ['embarrased', 'ashamed']
+        ['embarrassed', 'ashamed', 'embarrassing']
+    ),
+    new phrase(
+        ['絵本', 'えほん'],
+        ['picture book']
+    ),
+    new phrase(
+        ['魚', 'さかな'],
+        ['fish']
     )
 ]
