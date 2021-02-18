@@ -2,9 +2,11 @@ function phrase(japaneese, english) {
     this.japaneese = japaneese
     this.english = english
 
-    this.verify = function(str) {
-        for(var i = 0; i < this.english.length; i++) {
-            if(str.toLowerCase() == this.english[i]) return true
+    this.verify = function(str, j2e) { // j2e -> Japaneese to english
+        match = j2e? this.english: this.japaneese 
+
+        for(var i = 0; i < match.length; i++) {
+            if(str.toLowerCase() == match[i]) return true
         }
         return false
     }
