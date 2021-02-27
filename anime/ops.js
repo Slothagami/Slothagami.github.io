@@ -436,8 +436,24 @@ window.onload = function() {
 
     for(var i = 0; i < videos.length; i++)
         vidIds.push(videos[i].getElementsByTagName('data')[0].value)
+
+    // Mobile CSS
+    if(sg.onMobile()) {
+        addCss('./opsMobile.css')
+    }
 }
 
 function isElement(element) {
     return element instanceof Element || element instanceof HTMLDocument;  
+}
+function addCss(fileName) {
+
+    var head = document.head;
+    var link = document.createElement("link");
+  
+    link.type = "text/css";
+    link.rel = "stylesheet";
+    link.href = fileName;
+  
+    head.appendChild(link);
 }
