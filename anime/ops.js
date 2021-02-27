@@ -263,8 +263,8 @@ const animes = [
     new Anime(
         'Overlord',
         [
-            new Op('OP 1', '4DpKM9AG2n0'),
-            new Op('OP 2', 'KOWcj7XKnfQ'),
+            new Op('OP 1', 'KOWcj7XKnfQ'),
+            new Op('OP 2', '4DpKM9AG2n0'),
             new Op('OP 3', 'pSKc6HubBd4'),
             new Op('ED 1', 'ChayFwyFvPk'),
             new Op('ED 2', 'KFMG_6r4YB4'),
