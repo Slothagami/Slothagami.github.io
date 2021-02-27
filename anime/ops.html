@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Anime OPs</title>
+        <script src='./ops.js'></script>
+        <link rel="stylesheet" href="./ops.css">
+    </head>
+    <body>
+        <!-- Play all button, gets all .video elements, and loops through them -->
+        <!-- Play all from here button, gets all .video elements, and loops through them from indexof(this)-->
+        <button id='keepplaying'>Keep Playing - On</button>
+        <p id='playlistlength'></p>
+        <div id='playlist'></div>
+
+        <script src="http://www.youtube.com/player_api"></script>
+        <div id='videoplayer'></div>
+
+        <script>
+            // create youtube player
+            var player;
+            function onYouTubePlayerAPIReady() {
+                player = new YT.Player('videoplayer', {
+                height: '315',
+                width: '560',
+                videoId: '',
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+                });
+            }
+
+            // autoplay video
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+            // when video ends
+            function onPlayerStateChange(event) {        
+                if(event.data === 0) {
+                    if(keepPlaying) player.loadVideoById(vidIds[vidPos++], 0, 'large')
+                }
+            }
+        </script>
+    </body>
+</html>
