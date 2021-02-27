@@ -20,13 +20,13 @@
             // create youtube player
             var player, width='560', height='315'
             if(sg.onMobile()){
-                width='1120';height='630'
+                width='840';height='472'
             }
 
             function onYouTubePlayerAPIReady() {
                 player = new YT.Player('videoplayer', {
-                height: '315',
-                width: '560',
+                height: height,
+                width: width,
                 videoId: '',
                 events: {
                     'onReady': onPlayerReady,
