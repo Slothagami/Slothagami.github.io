@@ -18,15 +18,16 @@
 
         <script>
             // create youtube player
-            var player, width='560', height='315'
+            var player, width=560, height=315
             if(sg.onMobile()){
-                width='840';height='472'
+                var ratio = height / width
+                width=window.innerWidth;height=window.innerWidth * ratio
             }
 
             function onYouTubePlayerAPIReady() {
                 player = new YT.Player('videoplayer', {
-                height: height,
-                width: width,
+                height: height.toString(),
+                width: width.toString(),
                 videoId: '',
                 events: {
                     'onReady': onPlayerReady,
