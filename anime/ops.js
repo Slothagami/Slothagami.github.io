@@ -418,8 +418,7 @@ window.onload = function() {
 
     // For the keepplaying button
     var keepplaying = document.getElementById('keepplaying')
-    keepplaying.innerHTML = 'Autoplay - On'
-    
+
     keepplaying.onclick = function() {
         switch(this.innerHTML) {
             case 'Autoplay - On':
@@ -433,6 +432,7 @@ window.onload = function() {
                 break;
         }
     }
+    keepplaying.innerHTML = 'Autoplay - On'
 
     // Display Playlist Length
     var videos = document.getElementsByClassName('video')
