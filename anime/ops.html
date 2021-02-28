@@ -43,14 +43,20 @@
 
             // when video ends
             function onPlayerStateChange(event) {        
-                if(event.data === 0) {
+                if(event.data === YT.PlayerState.ENDED) {
                     //if(keepPlaying) player.loadVideoById(vidIds[vidPos++], 0, 'large')
                     //console.log(vidPos)
+                    //console.log('Done')
+                    var time = new Date().getTime(),
+                        difference = time - lastLoad
 
-                    if(keepPlaying) {
+                        //console.log(difference)
+
+                    if(keepPlaying && difference >= 2 * 1000) { // at least two seconds after pervious one
                         play(vidIds[vidPos++])
-                        //console.log(vidPos)
+                        console.log(vidPos)
                     }
+                    lastLoad = time;
                 }
             }
         </script>
