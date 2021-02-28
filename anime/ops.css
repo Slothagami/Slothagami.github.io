@@ -27,12 +27,13 @@ img{
     height:75px;
     object-fit: cover;
 }
-h1:hover, h2:hover{background-color:#3a3a3a}
+h1:hover{background-color:#3a3a3a}
+h2:hover{background-color:#4a4a4a}
 h1, h2{
     padding: 15px;margin: 0;
     background-color: #2a2a2a
 }
-h2{font-size: 40px;}
+h2{font-size: 40px;background-color: #3a3a3a;}
 p{padding:0;margin:0}
 
 .foldercontent{display: none;}

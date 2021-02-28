@@ -40,7 +40,7 @@ function Op(name, videoid) {
 }
 
 const animes = {
-    'Other': [
+    'Happy': [
         new Anime(
             'Keep Your Hands Off Eisoken',
             [
@@ -91,13 +91,6 @@ const animes = {
             ]
         ),
         new Anime(
-            'Kakushigoto',
-            [
-                new Op('OP', 'Wc1QTLk-Kz8'),
-                new Op('ED', 'ewlh3iZArhs')
-            ]
-        ),
-        new Anime(
             'Toilet Bound Hanako-kun',
             [
                 new Op('OP', 'OpjAZBjL7_M'),
@@ -140,6 +133,8 @@ const animes = {
                 new Op('ED', 'At5CKBz9QJA')
             ]
         ),
+    ],
+    'Serious': [
         new Anime(
             'No Game No Life',
             [
@@ -206,25 +201,6 @@ const animes = {
             'Darling in the FranXX',
             [
                 new Op('ED', 't-p_PZybvCo')
-            ]
-        ),
-        new Anime(
-            'ERASED',
-            [
-                new Op('OP', 'fodAJ-1dN3I')
-            ]
-        ),
-        new Anime(
-            'Anohana',
-            [
-                new Op('OP', '4HHcnKgOyTQ'),
-                new Op('ED', 'JRF5TIhshlo')
-            ]
-        ),
-        new Anime(
-            'Your Name',
-            [
-                new Op('Theme', 'a2GujJZfXpg')
             ]
         ),
         new Anime(
@@ -365,6 +341,30 @@ const animes = {
                 new Op('OP 4', 'KMZBauH47Jo')
             ]
         ),
+    ],
+    'Heavy Hitters': [
+        new Anime(
+            'Kakushigoto',
+            [
+                new Op('OP', 'Wc1QTLk-Kz8'),
+                new Op('ED', 'ewlh3iZArhs')
+            ]
+        ),
+        new Anime(
+            'ERASED',
+            [new Op('OP', 'fodAJ-1dN3I')]
+        ),
+        new Anime(
+            'Anohana',
+            [
+                new Op('OP', '4HHcnKgOyTQ'),
+                new Op('ED', 'JRF5TIhshlo')
+            ]
+        ),
+        new Anime(
+            'Your Name',
+            [new Op('Theme', 'a2GujJZfXpg')]
+        ),
         new Anime(
             'Higarashi: When they Cry',
             [
@@ -392,7 +392,7 @@ window.onload = function() {
     var entries = Object.entries(animes)
     for(var i = 0; i <= entries.length-1; i++) {
         var key = entries[i][0]
-        html += `<div class='folder'><h2>${key}</h2><div class='foldercontent'>`
+        html += `<div class='folder'><h2>${key}</h2><div class='foldercontent' style="display:none">`
         console.log(key)
 
         for(var j in animes[key])
@@ -424,7 +424,7 @@ window.onload = function() {
             content = this.parentNode.getElementsByClassName('foldercontent')[0]
             console.log(content)
 
-            conent.style.display = 
+            content.style.display = 
                 content.style.display == 'none'? 
                     'block': 'none'
         }
