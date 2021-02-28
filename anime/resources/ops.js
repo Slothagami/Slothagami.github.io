@@ -376,11 +376,16 @@ const animes = {
 }
 
 function play(id) {
-    player.loadVideoById({
-        'videoId': id,
-        'startSeconds': 0,
-        'endSeconds': 90
-    });
+    var lengthExeptions = ['dfzBfJP2MM8', 'lGfj6kIV_s8'], // Videos longer than 1:30 (in orner of list)
+        playFullSong = id in lengthExeptions, // doesn't seem to work
+        args = {
+            'videoId': id,
+            'startSeconds': 0,
+            //'endSeconds': 90
+        }
+
+    if(!playFullSong) args['endSeconds'] = 90
+    player.loadVideoById(args);
 }
 
 var vidIds = [], vidPos = 0, keepPlaying = true, lastLoad = new Date().getTime()
@@ -471,7 +476,7 @@ window.onload = function() {
 
     // Mobile CSS
     if(sg.onMobile()) {
-        addCss('./opsMobile.css')
+        addCss('./resources/opsMobile.css')
     }
 }
 

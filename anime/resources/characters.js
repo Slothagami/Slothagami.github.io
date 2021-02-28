@@ -276,5 +276,33 @@ const vocab = [
     new phrase(
         ['魚', 'さかな'],
         ['fish']
+    ),
+    new phrase(
+        ['–学生', 'がくせい'],
+        ['student']
+    ),
+    new phrase(
+        ['さくせい'],
+        ['preparing', 'writing', 'farming', 'making', 'plan']
+    ),
+    new phrase(
+        ['作成する'],
+        ['create']
+    ),
+    new phrase(
+        ['おじさん'],
+        ['uncle']
+    ),
+    new phrase(
+        ['おじいさん'],
+        ['grandfather']
+    ),
+    new phrase(
+        ['嬉しい', 'うれしい'],
+        ['happy', 'glad']
+    ),
+    new phrase(
+        ['おいしい'],
+        ['delicious']
     )
 ]

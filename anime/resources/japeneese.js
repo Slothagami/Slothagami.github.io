@@ -22,7 +22,8 @@ window.onload=function() {
 }
 
 function newQuestion() {
-    japaneeseToEnglish = Math.round(Math.random()) // True / False
+    //japaneeseToEnglish = Math.round(Math.random()) // True / False
+    japaneeseToEnglish = true // untill I van get jp keyboard @ school
 
     var q = randomIndex(phrases)
     phrases.splice(phrases.indexOf(q), 1)// remove from list, goes through everything at least once
