@@ -44,7 +44,16 @@
             // when video ends
             function onPlayerStateChange(event) {        
                 if(event.data === 0) {
-                    if(keepPlaying) player.loadVideoById(vidIds[vidPos++], 0, 'large')
+                    //if(keepPlaying) player.loadVideoById(vidIds[vidPos++], 0, 'large')
+                    if(keepPlaying) {
+                        player.loadVideoById(
+                            {
+                                'videoId': vidIds[vidPos++],
+                                'startSeconds': 0,
+                                'endSeconds': 90 // stops after 1:30, add exceptions for longer songs
+                            }
+                        )
+                    }
                 }
             }
         </script>
