@@ -418,6 +418,8 @@ window.onload = function() {
 
     // For the keepplaying button
     var keepplaying = document.getElementById('keepplaying')
+    keepplaying.innerHTML = 'Autoplay - On'
+    
     keepplaying.onclick = function() {
         switch(this.innerHTML) {
             case 'Autoplay - On':
