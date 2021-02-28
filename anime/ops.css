@@ -10,10 +10,23 @@
 ::-webkit-scrollbar-thumb:hover {background: #3a3a3a}
 
 body{background-color:#202020;margin:0;margin-bottom:500px}
-.video{padding:1px 30px}
+.video{
+    padding:1px 30px;
+    /* Make Unselectable */
+    -webkit-touch-callout: none; 
+      -webkit-user-select: none; 
+       -khtml-user-select: none; 
+         -moz-user-select: none; 
+          -ms-user-select: none; 
+              user-select: none;
+}
 .video:hover{background-color:#181818}
 table{margin:1px}
-img{width:140px;padding-right:60px}
+img{
+    width:140px;padding-right:60px;
+    height:75px;
+    object-fit: cover;
+}
 h1:hover{background-color:#3a3a3a}
 h1{
     padding: 15px;margin: 0;

@@ -375,6 +375,8 @@ const animes = [
 
 var vidIds = [], vidPos = 0, keepPlaying = true
 window.onload = function() {
+    window.addEventListener('keydown',(e)=>{console.log(e)})
+
     // Make Elements from the list
     var html = '',
         target = document.getElementById('playlist') // where to put the html
@@ -418,13 +420,13 @@ window.onload = function() {
     var keepplaying = document.getElementById('keepplaying')
     keepplaying.onclick = function() {
         switch(this.innerHTML) {
-            case 'Keep Playing - On':
-                this.innerHTML = 'KeepPlaying - Off'
+            case 'Autoplay - On':
+                this.innerHTML = 'Autoplay - Off'
                 keepPlaying = false
                 break;
 
-            case 'KeepPlaying - Off':
-                this.innerHTML = 'KeepPlaying - On'
+            case 'Autoplay - Off':
+                this.innerHTML = 'Autoplay - On'
                 keepPlaying = true
                 break;
         }
