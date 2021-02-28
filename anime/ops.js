@@ -373,10 +373,16 @@ const animes = [
     )
 ]
 
+function play(id) {
+    player.loadVideoById({
+        'videoId': id,
+        'startSeconds': 0,
+        'endSeconds': 91
+    });
+}
+
 var vidIds = [], vidPos = 0, keepPlaying = true
 window.onload = function() {
-    window.addEventListener('keydown',(e)=>{console.log(e)})
-
     // Make Elements from the list
     var html = '',
         target = document.getElementById('playlist') // where to put the html
@@ -410,9 +416,11 @@ window.onload = function() {
         videos[i].onclick = function() {
             var data = this.getElementsByTagName('data')[0]
 
-            player.loadVideoById(data.value, 0, 'large')
+            //player.loadVideoById(data.value, 0, 'large')
+            play(data.value)
 
             vidPos = vidIds.indexOf(data.value) + 1
+            //console.log(vidPos)
         }
     }
 

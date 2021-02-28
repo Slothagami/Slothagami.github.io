@@ -45,14 +45,11 @@
             function onPlayerStateChange(event) {        
                 if(event.data === 0) {
                     //if(keepPlaying) player.loadVideoById(vidIds[vidPos++], 0, 'large')
+                    //console.log(vidPos)
+
                     if(keepPlaying) {
-                        player.loadVideoById(
-                            {
-                                'videoId': vidIds[vidPos++],
-                                'startSeconds': 0,
-                                'endSeconds': 90 // stops after 1:30, add exceptions for longer songs
-                            }
-                        )
+                        play(vidIds[vidPos++])
+                        //console.log(vidPos)
                     }
                 }
             }
