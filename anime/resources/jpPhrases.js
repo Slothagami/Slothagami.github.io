@@ -320,5 +320,13 @@ const vocab = [
     new phrase(
         ['だから'],
         ['so', 'thats why']
+    ),
+    new phrase(
+        ['大きい', 'おおきい'],
+        ['big', 'large']
+    ),
+    new phrase(
+        ['誰が', 'だれが'],
+        ['who']
     )
 ]
