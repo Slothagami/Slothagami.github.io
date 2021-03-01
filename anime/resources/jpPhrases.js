@@ -320,29 +320,5 @@ const vocab = [
     new phrase(
         ['だから'],
         ['so', 'thats why']
-    ),
-    new phrase(
-        ['template'],
-        ['template']
-    ),
-    new phrase(
-        ['template'],
-        ['template']
-    ),
-    new phrase(
-        ['template'],
-        ['template']
-    ),
-    new phrase(
-        ['template'],
-        ['template']
-    ),
-    new phrase(
-        ['template'],
-        ['template']
-    ),
-    new phrase(
-        ['template'],
-        ['template']
-    ),
+    )
 ]
