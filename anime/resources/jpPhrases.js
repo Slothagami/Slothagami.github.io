@@ -66,11 +66,11 @@ const vocab = [
         ['everyday', 'every day']
     ),
     new phrase(
-        ['日本'], 
+        ['日本', 'にほん'], 
         ['japan']
     ),
     new phrase(
-        ['日本語'], 
+        ['日本語', 'にほんご'], 
         ['japaneese']
     ),
     new phrase(
