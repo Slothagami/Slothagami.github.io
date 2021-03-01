@@ -286,7 +286,7 @@ const vocab = [
         ['preparing', 'writing', 'farming', 'making', 'plan']
     ),
     new phrase(
-        ['作成する'],
+        ['作成する', 'さくせいする'],
         ['create']
     ),
     new phrase(
@@ -304,5 +304,45 @@ const vocab = [
     new phrase(
         ['おいしい'],
         ['delicious']
-    )
+    ),
+    new phrase(
+        ['かみ', 'かみさま'],
+        ['god']
+    ),
+    new phrase(
+        ['どうぞ'],
+        ['here you are', 'go ahead' ]
+    ),
+    new phrase(
+        ['おしえて', '教えて'],
+        ['tell me', 'teach me', 'explain to me']
+    ),
+    new phrase(
+        ['だから'],
+        ['so', 'thats why']
+    ),
+    new phrase(
+        ['template'],
+        ['template']
+    ),
+    new phrase(
+        ['template'],
+        ['template']
+    ),
+    new phrase(
+        ['template'],
+        ['template']
+    ),
+    new phrase(
+        ['template'],
+        ['template']
+    ),
+    new phrase(
+        ['template'],
+        ['template']
+    ),
+    new phrase(
+        ['template'],
+        ['template']
+    ),
 ]
