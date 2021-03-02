@@ -341,6 +341,13 @@ const animes = {
                 new Op('OP 4', 'KMZBauH47Jo')
             ]
         ),
+        new Anime(
+            'Akudama Drive',
+            [
+                new Op('OP', 'EX0LwdYVUp4'),
+                new Op('ED', 'P4ZPWnPKC0k')
+            ]
+        ),
     ],
     'Heavy Hitters': [
         new Anime(
