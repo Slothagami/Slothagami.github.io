@@ -348,6 +348,13 @@ const animes = {
                 new Op('ED', 'P4ZPWnPKC0k')
             ]
         ),
+        new Anime(
+            'The Day I Became a God',
+            [
+                new Op('OP', 'iQRqhUF1aLw'),
+                new Op('ED', 'PvG9JlROtr0')
+            ]
+        ),
     ],
     'Heavy Hitters': [
         new Anime(
