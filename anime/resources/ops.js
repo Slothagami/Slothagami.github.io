@@ -4,7 +4,7 @@ function Anime(name, ops) {
 
     this.makeElement = function() {
         // if this.ops.length == 1, dont put it inthe .video, Change name to this.name + this.ops[i].name
-        var oneSong = this.ops.length == 1,
+        var oneSong = this.ops.length <= 2,
             html = oneSong? '': '<div class="anime"><h1>'+ this.name +'</h1>',
             display = oneSong? 'block': 'none'
 
@@ -40,7 +40,7 @@ function Op(name, videoid) {
 }
 
 const animes = {
-    'Happy': [
+    'All': [
         new Anime(
             'Keep Your Hands Off Eisoken',
             [
@@ -133,8 +133,6 @@ const animes = {
                 new Op('ED', 'At5CKBz9QJA')
             ]
         ),
-    ],
-    'Serious': [
         new Anime(
             'No Game No Life',
             [
@@ -355,8 +353,6 @@ const animes = {
                 new Op('ED', 'PvG9JlROtr0')
             ]
         ),
-    ],
-    'Heavy Hitters': [
         new Anime(
             'Kakushigoto',
             [
@@ -385,8 +381,18 @@ const animes = {
                 new Op('OP', 'soQjR5_GHXI'),
                 new Op('ED', 'E4_pLpqerqQ')
             ]
-        )
-    ]
+        ),
+        new Anime(
+            'Love, Chunibyo & other Delusions',
+            [
+                new Op('OP 1', 'GRNhN8et8WE'),
+                new Op('OP 2', 'vuRTsE3z8ks'),
+                new Op('ED 1', 'sKRZY-mJQak'),
+                new Op('ED 2', 'FIrLn-MaaSU')
+            ]
+        ),
+        
+    ],
 }
 
 function play(id) {
@@ -411,7 +417,7 @@ window.onload = function() {
     var entries = Object.entries(animes)
     for(var i = 0; i <= entries.length-1; i++) {
         var key = entries[i][0]
-        html += `<div class='folder'><h2>${key}</h2><div class='foldercontent' style="display:none">`
+        html += `<div class='folder'><h2>${key}</h2><div class='foldercontent'>`// style="display:none">`
         console.log(key)
 
         for(var j in animes[key])

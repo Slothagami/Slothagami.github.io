@@ -1,3 +1,10 @@
+:root {
+    --g0: #101010;
+    --g1: #181818;
+    --g2: #282828;
+    --g3: #383838;
+}
+
 * {
     font-size: 30px;font-family: sans-serif;
     color: white;
@@ -5,11 +12,14 @@
 }
 
 ::-webkit-scrollbar {width: 8px}
-::-webkit-scrollbar-track {background: #202020}
+::-webkit-scrollbar-track {background: var(--g0)}
 ::-webkit-scrollbar-thumb {background: #2a2a2a}
 ::-webkit-scrollbar-thumb:hover {background: #3a3a3a}
 
-body{background-color:#202020;margin:0;margin-bottom:500px}
+.anime {background-color: var(--g1);}
+.anime .video:hover {background-color: var(--g0);}
+
+body{background-color:var(--g0);margin:0;margin-bottom:580px}
 .video{
     padding:1px 30px;
     /* Make Unselectable */
@@ -23,20 +33,20 @@ body{background-color:#202020;margin:0;margin-bottom:500px}
 .video:hover{background-color:#181818}
 table{margin:1px}
 img{
-    width:140px;padding-right:60px;
-    height:75px;
+    width:160px;padding-right:60px;
+    height:86px;
     object-fit: cover;
 }
-h1:hover{background-color:#3a3a3a}
-h2:hover{background-color:#4a4a4a}
+h1:hover{background-color:var(--g2)}
+h2:hover{background-color:var(--g3)}
 h1, h2{
     padding: 15px;margin: 0;
-    background-color: #2a2a2a
+    background-color: var(--g1)
 }
-h2{font-size: 40px;background-color: #3a3a3a;}
+h2{font-size: 40px;background-color: var(--g2);}
 p{padding:0;margin:0}
 
-.foldercontent{display: none;}
+/*.foldercontent{display: none;}*/
 
 iframe {
     position: fixed;
