@@ -98,6 +98,15 @@ const animes = {
              new Op('ED', 'v2cDzNotFH4')]
         ),
         new Anime(
+            'Love, Chunibyo & other Delusions',
+            [
+                new Op('OP 1', 'GRNhN8et8WE'),
+                new Op('OP 2', 'vuRTsE3z8ks'),
+                new Op('ED 1', 'sKRZY-mJQak'),
+                new Op('ED 2', 'FIrLn-MaaSU')
+            ]
+        ),
+        new Anime(
             'I don\'t want to get Hurt, so I\'ll Max Out my Defence',
             [new Op('OP', '78O4fKcbN28'),
              new Op('ED', 'cROnVpARJ0U')]
@@ -308,16 +317,6 @@ const animes = {
             [new Op('OP', 'soQjR5_GHXI'),
              new Op('ED', 'E4_pLpqerqQ')]
         ),
-        new Anime(
-            'Love, Chunibyo & other Delusions',
-            [
-                new Op('OP 1', 'GRNhN8et8WE'),
-                new Op('OP 2', 'vuRTsE3z8ks'),
-                new Op('ED 1', 'sKRZY-mJQak'),
-                new Op('ED 2', 'FIrLn-MaaSU')
-            ]
-        ),
-        
     ],
 }
 
