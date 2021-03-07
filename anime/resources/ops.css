@@ -41,7 +41,8 @@ h1:hover{background-color:var(--g2)}
 h2:hover{background-color:var(--g3)}
 h1, h2{
     padding: 15px;margin: 0;
-    background-color: var(--g1)
+    background-color: var(--g1);
+    overflow-x: hidden;
 }
 h2{font-size: 40px;background-color: var(--g2);}
 h1{
