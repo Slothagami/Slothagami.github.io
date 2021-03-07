@@ -77,6 +77,11 @@ const animes = {
              new Op('ED', 'q1cDaXNe_wI')]
         ),
         new Anime(
+            'Didn\'t I say to make my abilities average in the next life?',
+            [new Op('OP', 'NA4DTggH9GM'),
+             new Op('ED', 'Y-vYRsnJp7E')]
+        ),
+        new Anime(
             'Toilet Bound Hanako-kun',
             [new Op('OP', 'OpjAZBjL7_M'),
              new Op('ED', '7wOD-9jwbJQ')]
