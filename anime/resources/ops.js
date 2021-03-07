@@ -43,170 +43,122 @@ const animes = {
     'All': [
         new Anime(
             'Keep Your Hands Off Eisoken',
-            [
-                new Op('OP', '8-91y7BJ8QA'),
-                new Op('ED', 'i2TnlfmzS2I')
-            ]
+            [new Op('OP', '8-91y7BJ8QA'),
+             new Op('ED', 'i2TnlfmzS2I')]
         ),
         new Anime(
             'Tonikawa',
-            [
-                new Op('OP', 'vQiodbKEW6s'),
-                new Op('ED', '1dVfPq0wnrA')
-            ]
+            [new Op('OP', 'vQiodbKEW6s'),
+             new Op('ED', '1dVfPq0wnrA')]
         ),
         new Anime(
             'Kuma Kuma Kuma Bear',
-            [
-                new Op('OP', 'VVsZRUQ8YH4'),
-                new Op('ED', 'IFxnpQadK48')
-            ]
+            [new Op('OP', 'VVsZRUQ8YH4'),
+             new Op('ED', 'IFxnpQadK48')]
         ),
         new Anime(
             'Cells At Work!',
-            [
-                new Op('OP', 'QYfdanAahVI'),
-                new Op('ED', '')
-            ]
+            [new Op('OP', 'QYfdanAahVI'),
+             new Op('ED', '')]
         ),
         new Anime(
             'Eromanga Sensei',
-            [
-                new Op('OP', 'DeGw8-KwxM4'),
-                new Op('ED', 'UzFArt9M7JM')
-            ]
+            [new Op('OP', 'DeGw8-KwxM4'),
+             new Op('ED', 'UzFArt9M7JM')]
         ),
         new Anime(
             'Rent a Girfriend',
-            [
-                new Op('OP', 'cM1WSovcn4I'),
-                new Op('ED', 'lYUdHGhxCw4')
-            ]
+            [new Op('OP', 'cM1WSovcn4I'),
+             new Op('ED', 'lYUdHGhxCw4')]
         ),
         new Anime(
             'Sleepy Princess in the Demon Castle',
-            [
-                new Op('OP', 'Ui-KKFZKIq4'),
-                new Op('ED', 'q1cDaXNe_wI')
-            ]
+            [new Op('OP', 'Ui-KKFZKIq4'),
+             new Op('ED', 'q1cDaXNe_wI')]
         ),
         new Anime(
             'Toilet Bound Hanako-kun',
-            [
-                new Op('OP', 'OpjAZBjL7_M'),
-                new Op('ED', '7wOD-9jwbJQ')
-            ]
+            [new Op('OP', 'OpjAZBjL7_M'),
+             new Op('ED', '7wOD-9jwbJQ')]
         ),
         new Anime(
             'How Not to Summon a Demon Lord',
-            [
-                new Op('OP', 'UcCTFOEls9g'),
-                new Op('ED', 'ZHA6k4kZT-g')
-            ]
+            [new Op('OP', 'UcCTFOEls9g'),
+             new Op('ED', 'ZHA6k4kZT-g')]
         ),
         new Anime(
             'Kaguya-sama: Love is War',
-            [
-                new Op('OP 1', '_4NjEOtSQww'),
-                new Op('OP 2', 'lTlzDfhPtFA'),
-                new Op('Special ED', 'dfzBfJP2MM8')
-            ]
+            [new Op('OP 1', '_4NjEOtSQww'),
+             new Op('OP 2', 'lTlzDfhPtFA'),
+             new Op('Special ED', 'dfzBfJP2MM8')]
         ),
         new Anime(
             'Punch Line!',
-            [
-                new Op('OP', '3v_USHwhxe8'),
-                new Op('ED', 'v2cDzNotFH4')
-            ]
+            [new Op('OP', '3v_USHwhxe8'),
+             new Op('ED', 'v2cDzNotFH4')]
         ),
         new Anime(
             'I don\'t want to get Hurt, so I\'ll Max Out my Defence',
-            [
-                new Op('OP', '78O4fKcbN28'),
-                new Op('ED', 'cROnVpARJ0U')
-            ]
+            [new Op('OP', '78O4fKcbN28'),
+             new Op('ED', 'cROnVpARJ0U')]
         ),
         new Anime(
             'That Time I got Reincarnated as a Slime',
-            [
-                new Op('OP', 'GhGTc6p8sg0'),
-                new Op('ED', 'At5CKBz9QJA')
-            ]
+            [new Op('OP', 'GhGTc6p8sg0'),
+             new Op('ED', 'At5CKBz9QJA')]
         ),
         new Anime(
             'No Game No Life',
-            [
-                new Op('OP', '6CBp4qylX6I')
-            ]
+            [new Op('OP', '6CBp4qylX6I')]
         ),
         new Anime(
             'Tower of God',
-            [
-                new Op('OP', 'apII5VFTce0'),
-                new Op('ED', 'udwtU4OtQRM')
-            ]
+            [new Op('OP', 'apII5VFTce0'),
+             new Op('ED', 'udwtU4OtQRM')]
         ),
         new Anime(
             'Assasination Classroom',
-            [
-                new Op('OP 1', 'KS9UfmCFn_Y'),
-                new Op('OP 2', 'iug12DnMNHQ'),
-                new Op('OP 3', 'tNZ-6xLUoCA'),
-                new Op('OP 4', 'c_J7ybxenOQ')
-            ]
+            [new Op('OP 1', 'KS9UfmCFn_Y'),
+             new Op('OP 2', 'iug12DnMNHQ'),
+             new Op('OP 3', 'tNZ-6xLUoCA'),
+             new Op('OP 4', 'c_J7ybxenOQ')]
         ),
         new Anime(
             'Mob Psycho 100',
-            [
-                new Op('OP 1', 'Bw-5Lka7gPE'),
-                new Op('OP 2', '86I43asqndI')
-            ]
+            [new Op('OP 1', 'Bw-5Lka7gPE'),
+             new Op('OP 2', '86I43asqndI')]
         ),
         new Anime(
             'One Punch Man',
-            [
-                new Op('OP 1', 'atxYe-nOa9w'),
-                new Op('OP 2', 'uihJATVggz8')
-            ]
+            [new Op('OP 1', 'atxYe-nOa9w'),
+             new Op('OP 2', 'uihJATVggz8')]
         ),
         new Anime(
             'Demon Slayer',
-            [
-                new Op('OP', 'pmanD_s7G3U'),
-                new Op('ED', 'qz9nueM1AZU')
-            ]
+            [new Op('OP', 'pmanD_s7G3U'),
+             new Op('ED', 'qz9nueM1AZU')]
         ),
         new Anime(
             'Dr. Stone',
-            [
-                new Op('OP', 'tF4faMbs5oQ')
-            ]
+            [new Op('OP', 'tF4faMbs5oQ')]
         ),
         new Anime(
             'Charlotte',
-            [
-                new Op('OP', 'VlQSWmzcG58'),
-                new Op('ED', 'sLo5ulePYc0')
-            ]
+            [new Op('OP', 'VlQSWmzcG58'),
+             new Op('ED', 'sLo5ulePYc0')]
         ),
         new Anime(
             'Sword Art Online',
-            [
-                new Op('OP', 'OsLY7DXWsF4')
-            ]
+            [new Op('OP', 'OsLY7DXWsF4')]
         ),
         new Anime(
             'Darling in the FranXX',
-            [
-                new Op('ED', 't-p_PZybvCo')
-            ]
+            [new Op('ED', 't-p_PZybvCo')]
         ),
         new Anime(
             'Rising of the Shield Hero',
-            [
-                new Op('OP 1', 'jZvFEtR8RH0'),
-                new Op('OP 2', 'HutPrLMPWw0')
-            ]
+            [new Op('OP 1', 'jZvFEtR8RH0'),
+             new Op('OP 2', 'HutPrLMPWw0')]
         ),
         new Anime(
             'My Hero Academia',
@@ -230,10 +182,8 @@ const animes = {
         ),
         new Anime(
             'Deca Dense',
-            [
-                new Op('OP', 'jQZm1wf3O_8'),
-                new Op('ED', '285wxlCHung')
-            ]
+            [new Op('OP', 'jQZm1wf3O_8'),
+             new Op('ED', '285wxlCHung')]
         ),
         new Anime(
             'Overlord',
@@ -248,10 +198,8 @@ const animes = {
         ),
         new Anime(
             'Glepnir',
-            [
-                new Op('OP', 'l5WY1WcXvIc'),
-                new Op('ED', 'UPIn7jexQbI')
-            ]
+            [new Op('OP', 'l5WY1WcXvIc'),
+             new Op('ED', 'UPIn7jexQbI')]
         ),
         new Anime(
             'Re:ZERO',
@@ -266,23 +214,17 @@ const animes = {
         ),
         new Anime(
             'Ajin',
-            [
-                new Op('OP 1', '26lUTSV-i1c'),
-                new Op('OP 2', '0SZbsHhv59I')
-            ]
+            [new Op('OP 1', '26lUTSV-i1c'),
+             new Op('OP 2', '0SZbsHhv59I')]
         ),
         new Anime(
             'Tokyo Ghoul',
-            [
-                new Op('OP', '7aMOurgDB-o')
-            ]
+            [new Op('OP', '7aMOurgDB-o')]
         ),
         new Anime(
             'The Misfit of Demon Academy',
-            [
-                new Op('OP', '8fQyq6LHiW4'),
-                new Op('ED', 'ij3hV0Nt1eE')
-            ]
+            [new Op('OP', '8fQyq6LHiW4'),
+             new Op('ED', 'ij3hV0Nt1eE')]
         ),
         new Anime(
             'Blue Exorcist',
@@ -310,25 +252,19 @@ const animes = {
         ),
         new Anime(
             'Attack on Titan',
-            [
-                new Op('OP 1', '8OkpRK2_gVs'),
-                new Op('OP 2', 'CID-sYQNCew'),
-                new Op('OP 5', '0dK7JgKivQM')
-            ]
+            [new Op('OP 1', '8OkpRK2_gVs'),
+             new Op('OP 2', 'CID-sYQNCew'),
+             new Op('OP 5', '0dK7JgKivQM')]
         ),
         new Anime(
             'Talentless Nana',
-            [
-                new Op('OP', 'yJPt5t5rpFc'),
-                new Op('ED', '3xheGVcLPBQ')
-            ]
+            [new Op('OP', 'yJPt5t5rpFc'),
+             new Op('ED', '3xheGVcLPBQ')]
         ),
         new Anime(
             'The Promised Neverland',
-            [
-                new Op('OP', '4GDVEl3qw2M'),
-                new Op('ED', '')
-            ]
+            [new Op('OP', '4GDVEl3qw2M'),
+             new Op('ED', '')]
         ),
         new Anime(
             'Fullmetal Alchemist',
@@ -341,24 +277,18 @@ const animes = {
         ),
         new Anime(
             'Akudama Drive',
-            [
-                new Op('OP', 'EX0LwdYVUp4'),
-                new Op('ED', 'P4ZPWnPKC0k')
-            ]
+            [new Op('OP', 'EX0LwdYVUp4'),
+             new Op('ED', 'P4ZPWnPKC0k')]
         ),
         new Anime(
             'The Day I Became a God',
-            [
-                new Op('OP', 'iQRqhUF1aLw'),
-                new Op('ED', 'PvG9JlROtr0')
-            ]
+            [new Op('OP', 'iQRqhUF1aLw'),
+             new Op('ED', 'PvG9JlROtr0')]
         ),
         new Anime(
             'Kakushigoto',
-            [
-                new Op('OP', 'Wc1QTLk-Kz8'),
-                new Op('ED', 'ewlh3iZArhs')
-            ]
+            [new Op('OP', 'Wc1QTLk-Kz8'),
+             new Op('ED', 'ewlh3iZArhs')]
         ),
         new Anime(
             'ERASED',
@@ -366,10 +296,8 @@ const animes = {
         ),
         new Anime(
             'Anohana',
-            [
-                new Op('OP', '4HHcnKgOyTQ'),
-                new Op('ED', 'JRF5TIhshlo')
-            ]
+            [new Op('OP', '4HHcnKgOyTQ'),
+             new Op('ED', 'JRF5TIhshlo')]
         ),
         new Anime(
             'Your Name',
@@ -377,10 +305,8 @@ const animes = {
         ),
         new Anime(
             'Higarashi: When they Cry',
-            [
-                new Op('OP', 'soQjR5_GHXI'),
-                new Op('ED', 'E4_pLpqerqQ')
-            ]
+            [new Op('OP', 'soQjR5_GHXI'),
+             new Op('ED', 'E4_pLpqerqQ')]
         ),
         new Anime(
             'Love, Chunibyo & other Delusions',
