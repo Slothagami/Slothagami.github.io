@@ -5,7 +5,7 @@ function Anime(name, ops) {
     this.makeElement = function() {
         // if this.ops.length == 1, dont put it inthe .video, Change name to this.name + this.ops[i].name
         var oneSong = this.ops.length <= 2,
-            html = oneSong? '': '<div class="anime"><h1>'+ this.name +'</h1>',
+            html = oneSong? '': `<div class="anime"><h1 style="background-image:url(${this.ops[0].imgUrl})"><em>${this.name}</em></h1>`,
             display = oneSong? 'block': 'none'
 
         for(var i in this.ops){
@@ -16,7 +16,7 @@ function Anime(name, ops) {
                     '<data value="'+ this.ops[i].videoid +'"></data>',
                     '<table>',
                         '<tr>',
-                            '<th><img src="'+ this.ops[i].imgUrl +'/0.jpg"></th>',
+                            '<th><img src="'+ this.ops[i].imgUrl +'"></th>',
                             '<th><p>'+ name +'</p></th>',
                         '</tr>',
                     '</table>',
@@ -36,11 +36,11 @@ function Op(name, videoid) {
 
     this.videoid = videoid;
     this.url = 'https://www.youtube.com/watch?v='+ this.videoid
-    this.imgUrl = 'http://img.youtube.com/vi/'+ this.videoid
+    this.imgUrl = 'http://img.youtube.com/vi/'+ this.videoid + '/0.jpg'
 }
 
 const animes = {
-    'All': [
+    'Anime OPs': [
         new Anime(
             'Keep Your Hands Off Eisoken',
             [new Op('OP', '8-91y7BJ8QA'),

@@ -1,6 +1,6 @@
 :root {
     --g0: #101010;
-    --g1: #181818;
+    --g1: #202020;
     --g2: #282828;
     --g3: #383838;
 }
@@ -44,7 +44,21 @@ h1, h2{
     background-color: var(--g1)
 }
 h2{font-size: 40px;background-color: var(--g2);}
+h1{
+    background-position: center;
+    background-size: 100%;
+    padding: 0;
+}
 p{padding:0;margin:0}
+em{
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;height: 100%;
+    display: block;
+    padding: 30px;
+    font-style: normal;
+    overflow-x: hidden;
+}
+em:hover{background-color: rgba(0,0,0,0.85);}
 
 /*.foldercontent{display: none;}*/
 
