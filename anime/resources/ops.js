@@ -136,6 +136,11 @@ const animes = {
              new Op('ED', 'udwtU4OtQRM')]
         ),
         new Anime(
+            'Kill la Kill',
+            [new Op('OP', '8dKFxu-_oIE'),
+             new Op('ED', '2HACXCqZGJ8')]
+        ),
+        new Anime(
             'Assasination Classroom',
             [new Op('OP 1', 'KS9UfmCFn_Y'),
              new Op('OP 2', 'iug12DnMNHQ'),
