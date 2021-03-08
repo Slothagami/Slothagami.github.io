@@ -327,7 +327,7 @@ const animes = {
 
 function play(id) {
     var lengthExeptions = ['dfzBfJP2MM8', 'lGfj6kIV_s8'], // Videos longer than 1:30 (in orner of list)
-        playFullSong = id in lengthExeptions, // doesn't seem to work
+        playFullSong = inArray(lengthExeptions, id), // if in the list
         args = {
             'videoId': id,
             'startSeconds': 0,
@@ -441,3 +441,5 @@ function addCss(fileName) {
   
     head.appendChild(link);
 }
+
+function inArray(array, item) {return array.indexOf(item) != -1}

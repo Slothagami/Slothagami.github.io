@@ -1,8 +1,8 @@
 :root {
     --g0: #101010;
-    --g1: #202020;
-    --g2: #282828;
-    --g3: #383838;
+    --g1: #282828;
+    --g2: #383838;
+    --g3: #484848;
 }
 
 * {
@@ -60,9 +60,6 @@ em{
     overflow-x: hidden;
 }
 em:hover{background-color: rgba(0,0,0,0.85);}
-
-/*.foldercontent{display: none;}*/
-
 iframe {
     position: fixed;
     bottom: 0px;
@@ -72,7 +69,6 @@ iframe {
 #playlistlength,#keepplaying{
     float:right;
     padding:20px;
-
 }
 #keepplaying{
     float:none;
