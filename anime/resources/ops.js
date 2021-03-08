@@ -1,9 +1,12 @@
+var lengthExeptions = []
+
 function Anime(name, ops) {
     this.name = name;
     this.ops = ops;
 
     this.makeElement = function() {
         // if this.ops.length == 1, dont put it inthe .video, Change name to this.name + this.ops[i].name
+
         var oneSong = this.ops.length <= 2,
             html = oneSong? '': `<div class="anime"><h1 style="background-image:url(${this.ops[0].imgUrl})"><em>${this.name}</em></h1>`,
             display = oneSong? 'block': 'none'
@@ -29,7 +32,7 @@ function Anime(name, ops) {
         return html
     }
 }
-function Op(name, videoid) {
+function Op(name, videoid, playFullSong=false) {
     this.name = name
         .replace('OP', 'Opening')
         .replace('ED', 'Ending');
@@ -37,6 +40,8 @@ function Op(name, videoid) {
     this.videoid = videoid;
     this.url = 'https://www.youtube.com/watch?v='+ this.videoid
     this.imgUrl = 'http://img.youtube.com/vi/'+ this.videoid + '/0.jpg'
+
+    if(playFullSong) lengthExeptions.push(videoid)
 }
 
 const animes = {
@@ -59,7 +64,7 @@ const animes = {
         new Anime(
             'Cells At Work!',
             [new Op('OP', 'QYfdanAahVI'),
-             new Op('ED', '')]
+             new Op('ED', '3qQQBkmMLe8')]
         ),
         new Anime(
             'Eromanga Sensei',
@@ -95,7 +100,7 @@ const animes = {
             'Kaguya-sama: Love is War',
             [new Op('OP 1', '_4NjEOtSQww'),
              new Op('OP 2', 'lTlzDfhPtFA'),
-             new Op('Special ED', 'dfzBfJP2MM8')]
+             new Op('Special ED', 'dfzBfJP2MM8', true)]
         ),
         new Anime(
             'Punch Line!',
@@ -167,7 +172,7 @@ const animes = {
         ),
         new Anime(
             'Darling in the FranXX',
-            [new Op('ED', 't-p_PZybvCo')]
+            [new Op('ED', 't-p_PZybvCo', true)]
         ),
         new Anime(
             'Rising of the Shield Hero',
@@ -191,7 +196,7 @@ const animes = {
                 new Op('ED 5', 'JTeI7y-eMpQ'),
                 new Op('ED 6', 'efjef5btZqE'),
                 new Op('ED 7', 'gvAVB4G26RQ'),
-                new Op('Heroes Rising Theme', 'lGfj6kIV_s8')
+                new Op('Heroes Rising Theme', 'lGfj6kIV_s8', true)
             ]
         ),
         new Anime(
@@ -326,8 +331,7 @@ const animes = {
 }
 
 function play(id) {
-    var lengthExeptions = ['dfzBfJP2MM8', 'lGfj6kIV_s8'], // Videos longer than 1:30 (in orner of list)
-        playFullSong = inArray(lengthExeptions, id), // if in the list
+    var playFullSong = inArray(lengthExeptions, id), // if in the list
         args = {
             'videoId': id,
             'startSeconds': 0,
