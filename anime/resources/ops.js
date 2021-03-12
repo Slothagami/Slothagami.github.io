@@ -1,14 +1,16 @@
 var lengthExeptions = []
 
-function Anime(name, ops) {
+function Anime(name, ops, folderBackground='default') {
     this.name = name;
     this.ops = ops;
+    this.folderBackground = folderBackground;
 
     this.makeElement = function() {
         // if this.ops.length == 1, dont put it inthe .video, Change name to this.name + this.ops[i].name
 
         var oneSong = this.ops.length <= 2,
-            html = oneSong? '': `<div class="anime"><h1 style="background-image:url(${this.ops[0].imgUrl})"><em>${this.name}</em></h1>`,
+            bg = folderBackground=='default'? this.ops[0].imgUrl: './resources/folderImages/'+ folderBackground
+            html = oneSong? '': `<div class="anime"><h1 style="background-image:url(${bg})"><em>${this.name}</em></h1>`,
             display = oneSong? 'block': 'none'
 
         for(var i in this.ops){
@@ -100,7 +102,8 @@ const animes = {
             'Kaguya-sama: Love is War',
             [new Op('OP 1', '_4NjEOtSQww'),
              new Op('OP 2', 'lTlzDfhPtFA'),
-             new Op('Special ED', 'dfzBfJP2MM8', true)]
+             new Op('Special ED', 'dfzBfJP2MM8', true)],
+             'kaguya-sama-cover.jpg'
         ),
         new Anime(
             'Punch Line!',
@@ -114,7 +117,8 @@ const animes = {
                 new Op('OP 2', 'vuRTsE3z8ks'),
                 new Op('ED 1', 'sKRZY-mJQak'),
                 new Op('ED 2', 'FIrLn-MaaSU')
-            ]
+            ],
+            'love-chunibyo-and-other-delusions-cover.jpg'
         ),
         new Anime(
             'I don\'t want to get Hurt, so I\'ll Max Out my Defence',
@@ -141,14 +145,16 @@ const animes = {
              new Op('OP 2', 'qaLeO-2Fytg'),
              new Op('ED 1', '2HACXCqZGJ8'),
              new Op('ED 2', 'kEecpGGIuEY'),
-             new Op('Ragyo Kiryuin Theme', 'FRivqBxbHRs')]
+             new Op('Ragyo Kiryuin Theme', 'FRivqBxbHRs')],
+             'kill-la-kill-cover.jpeg'
         ),
         new Anime(
             'Assasination Classroom',
             [new Op('OP 1', 'KS9UfmCFn_Y'),
              new Op('OP 2', 'iug12DnMNHQ'),
              new Op('OP 3', 'tNZ-6xLUoCA'),
-             new Op('OP 4', 'c_J7ybxenOQ')]
+             new Op('OP 4', 'c_J7ybxenOQ')],
+             'assassination-classroom-cover.jpeg'
         ),
         new Anime(
             'Mob Psycho 100',
@@ -205,7 +211,8 @@ const animes = {
                 new Op('ED 6', 'efjef5btZqE'),
                 new Op('ED 7', 'gvAVB4G26RQ'),
                 new Op('Heroes Rising Theme', 'lGfj6kIV_s8', true)
-            ]
+            ],
+            'my-hero-academia-cover.jpeg'
         ),
         new Anime(
             'Deca Dense',
@@ -221,7 +228,8 @@ const animes = {
                 new Op('ED 1', 'ChayFwyFvPk'),
                 new Op('ED 2', 'KFMG_6r4YB4'),
                 new Op('ED 3', 'DYKOFBIrzGg')
-            ]
+            ],
+            'overlord-cover.jpg'
         ),
         new Anime(
             'Glepnir',
@@ -237,7 +245,8 @@ const animes = {
                 new Op('ED 1','JhCPPQ5PBdk'),
                 new Op('ED 2','b5Nud2MMRo4'),
                 new Op('ED 3','lQaufCqi5v4')
-            ]
+            ],
+            're-zero-cover.jpg'
         ),
         new Anime(
             'Ajin',
@@ -262,7 +271,8 @@ const animes = {
                 new Op('ED 1', 'Tr4xOjIgIyM'),
                 new Op('ED 2', '5q6vmSGx2qE'),
                 new Op('ED 3', 'eJ7h0-o6PMI')
-            ]
+            ],
+            'blue-exorcist-cover.jpg'
         ),
         new Anime(
             'Fire Force',
@@ -275,13 +285,15 @@ const animes = {
                 new Op('ED 2', 'jbTO40J4ENs'),
                 new Op('ED 3', 'RE85eNhqj3g'),
                 new Op('ED 4', 'D7ioXBZQbbk')
-            ]
+            ],
+            'fire-force-cover.jpeg'
         ),
         new Anime(
             'Attack on Titan',
             [new Op('OP 1', '8OkpRK2_gVs'),
              new Op('OP 2', 'CID-sYQNCew'),
-             new Op('OP 5', '0dK7JgKivQM')]
+             new Op('OP 5', '0dK7JgKivQM')],
+             'attack-on-titan-cover.jpeg'
         ),
         new Anime(
             'Talentless Nana',
@@ -300,7 +312,8 @@ const animes = {
                 new Op('OP 2', 'UqIahGU9ZtY'),
                 new Op('OP 3', 'et7oxRRkPEo'),
                 new Op('OP 4', 'KMZBauH47Jo')
-            ]
+            ],
+            'fullmetal-alchemist-brotherhood-cover.jpeg'
         ),
         new Anime(
             'Akudama Drive',
