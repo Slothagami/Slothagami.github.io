@@ -7,8 +7,6 @@
         <link rel="stylesheet" href="./resources/ops.css">
     </head>
     <body>
-        <!-- Play all button, gets all .video elements, and loops through them -->
-        <!-- Play all from here button, gets all .video elements, and loops through them from indexof(this)-->
         <button id='keepplaying'></button>
         <p id='playlistlength' style='display: none;'></p>
         <div id='playlist'></div>
@@ -44,13 +42,8 @@
             // when video ends
             function onPlayerStateChange(event) {        
                 if(event.data === YT.PlayerState.ENDED) {
-                    //if(keepPlaying) player.loadVideoById(vidIds[vidPos++], 0, 'large')
-                    //console.log(vidPos)
-                    //console.log('Done')
                     var time = new Date().getTime(),
                         difference = time - lastLoad
-
-                        //console.log(difference)
 
                     if(keepPlaying && difference >= 2 * 1000) { // at least two seconds after pervious one
                         play(vidIds[vidPos++])

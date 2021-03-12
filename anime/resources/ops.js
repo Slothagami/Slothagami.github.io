@@ -1,15 +1,15 @@
 var lengthExeptions = []
 
-function Anime(name, ops, folderBackground='default') {
-    this.name = name;
-    this.ops = ops;
-    this.folderBackground = folderBackground;
+class Anime {
+    constructor(name, ops, folderBackground='default') {
+        this.name = name;
+        this.ops = ops;
+        this.folderBackground = folderBackground;
+    }
 
-    this.makeElement = function() {
-        // if this.ops.length == 1, dont put it inthe .video, Change name to this.name + this.ops[i].name
-
+    makeElement() {
         var oneSong = this.ops.length <= 2,
-            bg = folderBackground=='default'? this.ops[0].imgUrl: './resources/folderImages/'+ folderBackground
+            bg = this.folderBackground=='default'? this.ops[0].imgUrl: './resources/folderImages/'+ this.folderBackground,
             html = oneSong? '': `<div class="anime"><h1 style="background-image:url(${bg})"><em>${this.name}</em></h1>`,
             display = oneSong? 'block': 'none'
 
@@ -30,20 +30,21 @@ function Anime(name, ops, folderBackground='default') {
         }
 
         html += oneSong? '': '</div>'
-
         return html
     }
 }
-function Op(name, videoid, playFullSong=false) {
-    this.name = name
-        .replace('OP', 'Opening')
-        .replace('ED', 'Ending');
+class Op {
+    constructor(name, videoid, playFullSong=false) {
+        this.name = name
+            .replace('OP', 'Opening')
+            .replace('ED', 'Ending');
 
-    this.videoid = videoid;
-    this.url = 'https://www.youtube.com/watch?v='+ this.videoid
-    this.imgUrl = 'http://img.youtube.com/vi/'+ this.videoid + '/0.jpg'
+        this.videoid = videoid;
+        this.url = 'https://www.youtube.com/watch?v='+ this.videoid
+        this.imgUrl = `http://img.youtube.com/vi/${this.videoid}/0.jpg`
 
-    if(playFullSong) lengthExeptions.push(videoid)
+        if(playFullSong) lengthExeptions.push(videoid)
+    }
 }
 
 const animes = {
@@ -449,9 +450,7 @@ window.onload = function() {
         vidIds.push(videos[i].getElementsByTagName('data')[0].value)
 
     // Mobile CSS
-    if(sg.onMobile()) {
-        addCss('./resources/opsMobile.css')
-    }
+    if(sg.onMobile()) addCss('./resources/opsMobile.css')
 }
 
 function addCss(fileName) {
@@ -464,6 +463,7 @@ function addCss(fileName) {
     link.href = fileName;
   
     head.appendChild(link);
+    console.log('Bravo, Going Mobile')
 }
 
 function inArray(array, item) {return array.indexOf(item) != -1}
