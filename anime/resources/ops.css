@@ -19,6 +19,7 @@
 
 .anime {background-color: var(--g1);}
 .anime .video:hover {background-color: var(--g0);}
+.animecontent {padding-bottom: 50px;}
 
 body{background-color:var(--g0);margin:0;margin-bottom:580px}
 .video{
