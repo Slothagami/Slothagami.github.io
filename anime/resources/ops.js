@@ -124,7 +124,7 @@ const animes = {
         new Anime(
             'That Time I got Reincarnated as a Slime',
             [new Op('OP', 'GhGTc6p8sg0'),
-             new Op('ED', 'At5CKBz9QJA')]
+             new Op('ED', 'At5CKBz9QJA', true)]
         ),
         new Anime(
             'No Game No Life',
@@ -137,8 +137,11 @@ const animes = {
         ),
         new Anime(
             'Kill la Kill',
-            [new Op('OP', '8dKFxu-_oIE'),
-             new Op('ED', '2HACXCqZGJ8')]
+            [new Op('OP 1', '8dKFxu-_oIE'),
+             new Op('OP 2', 'qaLeO-2Fytg'),
+             new Op('ED 1', '2HACXCqZGJ8'),
+             new Op('ED 2', 'kEecpGGIuEY'),
+             new Op('Ragyo Kiryuin Theme', 'FRivqBxbHRs')]
         ),
         new Anime(
             'Assasination Classroom',
@@ -339,11 +342,10 @@ function play(id) {
     var playFullSong = inArray(lengthExeptions, id), // if in the list
         args = {
             'videoId': id,
-            'startSeconds': 0,
-            //'endSeconds': 90
+            'startSeconds': 0
         }
 
-    if(!playFullSong) args['endSeconds'] = 90
+    if(!playFullSong) args['endSeconds'] = 89 // 1:29 into the video
     player.loadVideoById(args);
 }
 
