@@ -10,14 +10,19 @@ class Anime {
     makeElement() {
         var oneSong = this.ops.length <= 2,
             bg = this.folderBackground=='default'? this.ops[0].imgUrl: './resources/folderImages/'+ this.folderBackground,
-            html = oneSong? '': `<div class="anime"><h1 style="background-image:url(${bg})"><em>${this.name}</em></h1>`,
-            display = oneSong? 'block': 'none'
+            html = oneSong? '': [
+                '<div class="anime">',
+                    `<h1 style="background-image:url(${bg})">`,
+                        `<em>${this.name}</em>`,
+                    '</h1>',
+                    '<div class="animecontent" style="display:none">'
+            ].join('\n')
 
         for(var i in this.ops){
             var name = oneSong? this.name +' '+ this.ops[i].name: this.ops[i].name
 
             html += [
-                '<div class="video" style="display:'+ display +'">',
+                '<div class="video">',
                     '<data value="'+ this.ops[i].videoid +'"></data>',
                     '<table>',
                         '<tr>',
@@ -29,7 +34,7 @@ class Anime {
             ].join('\n')
         }
 
-        html += oneSong? '': '</div>'
+        html += oneSong? '': '</div></div>'
         return html
     }
 }
@@ -389,12 +394,10 @@ window.onload = function() {
     for(var i = 0; i < titles.length; i++) {
         titles[i].onclick = function() {
             // Show / Hide all .video elements in the same .anime div
-            videos = this.parentNode.getElementsByClassName('video')
-            for(var i in videos) {
-                videos[i].style.display = 
-                    videos[i].style.display == 'none'? 
-                        'block': 'none'
-            }
+            let e = this.parentNode.getElementsByClassName('animecontent')[0]
+            e.style.display = 
+                e.style.display == 'none'? 
+                    'block': 'none'
         }
     }
     titles = document.getElementsByTagName('h2')
@@ -467,3 +470,9 @@ function addCss(fileName) {
 }
 
 function inArray(array, item) {return array.indexOf(item) != -1}
+
+function forElementByClass(_class, func) {
+    // runs the func for every element, passing the element
+    let elems = document.getElementsByClassName(_class)
+    for(var i = 0; i < elems.length; i++) func(elems[i])
+}

@@ -1,8 +1,8 @@
 :root {
-    --g0: #101010;
-    --g1: #282828;
-    --g2: #383838;
-    --g3: #484848;
+    --g0: #06060a;
+    --g1: #14151d;
+    --g2: #24242a;
+    --g3: #28282a;
 }
 
 * {
@@ -31,7 +31,7 @@ body{background-color:var(--g0);margin:0;margin-bottom:580px}
           -ms-user-select: none; 
               user-select: none;
 }
-.video:hover{background-color:#181818}
+.video:hover{background-color:#10101a}
 table{margin:1px}
 img{
     width:160px;padding-right:60px;
