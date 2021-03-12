@@ -145,7 +145,7 @@ const animes = {
              new Op('OP 2', 'qaLeO-2Fytg'),
              new Op('ED 1', '2HACXCqZGJ8'),
              new Op('ED 2', 'kEecpGGIuEY'),
-             new Op('Ragyo Kiryuin Theme', 'FRivqBxbHRs')],
+             new Op('Ragyo Kiryuin Theme', 'FRivqBxbHRs', true)],
              'kill-la-kill-cover.jpeg'
         ),
         new Anime(
