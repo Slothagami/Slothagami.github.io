@@ -10,7 +10,8 @@ const inArray = (array, item) => array.indexOf(item) != -1
 /*
     Folder play buttons will set que to a 
     array of the ids of the vids in it, and 
-    set Vid pos to 0
+    set Vid pos to 0, and set keep playing 
+    to true
 */
 
 class Anime {
@@ -59,9 +60,10 @@ class Op {
             .replace('ED', 'Ending');
 
         this.videoid = videoid;
+
         this.url = 'https://www.youtube.com/watch?v='+ this.videoid
         this.imgUrl = `http://img.youtube.com/vi/${this.videoid}/0.jpg`
-
+        
         if(playFullSong) lengthExeptions.push(videoid)
     }
 }
@@ -161,7 +163,7 @@ const animes = {
         ),
         new Anime(
             'Kill la Kill',
-            [new Op('OP 1', '8dKFxu-_oIE'),
+            [new Op('OP 1', '3gG69kPBDwI'), // 8dKFxu-_oIE
              new Op('OP 2', 'qaLeO-2Fytg'),
              new Op('ED 1', '2HACXCqZGJ8'),
              new Op('ED 2', 'kEecpGGIuEY'),
