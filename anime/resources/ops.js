@@ -163,7 +163,7 @@ const animes = {
         ),
         new Anime(
             'Kill la Kill',
-            [new Op('OP 1', '3gG69kPBDwI'), // 8dKFxu-_oIE
+            [new Op('OP 1', '8dKFxu-_oIE'),
              new Op('OP 2', 'qaLeO-2Fytg'),
              new Op('ED 1', '2HACXCqZGJ8'),
              new Op('ED 2', 'kEecpGGIuEY'),
