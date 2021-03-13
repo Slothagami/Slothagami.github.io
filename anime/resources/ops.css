@@ -73,9 +73,13 @@ iframe {
     padding:20px;
 }
 #keepplaying{
+    position: fixed;
+    top: 0;
+    right: 0;
+
     float:none;
     background-color: rgba(0,0,0,0);
     border:none;
     outline: none;
 }
-#keepplaying:hover{background-color:#181818}
+#keepplaying:hover{background-color:rgba(0,0,0,.5);}
