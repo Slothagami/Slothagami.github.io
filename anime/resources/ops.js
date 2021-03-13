@@ -1,4 +1,17 @@
-var lengthExeptions = []
+var lengthExeptions = [],
+    vidIds = [], 
+    vidPos = 0, 
+    keepPlaying = true, 
+    lastLoad = new Date().getTime(), 
+    que = vidIds
+
+const inArray = (array, item) => array.indexOf(item) != -1
+
+/*
+    Folder play buttons will set que to a 
+    array of the ids of the vids in it, and 
+    set Vid pos to 0
+*/
 
 class Anime {
     constructor(name, ops, folderBackground='default') {
@@ -14,6 +27,7 @@ class Anime {
                 '<div class="anime">',
                     `<h1 style="background-image:url(${bg})">`,
                         `<em>${this.name}</em>`,
+                        //'<div class="folderplay">&#9654;</div>',
                     '</h1>',
                     '<div class="animecontent" style="display:none">'
             ].join('\n')
@@ -357,18 +371,6 @@ const animes = {
     ],
 }
 
-function play(id) {
-    var playFullSong = inArray(lengthExeptions, id), // if in the list
-        args = {
-            'videoId': id,
-            'startSeconds': 0
-        }
-
-    if(!playFullSong) args['endSeconds'] = 89 // 1:29 into the video
-    player.loadVideoById(args);
-}
-
-var vidIds = [], vidPos = 0, keepPlaying = true, lastLoad = new Date().getTime()
 window.onload = function() {
     // Make Elements from the list
     let html = '',
@@ -414,6 +416,7 @@ window.onload = function() {
             let data = e.getElementsByTagName('data')[0]
 
             play(data.value)
+            que = vidIds
             vidPos = vidIds.indexOf(data.value) + 1
             setVideoVisible(true)
         }
@@ -451,6 +454,7 @@ window.onload = function() {
         addCss('./resources/opsMobile.css')
 }
 
+// Functions
 function addCss(fileName) {
 
     var head = document.head;
@@ -463,9 +467,6 @@ function addCss(fileName) {
     head.appendChild(link);
     console.log('Bravo, Going Mobile')
 }
-
-function inArray(array, item) {return array.indexOf(item) != -1}
-
 function forClass(_class, func, root=undefined) {
     if(root == undefined) 
         root = document
@@ -482,8 +483,17 @@ function forTag(tag, func, root=undefined) {
     let elems = root.getElementsByTagName(tag)
     for(var i = 0; i < elems.length; i++) func(elems[i])
 }
-
 function setVideoVisible(visible) {
     document.getElementById('videoplayer')
         .style.display = visible? 'block': 'none'
+}
+function play(id) {
+    var playFullSong = inArray(lengthExeptions, id), // if in the list
+        args = {
+            'videoId': id,
+            'startSeconds': 0
+        }
+
+    if(!playFullSong) args['endSeconds'] = 89 // 1:29 into the video
+    player.loadVideoById(args);
 }

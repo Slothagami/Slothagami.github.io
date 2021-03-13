@@ -6,7 +6,7 @@
 }
 
 * {
-    font-size: 30px;
+    font-size: 27px;
     font-family: sans-serif;
     color: white;
     text-decoration: none;
@@ -20,6 +20,8 @@
 .anime {background-color: var(--g1);}
 .anime .video:hover {background-color: var(--g0);}
 .animecontent {padding: 15px 0;}
+
+.folderplay {float: right;}
 
 body{background-color:var(--g0);margin:0;margin-bottom:580px}
 .video{
