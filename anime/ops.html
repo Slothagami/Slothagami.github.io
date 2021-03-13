@@ -16,21 +16,24 @@
 
         <script>
             // create youtube player
-            var player, width=560, height=315
-            if(sg.onMobile()){
-                var ratio = height / width
-                width=window.innerWidth;height=window.innerWidth * ratio
-            }
+            setVideoVisible(false)
+
+            var player, 
+                defWidth=560, 
+                defHeight=315, 
+                ratio = defHeight / defWidth,
+                width = sg.onMobile()? window.innerWidth: window.innerWidth * 0.45,
+                height = width * ratio
 
             function onYouTubePlayerAPIReady() {
                 player = new YT.Player('videoplayer', {
-                height: height.toString(),
-                width: width.toString(),
-                videoId: '',
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
+                    height: height.toString(),
+                    width: width.toString(),
+                    videoId: '',
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
                 });
             }
 
@@ -43,11 +46,13 @@
             function onPlayerStateChange(event) {        
                 if(event.data === YT.PlayerState.ENDED) {
                     var time = new Date().getTime(),
-                        difference = time - lastLoad
+                        difference = time - lastLoad    
 
                     if(keepPlaying && difference >= 2 * 1000) { // at least two seconds after pervious one
                         play(vidIds[vidPos++])
-                        console.log(vidPos)
+                        //console.log(vidPos)
+                    } else if(!keepPlaying) {
+                        setVideoVisible(false)
                     }
                     lastLoad = time;
                 }

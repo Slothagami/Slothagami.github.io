@@ -371,14 +371,13 @@ function play(id) {
 var vidIds = [], vidPos = 0, keepPlaying = true, lastLoad = new Date().getTime()
 window.onload = function() {
     // Make Elements from the list
-    var html = '',
+    let html = '',
         target = document.getElementById('playlist') // where to put the html
 
-    var entries = Object.entries(animes)
+    let entries = Object.entries(animes)
     for(var i = 0; i <= entries.length-1; i++) {
         var key = entries[i][0]
-        html += `<div class='folder'><h2>${key}</h2><div class='foldercontent'>`// style="display:none">`
-        console.log(key)
+        html += `<div class='folder'><h2>${key}</h2><div class='foldercontent'>`
 
         for(var j in animes[key])
             html += animes[key][j].makeElement()
@@ -390,46 +389,38 @@ window.onload = function() {
 
     // Give the Event Handlers
     // For Titles
-    var titles = document.getElementsByTagName('h1')
-    for(var i = 0; i < titles.length; i++) {
-        titles[i].onclick = function() {
-            // Show / Hide all .video elements in the same .anime div
-            let e = this.parentNode.getElementsByClassName('animecontent')[0]
-            e.style.display = 
-                e.style.display == 'none'? 
+    forTag('h1', (e)=>{
+        e.onclick = ()=>{
+            let el = e.parentNode.getElementsByClassName('animecontent')[0]
+            el.style.display = 
+                el.style.display == 'none'? 
                     'block': 'none'
         }
-    }
-    titles = document.getElementsByTagName('h2')
-    for(var i = 0; i < titles.length; i++) {
-        titles[i].onclick = function() {
+    })
+    forTag('h2', (e)=>{
+        e.onclick = ()=>{
             // Show / Hide the .foldercontent div
-            content = this.parentNode.getElementsByClassName('foldercontent')[0]
-            console.log(content)
+            let el = e.parentNode.getElementsByClassName('foldercontent')[0]
 
-            content.style.display = 
-                content.style.display == 'none'? 
+            el.style.display = 
+                el.style.display == 'none'? 
                     'block': 'none'
         }
-    }
+    })
 
     // For Videos
-    var videos = document.getElementsByClassName('video')
-    for(var i in videos) {
-        videos[i].onclick = function() {
-            var data = this.getElementsByTagName('data')[0]
+    forClass('video', (e)=>{
+        e.onclick = ()=>{
+            let data = e.getElementsByTagName('data')[0]
 
-            //player.loadVideoById(data.value, 0, 'large')
             play(data.value)
-
             vidPos = vidIds.indexOf(data.value) + 1
-            //console.log(vidPos)
+            setVideoVisible(true)
         }
-    }
+    })
 
     // For the keepplaying button
     var keepplaying = document.getElementById('keepplaying')
-
     keepplaying.onclick = function() {
         switch(this.innerHTML) {
             case 'Autoplay - On':
@@ -445,15 +436,19 @@ window.onload = function() {
     }
     keepplaying.innerHTML = 'Autoplay - On'
 
-    // Display Playlist Length
-    var videos = document.getElementsByClassName('video')
-    document.getElementById('playlistlength').innerHTML = videos.length
+    // Generate list of ids
+    forClass('video', (e)=>{
+        vidIds.push(
+            e.getElementsByTagName('data')[0].value
+        )
+    })
 
-    for(var i = 0; i < videos.length; i++)
-        vidIds.push(videos[i].getElementsByTagName('data')[0].value)
+    // Display Playlist Length
+    document.getElementById('playlistlength').innerHTML = vidIds.length
 
     // Mobile CSS
-    if(sg.onMobile()) addCss('./resources/opsMobile.css')
+    if(sg.onMobile()) 
+        addCss('./resources/opsMobile.css')
 }
 
 function addCss(fileName) {
@@ -471,8 +466,24 @@ function addCss(fileName) {
 
 function inArray(array, item) {return array.indexOf(item) != -1}
 
-function forElementByClass(_class, func) {
+function forClass(_class, func, root=undefined) {
+    if(root == undefined) 
+        root = document
+
     // runs the func for every element, passing the element
-    let elems = document.getElementsByClassName(_class)
+    let elems = root.getElementsByClassName(_class)
     for(var i = 0; i < elems.length; i++) func(elems[i])
+}
+function forTag(tag, func, root=undefined) {
+    if(root == undefined) 
+        root = document
+
+    // runs the func for every element, passing the element
+    let elems = root.getElementsByTagName(tag)
+    for(var i = 0; i < elems.length; i++) func(elems[i])
+}
+
+function setVideoVisible(visible) {
+    document.getElementById('videoplayer')
+        .style.display = visible? 'block': 'none'
 }

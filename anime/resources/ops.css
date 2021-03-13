@@ -1,8 +1,8 @@
 :root {
-    --g0: #06060a;
-    --g1: #14151d;
-    --g2: #24242a;
-    --g3: #28282a;
+    --g0: #0A0B0D;
+    --g1: #131418;
+    --g2: #1D1E22;
+    --g3: #2C303B;
 }
 
 * {
@@ -19,7 +19,7 @@
 
 .anime {background-color: var(--g1);}
 .anime .video:hover {background-color: var(--g0);}
-.animecontent {padding-bottom: 50px;}
+.animecontent {padding: 15px 0;}
 
 body{background-color:var(--g0);margin:0;margin-bottom:580px}
 .video{
