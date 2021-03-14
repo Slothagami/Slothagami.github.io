@@ -24,7 +24,7 @@
                 defWidth=560, 
                 defHeight=315, 
                 ratio = defHeight / defWidth,
-                width = sg.onMobile()? window.innerWidth: window.innerWidth * 0.45,
+                width = sg.onMobile()? window.innerWidth: window.innerWidth * 0.7,//0.45,
                 height = width * ratio
 
             function onYouTubePlayerAPIReady() {
@@ -45,16 +45,22 @@
             }
 
             // when video ends
-            function onPlayerStateChange(event) {        
+            function onPlayerStateChange(event) {    
+                // Running on video start too 
+                //console.log(event.data) // englishafy
+                
                 if(event.data === YT.PlayerState.ENDED) {
                     var time = new Date().getTime(),
                         difference = time - lastLoad    
 
-                    if(keepPlaying && difference >= 2 * 1000) { // at least two seconds after pervious one
-                        play(que[vidPos++])
-                        //console.log(vidPos)
-                    } else if(!keepPlaying) {
-                        setVideoVisible(false)
+                    if(difference >= 2 * 1000) { // at least two seconds after pervious one
+                        if(keepPlaying) {
+                            play(que[vidPos++])
+                            console.log('Incriment Video')
+                        } else if(!keepPlaying) {
+                            setVideoVisible(false)
+                            console.log('Hide Video')
+                        }
                     }
                     lastLoad = time;
                 }

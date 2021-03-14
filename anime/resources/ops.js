@@ -3,7 +3,8 @@ var lengthExeptions = [],
     vidPos = 0, 
     keepPlaying = true, 
     lastLoad = new Date().getTime(), 
-    que = vidIds
+    que = vidIds,
+    videoHidden = true
 
 const inArray = (array, item) => array.indexOf(item) != -1
 
@@ -88,7 +89,9 @@ const animes = {
         new Anime(
             'Cells At Work!',
             [new Op('OP', 'QYfdanAahVI'),
-             new Op('ED', '3qQQBkmMLe8')]
+             new Op('ED', '3qQQBkmMLe8'),
+             new Op('CODE BLACK OP', 'qhXN19BMcVw'),
+             new Op('CODE BLACK ED', '')]
         ),
         new Anime(
             'Eromanga Sensei',
@@ -420,7 +423,6 @@ window.onload = function() {
             play(data.value)
             que = vidIds
             vidPos = vidIds.indexOf(data.value) + 1
-            setVideoVisible(true)
         }
     })
 
@@ -488,6 +490,9 @@ function forTag(tag, func, root=undefined) {
 function setVideoVisible(visible) {
     document.getElementById('videoplayer')
         .style.display = visible? 'block': 'none'
+
+    videoHidden = !visible
+    //console.log(videoHidden)
 }
 function play(id) {
     var playFullSong = inArray(lengthExeptions, id), // if in the list
@@ -498,4 +503,6 @@ function play(id) {
 
     if(!playFullSong) args['endSeconds'] = 89 // 1:29 into the video
     player.loadVideoById(args);
+    setVideoVisible(true)
+    setTimeout(setVideoVisible, 250, true) // bandaid fix, needs more attention
 }
