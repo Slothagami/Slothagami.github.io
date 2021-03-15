@@ -3,6 +3,9 @@
     <head>
         <title>Anime OPs</title>
 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--  ^ Needed to display Japaneese Properly ^  -->
+
         <script src='./resources/ops.js'></script>
         <script src='../libary/sg.js'></script>
         
@@ -45,9 +48,7 @@
             }
 
             // when video ends
-            function onPlayerStateChange(event) {    
-                // Running on video start too 
-                //console.log(event.data) // englishafy
+            function onPlayerStateChange(event) {
                 
                 if(event.data === YT.PlayerState.ENDED) {
                     var time = new Date().getTime(),

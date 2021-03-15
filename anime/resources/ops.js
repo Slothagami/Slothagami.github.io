@@ -77,29 +77,30 @@ const animes = {
              new Op('ED', 'i2TnlfmzS2I')]
         ),
         new Anime(
-            'Tonikawa',
+            'トニカクカワイイ', // Tonikawa
             [new Op('OP', 'vQiodbKEW6s'),
              new Op('ED', '1dVfPq0wnrA')]
         ),
         new Anime(
-            'Kuma Kuma Kuma Bear',
+            'くまクマ熊ベアー',　// Kuma Kuma Kuma Bear
             [new Op('OP', 'VVsZRUQ8YH4'),
              new Op('ED', 'IFxnpQadK48')]
         ),
         new Anime(
-            'Cells At Work!',
+            'Cells At Work!', // はたらく細胞
             [new Op('OP', 'QYfdanAahVI'),
              new Op('ED', '3qQQBkmMLe8'),
              new Op('CODE BLACK OP', 'qhXN19BMcVw'),
-             new Op('CODE BLACK ED', '')]
+             new Op('CODE BLACK ED', '')],
+             'cells-at-work-cover.png'
         ),
         new Anime(
-            'Eromanga Sensei',
+            'エロマンガ先生',　// Eromanga Sensei
             [new Op('OP', 'DeGw8-KwxM4'),
              new Op('ED', 'UzFArt9M7JM')]
         ),
         new Anime(
-            'Rent a Girfriend',
+            '彼女、お借りします', // Rent a Girfriend
             [new Op('OP', 'cM1WSovcn4I'),
              new Op('ED', 'lYUdHGhxCw4')]
         ),
@@ -165,7 +166,7 @@ const animes = {
              new Op('ED', 'udwtU4OtQRM')]
         ),
         new Anime(
-            'Kill la Kill',
+            'キルラキル', // Kill la Kill キルラキル
             [new Op('OP 1', '8dKFxu-_oIE'),
              new Op('OP 2', 'qaLeO-2Fytg'),
              new Op('ED 1', '2HACXCqZGJ8'),
@@ -341,7 +342,7 @@ const animes = {
             'fullmetal-alchemist-brotherhood-cover.jpeg'
         ),
         new Anime(
-            'Akudama Drive',
+            'アクダマドライブ', // Akudama Drive
             [new Op('OP', 'EX0LwdYVUp4'),
              new Op('ED', 'P4ZPWnPKC0k')]
         ),
@@ -351,7 +352,7 @@ const animes = {
              new Op('ED', 'PvG9JlROtr0')]
         ),
         new Anime(
-            'Kakushigoto',
+            'かくしごと', // Kakushigoto
             [new Op('OP', 'Wc1QTLk-Kz8'),
              new Op('ED', 'ewlh3iZArhs')]
         ),
@@ -503,6 +504,6 @@ function play(id) {
 
     if(!playFullSong) args['endSeconds'] = 89 // 1:29 into the video
     player.loadVideoById(args);
-    setVideoVisible(true)
+    //setVideoVisible(true)
     setTimeout(setVideoVisible, 250, true) // bandaid fix, needs more attention
 }
