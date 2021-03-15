@@ -328,5 +328,9 @@ const vocab = [
     new phrase(
         ['誰が', 'だれが'],
         ['who']
+    ),
+    new phrase(
+        ['お借りします'],
+        ['to bring']
     )
 ]
