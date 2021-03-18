@@ -332,5 +332,9 @@ const vocab = [
     new phrase(
         ['お借りします'],
         ['to bring']
-    )
+    ),
+    new phrase(
+        ['いえ'],
+        ['house']
+    ),
 ]
