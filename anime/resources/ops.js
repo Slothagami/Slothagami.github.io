@@ -110,6 +110,11 @@ const animes = {
              new Op('ED', 'q1cDaXNe_wI')]
         ),
         new Anime(
+            'Miss Kobayashi\'s Dragon Maid',
+            [new Op('OP', '7A4IlwuuyyI'),
+             new Op('ED', '2bm2WmWiohw')]
+        ),
+        new Anime(
             'Didn\'t I say to make my abilities average in the next life?',
             [new Op('OP', 'NA4DTggH9GM'),
              new Op('ED', 'Y-vYRsnJp7E')]
