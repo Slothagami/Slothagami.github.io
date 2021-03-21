@@ -59,81 +59,78 @@
         </style>
     </head>
     <body>
-        <div id='page-banner'></div>
-        <div id='main-content'>
-            <h1>Games</h1>
-            <section></section>
+        <h1>Games</h1>
+        <section></section>
 
-            <script>
-                // Make Game Elements
-                class Game {
-                    constructor(name='Unnamed', page='#', cover='./images/DarkBackground.jpg', video=null) {
-                        this.name  = name
-                        this.cover = cover
-                        this.video = video
-                        this.page  = page
-                    }
-                    appendElement() {
-                        // make html element, return it
-                        let a = document.createElement('a')
-                        a.href = this.page
-                        a.style.backgroundImage = `url(${this.cover})`
-                        a.className = 'game'
-
-                        let div = document.createElement('div')
-                        let video = document.createElement('video')
-                        video.autoplay = true
-                        video.muted    = true
-                        video.loop     = true
-                        video.src      = this.video
-
-                        let h2 = document.createElement('h2')
-                        h2.innerText = this.name
-
-                        if(this.video != null) div.appendChild(video)
-                        div.appendChild(h2)
-
-                        a.appendChild(div)
-
-                        document.getElementsByTagName('section')[0]
-                            .appendChild(a)
-                    }
+        <script>
+            // Make Game Elements
+            class Game {
+                constructor(name='Unnamed', page='#', cover='./images/DarkBackground.jpg', video=null) {
+                    this.name  = name
+                    this.cover = cover
+                    this.video = video
+                    this.page  = page
                 }
+                appendElement() {
+                    // make html element, return it
+                    let a = document.createElement('a')
+                    a.href = this.page
+                    a.style.backgroundImage = `url(${this.cover})`
+                    a.className = 'game'
 
-                const games = [
-                    new Game(
-                        'Sinwave', '#',
-                        './images/games/sinewave-cover.png'
-                    ),
-                    new Game(
-                        'Unended', '#',
-                        './images/games/unended-cover.jpg'
-                    ),
-                    new Game(
-                        'Orbital Screensaver', '#',
-                        './images/games/orbital-screensaver-cover.jpg'
-                    ),
-                    new Game(
-                        'Gravity Screensaver', '#',
-                        './images/games/gravity-screensaver-cover.jpg',
-                        './images/games/gravity-screensaver-vid.mp4'
-                    )
-                ]
-                const gameresize = ()=>{
-                    let el = document.getElementsByClassName('game'),
-                        ratio = 430 / 768
+                    let div = document.createElement('div')
+                    let video = document.createElement('video')
+                    video.autoplay = true
+                    video.muted    = true
+                    video.loop     = true
+                    video.src      = this.video
 
-                    for(let i = 0; i < el.length; i++) {
-                        //console.log(el[i])
-                        el[i].style.height = window.innerWidth / 2 * ratio + 'px'
-                    }
+                    let h2 = document.createElement('h2')
+                    h2.innerText = this.name
+
+                    if(this.video != null) div.appendChild(video)
+                    div.appendChild(h2)
+
+                    a.appendChild(div)
+
+                    document.getElementsByTagName('section')[0]
+                        .appendChild(a)
                 }
+            }
 
-                for(let i of games) i.appendElement()
+            const games = [
+                new Game(
+                    'Sinwave', '#',
+                    './images/games/sinewave-cover.png'
+                ),
+                new Game(
+                    'Unended', '#',
+                    './images/games/unended-cover.jpg'
+                ),
+                new Game(
+                    'Orbital Screensaver', '#',
+                    './images/games/orbital-screensaver-cover.jpg'
+                ),
+                new Game(
+                    'Gravity Screensaver', '#',
+                    './images/games/gravity-screensaver-cover.jpg',
+                    './images/games/gravity-screensaver-vid.mp4'
+                )
+            ]
+            const gameresize = ()=>{
+                let el = document.getElementsByClassName('game'),
+                    ratio = 430 / 768
 
-                gameresize()
-                window.addEventListener('resize', gameresize)
-            </script>
-        </div>
+                for(let i = 0; i < el.length; i++) {
+                    //console.log(el[i])
+                    el[i].style.height = window.innerWidth / 2 * ratio + 'px'
+                }
+            }
+
+            for(let i of games) i.appendElement()
+
+            gameresize()
+            window.addEventListener('resize', gameresize)
+        </script>
     </body>
 </html>

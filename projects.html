@@ -9,99 +9,101 @@
         <script src="./pages.js"></script>
     </head>
     <body>
-        <div id='page-banner'></div>
-        <div id='main-content'>
-            <h1>Contents</h1>
-            <article>
+        <h1>Contents</h1>
+        <article>
+            <ul>
+                <li> <a href="#cellular-automata">Cellular Automata Caves</a> </li>
+                <li> <a href="#logistic-map">Logistic Map</a> </li>
+                <li> <a href="#inverse-kinematics">Inverse Kinematics</a> </li>
+            </ul>
+        </article>
 
-            </article>
-
-            <h1>Cellular Automata Caves</h1>
-            <article>
-                <p>
-                    A version of Cellular Automata that can be used for 
-                    making cave or island shapes. This one isn't too 
-                    difficult to do, but there are some tricks to it.
-                </p>
-                <p>
-                    It is done by looping through each pixel, and applying 
-                    the following rule to it. if there are more than the 
-                    threshhold of the same type pixels ajacent to it 
-                    (diagonals included), the current pixel is unchanged, 
-                    if the number of different pixels is more than the 
-                    threshold, its type is swapped. <em>Set the threshold to 4 
-                    or 5 for best results</em> making the shapes above, but some 
-                    interesting shapes can be made by using other numbers 
-                    as well. <em>You have to leave a buffer around the edge of 
-                    the pattern as well</em>, and preform the rule excluding the 
-                    edge peices. This can also be used to determine what the 
-                    outside counts as, I generally prefer to leave the edges 
-                    as 'off'.
-                </p>
-                <img src="./images/projects/cellCaves.png" alt="What the result looks like" class="smaller">
-                <p>
-                    The process is started by randomly filling the grid with 'on' 
-                    and 'off' cells. You can use a random chance <em>(I tended to use 47%)</em>
-                    or use some other method like perlin noise to distribute them. 
-                    Then the above rule is applied <em>multiple times</em> to the cells, 4-5 
-                    times is usually enough for decent results but you might want to 
-                    do it as many as 16 times.
-                </p>
-                <p>Below you can see a pesudocode explanation:</p>
-                <code>
+        <h1 id='cellular-automata'>Cellular Automata Caves</h1>
+        <article>
+            <p>
+                A version of Cellular Automata that can be used for 
+                making cave or island shapes. This one isn't too 
+                difficult to do, but there are some tricks to it.
+            </p>
+            <p>
+                It is done by looping through each pixel, and applying 
+                the following rule to it. if there are more than the 
+                threshhold of the same type pixels ajacent to it 
+                (diagonals included), the current pixel is unchanged, 
+                if the number of different pixels is more than the 
+                threshold, its type is swapped. <em>Set the threshold to 4 
+                or 5 for best results</em> making the shapes above, but some 
+                interesting shapes can be made by using other numbers 
+                as well. <em>You have to leave a buffer around the edge of 
+                the pattern as well</em>, and preform the rule excluding the 
+                edge peices. This can also be used to determine what the 
+                outside counts as, I generally prefer to leave the edges 
+                as 'off'.
+            </p>
+            <img src="./images/projects/cellCaves.png" alt="What the result looks like" class="smaller">
+            <p>
+                The process is started by randomly filling the grid with 'on' 
+                and 'off' cells. You can use a random chance <em>(I tended to use 47%)</em>
+                or use some other method like perlin noise to distribute them. 
+                Then the above rule is applied <em>multiple times</em> to the cells, 4-5 
+                times is usually enough for decent results but you might want to 
+                do it as many as 16 times.
+            </p>
+            <p>Below you can see a pesudocode explanation:</p>
+            <code>
 generating_initial_noise = true;
 applying_the_rule = false;
 
 repeat ammount_of_detail {
-	for every_pixel {
-		if generating_initial_noise {
-			this_pixel.type = xx%_chance // Chance of being on or off
-		}
-		
-		if applying_the_rule {
-			neighbors = count_ajacent_pixels_of_same(type);
-			
-			if neighbors > threshold {
-				this_pixel.type = !this_pixel.type; // Swap the type
-			}
-			
-			draw_to_display();
-		}
-	}
-	generating_initial_noise = false;
-	applying_the_rule = true;
+for every_pixel {
+    if generating_initial_noise {
+        this_pixel.type = xx%_chance // Chance of being on or off
+    }
+    
+    if applying_the_rule {
+        neighbors = count_ajacent_pixels_of_same(type);
+        
+        if neighbors > threshold {
+            this_pixel.type = !this_pixel.type; // Swap the type
+        }
+        
+        draw_to_display();
+    }
 }
-                </code>
+generating_initial_noise = false;
+applying_the_rule = true;
+}
+            </code>
 
-                <h2 class="no-bottom">Resources</h2>
-                <ul>
-                    <li>
-                        <a href="https://youtu.be/Yt27yQtGpBQ?t=205" target="_blank">
-                            Creating a World for my Indie Game (Procedural Generation) || Keeper Devlog 1
-                        </a>
-                    </li>
-                </ul>
-            </article>
+            <h2 class="no-bottom">Resources</h2>
+            <ul>
+                <li>
+                    <a href="https://youtu.be/Yt27yQtGpBQ?t=205" target="_blank">
+                        Creating a World for my Indie Game (Procedural Generation) || Keeper Devlog 1
+                    </a>
+                </li>
+            </ul>
+        </article>
 
-            <h1>Logistic Map</h1>
-            <article>
-                <p>
-                    A population modelling equation that mostly stabilises as a 
-                    consistent value or a cycle of values, the program takes the equation,
-                    <em>x ⇌ rx(1 - x)</em>
-                    or 
-                    <code>x = r * x * (1 - x)</code> 
-                    , plots the results 
-                    of a few hundred iterations on one column of the diagram, and 
-                    then increases the variable r (the reproductive number) by a 
-                    small amount before repeating the process for the next column. 
-                    The top variation has the equation plotted only after the results 
-                    stabilise (<code>ignore_first_values = true</code>), and the bottom version 
-                    includes the points before the stabilisation as well
-                    (<code>ignore_first_values = false</code>).
-                </p>
-                <img src="./images/projects/Logistic Maps.png" alt="The Result">
-                <code>
+        <h1 id='logistic-map'>Logistic Map</h1>
+        <article>
+            <p>
+                A population modelling equation that mostly stabilises as a 
+                consistent value or a cycle of values, the program takes the equation,
+                <em>x ⇌ rx(1 - x)</em>
+                or 
+                <code>x = r * x * (1 - x)</code> 
+                , plots the results 
+                of a few hundred iterations on one column of the diagram, and 
+                then increases the variable r (the reproductive number) by a 
+                small amount before repeating the process for the next column. 
+                The top variation has the equation plotted only after the results 
+                stabilise (<code>ignore_first_values = true</code>), and the bottom version 
+                includes the points before the stabilisation as well
+                (<code>ignore_first_values = false</code>).
+            </p>
+            <img src="./images/projects/Logistic Maps.png" alt="The Result">
+            <code>
 var r = 0;
 var starting_poluation = 0.4; // The starting population doesn't matter too much 
 var graph = new Image();
@@ -109,41 +111,77 @@ const ignore_first_values = true;
 
 var i = 0;
 repeat ammount_of_columns { // I used 4,700 - you can use for loop here instead 
-    var population = starting_poluation;
+var population = starting_poluation;
 
-    if ignore_first_values { // This part is optional 
-        repeat a_large_number { // I used 500 
-            population = run_equation(population);
-        }
-    }
-
-    repeat ammount_of_detail_per_column {  // I used 50 
+if ignore_first_values { // This part is optional 
+    repeat a_large_number { // I used 500 
         population = run_equation(population);
-        
-        draw_to_image(x = i, y = population * scale);
     }
+}
 
-    r += horizontal_detail;  // I used 0.0009 
-    i++;
+repeat ammount_of_detail_per_column {  // I used 50 
+    population = run_equation(population);
+    
+    draw_to_image(x = i, y = population * scale);
+}
+
+r += horizontal_detail;  // I used 0.0009 
+i++;
 }
 
 save_the_image();
-                </code>
+            </code>
 
-                <h2 class="no-bottom">Resources</h2>
-                <ul>
-                    <li>
-                        <a href="https://www.youtube.com/watch?v=_BvAkyuWhOI&t=884s">
-                            YouTube - Simulating the Logistic Map in MatLab
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.youtube.com/watch?v=ovJcsL7vyrk&t=398s">
-                            YouTube - This equation will change how you see the world (the logistic map)
-                        </a>
-                    </li>
-                </ul>
-            </article>
-        </div>
+            <h2 class="no-bottom">Resources</h2>
+            <ul>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=_BvAkyuWhOI&t=884s">
+                        YouTube - Simulating the Logistic Map in MatLab
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=ovJcsL7vyrk&t=398s">
+                        YouTube - This equation will change how you see the world (the logistic map)
+                    </a>
+                </li>
+            </ul>
+        </article>
+
+        <h1 id='inverse-kinematics'>Simple Inverse Kinematics</h1>
+        <article>
+            <p>
+                This version of inverse kinematics isn't the most accurate, 
+                but it's easier so understand compared to the other version, 
+                and has the benefit of being able to bend each individual 
+                joint in any direction, at the cost of not being able to control 
+                that direction.
+            </p>
+            <canvas id='ik-interactive'></canvas>
+            <script src="./js/ik-interactive.js"></script>
+            <p>
+                It works by looping through each segment from front to back, and for 
+                each one, pointing in the direction of it's target (either the main 
+                target or the end of the previous segment) and moving one end to meet 
+                it there. It then moves the whole thing back to the anchored position.
+            </p>
+            <code>
+for i, loop_through_all_segments { // Start with the 'hand' end
+	update_target_position();
+	
+	if i != 0 {
+		set_target_to_the_end_of_next_segment[segment i-1];
+	}
+
+	// Move to where second_end == target 
+	first_end = target - sin/cos(angle_to_target) * segment_length;
+	second_end = target;
+}
+
+find_distance_to_anchor();
+loop_through_and_move_everything_back();
+
+draw_each_segment_as_line_from(first_end, to second_end);
+            </code>
+        </article>
     </body>
 </html>

@@ -2,15 +2,26 @@ const onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 const codeKeywords = {
     'blue': ['true', 'false', 'var', 'new', 'const'],
     'orange': ['if', 'for', '{', '}', 'repeat'],
-    'red': '!0123456789'.split('')
+    'red': '0123456789'.split('')
 }
 
 var banner
 
 window.onload = ()=>{
+    // Put the content into a div#main-content
+    let mainContent = document.createElement('div')
+    mainContent.id = 'main-content'
+    mainContent.innerHTML = document.body.innerHTML
+    document.body.innerHTML = ''
+    
+    banner = document.createElement('div')
+    banner.id = 'page-banner'
+
+    document.body.appendChild(banner)
+    document.body.appendChild(mainContent)
+
     // Set the page banner based on the meta tag
     let bannerImage = document.querySelector("meta[name=page-banner]").content
-    banner = document.getElementById('page-banner')
     banner.style.backgroundImage = `url(${bannerImage})`
 
     // Make every other h1 margin left & right reversed
