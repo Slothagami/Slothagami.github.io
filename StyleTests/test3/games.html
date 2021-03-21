@@ -15,7 +15,7 @@
                 flex-wrap: wrap;
                 padding: 10px;
             }
-            a{
+            #main-content a {
                 background-size:cover;
                 background-position: center;
                 width: 50%;
@@ -65,6 +65,7 @@
             <section></section>
 
             <script>
+                // Make Game Elements
                 class Game {
                     constructor(name='Unnamed', page='#', cover='../../images/DarkBackground.jpg', video=null) {
                         this.name  = name
@@ -77,6 +78,7 @@
                         let a = document.createElement('a')
                         a.href = this.page
                         a.style.backgroundImage = `url(${this.cover})`
+                        a.className = 'game'
 
                         let div = document.createElement('div')
                         let video = document.createElement('video')
@@ -117,8 +119,20 @@
                         '../../images/games/gravity-screensaver-vid.mp4'
                     )
                 ]
+                const gameresize = ()=>{
+                    let el = document.getElementsByClassName('game'),
+                        ratio = 430 / 768
+
+                    for(let i = 0; i < el.length; i++) {
+                        //console.log(el[i])
+                        el[i].style.height = window.innerWidth / 2 * ratio + 'px'
+                    }
+                }
 
                 for(let i of games) i.appendElement()
+
+                gameresize()
+                window.addEventListener('resize', gameresize)
             </script>
         </div>
     </body>
