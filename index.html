@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Style Test 3</title>
+        <title>Slothagami</title>
 
         <meta name='page-banner' content="./images/DarkBackground.jpg">
 
         <link rel="stylesheet" href="./style.css">
         <script src="./pages.js"></script>
 
-        <style>#main-content{padding-top:0}</style>
+        <style>
+            #main-content{padding-top:0}
+            table a {
+                padding: 30px;
+                display: block;
+                color: white;
+            }
+            table a:hover {
+                text-decoration: none;
+                color: white;
+            }
+        </style>
     </head>
     <body>
         <table>
@@ -22,14 +33,18 @@
             </tr>
         </table>
 
-        <h1>Title</h1>
+        <h1>About Me</h1>
         <article>
             <p>
-                About Me
+                I'm an indie game developer with a webiste. I make games, do math stuff, explain it 
+                to you, and occasionally participate in Ludum Dare Competitions.
             </p>
-            <p>
-                Another Paragraph
-            </p>
+            <h2 class="no-bottom">Relevant Links</h2>
+            <ul>
+                <li><a href="https://github.com/Slothagami">Github</a></li>
+                <li><a href="https://slothagami.itch.io/">Itch.io</a></li>
+                <li><a href="https://www.patreon.com/Slothagami">Patreon</a></li>
+            </ul>
         </article>
     </body>
 </html>

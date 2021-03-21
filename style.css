@@ -1,5 +1,18 @@
 :root {
     --theme-color: #F26A1B;
+
+    /*Old Colors*/
+    --bg-color:      #0A0B0D;
+	--color-dark-1:  #131418;
+	--color-dark-2:  #1D1E22;
+	--color-light-1: #2C303B;
+	--color-green:   #5BA68A;
+	--color-blue:    #698997;
+	--color-yellow:  #BFB47A;
+	--color-red:     #8C3503;
+	--color-orange:  #F26A1B;
+	--color-text:    #ffffff;
+	--color-text-2:  #a5a5a5;
 }
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:#000}
@@ -16,6 +29,7 @@ body{
     background-color: #080808;
     background-position: top;
     margin: 0;
+    overflow-x: hidden;
 }
 #main-content{
     padding-top: 25px;
@@ -72,7 +86,9 @@ ul {
     margin: 0;
     padding: 10px;
 }
-
+li {
+    padding: 3px;
+}
 table {
     width: 100%;
 }
@@ -86,9 +102,6 @@ a:hover {
 }
 th:hover {
     background-color: black;
-}
-th{
-    padding: 20px;
 }
 article img{
     width: 100%;

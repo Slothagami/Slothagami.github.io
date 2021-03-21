@@ -15,6 +15,7 @@
                 <li> <a href="#cellular-automata">Cellular Automata Caves</a> </li>
                 <li> <a href="#logistic-map">Logistic Map</a> </li>
                 <li> <a href="#inverse-kinematics">Inverse Kinematics</a> </li>
+                <li> <a href="#mandlebrot-set">Mandlebrot Set</a> </li>
             </ul>
         </article>
 
@@ -55,23 +56,23 @@ generating_initial_noise = true;
 applying_the_rule = false;
 
 repeat ammount_of_detail {
-for every_pixel {
-    if generating_initial_noise {
-        this_pixel.type = xx%_chance // Chance of being on or off
-    }
-    
-    if applying_the_rule {
-        neighbors = count_ajacent_pixels_of_same(type);
-        
-        if neighbors > threshold {
-            this_pixel.type = !this_pixel.type; // Swap the type
+    for every_pixel {
+        if generating_initial_noise {
+            this_pixel.type = xx%_chance // Chance of being on or off
         }
         
-        draw_to_display();
+        if applying_the_rule {
+            neighbors = count_ajacent_pixels_of_same(type);
+            
+            if neighbors > threshold {
+                this_pixel.type = !this_pixel.type; // Swap the type
+            }
+            
+            draw_to_display();
+        }
     }
-}
-generating_initial_noise = false;
-applying_the_rule = true;
+    generating_initial_noise = false;
+    applying_the_rule = true;
 }
             </code>
 
@@ -90,10 +91,7 @@ applying_the_rule = true;
             <p>
                 A population modelling equation that mostly stabilises as a 
                 consistent value or a cycle of values, the program takes the equation,
-                <em>x ⇌ rx(1 - x)</em>
-                or 
-                <code>x = r * x * (1 - x)</code> 
-                , plots the results 
+                <code class='math'>x ⇌ rx(1 - x)</code>, plots the results 
                 of a few hundred iterations on one column of the diagram, and 
                 then increases the variable r (the reproductive number) by a 
                 small amount before repeating the process for the next column. 
@@ -111,22 +109,22 @@ const ignore_first_values = true;
 
 var i = 0;
 repeat ammount_of_columns { // I used 4,700 - you can use for loop here instead 
-var population = starting_poluation;
+    var population = starting_poluation;
 
-if ignore_first_values { // This part is optional 
-    repeat a_large_number { // I used 500 
-        population = run_equation(population);
+    if ignore_first_values { // This part is optional 
+        repeat a_large_number { // I used 500 
+            population = run_equation(population);
+        }
     }
-}
 
-repeat ammount_of_detail_per_column {  // I used 50 
-    population = run_equation(population);
-    
-    draw_to_image(x = i, y = population * scale);
-}
+    repeat ammount_of_detail_per_column {  // I used 50 
+        population = run_equation(population);
+        
+        draw_to_image(x = i, y = population * scale);
+    }
 
-r += horizontal_detail;  // I used 0.0009 
-i++;
+    r += horizontal_detail;  // I used 0.0009 
+    i++;
 }
 
 save_the_image();
@@ -182,6 +180,129 @@ loop_through_and_move_everything_back();
 
 draw_each_segment_as_line_from(first_end, to second_end);
             </code>
+
+            <h2 class='no-bottom'>Resources</h2>
+            <ul>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=hbgDqyy8bIw">
+                    YouTube - Coding Challenge #64.2: Inverse Kinematics</a>
+                </li>
+            </ul>
+        </article>
+
+        <h1 id='mandlebrot-set'>Mandlebrot Set</h1>
+        <!--Needs Expanding for Julias sets-->
+        <article>
+            <p>
+                This one has a little bit of fancy math involved, 
+                but it's actually not that bad once you understand it.
+                The Mandlebrot set is generated using only one equation:
+                <code class='math'>z ⇌ z<sup>2</sup> + c </code>
+                Where 
+                <em><code>z</code> & <code>c</code> are complex numbers.</em> 
+                <code>z</code> is the number to be ckecked against and 
+                <em><code>c</code> is the position</em> of the point to be checked.
+            </p>
+            <h2>Complex Numbers</h2>
+            <p>
+                Complex numbers are an incredibly interesting math concept, but 
+                for our purposes, they're like a <code class='math'>Vector2</code>
+                (usually written as <code>x + yi</code>, where <code>i</code> is the
+                imaginary unit (but you can ignore that when coding)) that has a special way you 
+                need to operate on it. Below are the special 
+                methods relevant to this project:
+            </p>
+            <code>
+complexNumber = (<span class='blue'>realPart</span> + <span class='orange'>imaginaryPart</span> * i)
+
+// Addition
+(<span class='blue'>a</span> + <span class='orange'>b</span>*i) + (<span class='blue'>c</span> + <span class='orange'>d</span>*i) = (<span class='blue'>a+c</span> + <span class='orange'>b+d</span> * i)
+
+// Multiplication
+(<span class='blue'>a</span> + <span class='orange'>b</span>*i) * (<span class='blue'>c</span> + <span class='orange'>d</span>*i) = (<span class='blue'>a*c - b*d</span> + <span class='orange'>a*d + b*c</span> * i)
+            </code>
+
+            <h2>Back to the Mandlebrot Set</h2>
+            <p>
+                Each point of the Mandlebrot set is a result of a test based on the equation above, 
+                run 200-300 times, and mapped to the screen. 
+                (the set starts at -2 and ends at 2 on both axes) 
+                Basically for every pixel you run the equation a few hundred times, and test the 
+                resulting numbers distance to (0,0) to see if it's greater than 2, if it is, 
+                you can color that point the background color, otherwise, it's in the set! 
+                you can color it the set color (The Black Part)!
+            </p>
+            <img src="./images/projects/Mandlebrot set.png" alt="The Final Product">
+            
+            <h2>What About the Colored Part?</h2>
+            <p>
+                To get the colors on the outside of the set, 
+                you need to count how many iterations it took to get that far away 
+                (you can just return the 'i' in your for loop when the result's distance to 
+                the origin is > 2) and color the outside pixels based on that number.
+            </p>
+            <p>
+                Here's a trick to color it anything you want:
+            </p>
+            <code class='math'>
+i = the_number_of_iterations_before_dist_exceeded_2
+color = rgb(i * red, i * green, i * blue)
+            </code>
+
+            <h2>The Final Code</h2>
+            <p>
+                Here is what the final program should look like, what else can you change?
+                What happens when you change the power of <code>z</code>?
+            </p>
+            <code>
+for (x, y) every_pixel { // keep x and y between 2 and -2
+    c = new ComplexNumber(x, y)
+    x = new ComplexNumber(0, 0)
+
+    color = iterate()
+    color = rgb(color * red, color * green, color * blue)
+
+    draw_pixel(x, y, color)
+}
+
+function iterate() {
+    repeat 200-300 times {
+        c = ComplexNumber.pow(z, 2) + c
+        if dist(c, (0,0)) >= 2 {
+            return i
+        }
+        return 0
+    }
+}
+            </code>
+
+            <h2 class="no-bottom">Resources</h2>
+            <ul>
+                <li>
+                    <a href="https://fractaltodesktop.com/mandelbrot-set-basics/index.html">
+                    Mandlebrot Set Basics - Fractal to Desktop</a>
+                </li>
+                <li>
+                    <a href="https://www.mathsisfun.com/numbers/complex-numbers.html">
+                    Complex Numbers - Math is Fun</a>
+                </li>
+                <li>
+                    <a href="https://www.symbolab.com/solver/complex-numbers-calculator/">
+                    Complex Numbers Calculator - Symbolab</a>
+                </li>
+                <li>
+                    <a href="https://www.geeksforgeeks.org/product-of-complex-numbers-using-three-multiplication-operation/">
+                    Product of Complex Numbers Code - GeeksForGeeks</a>
+                </li>
+                <li>
+                    <a href="https://www.mathsisfun.com/algebra/complex-plane.html">
+                    Complex Plane - Math is Fun</a>
+                </li>
+                <li>
+                    <a href="https://www.mathsisfun.com/numbers/imaginary-numbers.html">
+                    Imaginary Numbers - Math is Fun</a>
+                </li>
+            </ul>
         </article>
     </body>
 </html>

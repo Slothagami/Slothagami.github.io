@@ -5,9 +5,19 @@ const codeKeywords = {
     'red': '0123456789'.split('')
 }
 
-var banner
+// Make js file to auto do this seperately, adds link element to page in this file
+// use in chrome extension
+// use classes to indicate language
 
+var banner
 window.onload = ()=>{
+    // Add Favicon
+    let favicon  = document.createElement('link')
+        favicon.rel  = "shortcut icon"
+        favicon.type = "image/x-icon"
+        favicon.href = "/favicon.ico?v=2"
+    document.head.appendChild(favicon)
+
     // Put the content into a div#main-content
     let mainContent = document.createElement('div')
     mainContent.id = 'main-content'
@@ -33,41 +43,6 @@ window.onload = ()=>{
         h1s[i].style.marginRight = 0
     }
 
-    // Color Code the <code> elements
-    let codes = document.getElementsByTagName('code')
-    for(let code of codes) {
-        let lines = code.innerHTML.trim().split('\n')
-        let newLines = []
-
-        for(line of lines) {
-            // Color Code Text
-            let s = line.search('//')
-            let ln = line
-
-            if(s != -1) {
-                // Insert <span class=green> at spot, and append /span
-                ln = ln.insert(s, '<span class="green">')
-                ln += '</span>'
-            }
-
-            // Color text based on codeKeywords const
-            for(let color of Object.keys(codeKeywords)) {
-                ln = colorKeywords(ln, codeKeywords[color], color)
-            }
-            newLines.push(ln)
-        }
-
-        code.innerHTML = newLines.join('\n')
-
-        // Remove anu colors in .green spans
-        let greens = document.querySelectorAll('code .green')
-        for(let green of greens) {
-            spans = green.getElementsByTagName('span')
-            for(let span of spans) 
-                span.className = 'green'
-        }
-    }
-
     // Add Mobile Stylesheet if on mobile
     if(onMobile) {
         let link = document.createElement('link')
@@ -76,6 +51,12 @@ window.onload = ()=>{
 
         document.head.appendChild(link)
     }
+    // Add Code Coloring Script
+    let script = document.createElement('script')
+    script.src = './lib/code-coloring.js' 
+    // can add ./ or ../ for testing, but remove them before 
+    // going live, so it matches '/lib/code-coloring.js'
+    document.body.appendChild(script)
 
     // Events
     resize()
@@ -84,22 +65,4 @@ window.onload = ()=>{
 function resize() {
     // Resize Page Banner
     banner.style.height = window.innerHeight * 0.666 + 'px'
-}
-
-String.prototype.insert = function(index, string) {
-    if (index > 0)
-        return this.substring(0, index) + string + this.substr(index);
-
-    return string + this
-}
-
-function colorKeyword(str, keyword, color) {
-    // Colors all instances of a single word
-    return str.replaceAll(keyword, `<span class="${color}">${keyword}</span>`)
-}
-function colorKeywords(str, keywords, color) {
-    // Colors a list of words the same color
-    for(let word of keywords) 
-        str = colorKeyword(str, word, color)
-    return str
 }
