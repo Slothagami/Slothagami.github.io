@@ -1,7 +1,8 @@
 const onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 const codeKeywords = {
-    'blue': ['true', 'false'],
-    'orange': ['if', 'for', '{', '}', 'repeat'] 
+    'blue': ['true', 'false', 'var', 'new', 'const'],
+    'orange': ['if', 'for', '{', '}', 'repeat'],
+    'red': '!0123456789'.split('')
 }
 
 var banner
@@ -42,11 +43,18 @@ window.onload = ()=>{
             for(let color of Object.keys(codeKeywords)) {
                 ln = colorKeywords(ln, codeKeywords[color], color)
             }
-
             newLines.push(ln)
         }
 
         code.innerHTML = newLines.join('\n')
+
+        // Remove anu colors in .green spans
+        let greens = document.querySelectorAll('code .green')
+        for(let green of greens) {
+            spans = green.getElementsByTagName('span')
+            for(let span of spans) 
+                span.className = 'green'
+        }
     }
 
     // Add Mobile Stylesheet if on mobile

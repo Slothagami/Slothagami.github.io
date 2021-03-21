@@ -53,12 +53,19 @@ code, code span {
     tab-size: 5;
 }
 code span{display: inline;padding: 0;}
+p code {
+    display: inline;
+    padding: 5px;
+    font-size: 18px;
+}
 
 .blue   {color:#3398c4}
 .green  {color:#2a8a67}
 .yellow {color:#e2c327}
 .orange {color:#e97f42}
-.red    {color:#8C3503}
+.red    {color:#d32626}
+
+.no-bottom{padding-bottom: 0;margin-bottom: 0;}
 
 ul {
     list-style-type: none;
@@ -84,7 +91,8 @@ th{
     padding: 20px;
 }
 article img{
-    width: 60%;
+    width: 100%;
     margin: 30px auto;
     display: block;
 }
+.smaller {width: 50%;}

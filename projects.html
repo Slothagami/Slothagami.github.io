@@ -11,6 +11,11 @@
     <body>
         <div id='page-banner'></div>
         <div id='main-content'>
+            <h1>Contents</h1>
+            <article>
+
+            </article>
+
             <h1>Cellular Automata Caves</h1>
             <article>
                 <p>
@@ -33,7 +38,7 @@
                     outside counts as, I generally prefer to leave the edges 
                     as 'off'.
                 </p>
-                <img src="./images/projects/cellCaves.png" alt="What the result looks like">
+                <img src="./images/projects/cellCaves.png" alt="What the result looks like" class="smaller">
                 <p>
                     The process is started by randomly filling the grid with 'on' 
                     and 'off' cells. You can use a random chance <em>(I tended to use 47%)</em>
@@ -68,11 +73,73 @@ repeat ammount_of_detail {
 }
                 </code>
 
-                <h2>Resources</h2>
+                <h2 class="no-bottom">Resources</h2>
                 <ul>
                     <li>
                         <a href="https://youtu.be/Yt27yQtGpBQ?t=205" target="_blank">
                             Creating a World for my Indie Game (Procedural Generation) || Keeper Devlog 1
+                        </a>
+                    </li>
+                </ul>
+            </article>
+
+            <h1>Logistic Map</h1>
+            <article>
+                <p>
+                    A population modelling equation that mostly stabilises as a 
+                    consistent value or a cycle of values, the program takes the equation,
+                    <em>x ⇌ rx(1 - x)</em>
+                    or 
+                    <code>x = r * x * (1 - x)</code> 
+                    , plots the results 
+                    of a few hundred iterations on one column of the diagram, and 
+                    then increases the variable r (the reproductive number) by a 
+                    small amount before repeating the process for the next column. 
+                    The top variation has the equation plotted only after the results 
+                    stabilise (<code>ignore_first_values = true</code>), and the bottom version 
+                    includes the points before the stabilisation as well
+                    (<code>ignore_first_values = false</code>).
+                </p>
+                <img src="./images/projects/Logistic Maps.png" alt="The Result">
+                <code>
+var r = 0;
+var starting_poluation = 0.4; // The starting population doesn't matter too much 
+var graph = new Image();
+const ignore_first_values = true;
+
+var i = 0;
+repeat ammount_of_columns { // I used 4,700 - you can use for loop here instead 
+    var population = starting_poluation;
+
+    if ignore_first_values { // This part is optional 
+        repeat a_large_number { // I used 500 
+            population = run_equation(population);
+        }
+    }
+
+    repeat ammount_of_detail_per_column {  // I used 50 
+        population = run_equation(population);
+        
+        draw_to_image(x = i, y = population * scale);
+    }
+
+    r += horizontal_detail;  // I used 0.0009 
+    i++;
+}
+
+save_the_image();
+                </code>
+
+                <h2 class="no-bottom">Resources</h2>
+                <ul>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=_BvAkyuWhOI&t=884s">
+                            YouTube - Simulating the Logistic Map in MatLab
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=ovJcsL7vyrk&t=398s">
+                            YouTube - This equation will change how you see the world (the logistic map)
                         </a>
                     </li>
                 </ul>
