@@ -3,21 +3,27 @@
     font-family: sans-serif;
 }
 body{
+    /*background-image: url(../../images/DarkBackground.jpg);*/
     background-size: 100%;
     background-color: #080808;
-    background-position: center;
+    background-position: top;
     margin: 0;
 }
-.main-content{
-    margin-top: 24%;
+#main-content{
+    padding-top: 25px;
     width: 100%;
     background-color: #101010;
+}
+#page-banner{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
 }
 h1 {
     padding: 20px;
     background-color: #303030;
     margin: 0;
-    margin-right: 20%;
+    margin-right: 30%;
 }
 p {
     padding: 10px;
@@ -37,8 +43,12 @@ a{
 }
 th:hover {
     background-color: black;
-    
 }
 th{
     padding: 20px;
+}
+article img{
+    width: 60%;
+    margin: auto;
+    display: block;
 }
