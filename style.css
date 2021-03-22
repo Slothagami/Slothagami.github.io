@@ -60,6 +60,7 @@ article {
 code, code span {
     white-space: pre;
     font-family: Monaco, monospace;
+    color:#ccc;
     background-color: #080808;
     display: block;
     padding: 30px;
@@ -73,11 +74,12 @@ p code {
     font-size: 18px;
 }
 
-.blue   {color:#3398c4}
-.green  {color:#2a8a67}
-.yellow {color:#e2c327}
-.orange {color:#e97f42}
-.red    {color:#d32626}
+.-keyword   {color:#3398c4}
+.-comment   {color:#2a8a67}
+.-builtin   {color:#e68f5d}
+.-function  {color:#ddce83}
+.-digit, 
+.-string    {color:#d65b5b}
 
 .no-bottom{padding-bottom: 0;margin-bottom: 0;}
 

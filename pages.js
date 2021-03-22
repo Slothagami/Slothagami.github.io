@@ -51,9 +51,10 @@ window.onload = ()=>{
 
         document.head.appendChild(link)
     }
+
     // Add Code Coloring Script
     let script = document.createElement('script')
-    script.src = './lib/code-coloring.js' 
+    script.src = '/lib/syntax-highlighting.js' 
     // can add ./ or ../ for testing, but remove them before 
     // going live, so it matches '/lib/code-coloring.js'
     document.body.appendChild(script)
