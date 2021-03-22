@@ -3,9 +3,10 @@ var fps = 8,
 	animation = [],
 	frame = 0;
 
-window.onload=function() {
+window.addEventListener('load', function() {
 	setInterval(animate, 1000 / fps);
 	bar = document.getElementById('example');
+	
 	makeAnimation('c['  ,'**|**')
 	makeAnimation('cb[' ,'```|```')
 	makeAnimation('i['  ,'*|*')
@@ -16,7 +17,7 @@ window.onload=function() {
 	makeAnimation('ub[' ,'__**|**__')
 	makeAnimation('ubi[','__***|***__')
 	makeAnimation('s['  ,'~~|~~')
-}
+})
 
 function animate() {
 	bar.innerHTML = animation[frame];

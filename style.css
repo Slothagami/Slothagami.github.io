@@ -102,12 +102,21 @@ a:hover {
     filter: brightness(70%);
     text-decoration: underline;
 }
-th:hover {
-    background-color: black;
-}
 article img{
     width: 100%;
     margin: 30px auto;
     display: block;
 }
 .smaller {width: 50%;}
+
+.download-button{
+    width: 100%;
+    display: block;
+    padding: 20px;
+    color: black;
+    font-weight: bold;
+    background-color: red;
+    text-align: center;
+    font-size: 30px;
+}
+.download-button:hover{text-decoration: none;}

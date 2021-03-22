@@ -2,77 +2,58 @@
 <html>
 	<head>
 		<title> Slothagami </title>
-		<link rel="shortcut icon" href="../favicon.ico?v=2" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="../css/style.css?v=2">
-		
-		<script rel="text/javascript" src="./js/discordHelper.js"></script>
+		<meta name='page-banner' content="/images/DarkBackground.jpg">
+
+        <link rel="stylesheet" href="../style.css">
+        <script src="/pages.js"></script>
+		<script src="./discordhelper.js"></script>
 		
 		<style>
-			.download-button{width:100%;padding:20px;border-radius:20px}
-			#DocumentationBox{
-				padding:20px;
-				background-color:var(--color-dark-1);
-				width:50%;
-				margin:auto;
-				margin-bottom:100px;
-				border-radius:20px;
-				color:white;
-			}
 			h1,p{text-align:center}
-			p{color:var(--color-text-2);font-weight:bold}
 			table{
-				width:66%;
-				margin:auto;
-				margin-top:30px;
-				margin-bottom:30px;
-				font-family:Monospace, Monaco;
-				background-color:var(--color-dark-2);
+				width:80%;
+				margin: 30px auto;
+				background-color:#080808;
 				padding:20px;
-				border-radius:20px;
 			}
 			th{text-align:left;padding-right:25px}
-			em{color:var(--color-text-2)}
+			em{color:#ccc}
 			#example{
 				width:100%;
 				height:59px;
-				padding:10px 50px;
-				background-color:var(--color-light-1);
-				border-radius:10px;
-				text-align:left;
+				padding: 10px 0;
+				margin: 30px 0;
+				background-color:#080808;
+				text-align:center;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="bodydiv">
-			<div id='DocumentationBox'>
-				<h1>Discord Formatting Helper</h1>
-				
-				<h1 id='example'></h1>
-				
-				<p>Uses Hotstrings to make Discord formatting easier to use and remember.</p>
-				<br />
-				<p>After extracting the program from the zip folder and running it:</p>
-				
-				<table>
-					<tr><th> Type</th> <th> <em>To Get</em> </th></tr>
-					<tr><th> c[  </th> <th> <em>Inline Code</em> </th></tr>
-					<tr><th> cb[ </th> <th> <em>Code Block</em> </th></tr>
-					<tr><th> i[  </th> <th> <em style='font-style:italic;font-weight:normal'>Italics</em> </th></tr>
-					<tr><th> b[  </th> <th> <em>Bold</em> </th></tr>
-					<tr><th> bi[ </th> <th> <em style='font-style:italic'>Bold Italics</em> </th></tr>
-					<tr><th> u[  </th> <th> <em style='text-decoration:underline;font-weight:normal'>Underline</em> </th></tr>
-					<tr><th> ui[ </th> <th> <em style='text-decoration:underline;font-style:italic;font-weight:normal'>Underline Italics</em> </th></tr>
-					<tr><th> ub[ </th> <th> <em style='text-decoration:underline;'>Underline Bold</em> </th></tr>
-					<tr><th> ubi[</th> <th> <em style='text-decoration:underline;font-style:italic;'>Underline Bold Italics</em> </th></tr>
-					<tr><th> s[  </th> <th> <em style='text-decoration:line-through;font-weight:normal'>Strikethrough</em> </th></tr>
-					<tr><th> q[  </th> <th> <em>Single Line Quote</em> </th></tr>
-					<tr><th> bq[ </th> <th> <em>Blockquote (Multi-line)</em> </th></tr>
-				</table>
-				
-				<a href="./Downloads/DiscordHelper.zip" class="download-button"> Download </a>
-			</div>
-		</div>
+		<h1>Discord Formatting Helper</h1>
 		
-		<div id="side-in"></div>		
+		<h1 id='example'></h1>
+		
+		<p>
+			Uses Hotstrings to make Discord formatting easier to use and remember.
+			After extracting the program from the zip folder and running it:
+		</p>
+		
+		<table>
+			<tr><th> Type</th> <th> <em>To Get</em> </th></tr>
+			<tr><th> c[  </th> <th> <em>Inline Code</em> </th></tr>
+			<tr><th> cb[ </th> <th> <em>Code Block</em> </th></tr>
+			<tr><th> i[  </th> <th> <em style='font-style:italic;font-weight:normal'>Italics</em> </th></tr>
+			<tr><th> b[  </th> <th> <em>Bold</em> </th></tr>
+			<tr><th> bi[ </th> <th> <em style='font-style:italic'>Bold Italics</em> </th></tr>
+			<tr><th> u[  </th> <th> <em style='text-decoration:underline;font-weight:normal'>Underline</em> </th></tr>
+			<tr><th> ui[ </th> <th> <em style='text-decoration:underline;font-style:italic;font-weight:normal'>Underline Italics</em> </th></tr>
+			<tr><th> ub[ </th> <th> <em style='text-decoration:underline;'>Underline Bold</em> </th></tr>
+			<tr><th> ubi[</th> <th> <em style='text-decoration:underline;font-style:italic;'>Underline Bold Italics</em> </th></tr>
+			<tr><th> s[  </th> <th> <em style='text-decoration:line-through;font-weight:normal'>Strikethrough</em> </th></tr>
+			<tr><th> q[  </th> <th> <em>Single Line Quote</em> </th></tr>
+			<tr><th> bq[ </th> <th> <em>Blockquote (Multi-line)</em> </th></tr>
+		</table>
+		
+		<a href="./Downloads/DiscordHelper.zip" class="download-button"> Download </a>
 	</body>
 </html>
