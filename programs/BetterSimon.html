@@ -2,96 +2,44 @@
 <html>
 	<head>
 		<title> Slothagami </title>
-		<link rel="shortcut icon" href="../favicon.ico?v=2" type="image/x-icon">
-		<link rel="stylesheet" type="text/css" href="../css/style.css?v=2">
-		
-		<script rel="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
-		<script rel="text/javascript" src="../js/scripts.js"></script>
-		<script rel="text/javascript" src="../liabry/sg.js"></script>
-		
+		<meta name='page-banner' content="/images/DarkBackground.jpg">
+
+        <link rel="stylesheet" href="/style.css">
+        <script src="/pages.js"></script>
+
 		<style>
-			#DocumentationBox{
-				padding:20px;
-				background-color:var(--color-dark-1);
-				width:50%;
-				margin:auto;
-				margin-bottom:100px;
-				border-radius:20px;
-				color:white;
-			}
-			h1,p{text-align:center}
-			p{color:var(--color-text-2);font-weight:bold}
-			.section{
-				width:80%;
-				margin:auto;
-				margin-top:30px;
-				margin-bottom:30px;
-				font-family:Monospace, Monaco;
-				background-color:var(--color-dark-2);
-				padding:20px;
-				border-radius:20px;
-			}
-			em{color:var(--color-text-2)}
-			#DocumentationBox p a{color:var(--color-orange);text-decoration:underline}
-			#DocumentationBox p a:hover{color:var(--color-red)}
-			.section em{color:var(--color-orange)}
-			.section h1{font-size:25px;margin:10px}
-			img{width:100%;border-radius:5px}
-			.download-button{
-				width:100%;
-				padding:20px;
-				border-radius:20px;
-				color:var(--text-1);
-			}
-			.toggleButton:hover{
-				color:#777;
-			}
+			ul{list-style-type:circle;margin-left:20px;}
+			.download-button{margin-top: 40px;}
 		</style>
-		<script>function toggleContent(id){
-			var element = document.getElementById(id);
-			switch(element.style.display){
-				case 'block': element.style.display='none';  break;
-				case 'none':  element.style.display='block'; break;
-			}
-		}</script>
 	</head>
 	<body>
-		<div id="bodydiv">
-			<div id='DocumentationBox'>
-				<h1>Better SIMON</h1>
-				
-				<img src='./images/betterSimon.png' />
-				
-				<div class='section'>
-					<style>li{margin-bottom:10px}</style>
-					<ul>
-						<li>Makes the timetable easier to read.</li>
-						<li>Customiseable background.</li>
-						<li>Changes the background on sport days.</li>
-						<li>Hover over a class to see the Teachers name and Room the class is in.</li>
-						<li>Hidden box at bottom of screen to count words in assesments.</li>
-					</ul>
-				</div>
-				
-				<div class='section'>
-					<h1 onclick='toggleContent("install")' class='toggleButton'>Installation</h1>
-					<p id='install' style='display:none'>
-						Download the file, right click it and select <em>'Extract all'</em>
-						<br />
-						<br />
-						Once the file has been downloaded, on edge, Press 
-						<em>Alt + F</em> and select <em>Extensions</em>	
-						<br />
-						<br />
-						Then, in the bottom corner, <em>Turn on Developer mode</em> and
-						click on <em>Load Unpacked</em> then <em>select the folder</em> called BetterSimon-2.1
-					</p>
-				</div>
-				
-				<a href="./Downloads/BetterSimon-2.2.zip" class="download-button"> Download v2.2 </a>
-			</div>
-		</div>
-		
-		<div id="side-in"></div>		
+		<h1>Better SIMON</h1>
+		<article>
+			<p>
+				A Browser Extension to make it easier to read your 
+				timetable.
+			</p>
+
+			<h2>Features</h2>
+			<ul>
+				<li>Makes the timetable easier to read</li>
+				<li>Customiseable background</li>
+				<li>Hover over a class to see the Teachers name and Room the class is in</li>
+				<li>Hidden box at bottom of screen to count words in assesments</li>
+			</ul>
+
+			<h2>How to install</h2>
+			<p>
+				Download the file, right click it and select 'Extract all'.
+
+				Once the file has been downloaded, go to your browsers extension
+				settings and turn developer mode on.
+
+				Then, find an option called "Load Unpacked" then select the folder 
+				you extracted from the zip (it should be called BetterSimon-2.x)
+			</p>
+
+			<a href="./download/BetterSimon-2.4.zip" class="download-button">Download</a>
+		</article>
 	</body>
 </html>
