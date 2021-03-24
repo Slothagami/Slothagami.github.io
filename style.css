@@ -1,7 +1,7 @@
 :root {
     --theme-color: #F26A1B;
 
-    /*Old Colors*/
+    /* Old Colors */
     --bg-color:      #0A0B0D;
 	--color-dark-1:  #131418;
 	--color-dark-2:  #1D1E22;
@@ -54,9 +54,7 @@ p {
     font-size: 20px;
 }
 p em {color:var(--theme-color)}
-article {
-    padding: 30px 80px;
-}
+article {padding: 30px 80px}
 code, code span {
     white-space: pre;
     font-family: Monaco, monospace;
@@ -88,12 +86,8 @@ ul {
     margin: 0;
     padding: 10px;
 }
-li {
-    padding: 3px;
-}
-table {
-    width: 100%;
-}
+li {padding: 3px}
+table {width: 100%}
 a{
     text-decoration: none;
     color: var(--theme-color);

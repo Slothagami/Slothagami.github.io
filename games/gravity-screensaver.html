@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Slothagami </title>
+		<meta name='page-banner' content="/images/DarkBackground.jpg">
+		
+		<style>
+			*{font-family: sans-serif;}
+			#video {
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				min-width: 100%; 
+				min-height: 100%;
+			}
+			
+			#over {
+				/* position over video */
+				position: fixed;
+				left:43%;
+				bottom:2%;
+				width: 100%;
+				padding: 20px;
+				color:white;
+			}
+			
+			#top {
+				position:fixed;
+				bottom:3%;
+				width:100%;
+				color:white;
+				font-weight:bold;
+				font-size:900%;
+				padding:20px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<video autoplay muted loop id="video">
+			<source src="../images/games/gravity-screensaver-vid.mp4" type="video/mp4" />
+			Your browser doesn't support HTML5 Video.
+		</video>
+		
+		<h1 id="top"> Gravity Screensaver </h1>
+		<a href="./download/Gravity Screensaver.zip" id="over"> Download </a>
+	</body>
+</html>
