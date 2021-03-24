@@ -7,6 +7,7 @@ var lengthExeptions = [],
     videoHidden = true
 
 const inArray = (array, item) => array.indexOf(item) != -1
+const onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 /*
     Folder play buttons will set que to a 
@@ -462,7 +463,7 @@ window.onload = function() {
     document.getElementById('playlistlength').innerHTML = vidIds.length
 
     // Mobile CSS
-    if(sg.onMobile()) 
+    if(onMobile)
         addCss('./resources/opsMobile.css')
 }
 

@@ -7,7 +7,6 @@
         <!--  ^ Needed to display Japaneese Properly ^  -->
 
         <script src='./resources/ops.js'></script>
-        <script src='../libary/sg.js'></script>
         
         <link rel="stylesheet" href="./resources/ops.css">
     </head>
@@ -27,7 +26,7 @@
                 defWidth=560, 
                 defHeight=315, 
                 ratio = defHeight / defWidth,
-                width = sg.onMobile()? window.innerWidth: window.innerWidth * 0.7,//0.45,
+                width = onMobile? window.innerWidth: window.innerWidth * 0.7,//0.45,
                 height = width * ratio
 
             function onYouTubePlayerAPIReady() {
