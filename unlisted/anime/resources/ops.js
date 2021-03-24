@@ -376,8 +376,10 @@ const animes = {
         ),
         new Anime(
             'Higarashi: When they Cry',
-            [new Op('OP', 'soQjR5_GHXI'),
-             new Op('ED', 'E4_pLpqerqQ')]
+            [new Op('OP',   'soQjR5_GHXI'),
+             new Op('ED',   'E4_pLpqerqQ'),
+             new Op('ED 2', 'wxHRFdHemiQ')],
+            'higurashi-when-they-cry.jpg'
         ),
     ],
 }
