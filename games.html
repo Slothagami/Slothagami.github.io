@@ -114,6 +114,10 @@
                 for(let i = 0; i < el.length; i++) {
                     //console.log(el[i])
                     el[i].style.height = window.innerWidth / 2 * ratio + 'px'
+                    if(onMobile){
+                        el[i].style.width = '100%'
+                        el[i].style.height = window.innerWidth * ratio + 'px'
+                    }
                 }
             }
 
