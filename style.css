@@ -46,14 +46,15 @@ h1 {
     background-color: #303030;
     margin: 0;
     margin-right: 30%;
+    font-size: 2.5em;
 }
 p {
     padding: 10px;
     line-height: 170%;
     margin: 0;
-    font-size: 20px;
+    font-size: 1.5em;
 }
-p em {color:var(--theme-color)}
+p em {color:#3398c4}
 article {padding: 30px 80px}
 code, code span {
     white-space: pre;
@@ -70,7 +71,7 @@ code span{display: inline;padding: 0;}
 p code {
     display: inline;
     padding: 5px;
-    font-size: 18px;
+    font-size: 0.8em;
 }
 
 .-keyword   {color:#3398c4}
@@ -92,6 +93,7 @@ table {width: 100%}
 a{
     text-decoration: none;
     color: var(--theme-color);
+    font-size: 1.5em;
 }
 a:hover {
     filter: brightness(70%);
@@ -112,6 +114,6 @@ article img{
     font-weight: bold;
     background-color: red;
     text-align: center;
-    font-size: 30px;
+    font-size: 3em;
 }
 .download-button:hover{text-decoration: none;}
