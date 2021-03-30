@@ -334,8 +334,10 @@ const animes = {
         ),
         new Anime(
             'The Promised Neverland',
-            [new Op('OP', '4GDVEl3qw2M'),
-             new Op('ED', '')]
+            [new Op('OP 1', '4GDVEl3qw2M'),
+             new Op('OP 2', 'Q1of7jZDWp8'),
+             new Op('ED 1', ''),
+             new Op('ED 2', '9caSP2g1eA8')]
         ),
         new Anime(
             'Fullmetal Alchemist',
