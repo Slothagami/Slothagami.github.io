@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vid Test</title>
+        <style>
+            body{margin: 0;}
+            video{width: 80%;}
+        </style>
+    </head>
+    <body>
+        <video controls
+            src="https://drive.google.com/uc?id=1vyg4YZgtxIdIc6WxyCfBYgNEitIBV_wa"
+            onended="alert('Finished')"
+        ></video>
+        <script>
+            window.onload = () => {
+                let vid = document.querySelector('video')
+                vid.play() // have to have interacted with document first
+            }
+        </script>
+    </body>
+</html>
