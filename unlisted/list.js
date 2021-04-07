@@ -1,21 +1,5 @@
 // Song is written as ["Song Name", "CoverImage", "id"]
 const playlist = {
-    "Anime": {
-        groups: [
-            {
-                name: "",
-                songs: [
-                    ["Main Songs", "", ""]
-                ]
-            },
-            {
-                name: "My Hero Academia",
-                songs: [
-                    ["BNHA", "", ""]
-                ]
-            }
-        ]
-    },
     "Undertale": {
         background: "./images/covers/undertale.png",
         groups: [

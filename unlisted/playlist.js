@@ -6,7 +6,7 @@
         div.group
             <songElements>
 */
-var video
+var video, audio, progress
 function setupEvents() {
     forElements(".group-title", e => {
         e.parentNode.querySelector('div.group').style.display = "flex"
@@ -33,6 +33,22 @@ function setupEvents() {
 }
 
 window.addEventListener("load", ()=>{
+    progress = document.getElementById('progress')
+    audio = document.querySelector('audio')
+    audio.volume = 1
+    // audio.duration audio.currentTime audio.paused audio.pause() audio.play()
+    let control = document.querySelector('.audio-controls')
+    control.onclick = ()=> {
+        if(audio.paused) audio.play(); else audio.pause()
+    }
+    setInterval(()=>{
+        let perc    = audio.currentTime / audio.duration,
+            elemWid = window.innerWidth * .82,
+            wid     = elemWid * perc
+
+        progress.style.width = wid + "px"
+    }, 250)
+
     video = document.getElementById("video")
 
     // Start generating
