@@ -6,7 +6,7 @@
         div.group
             <songElements>
 */
-var video, audio, progress
+var video, audio, progress, playImg, playTitle
 function setupEvents() {
     forElements(".group-title", e => {
         e.parentNode.querySelector('div.group').style.display = "flex"
@@ -26,18 +26,28 @@ function setupEvents() {
     })
     forElements(".song", e => {
         e.onclick = function() {
-            let id = this.querySelector("data").value
-            video.src = Create.videoUrl(id)
+            let id    = this.querySelector("data").value
+            let img   = this.querySelector("img").src
+            let title = this.querySelector("h1").innerText
+
+            playImg.src         = img
+            playTitle.innerText = title
+            audio.src           = Create.videoUrl(id)
+
+            audio.play()
         }
     })
 }
 
 window.addEventListener("load", ()=>{
-    progress = document.getElementById('progress')
-    audio = document.querySelector('audio')
+    progress  = document.getElementById('progress')
+    playImg   = document.getElementById('playing-image')
+    playTitle = document.querySelector('#audio-controls h1')
+    audio     = new Audio()
+
     audio.volume = 1
     // audio.duration audio.currentTime audio.paused audio.pause() audio.play()
-    let control = document.querySelector('.audio-controls')
+    let control = document.getElementById('audio-controls')
     control.onclick = ()=> {
         if(audio.paused) audio.play(); else audio.pause()
     }
@@ -48,8 +58,6 @@ window.addEventListener("load", ()=>{
 
         progress.style.width = wid + "px"
     }, 250)
-
-    video = document.getElementById("video")
 
     // Start generating
     let keys = Object.keys(playlist)
@@ -116,7 +124,7 @@ class Create {
         return container
     }
     static videoUrl(id) {
-        return `https://drive.google.com/uc?id=${id}`
+        return `https://drive.google.com/uc?export=download&id=${id}`
     }
 }
 

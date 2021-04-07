@@ -1,5 +1,16 @@
 // Song is written as ["Song Name", "CoverImage", "id"]
 const playlist = {
+    "Anime": {
+        background: "",
+        groups: [
+            {
+                name: "",
+                songs: [
+                    ["Gorino's Theme", "gorino-theme.jpg", "1EjVPLKgXEsV-cV7FciiSC5AA9HyViAPp"]
+                ]
+            }
+        ]
+    },
     "Undertale": {
         background: "./images/covers/undertale.png",
         groups: [
