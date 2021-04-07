@@ -1,11 +1,8 @@
 /*
-    if len > 2 {
-        div.group-header
-            h1 "name"
-    }
-        div.group
-            <songElements>
+    Preload next song in playlist, some delay when choosing song, 
+    but should be none when playing in sequence
 */
+
 var video, audio, progress, playImg, playTitle
 function setupEvents() {
     forElements(".group-title", e => {
