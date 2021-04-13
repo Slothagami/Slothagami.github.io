@@ -36,7 +36,7 @@ table{
     bottom: 0;
     left: 0;
 }
-#audio-controls {
+#controls {
     width: 82%;
     position: fixed;
     bottom: 0;
@@ -52,7 +52,7 @@ table{
     width: 18vw;
     outline: 2px solid black;
 }
-#audio-controls h1 {
+#controls h1 {
     padding-left: 2vw;
     width: 100%;
     position: relative;
@@ -98,7 +98,7 @@ table{
     width: 100%;
 }
 
-#video {
+video {
     position:fixed;
     top: 0;
     right: 0;

@@ -1,0 +1,8 @@
+video {
+    width:100%;
+    top:auto;
+    bottom: 0;
+}
+.song{width: 100%;}
+.song h1, .group-title, #controls h1 {font-size: 4vw;}
+.section-title {font-size: 6vw;}

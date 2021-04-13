@@ -3,7 +3,8 @@
     but should be none when playing in sequence
 */
 
-var video, audio, progress, playImg, playTitle
+var video, progress, playImg, playTitle
+const onMobile = true//Android|webOS|iPhone|iPad/i.test(navigator.userAgent)
 function setupEvents() {
     forElements(".group-title", e => {
         e.parentNode.querySelector('div.group').style.display = "flex"
@@ -29,9 +30,9 @@ function setupEvents() {
 
             playImg.src         = img
             playTitle.innerText = title
-            audio.src           = Create.videoUrl(id)
+            video.src           = Create.videoUrl(id)
 
-            audio.play()
+            video.play()
         }
     })
 }
@@ -39,21 +40,22 @@ function setupEvents() {
 window.addEventListener("load", ()=>{
     progress  = document.getElementById('progress')
     playImg   = document.getElementById('playing-image')
-    playTitle = document.querySelector('#audio-controls h1')
-    audio     = new Audio()
+    playTitle = document.querySelector('#controls h1')
+    video     = document.querySelector('video')
 
-    audio.volume = 1
-    // audio.duration audio.currentTime audio.paused audio.pause() audio.play()
-    let control = document.getElementById('audio-controls')
+    video.volume = 1
+    // video.duration video.currentTime video.paused video.pause() video.play()
+    let control = document.getElementById('controls')
     control.onclick = ()=> {
-        if(audio.paused) audio.play(); else audio.pause()
+        if(video.paused) video.play(); else video.pause()
     }
     setInterval(()=>{
-        let perc    = audio.currentTime / audio.duration,
+        let perc    = video.currentTime / video.duration,
             elemWid = window.innerWidth * .82,
             wid     = elemWid * perc
 
         progress.style.width = wid + "px"
+        if(onMobile) moveControls()
     }, 250)
 
     // Start generating
@@ -78,6 +80,13 @@ window.addEventListener("load", ()=>{
     }
 
     setupEvents()
+
+    if(onMobile) {
+        let link = document.createElement("link")
+            link.rel  = "stylesheet"
+            link.href = "./playlist-mobile.css"
+        document.head.appendChild(link)
+    }
 })
 
 class Create {
@@ -129,4 +138,26 @@ function forElements(selector, func) {
     let elements = document.querySelectorAll(selector)
     for(element of elements)
         func(element)
+}
+
+function moveControls() {
+    // move controls to not be behind the video
+    let vidHeight = video.getBoundingClientRect().height,
+        sourceVidHeight = video.videoHeight
+
+    if(sourceVidHeight > 0) {
+        forElements("#playing-image, #controls", e =>{
+            e.style.transform = `translate(0, ${-vidHeight}px)`
+        })
+        // Show Video
+        forElements("video", e => {e.style.display = "block"})
+    } else {
+        forElements("#playing-image, #controls", e =>{
+            e.style.transform = `translate(0, 0)`
+        })
+        // Hide video so it doesn't cover buttons
+        forElements("video", e => {e.style.display = "none"})
+    }
+
+    console.log(vidHeight)
 }
