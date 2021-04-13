@@ -4,7 +4,7 @@
 */
 
 var video, progress, playImg, playTitle
-const onMobile = true//Android|webOS|iPhone|iPad/i.test(navigator.userAgent)
+const onMobile = /Android|webOS|iPhone|iPad/i.test(navigator.userAgent)
 function setupEvents() {
     forElements(".group-title", e => {
         e.parentNode.querySelector('div.group').style.display = "flex"
