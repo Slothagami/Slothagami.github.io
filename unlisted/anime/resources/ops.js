@@ -158,6 +158,11 @@ const animes = {
              new Op('ED', 'cROnVpARJ0U')]
         ),
         new Anime(
+            'Wonder Egg Priority',
+            [new Op('OP', 'tVdgHnK71MY'),
+             new Op('ED', 'uDHOaDSmgBk')]
+        ),
+        new Anime(
             'That Time I got Reincarnated as a Slime',
             [new Op('OP', 'GhGTc6p8sg0'),
              new Op('ED', 'At5CKBz9QJA', true)]
