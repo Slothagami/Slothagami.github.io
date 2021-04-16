@@ -194,6 +194,11 @@ const animes = {
              'assassination-classroom-cover.jpeg'
         ),
         new Anime(
+            'Kemono Jihen',
+            [new Op('OP 1', '6wOqKhWTSGI'),
+             new Op('OP 2', 'ljBn3AQSs70')]
+        ),
+        new Anime(
             'Mob Psycho 100',
             [new Op('OP 1', 'Bw-5Lka7gPE'),
              new Op('OP 2', '86I43asqndI')]
@@ -336,6 +341,11 @@ const animes = {
             'Talentless Nana',
             [new Op('OP', 'yJPt5t5rpFc'),
              new Op('ED', '3xheGVcLPBQ')]
+        ),
+        new Anime(
+            'Mushoku Tensei: Jobless Reincarnation',
+            [new Op('OP', 'xZ-h-YSBaqc'),
+             new Op('ED', '3mLWoJF17U4')]
         ),
         new Anime(
             'The Promised Neverland',
