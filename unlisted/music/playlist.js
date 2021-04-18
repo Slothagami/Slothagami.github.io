@@ -31,8 +31,6 @@ function setupEvents() {
             playImg.src         = img
             playTitle.innerText = title
             video.src           = Create.videoUrl(id)
-
-            video.play()
         }
     })
 }
