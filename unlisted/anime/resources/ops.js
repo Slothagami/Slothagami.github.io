@@ -158,6 +158,11 @@ const animes = {
              new Op('ED', 'cROnVpARJ0U')]
         ),
         new Anime(
+            'Horimiya',
+            [new Op('OP', '8iP8xXXdvoU'),
+             new Op('ED', '')]
+        ),
+        new Anime(
             'Wonder Egg Priority',
             [new Op('OP', 'tVdgHnK71MY'),
              new Op('ED', 'uDHOaDSmgBk')]
