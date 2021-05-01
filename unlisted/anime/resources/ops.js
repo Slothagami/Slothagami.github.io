@@ -112,7 +112,8 @@ const animes = {
                 new Op("OP 2", "Ee439rxfiaM"),
                 new Op("ED",   "kr6zyU0FP_c"),
                 new Op("ED 2", "_8GQagRv8F8")
-            ]
+            ],
+            "new-game.jpg"
         ),
         new Anime(
             '彼女、お借りします', // Rent a Girfriend
@@ -172,7 +173,8 @@ const animes = {
                 new Op("OP",   "GZqvUqD7TUA"),
                 new Op("OP 2", "qqIXfl_CnYI"),
                 new Op("ED",   "AEU2nskSucQ"),
-            ]
+            ],
+            "is-it-wrong-to-try-to-pick-up-girls-in-a-dungeon.jpg"
         ),
         new Anime(
             'I don\'t want to get Hurt, so I\'ll Max Out my Defence',
