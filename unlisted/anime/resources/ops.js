@@ -101,6 +101,20 @@ const animes = {
              new Op('ED', 'UzFArt9M7JM')]
         ),
         new Anime(
+            "おれだけはいれるかくしダンジョン", // The Hidden Dungeon Only I can Enter
+            [new Op("OP", "pmAtu4T8kD4"),
+             new Op("ED", "Z2DegRTsUh0")]
+        ),
+        new Anime(
+            "NEW GAME!",
+            [
+                new Op("OP",   "dBwwipunJcw"),
+                new Op("OP 2", "Ee439rxfiaM"),
+                new Op("ED",   "kr6zyU0FP_c"),
+                new Op("ED 2", "_8GQagRv8F8")
+            ]
+        ),
+        new Anime(
             '彼女、お借りします', // Rent a Girfriend
             [new Op('OP', 'cM1WSovcn4I'),
              new Op('ED', 'lYUdHGhxCw4')]
@@ -151,6 +165,14 @@ const animes = {
                 new Op('ED 2', 'FIrLn-MaaSU')
             ],
             'love-chunibyo-and-other-delusions-cover.jpg'
+        ),
+        new Anime(
+            "Is it wrong to try to pick up Girls in a Dungeon?",
+            [
+                new Op("OP",   "GZqvUqD7TUA"),
+                new Op("OP 2", "qqIXfl_CnYI"),
+                new Op("ED",   "AEU2nskSucQ"),
+            ]
         ),
         new Anime(
             'I don\'t want to get Hurt, so I\'ll Max Out my Defence',
@@ -221,6 +243,13 @@ const animes = {
         new Anime(
             'Dr. Stone',
             [new Op('OP', 'tF4faMbs5oQ')]
+        ),
+        new Anime(
+            "JoJo's Bizarre Adventure",
+            [
+                new Op("OP", "uQhubYrHWFc"),
+                new Op("ED", "lPFzBjJp40A")
+            ]
         ),
         new Anime(
             'Charlotte',
