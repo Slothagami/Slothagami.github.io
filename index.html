@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slothagami.github.io</title>
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?v=2">
+
+        <style>
+            #logo {
+                border-radius: 100%;
+                width: 30vh;
+                margin: auto;
+            }
+            #profile {
+                margin: 3em;
+                align-items: center;
+            }
+            #profile div {
+                margin: 0;
+                width: auto;
+            }
+            .heading {
+                color: white;
+                font-size: inherit;
+                margin: none;
+                padding: 0;
+            }
+            .heading:hover {color: #aaa}
+            a { 
+                display: block;
+                padding: .5em;
+                padding-left: 1em;
+            }
+
+            @media screen and (max-width: 812px) {
+                .flex {
+                    justify-content: center;
+                    width: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex" id="profile">
+            <div style="display: block;">
+                <img src="img/logo.png" alt="Logo" id="logo">
+            </div>
+            <div>
+                <h1>Slothagami</h1>
+                <p>
+                    I'm a hobbyist programmer that enjoys nice looking simulations.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div>
+                <h2><a href="https://github.com/Slothagami" class="heading">Projects</a></h2>
+
+                <a href="./projects/complex-numbers.html">Complex Numbers</a>
+                <a href="404.html">Mandelbrot Set</a>
+                <a href="./projects/3d-rendering-and-beyond.html">3D Rendering and Beyond</a>
+                <a href="404.html">Fourier Series</a>
+                <a href="404.html">The Logistic Map</a>
+                <a href="404.html">Mandelbulb</a>
+            </div>
+            <div>
+                <h2><a href="https://slothagami.itch.io/" class="heading">Games</a></h2>
+
+                <a href="https://slothagami.itch.io/sinwave">Sinwave</a>
+                <a href="./games/unended.html">Unended</a>
+            </div>
+        </div>
+    </body>
+</html>
