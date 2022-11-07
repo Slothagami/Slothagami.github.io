@@ -153,4 +153,6 @@ img {
     .video-container, img {
         width: 100%;
     }
+
+    body {margin-bottom: 40vh}
 }
