@@ -37,8 +37,8 @@
                 color: white;
                 background-color: #950f0f;
                 padding: .2em;
-                margin: 5rem auto;
-                display: block;
+                margin: 5rem 1em;
+                display: inline-block;
                 width: 30%;
                 text-align: center;
             }
@@ -47,12 +47,25 @@
                 background-color: #710808;
             }
 
+            div.center {
+                display: flex;
+                justify-content: center;
+            }
+
         </style>
     </head>
     <body>
+        <!-- A LD 46 entry -->
         <img src="./img/unended-banner.gif" alt="Unended">
-        <a href="./downloads/unended.zip" download>download game.</a>
+
+        <div class="center">
+            <a href="https://ldjam.com/events/ludum-dare/46/unended" target="_blank">ludum dare page.</a>
+            <a href="./downloads/unended.zip" download>download game.</a>
+        </div>
         <img src="./img/unended-page.gif" alt="Page image">
-        <a href="./downloads/unended.zip" download>download game.</a>
+
+        <div class="center">
+            <a href="./downloads/unended.zip" download>download game.</a>
+        </div>
     </body>
 </html>
