@@ -87,6 +87,17 @@ a:hover {
     color: var(--theme-dblue);
 }
 
+a.button {
+    color: white;
+    font-weight: bold;
+    background-color: var(--theme-gray-2);
+    padding: 1em 2em;
+    border-radius: 2em;
+}
+a.button:hover {
+    background-color: var(--theme-gray-3);
+}
+
 .math {
     font-size: 2em;
 }
