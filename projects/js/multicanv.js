@@ -1,6 +1,7 @@
-const time = () => performance.now()/1000
+const time  = () => performance.now()/1000
 const round = (n, dp=2) => Math.round(n*10**dp)/(10**dp)
 const clamp = (x, min, max) => Math.max(Math.min(max, x), min)
+const lerp  = (a, b, perc) => a + (b-a) * perc
 
 class MultiCanv {
     constructor(fps=30, default_width=1, default_ratio=1/2, default_ord_width=4) {

@@ -6,7 +6,6 @@
         <title>Complex Numbers</title>
         <link rel="stylesheet" href="../style.css">
         <script src="js/multicanv.js"></script>
-        <script src="js/utility.js"></script>
         <script src="js/complex-1.1.js"></script>
         <script src="js/complex-numbers.js"></script>
         <script src="../import-colors.js"></script>
@@ -17,121 +16,9 @@
         <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     </head>
     <body>
-        <p id="date">October 28, 2022</p>
+        <p id="date">August 14, 2023</p>
         <h1>Complex Numbers</h1>
-        <p>
-            This is an interactive introduction 
-            to the world of complex numbers.
 
-            I've always found these numbers to be a very natural,
-            and not to mention useful, extension of the real numbers 
-            that we're used to.
-        
-            That said, the usual textbook introduction skips over
-            the most important, and most intuitive part of 
-            the entire concept!
-        </p>
-        <p>
-            Let's start by going over what we know. Let's start with real numbers. 
-            You probably have a very intuitive understanding of 
-            what multiplication and addition does to numbers, but here I'm going to ask you to 
-            think about it in a different way, one you might not have considered before.
-        </p>
-
-        <h2>Visualizing Numbers</h2>
-        <p>
-            What <i>is</i> a negative number? What does multiplying by a negative do visually?
-            play around with this interactive number line and see if you can come up with 
-            a meaningful answer.
-        </p>
-
-        <canvas class="powers-of-minus-one"></canvas>
-        <div class="interactive-controls powers-of-minus-one-controls">
-            <button> \(&times; (-1)\)</button>
-            <button> \(&times; (-2)\)</button>
-            <button> \(&times;2\)</button>
-            <button> \(+1 \)</button>
-            <button> \(-1 \)</button>
-            <button> reset </button>
-        </div>
-
-        <p>
-            Hopefully you noticed that multiplying by -1 
-            rotates the number 180 degrees, regardless of 
-            if the number was already negative, and addition
-            and subtraction always move the number to the right
-            and left respectively. Thinking of it this way adds 
-            an intuitive reason for a negative times a negative 
-            being positive, because it rotates halfway round twice,
-            making it all the way back to the positive side of the 
-            number line.
-        </p>
-        <p>
-            So adding moves the number in the direction the other number
-            is pointing, and multiplication rotates the number by the amount 
-            the other number was rotated.
-        </p>
-        <p>
-            The number one has
-            an angle of 0, because anything times one is itself, so no
-            rotation is done. the angle of -1 is 180&deg;, because it 
-            turns a number to face the opposite direction.
-        </p>
-        <p>
-            Its also interesting to note that the length of the number 
-            follows normal multiplication, ignoring the negatives, because 
-            the negatives only change the direction, not the size, of the number.
-
-            That's why we're using a length of 1, because that means whatever size 
-            the number was, is multiplied by one, and doesn't change, and the result is 
-            only rotation, otherwise the length would change too.
-        </p>
-
-        <h2>What about other directions?</h2>
-        <p>
-            What if we turn a different amount, say, 90 degrees?
-            Now that we know we can rotate nunbers, why stick to the 
-            one dimensional number line?
-        </p>
-        <p>
-            We already have the tools we need to find this number. 
-            We now know that multiplying two numbers 
-            adds their angles together, and we know that -1 has an angle of 180 degrees.
-            So the number we're looking for (with an angle of 90) 
-            would be multiplied with itself to get an angle of (90&deg;+90&deg;=180&deg;),
-
-            in other words, the nuber we need is the square root of minus one, usually written 
-            as "\(i\)"
-        </p>
-        <p class="math">
-            $$i = \sqrt{-1}$$
-        </p>
-        <p>
-            So what can we do with this number? well, as you saw in the number line before, 
-            adding moves the number in the direction of whatever's been added. so now we have
-            a number pointing up, we can leave the number line.
-        </p>
-
-        <canvas class="complex-plane"></canvas>
-        <div class="interactive-controls complex-plane-controls">
-            <button> \(&times; (-1)\)</button>
-            <button> \(&times; (-i)\)</button>
-            <button> \(&times;i\)</button>
-            <button> \(+1 \)</button>
-            <button> \(-1 \)</button>
-            <button> \(+i \)</button>
-            <button> \(-i \)</button>
-            <button> reset </button>
-        </div>
-
-        <p>
-            This is what people mean when they say the Complex Plane, it refers to 
-            the space we can use that's off the normal number line.
-        </p>
-        <p>
-            But you may have noticed that we can only rotate by specific angles 
-            (multiples of 90&deg;) how do we chose any amount to rotate by?
-        </p>
 
     </body>
 </html>
