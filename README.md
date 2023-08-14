@@ -6,3 +6,5 @@ I'm a hobbyist programmer that enjoys nice looking simulations. I also sometimes
 - make github and itch.io links more obvious
 - playtest the website
 - put text horror game linked in home
+
+- make canvas cordinates based on height

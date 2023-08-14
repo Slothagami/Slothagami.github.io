@@ -1,27 +1,19 @@
-var multicanv = new MultiCanv()
-const FPS = 30
 var cam_dist = 4
-var gray, green
-window.addEventListener("load", () => {
-    multicanv.add("#no-proj", no_projection, 4, undefined, 1/3)
-    multicanv.add("#perspective", perspective, 4, undefined, 1/2)
-    multicanv.add("#spin", spin, 4, undefined, 1/2)
-    multicanv.add("#hypercube", hypercube, 5, undefined, 1/2)
-
-    setInterval(() => {multicanv.update()}, 1000 / FPS)
-})
 
 const point_proj_x = point => point[0]/(cam_dist - point[2]) * cam_dist
 const point_proj_y = point => point[1]/(cam_dist - point[2]) * cam_dist
 
-function hypercube(canv) {
-    let draw = new CDraw(canv)
-    let yrot = canv.controls.querySelector("#y-rot")
-    let wrot = canv.controls.querySelector("#w-rot")
+function init_no_projection(canv) {
+    canv.ratio = 1/3
+}
+function init_hypercube(canv) {
+    canv.coord_width = 5
+}
 
-    // convert to radians
-    yrot = yrot.value * Math.PI / 180
-    wrot = wrot.value * Math.PI / 180
+function hypercube(canv) {
+    // let draw = new CDraw(canv)
+    let yrot = canv.controls["y-rot"] * Math.PI / 180
+    let wrot = canv.controls["w-rot"] * Math.PI / 180
 
     const point_proj_3d = point => {
         let scale = cam_dist / (cam_dist - point[3])
@@ -48,14 +40,16 @@ function hypercube(canv) {
     }
 
     points3d = rotate_points_3d(points3d, yrot)
-
+    
     // draw connecting lines
+    canv.draw.clear()
     for(let point in static_points) {
         for(let other_point in static_points) {
             if(shared_ordinates(static_points[point], static_points[other_point]) == 3) {
-                draw.line(
-                    point_proj_x(points3d[point]), point_proj_y(points3d[point]),
-                    point_proj_x(points3d[other_point]), point_proj_y(points3d[other_point]),
+                let start = new Point(point_proj_x(points3d[point]), point_proj_y(points3d[point]))
+                let end   = new Point(point_proj_x(points3d[other_point]), point_proj_y(points3d[other_point]))
+                canv.draw.line(
+                    start, end,
                     static_points[point][0]==1? Theme.get("green"): Theme.get("gray-2")
                 )
             }
@@ -63,7 +57,7 @@ function hypercube(canv) {
     }
 
     for(let point of points3d) {
-        draw_3d(point, cam_dist, draw)
+        draw_3d(point, cam_dist, canv.draw)
     }
 }
 
@@ -72,29 +66,27 @@ function no_projection(canv) {
 
     draw.rect(-1, -1, 1, 1, Theme.get("gray-2"), 1)
 
-    draw.point(-1, 1)
-    draw.point(1, 1)
-    draw.point(1, -1)
-    draw.point(-1, -1)
+    draw.point(new Point(-1,  1))
+    draw.point(new Point( 1,  1))
+    draw.point(new Point( 1, -1))
+    draw.point(new Point(-1, -1))
 
 }
 
 function spin(canv) {
-    let slider = canv.controls.querySelector("input[type=range]")
-    let label  = canv.controls.querySelector("span.number")
-    label.innerText = slider.value
+    let label  = document.querySelector("#spin-label-angle")
+    label.innerText = canv.controls.angle
 
-    let angle = slider.value * Math.PI / 180
+    let angle = canv.controls.angle * Math.PI / 180
 
     draw_cube(canv, cam_dist, angle)
 }
 function perspective(canv) {
-    let slider = canv.controls.querySelector("input[type=range]")
-    let label  = canv.controls.querySelector("span.number")
-    label.innerText = slider.value
-    cam_dist = slider.value
+    let label  = document.querySelector("#perspective-label-d")
+    label.innerText = canv.controls.d
 
-    draw_cube(canv, slider.value)
+    cam_dist = canv.controls.d
+    draw_cube(canv, cam_dist)
 }
 
 function draw_cube(canv, lens_amm, rotation=0) {
@@ -112,11 +104,9 @@ function draw_cube(canv, lens_amm, rotation=0) {
         // draw lines connecting them
         for(let other_point in points) {
             if(shared_ordinates(static_points[point], static_points[other_point]) == 2) {
-                draw.line(
-                    point_proj_x(points[point]), point_proj_y(points[point]),
-                    point_proj_x(points[other_point]), point_proj_y(points[other_point]),
-                    Theme.get("gray-2"), 1
-                )
+                let start = new Point(point_proj_x(points[point]), point_proj_y(points[point]))
+                let end   = new Point(point_proj_x(points[other_point]), point_proj_y(points[other_point]))
+                draw.line(start, end, Theme.get("gray-2"), 1)
             }
         }
     }
@@ -124,7 +114,11 @@ function draw_cube(canv, lens_amm, rotation=0) {
 }
 
 function draw_3d(point, lens_amm, draw) {
-    draw.point(point_proj_x(point), point_proj_y(point))
+    let z = point[2]
+    let brightness = (z + 1.4) * .6
+    let color = `rgba(255,255,255,${brightness})`
+    let pos   = new Point(point_proj_x(point), point_proj_y(point))
+    draw.point(pos, color)
 }
 
 function shared_ordinates(p1, p2) {

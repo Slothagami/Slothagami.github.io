@@ -42,7 +42,7 @@
 
         </p>
 
-        <canvas id="no-proj"></canvas>
+        <canvas id="no_projection"></canvas>
 
         <p>
             Well, that's not very 3D, but believe it or not, we're one step away 
@@ -70,8 +70,8 @@
 
         <canvas id="perspective"></canvas>
         <div id="perspective-controls">
-            <label>\(d=\) <span class="number"></span></label>
-            <input type="range" min="3" max="10" value="4" step=".1">
+            <label>\(d=\) <span id="perspective-label-d" class="number"></span></label>
+            <input id="perspective-d" type="range" min="3" max="10" value="4" step=".1">
         </div>
 
         <p>
@@ -119,8 +119,8 @@
 
         <canvas id="spin"></canvas>
         <div id="spin-controls">
-            <label>\(\theta=\) <span class="number"></span>&deg;</label>
-            <input type="range" min="0" max="360" value="0">
+            <label>\(\theta=\) <span id="spin-label-angle" class="number"></span>&deg;</label>
+            <input id="spin-angle" type="range" min="0" max="360" value="0">
         </div>
 
         <p>
