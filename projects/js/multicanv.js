@@ -4,7 +4,7 @@ const clamp = (x, min, max) => Math.max(Math.min(max, x), min)
 const lerp  = (a, b, perc) => a + (b-a) * perc
 
 class MultiCanv {
-    constructor(fps=30, default_width=1, default_ratio=1/2, default_ord_width=4) {
+    constructor(fps=30, default_width=1, default_ratio=1/3, default_ord_width=4) {
         this.canvases = []
         this.def_width = default_width
         this.def_ratio = default_ratio
@@ -104,12 +104,19 @@ class MultiCanv {
         let controls = document.querySelector(canv_selector + "-controls")
         if(controls) {
             canv.controls = {}
+            canv.buttons  = {}
 
             // generate coltroler objects
             let inputs = controls.querySelectorAll("input")
             inputs.forEach(el => {
                 let ctrl_name = el.id.replace(name + "-", "")
                 canv.controls[ctrl_name] = new NumControler(el)
+            })
+
+            let buttons = controls.querySelectorAll("button")
+            buttons.forEach(el => {
+                let ctrl_name = el.id.replace(name + "-", "")
+                canv.buttons[ctrl_name] = el
             })
         }
 
@@ -560,7 +567,12 @@ class Draggable extends Point {
 const Origin = new Point(0, 0)
 
 class AnimatedValue {
-    constructor(current_value, target, anim_time) {
+    constructor(current_value, target, anim_time, easing="smoothstep") {
+        // stop nested animations causing rediculous performance hits
+        if(current_value instanceof AnimatedValue) current_value = current_value.valueOf()
+        if(target instanceof AnimatedValue) target = target.valueOf()
+
+        this.easing = AnimatedValue[easing]
         this.anim_time = anim_time
         this.current_value = current_value
         this.target = target
@@ -578,7 +590,11 @@ class AnimatedValue {
         return start + (end - start) * perc
     }
 
-    smoothstep(x) {
+    static linear(x) {
+        return clamp(x, 0, 1)
+    }
+
+    static smoothstep(x) {
         if(x < 0) return 0
         if(x > 1) return 1
         return 3*x**2 - 2*x**3
@@ -588,17 +604,17 @@ class AnimatedValue {
         let dtime = time() - this.anim_start
         return this.lerp(
             this.current_value, this.target, 
-            this.smoothstep(dtime / this.anim_time)
+            this.easing(dtime / this.anim_time)
         )
     }
 }
 
 class NumControler extends AnimatedValue {
-    constructor(element, anim_time=.5) {
+    constructor(element, anim_time=.5, easing="smoothstep") {
         super(
             parseFloat(element.value), 
             parseFloat(element.value), 
-            anim_time
+            anim_time, easing
         )
         this.element = element
 
@@ -622,7 +638,7 @@ class NumControler extends AnimatedValue {
 
         return this.lerp(
             this.current_value, this.target, 
-            this.smoothstep(dtime / this.anim_time)
+            this.easing(dtime / this.anim_time)
         )
     }
 }
@@ -630,6 +646,11 @@ class NumControler extends AnimatedValue {
 let multicanv = new MultiCanv()
 window.addEventListener("load", () => {
     multicanv.autosetup()
+
+    // run an init funciton if defined
+    if(typeof window["init"] == "function") {
+        init()
+    }
 })
 
   

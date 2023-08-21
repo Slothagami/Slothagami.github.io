@@ -7,8 +7,16 @@ function init_no_projection(canv) {
     canv.ratio = 1/3
 }
 function init_hypercube(canv) {
+    canv.ratio = 1/2
     canv.coord_width = 5
 }
+function init_spin(canv) {
+    canv.ratio = 1/2
+}
+function init_perspective(canv) {
+    canv.ratio = 1/2
+}
+
 
 function hypercube(canv) {
     // let draw = new CDraw(canv)

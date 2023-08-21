@@ -1,8 +1,6 @@
 var line_param
 function init_line(canv) {
-    canv.ratio = 1/3
     canv.coord_width = 10
-
     canv.add_draggable(-2, 1, "c", "blue")
 }
 
@@ -17,10 +15,6 @@ function line(canv) {
     canv.draw.text(3, 2, `t = ${round(scale)}`, "dorange")
 }
 
-
-function init_colinear(canv) {
-    canv.ratio = 1/3
-}
 
 function colinear(canv) {
     canv.draw.axes()
@@ -40,9 +34,7 @@ function colinear(canv) {
 }
 
 function init_linear_dependance_2d(canv) {
-    canv.ratio = 1/3
     canv.coord_width = 10
-
     canv.add_draggable(-2, 3, "target", "white")
 }
 function linear_dependance_2d(canv) {
@@ -68,7 +60,6 @@ function linear_dependance_2d(canv) {
 
 var start = new Point(-6/2, -3/2)
 function init_proj_diagram(canv) {
-    canv.ratio = 1/3
     canv.coord_width = 5
 
     canv.add_draggable(2, 3, "a", "orange", start)
@@ -88,7 +79,7 @@ function proj_diagram(canv) {
 
 
 function init_dot_prod(canv) {
-    canv.ratio = 1/3
+    canv.coord_width = 5
     canv.add_draggable( 3/2, 3/2, "a", "blue")
     canv.add_draggable(-1, 1, "b", "orange")
 }
@@ -106,7 +97,6 @@ const graph = t => {
         .add(new Point(-2/3, 0))
 }
 function init_derivative(canv) {
-    canv.ratio = 1/3
     canv.coord_width = 1
 }
 function derivative(canv) {
@@ -131,7 +121,6 @@ function derivative(canv) {
 
 
 function init_arclength(canv) {
-    canv.ratio = 1/3 
     canv.coord_width = 1
     canv.controls.dt.anim_time = 1
 }
@@ -149,7 +138,6 @@ function arclength(canv) {
 
 
 function init_area(canv) {
-    canv.ratio = 1/3 
     canv.coord_width = 1
     canv.controls.dt.anim_time = .8
 }
