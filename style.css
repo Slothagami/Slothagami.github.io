@@ -51,11 +51,21 @@ body {
 #date {text-align: center;}
 p {margin: 2em 0;}
 
-p, h1, h2, h3, div {
+p, h1, h2, h3, div, textarea {
     width: 70%;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+}
+
+textarea {
+    display: block;
+    width: 60%;
+    background-color: var(--theme-gray-4);
+    border: none;
+    outline: none;
+    padding: .7em;
+    resize: none;
 }
 
 h1 {
@@ -81,8 +91,8 @@ canvas {
 button {
     background-color: var(--theme-gray-3);
     border: none;
-    padding: .3em .7em;
-    border-radius: .1em;
+    padding: .7em 1.3em;
+    border-radius: 2em;
 }
 button:hover {
     background-color: var(--theme-gray-4);
@@ -167,10 +177,10 @@ input[type=range].orange::-webkit-slider-thumb {
     background: var(--theme-dorange);
 }
 input[type=range].blue::-webkit-slider-thumb:hover {
-    background: var(--theme-dblue);
+    background: var(--theme-blue);
 }
 input[type=range].blue::-webkit-slider-thumb {
-    background: var(--theme-dblue);
+    background: var(--theme-blue);
 }
 
 
@@ -190,11 +200,19 @@ iframe {
     text-align: center;
     font-style: italic;
 }
+.center {
+    display: block;
+    margin: auto;
+}
 
 img {
     width: 60%;
     display: block;
     margin: auto;
+}
+
+.space-under {
+    margin-bottom: 30vh;
 }
 
 @media screen and (max-width: 812px) {

@@ -448,6 +448,7 @@ class CDraw {
     }
 }
 
+
 class Point {
     constructor(x, y) {
         this.x = x 
@@ -496,6 +497,10 @@ class Point {
         return `Point(${this.x}, ${this.y})`
     }
 }
+const dot = (a, b) => {
+    return a.dot(b)
+}
+
 
 class Draggable extends Point {
     static anim_time = .25
