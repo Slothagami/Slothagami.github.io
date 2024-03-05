@@ -39,11 +39,12 @@ window.addEventListener("load", () => {
 })
 
 function resize() {
-    screen_ratio = window.innerHeight / window.innerWidth
+    let height = .9
+    screen_ratio = (window.innerHeight * height) / window.innerWidth
     frame.height = screen_ratio * frame.width
     
     canv.width  = window.innerWidth
-    canv.height = window.innerHeight
+    canv.height = window.innerHeight * height
 }
 
 function render_frame() {
