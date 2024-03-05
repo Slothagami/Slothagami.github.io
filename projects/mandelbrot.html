@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>  Mandelbrot  </title>
+        <link rel="stylesheet" href="../style.css">
+
+        <script src="../import-colors.js"></script>
+        <script src="./js/mandelbrot.js"></script>
+
+        <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico?v=2">
+
+        <!-- Math rendering -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+        <style>
+            body {
+                margin: 0;
+            }
+
+            #bottom {
+                margin-bottom: 30vh;
+            }
+
+            .preview {
+                font-family: monospace;
+                color: var(--theme-gray-2);
+                padding: .7em;
+            }
+
+            button {
+                margin-left: 2em;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="render"></canvas>
+        <span class="preview" id="position-prev" style="font-weight: bold;">Looking at: -0.3+0i</span>
+        <span class="preview" id="julia-prev" style="font-weight: bold; text-align: right; position: absolute; right: 0;"></span>
+
+        <p id="date"> Mar 4 2024 </p>
+        <h1> Mandelbrot Set Renderer </h1>
+        
+        <div id="settings">
+
+            <div class="row">
+                <h4>Rendering</h4>
+                <select id="render_type">
+                    <option value="mandelbrot">Mandelbrot Set</option>
+                    <option value="julia">Julia Set</option>
+                </select>
+
+                <button onclick="download_canvas()">save image</button>
+            </div>
+
+            <div class="row">
+                <h4>Resolution <span class="preview" id="res-prev">000 x 000</span></h4>
+                <input type="range" id="resolution" value="600" min="200" max="1200" step="50">
+            </div>
+
+            <div class="row">
+                <h4>Calculation Depth <span class="preview" id="depth-prev">400</span></h4>
+                <input type="range" id="depth" value="200" min="1" max="1200" step="1">
+            </div>
+        </div>
+
+        <h2>Controls</h2>
+        <p>while focused on the image:</p>
+        <ul>
+            <li>WASD to move viewport</li>
+            <li>Shift + WASD to move seed value when showing julia set</li>
+            <li>+/- to zoom</li>
+        </ul>
+        <p id="bottom">use the console to change <span class="code">resolution</span> and <span class="code">depth</span> to larger values at your own expense.</p>
+
+
+    </body>
+</html>

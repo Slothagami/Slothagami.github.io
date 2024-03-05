@@ -183,6 +183,28 @@ input[type=range].blue::-webkit-slider-thumb {
     background: var(--theme-blue);
 }
 
+select {
+    background-color: var(--theme-gray-4);
+    padding: 1em;
+    outline: none;
+    border: none;
+    border-radius: .5em;
+}
+
+ul {
+    width: 70%;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span.code {
+    font-family: monospace;
+    background-color: black;
+    padding: .3em;
+    border-radius: .1em;
+}
+
 
 .video-container {
     aspect-ratio: 16 / 9;
