@@ -84,7 +84,9 @@ function render_frame() {
 
             color = color / depth // follows that generally it gets brighter in interesting places, and in the other places, you don't need as high depth since those parts already escaped the set
             // c.fillStyle = `rgb(${color*255},${color*255},${color*255})`
-            c.fillStyle = `hsl(${Math.cos(color) * 40},70%,${color*100}%)`
+
+            let cos_aprox = -.5 * color*color + 1 // approximate cosine between 0 and 1
+            c.fillStyle = `hsl(${cos_aprox * 40},70%,${color*100}%)`
 
 
             if(color == 0 && x*x+y*y<4) c.fillStyle = "black" // in the set 
