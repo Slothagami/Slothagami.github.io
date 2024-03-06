@@ -7,7 +7,7 @@ var canv, c,
     n_constants = 100,
     prev_trace = [],
     trail_limit = 200,
-    trace_speed = 1.5
+    trace_speed = 1
 
 window.addEventListener("load", () => {
     canv = document.querySelector("canvas")
