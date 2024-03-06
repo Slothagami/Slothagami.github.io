@@ -2,7 +2,16 @@ var canv, c,
     ui_canv, uic
     mouse = {x:0, y:0}, 
     path_points = [], 
-    mouse_click = false
+    mouse_click = false,
+    n_constants = 100
+
+/* 
+    TODO:
+        - save/load files with constants
+        - change integation precision
+        - arm ghost trail
+        - add little description
+*/
 
 window.addEventListener("load", () => {
     canv = document.querySelector("canvas")
@@ -28,8 +37,32 @@ window.addEventListener("load", () => {
         mouse_click = false
     })
 
+
+    set_inputs()
+    get_inputs()
     requestAnimationFrame(main)
 })
+
+function set_inputs() {
+    let n_arms        = document.querySelector("#n_arms")
+    let n_arms_slider = document.querySelector("#n_arms_slider")
+
+    n_arms.addEventListener("change", () => {
+        n_constants = parseInt(n_arms.value)
+        n_arms_slider.value = n_arms.value
+        start()
+    })
+    n_arms_slider.addEventListener("input", () => {
+        n_constants = parseInt(n_arms_slider.value)
+        n_arms.value = n_arms_slider.value
+        start()
+    })
+}
+
+function get_inputs() {
+    n_constants = parseInt(document.querySelector("#n_arms").value)
+    start()
+}
 
 var global_t = 0
 var constants
@@ -46,16 +79,24 @@ function main() {
     requestAnimationFrame(main)
 }
 
-function start(n=10) {
-    constants = calculate_constants(n, 1000)
+function start() {
+    if(path_points.length == 0) return
+    constants = calculate_constants(n_constants, 1000)
     t = 0
+}
+function reset() {
+    constants = null 
+    uic.clearRect(0,0, ui_canv.width, ui_canv.height)
 }
 
 function resize() {
-    canv.width     = window.innerWidth
+    let canvas_width = .8
+    canv.width     = window.innerWidth * canvas_width
     canv.height    = window.innerHeight
-    ui_canv.width  = window.innerWidth
+    ui_canv.width  = window.innerWidth * canvas_width
     ui_canv.height = window.innerHeight
+
+    document.getElementById("content").style.width = window.innerWidth * (1 - canvas_width) + "px"
 }
 
 function handle_mouse_move() {
@@ -200,9 +241,12 @@ function draw_arm_segment(pos, constants, dir, i, t) {
         let radius = Math.hypot(this_const.x, this_const.y)
 
         c.strokeStyle = Theme.get("gray-3")
+        c.globalAlpha = radius * 2e-3 // fade out smaller circles that clutter the image
         c.beginPath()
         c.arc(pos.x, pos.y, radius, 0, Math.PI * 2)
         c.stroke()
+
+        c.globalAlpha = 1
     }
 
     // draw arm segment
@@ -220,5 +264,3 @@ function draw_arm_segment(pos, constants, dir, i, t) {
 
     return pos
 }
-
-// draw_apx_path(calculate_constants(500,1000), 300)

@@ -15,18 +15,66 @@
             body {
                 margin: 0;
             }
+
+            #bigrow {
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+            }
+
+            #content {
+                width: 30%;
+                border-left: 1px solid var(--theme-gray-3);
+                flex: none;
+            }
+
+            #date, h1 {
+                text-align: center;
+            }
+
+            button {
+                display: block;
+                margin: auto;
+            }
+
+            .row {
+                display: flex;
+            }
+
+            .row p {
+                margin: auto;
+            }
         </style>
 
         <!-- Math rendering -->
         <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     </head>
     <body>
-        <canvas></canvas>
 
-        <p id="date"> Mar 6 2024 </p>
-        <h1> Fourier Series </h1>
-        
+        <div id="bigrow">
+            <canvas></canvas>
+    
+            <div id="content">
+                <p id="date"> Mar 6 2024 </p>
+                <h1> Fourier Series </h1>
 
+                <p>draw something on the left, and press calculate to see your drawing being replicated by lots of spinning arms.</p>
 
+                <div class="row">
+                    <button onclick="start()">calculate</button>
+                    <button onclick="reset()">reset</button>
+                </div>
+
+                <p>not accurate enough? try adding more arms:</p>
+                <div class="row">
+                    <p>constants</p>
+                    <input type="number" id="n_arms" value="100">
+                </div>
+                <div style="margin-top: 1em;">
+                    <input type="range" id="n_arms_slider" min="2" max="200" value="100" step="1">
+                </div>
+            </div>
+        </div>
+ 
     </body>
 </html>
