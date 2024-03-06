@@ -1,24 +1,27 @@
 var canv, c, 
-    ui_canv, uic
+    drawing_canv, drc,
+    trail_canv, trc,
     mouse = {x:0, y:0}, 
     path_points = [], 
     mouse_click = false,
-    n_constants = 100
+    n_constants = 100,
+    prev_trace = [],
+    trail_limit = 200
 
 /* 
     TODO:
         - save/load files with constants
-        - change integation precision
-        - arm ghost trail
-        - add little description
 */
 
 window.addEventListener("load", () => {
     canv = document.querySelector("canvas")
     c    = canv.getContext("2d")
 
-    ui_canv = document.createElement("canvas")
-    uic     = ui_canv.getContext("2d")
+    drawing_canv = document.createElement("canvas")
+    drc     = drawing_canv.getContext("2d")
+
+    trail_canv = document.createElement("canvas")
+    trc     = trail_canv.getContext("2d")
 
     resize()
     window.addEventListener("resize", resize)
@@ -68,12 +71,23 @@ var global_t = 0
 var constants
 function main() {
     c.clearRect(0,0, canv.width, canv.height)
-    c.drawImage(ui_canv, 0, 0)
+
+    if(!constants) {
+        c.drawImage(drawing_canv, 0, 0)
+    }
 
     if(constants) {
+        // draw transparent preview of your drawing
+        c.globalAlpha = .4
+        c.drawImage(drawing_canv, 0, 0)
+        c.globalAlpha = 1
+
+
         global_t += 1.5 / path_points.length
         // draw_apx_path(constants, 400)
         draw_arm(constants, global_t)
+
+        c.drawImage(trail_canv, 0,0)
     }
 
     requestAnimationFrame(main)
@@ -86,15 +100,19 @@ function start() {
 }
 function reset() {
     constants = null 
-    uic.clearRect(0,0, ui_canv.width, ui_canv.height)
+    path_points = []
+    prev_pos = null
+    drc.clearRect(0,0, drawing_canv.width, drawing_canv.height)
 }
 
 function resize() {
     let canvas_width = .8
-    canv.width     = window.innerWidth * canvas_width
-    canv.height    = window.innerHeight
-    ui_canv.width  = window.innerWidth * canvas_width
-    ui_canv.height = window.innerHeight
+    canv.width          = window.innerWidth * canvas_width
+    canv.height         = window.innerHeight
+    drawing_canv.width  = window.innerWidth * canvas_width
+    drawing_canv.height = window.innerHeight
+    trail_canv.width    = window.innerWidth * canvas_width
+    trail_canv.height   = window.innerHeight
 
     document.getElementById("content").style.width = window.innerWidth * (1 - canvas_width) + "px"
 }
@@ -103,11 +121,11 @@ function handle_mouse_move() {
     if(!mouse_click) return
     path_points.push({...mouse}) // copy not reference
 
-    uic.fillStyle = "white"
-    // uic.fillRect(mouse.x, mouse.y, 10, 10)
-    uic.beginPath()
-    uic.arc(mouse.x, mouse.y, 1, 0, Math.PI*2)
-    uic.fill()
+    drc.fillStyle = "white"
+    // drc.fillRect(mouse.x, mouse.y, 10, 10)
+    drc.beginPath()
+    drc.arc(mouse.x, mouse.y, 1, 0, Math.PI*2)
+    drc.fill()
 }
 
 function lerp(min, max, p) {
@@ -143,8 +161,8 @@ function draw_path(samples) {
     for(let t = 0; t <= 1; t += 1/samples) {
         let point = path_point(t)
 
-        uic.fillStyle = "green"
-        uic.fillRect(point.x, point.y, 4, 4)
+        drc.fillStyle = "green"
+        drc.fillRect(point.x, point.y, 4, 4)
     }
 }
 
@@ -224,6 +242,35 @@ function draw_arm(constants, t) {
     for(let i = 1; i < constants.length; i += 2) {
         pos = draw_arm_segment(pos, constants,  1, i, t)
         pos = draw_arm_segment(pos, constants, -1, i, t)
+    }
+
+
+    prev_trace.push(pos)
+    if(prev_trace.length > trail_limit) {
+        prev_trace.shift() // remove oldest
+    }
+
+    // draw ghost trail
+    trc.strokeStyle = Theme.get("blue")
+    trc.lineWidth = 4
+    trc.clearRect(0,0, canv.width, canv.height)
+    
+    // draw prev trace
+    for(let i = 1; i < prev_trace.length; i++) {
+        // draw new line 
+        let prev_pos = prev_trace[i-1]
+        let pos      = prev_trace[i]
+
+        // fade out based on displacement
+        let displacement = Math.hypot(prev_pos.x - pos.x, prev_pos.y - pos.y)
+        let opacity = 30/displacement
+
+        trc.globalAlpha = opacity * 1/trail_limit*i * .5
+        trc.beginPath()
+        trc.moveTo(prev_pos.x, prev_pos.y)
+        trc.lineTo(pos.x, pos.y)
+        trc.stroke()
+        trc.globalAlpha = 1
     }
 }
 
