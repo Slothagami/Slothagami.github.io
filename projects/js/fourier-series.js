@@ -178,95 +178,47 @@ function draw_arm(constants, t) {
     x = constants[0].x
     y = constants[0].y
 
+    let pos = { x, y }
+
     for(let i = 1; i < constants.length; i += 2) {
-        let speed = (i + 1)/2 // to correspond with labels in the constants
-        let pos_const = constants[i]
-        let neg_const = constants[i+1]
-        let cos = Math.cos(speed * t * 2 * Math.PI)
-        let sin = Math.sin(speed * t * 2 * Math.PI)
-
-        // draw circle
-        if (i < constants.length - 1) {
-            let radius = Math.hypot(pos_const.x, pos_const.y)
-
-            c.strokeStyle = Theme.get("gray-3")
-            c.beginPath()
-            c.arc(x, y, radius, 0, Math.PI * 2)
-            c.stroke()
-        }
-
-        // draw arm segment
-        c.strokeStyle = Theme.get("gray-1")
-        c.beginPath()
-        c.moveTo(x, y)
-
-            // complex multiply
-            x += cos * pos_const.x - sin * pos_const.y
-            y += cos * pos_const.y + sin * pos_const.x
-            
-
-        c.lineTo(x, y)
-        c.stroke()
-
-
-        // draw circle
-        if (i < constants.length - 1) {
-            let radius = Math.hypot(neg_const.x, neg_const.y)
-
-            c.strokeStyle = Theme.get("gray-3")
-            c.beginPath()
-            c.arc(x, y, radius, 0, Math.PI * 2)
-            c.stroke()
-        }
-
-        // draw arm segment
-        c.strokeStyle = Theme.get("gray-1")
-        c.beginPath()
-        c.moveTo(x, y)
-
-            // negative constant
-            cos = Math.cos(-speed * t * 2 * Math.PI)
-            sin = Math.sin(-speed * t * 2 * Math.PI)
-
-            // complex multiply
-            x += cos * neg_const.x - sin * neg_const.y
-            y += cos * neg_const.y + sin * neg_const.x
-
-        c.lineTo(x, y)
-        c.stroke()
-
-        
+        pos = draw_arm_segment(pos, constants,  1, i, t)
+        pos = draw_arm_segment(pos, constants, -1, i, t)
     }
 }
 
-function draw_arm_segment(pos, constants, dir, i) {
+function draw_arm_segment(pos, constants, dir, i, t) {
     let speed = (i + 1)/2 // to correspond with labels in the constants
-        let this_const = constants[i]
-        let cos = Math.cos(dir * speed * t * 2 * Math.PI)
-        let sin = Math.sin(dir * speed * t * 2 * Math.PI)
 
-        // draw circle
-        if (i < constants.length - 1) {
-            let radius = Math.hypot(this_const.x, this_const.y)
+    if(dir == -1) i++
 
-            c.strokeStyle = Theme.get("gray-3")
-            c.beginPath()
-            c.arc(pos.x, pos.y, radius, 0, Math.PI * 2)
-            c.stroke()
-        }
+    let this_const = constants[i]
+    let cos = Math.cos(dir * speed * t * 2 * Math.PI)
+    let sin = Math.sin(dir * speed * t * 2 * Math.PI)
 
-        // draw arm segment
-        c.strokeStyle = Theme.get("gray-1")
+    // draw circle
+    if (i < constants.length - 1) {
+        let radius = Math.hypot(this_const.x, this_const.y)
+
+        c.strokeStyle = Theme.get("gray-3")
         c.beginPath()
-        c.moveTo(pos.x, pos.y)
-
-            // complex multiply
-            pos.x += cos * pos_const.x - sin * pos_const.y
-            pos.y += cos * pos_const.y + sin * pos_const.x
-            
-
-        c.lineTo(x, y)
+        c.arc(pos.x, pos.y, radius, 0, Math.PI * 2)
         c.stroke()
+    }
+
+    // draw arm segment
+    c.strokeStyle = Theme.get("gray-1")
+    c.beginPath()
+    c.moveTo(pos.x, pos.y)
+
+        // complex multiply
+        pos.x += cos * this_const.x - sin * this_const.y
+        pos.y += cos * this_const.y + sin * this_const.x
+        
+
+    c.lineTo(pos.x, pos.y)
+    c.stroke()
+
+    return pos
 }
 
 // draw_apx_path(calculate_constants(500,1000), 300)
