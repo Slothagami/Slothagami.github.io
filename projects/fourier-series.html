@@ -44,6 +44,10 @@
             .row p {
                 margin: auto;
             }
+
+            .sep {
+                margin-top: 1em;
+            }
         </style>
 
         <!-- Math rendering -->
@@ -65,14 +69,25 @@
                     <button onclick="reset()">reset</button>
                 </div>
 
-                <p>not accurate enough? try adding more arms:</p>
-                <div class="row">
+                <p>not looking right? adjust the accuracy (number of constants) and other settings here:</p>
+                <div class="row sep">
                     <p>constants</p>
                     <input type="number" id="n_arms" value="100">
                 </div>
-                <div style="margin-top: 1em;">
+                <div class="sep">
                     <input type="range" id="n_arms_slider" min="2" max="200" value="100" step="1">
                 </div>
+
+                <div class="row sep" style="margin-top: 4em;">
+                    <p>speed</p>
+                    <input type="range" id="trace_speed" value="1.5" min="0.1" max="7" style="margin: auto;" step=".1">
+                </div>
+
+                <div class="row" style="margin-top: 4em;">
+                    <button onclick="load()">import</button>
+                    <button onclick="save()">export</button>
+                </div>
+                <p>.csv files save constants in the order 0, 1, -1, 2, -2, 3, -3 ... etc</p>
             </div>
         </div>
  

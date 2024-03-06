@@ -6,12 +6,8 @@ var canv, c,
     mouse_click = false,
     n_constants = 100,
     prev_trace = [],
-    trail_limit = 200
-
-/* 
-    TODO:
-        - save/load files with constants
-*/
+    trail_limit = 200,
+    trace_speed = 1.5
 
 window.addEventListener("load", () => {
     canv = document.querySelector("canvas")
@@ -49,6 +45,7 @@ window.addEventListener("load", () => {
 function set_inputs() {
     let n_arms        = document.querySelector("#n_arms")
     let n_arms_slider = document.querySelector("#n_arms_slider")
+    let speed         = document.querySelector("#trace_speed")
 
     n_arms.addEventListener("change", () => {
         n_constants = parseInt(n_arms.value)
@@ -60,10 +57,15 @@ function set_inputs() {
         n_arms.value = n_arms_slider.value
         start()
     })
+
+    speed.addEventListener("input", () => {
+        trace_speed = parseFloat(speed.value)
+    })
 }
 
 function get_inputs() {
     n_constants = parseInt(document.querySelector("#n_arms").value)
+    trace_speed = parseFloat(document.querySelector("#trace_speed").value)
     start()
 }
 
@@ -82,8 +84,11 @@ function main() {
         c.drawImage(drawing_canv, 0, 0)
         c.globalAlpha = 1
 
-
-        global_t += 1.5 / path_points.length
+        if(path_points.length > 0) {
+            global_t += trace_speed / path_points.length
+        } else {
+            global_t += trace_speed * .001
+        }
         // draw_apx_path(constants, 400)
         draw_arm(constants, global_t)
 
@@ -93,6 +98,7 @@ function main() {
     requestAnimationFrame(main)
 }
 
+// Button Functions
 function start() {
     if(path_points.length == 0) return
     constants = calculate_constants(n_constants, 1000)
@@ -104,6 +110,65 @@ function reset() {
     prev_pos = null
     drc.clearRect(0,0, drawing_canv.width, drawing_canv.height)
 }
+function load() {
+    let input = document.createElement("input")
+        input.type = "file"
+
+        input.addEventListener("change", e => {
+            let file = e.target.files[0]
+            if(!file) return
+            let reader = new FileReader()
+
+            reader.addEventListener("load", e => {
+                let data = e.target.result
+                import_csv(data)
+            })
+
+            reader.readAsText(file)
+        })
+
+    input.click()
+}
+function save() {
+    let string = ""
+
+    constants.forEach(constant => {
+        string += `${constant.x}, ${constant.y}\n`
+    })
+
+    // download the file:
+    let file = new Blob([string], {type: "text/plain"})
+    let a = document.createElement("a")
+        a.href = URL.createObjectURL(file)
+        a.download = `fourier_${new Date().getTime()}.csv`
+        a.click()
+
+    URL.revokeObjectURL(link.href)
+}
+function import_csv(text) {
+    constants = []
+    let lines = text.split("\n")
+
+    lines.forEach(line => {
+        if(line == "") return
+        let parts = line.split(",")
+        let x = parseFloat(parts[0])
+        let y = parseFloat(parts[1])
+
+        constants.push({ x, y })
+    })
+
+    // update menus
+    let n_arms        = document.querySelector("#n_arms")
+    let n_arms_slider = document.querySelector("#n_arms_slider")
+
+    n_arms.value = constants.length
+    n_arms_slider.value = constants.length
+}
+
+
+
+
 
 function resize() {
     let canvas_width = .8
