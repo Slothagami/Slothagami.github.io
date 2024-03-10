@@ -39,7 +39,7 @@ window.addEventListener("load", () => {
 })
 
 function resize() {
-    let height = .9
+    let height = 1
     screen_ratio = (window.innerHeight * height) / window.innerWidth
     frame.height = screen_ratio * frame.width
     
