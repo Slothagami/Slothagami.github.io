@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>  {TITLE}  </title>
+        <link rel="stylesheet" href="../style.css">
+
+        <script src="./js/multicanv.js"></script>
+        <script src="../import-colors.js"></script>
+        <script src="./js/integration.js"></script>
+
+        <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico?v=2">
+
+        <!-- Math rendering -->
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    </head>
+    <body>
+        <p id="date"> Mar 10 2024 </p>
+        <h1> Integration </h1>
+        
+        <canvas id="demo"></canvas>
+        <div id="demo-controls">
+            <input type="range" id="n" min="0" max="250" step="1" value="0">
+            <input type="range" id="dt" min=".005" max=".1" step=".001" value=".1">
+        </div>
+    </body>
+</html>
