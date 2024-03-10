@@ -6,8 +6,8 @@ var canv, c,
     mouse_click = false,
     n_constants = 100,
     prev_trace = [],
-    trail_limit = 200,
-    trace_speed = 1
+    trail_limit = 400,
+    trace_speed = 2
 
 window.addEventListener("load", () => {
     canv = document.querySelector("canvas")
@@ -35,6 +35,8 @@ window.addEventListener("load", () => {
     canv.addEventListener("mouseup", () => {
         mouse_click = false
     })
+
+    import_csv(PI_CONSTANTS) // load pi example
 
 
     set_inputs()

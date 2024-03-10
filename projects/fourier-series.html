@@ -6,6 +6,7 @@
         <title> Fourier Series </title>
         <link rel="stylesheet" href="../style.css">
 
+        <script src="./js/fourier_constants_pi.js"></script>
         <script src="../import-colors.js"></script>
         <script src="./js/fourier-series.js"></script>
 
@@ -28,7 +29,7 @@
 
                 <div class="row">
                     <button onclick="start()">calculate</button>
-                    <button onclick="reset()">reset</button>
+                    <button onclick="reset()">clear</button>
                 </div>
 
                 <p>not looking right? adjust the accuracy (number of constants) and other settings here:</p>
@@ -42,7 +43,7 @@
 
                 <div class="row sep" style="margin-top: 4em;">
                     <p>speed</p>
-                    <input type="range" id="trace_speed" value="1" min="0.1" max="7" style="margin: auto;" step=".1">
+                    <input type="range" id="trace_speed" value="2" min="0.1" max="7" style="margin: auto;" step=".1">
                 </div>
 
                 <div class="row" style="margin-top: 4em;">
