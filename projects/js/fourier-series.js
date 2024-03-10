@@ -157,6 +157,9 @@ function import_csv(text) {
 
         constants.push({ x, y })
     })
+    
+    // remap first constant to position drawing to center of screen
+    constants[0] = {x: canv.width/2, y: canv.height/2}
 
     // update menus
     let n_arms        = document.querySelector("#n_arms")
