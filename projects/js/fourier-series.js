@@ -171,15 +171,17 @@ function import_csv(text) {
 
 
 function resize() {
-    let canvas_width = .8
-    canv.width          = window.innerWidth * canvas_width
+    let content      = document.getElementById("content")
+    let conent_width = content.getBoundingClientRect().width
+
+    canv.width          = window.innerWidth - conent_width
     canv.height         = window.innerHeight
-    drawing_canv.width  = window.innerWidth * canvas_width
+    drawing_canv.width  = window.innerWidth - conent_width
     drawing_canv.height = window.innerHeight
-    trail_canv.width    = window.innerWidth * canvas_width
+    trail_canv.width    = window.innerWidth - conent_width
     trail_canv.height   = window.innerHeight
 
-    document.getElementById("content").style.width = window.innerWidth * (1 - canvas_width) + "px"
+    // content.style.width = window.innerWidth * (1 - canvas_width) + "px"
 }
 
 function handle_mouse_move() {
