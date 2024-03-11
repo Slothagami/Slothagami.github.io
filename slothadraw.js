@@ -101,7 +101,7 @@ class MultiCanv {
                         multicanv.resize_canvas(canv)
                     }
                 },
-            add_control: (value_name, value, min, max, step, color) => {
+            add_control: (value_name, color, value, min, max, step) => {
                 let canvas_element = canv.canvas 
                 let controls = document.querySelector(`#${name}-controls`)
 
@@ -148,7 +148,6 @@ class MultiCanv {
 
                     table.appendChild(row)
 
-                    console.log(canv.controls, value_name)
                     canv.controls[value_name] ??= new NumControler(control)
                 }
 
@@ -161,7 +160,7 @@ class MultiCanv {
             dragging: false
         }
 
-        canv.add_draggable = (pos, name, color, offset=Origin) => {
+        canv.add_draggable = (name, color, pos, offset=Origin) => {
             new Draggable(pos.x, pos.y, name, canv, color, offset)
             return canv.drag[name]
         }

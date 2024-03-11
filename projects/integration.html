@@ -32,9 +32,9 @@
             function demo(canv) {
                 // setup canvas
                 canv.set_width(.8)
-                c  = canv.add_draggable(new Vector(.01, -.1), "c", "orange")
-                n  = canv.add_control("n",  10, 0, 200, 1, "blue")
-                dt = canv.add_control("dt", .05, .005, .1, .001)
+                c  = canv.add_draggable("c", "orange", new Vector(.01, -.1))
+                n  = canv.add_control("n",  "blue",   10,    0, 200,    1)
+                dt = canv.add_control("dt", "white", .05, .005,  .1, .001)
 
                 // draw demo
                 canv.draw.axes()
