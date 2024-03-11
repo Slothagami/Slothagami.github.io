@@ -86,79 +86,13 @@ class MultiCanv {
         let init = window[`${name}_init`]
 
         let canvas = document.querySelector(canv_selector)
-        let canv = {
-            canvas:     canvas,
-            c:          canvas.getContext("2d"),
-            controls: {},
-            function:   func,
-            width:      width || this.def_width,
-            ratio:      ratio || this.def_ratio,
-            coord_width: cordinate_width || this.def_ord_width,
-            set_width: scale => {
-                    // avoid cleaing the canvas every frame again (removing draggables displays)
-                    if(canv.coord_width != scale) {
-                        canv.coord_width = scale
-                        multicanv.resize_canvas(canv)
-                    }
-                },
-            add_control: (value_name, color, value, min, max, step) => {
-                let canvas_element = canv.canvas 
-                let controls = document.querySelector(`#${name}-controls`)
-
-                // create controls panel if it doesn't exist 
-                if(!controls) {
-                    // add controls element underneath canvas
-                    controls = document.createElement("div")
-                    controls.id = `${name}-controls`
-
-                    canvas_element.parentNode.insertBefore(controls, canvas_element.nextSibling)
-
-                    // insert a table to format the elements
-                    let table = document.createElement("table")
-                    controls.appendChild(table)
-                }
-
-                // add slider if it doesn't exist
-                let control = controls.querySelector(`#${value_name}`)
-                if(!control) {
-                    control = document.createElement("input")
-                    control.id = value_name
-                    control.type  = "range"
-                    control.min   = min 
-                    control.max   = max 
-                    control.step  = step 
-                    control.value = value
-
-                    // add a row to the table
-                    let table = controls.querySelector("table")
-                    let row   = document.createElement("tr")
-                    let label_col  = document.createElement("th")
-                    let slider_col = document.createElement("th")
-
-                    if(color) {
-                        label_col.classList.add(color)
-                        slider_col.classList.add(color)
-                        control.classList.add(color)
-                    }
-
-                    label_col.innerText = value_name
-                    slider_col.appendChild(control)
-                    row.appendChild(label_col)
-                    row.appendChild(slider_col)
-
-                    table.appendChild(row)
-
-                    canv.controls[value_name] ??= new NumControler(control)
-                }
-
-                return canv.controls[value_name]
-
-
-            },
-            mouse:      () => this.mouse_pos(canv),
-            drag: {},
-            dragging: false
-        }
+        
+        let canv   = new Canv(
+            name, canvas, func, 
+            width || this.def_width, 
+            ratio || this.def_ratio, 
+            cordinate_width || this.def_ord_width
+        )
 
         canv.add_draggable = (name, color, pos, offset=Origin) => {
             new Draggable(pos.x, pos.y, name, canv, color, offset)
@@ -230,6 +164,91 @@ class MultiCanv {
 
         let aspect_ratio = window.innerWidth / window.innerHeight
         canvas.height /= aspect_ratio/2
+    }
+}
+
+class Canv {
+    constructor(name, canvas, func, width, ratio, coord_width) {
+        this.name = name
+        this.canvas = canvas
+        this.c = canvas.getContext("2d")
+        this.controls = {}
+        this.function = func 
+
+        this.width  = width
+        this.ratio = ratio
+        this.coord_width = coord_width
+
+        this.drag = {}
+        this.dragging = false
+    }
+
+    mouse() {
+        return multicanv.mouse_pos(this)
+    }
+
+    set_width(scale) {
+        // avoid cleaing the canvas every frame again (removing draggables displays)
+        if(this.coord_width != scale) {
+            this.coord_width = scale
+            multicanv.resize_canvas(this)
+        }
+    }
+
+        // width:      width || this.def_width,
+        // ratio:      ratio || this.def_ratio,
+        // coord_width: cordinate_width || this.def_ord_width,
+    add_control(value_name, color, value, min, max, step) {
+        let canvas_element = this.canvas 
+        let controls = document.querySelector(`#${this.name}-controls`)
+
+        // create controls panel if it doesn't exist 
+        if(!controls) {
+            // add controls element underneath canvas
+            controls = document.createElement("div")
+            controls.id = `${this.name}-controls`
+
+            canvas_element.parentNode.insertBefore(controls, canvas_element.nextSibling)
+
+            // insert a table to format the elements
+            let table = document.createElement("table")
+            controls.appendChild(table)
+        }
+
+        // add slider if it doesn't exist
+        let control = controls.querySelector(`#${value_name}`)
+        if(!control) {
+            control = document.createElement("input")
+            control.id = value_name
+            control.type  = "range"
+            control.min   = min 
+            control.max   = max 
+            control.step  = step 
+            control.value = value
+
+            // add a row to the table
+            let table = controls.querySelector("table")
+            let row   = document.createElement("tr")
+            let label_col  = document.createElement("th")
+            let slider_col = document.createElement("th")
+
+            if(color) {
+                label_col.classList.add(color)
+                slider_col.classList.add(color)
+                control.classList.add(color)
+            }
+
+            label_col.innerText = value_name
+            slider_col.appendChild(control)
+            row.appendChild(label_col)
+            row.appendChild(slider_col)
+
+            table.appendChild(row)
+
+            this.controls[value_name] ??= new NumControler(control)
+        }
+
+        return this.controls[value_name]
     }
 }
 
