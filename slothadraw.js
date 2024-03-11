@@ -83,7 +83,7 @@ class MultiCanv {
         let { cordinate_width, ratio, width } = options || {}
         let canv_selector = `#${name}`
         let func = window[name]
-        let init = window[`init_${name}`]
+        let init = window[`${name}_init`]
 
         let canvas = document.querySelector(canv_selector)
         let canv = {
@@ -101,7 +101,10 @@ class MultiCanv {
             drag: {},
             dragging: false
         }
-        canv.add_draggable = (x, y, name, color, offset=Origin) => {new Draggable(x, y, name, canv, color, offset)}
+
+        canv.add_draggable = (pos, name, color, offset=Origin) => {
+            new Draggable(pos.x, pos.y, name, canv, color, offset)
+        }
         canv.draw = new CDraw(canv)
 
         // find controls element if it exists
@@ -524,7 +527,7 @@ class Draggable extends Vector {
         this.ease_in = false 
         this.ease_out = true
 
-        canv.drag[name] = this
+        canv.drag[name] ??= this
     }
 
     update() {
@@ -547,6 +550,7 @@ class Draggable extends Vector {
 
         let vpos = this.add(this.offset)
         this.canv.draw.point(vpos, this.color + "70", this.radius)
+        
 
         if(vpos.dist(mouse) < Draggable.active_dist) {
             

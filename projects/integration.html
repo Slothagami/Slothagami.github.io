@@ -21,11 +21,13 @@
         
         <canvas id="demo"></canvas>
         <script>
-
-            var vectors = []
+            
             function demo(canv) {
-                canv.set_width(2)
-                
+                canv.set_width(1)
+                canv.add_draggable(new Vector(.1, .1), "c", "orange")
+
+                canv.draw.vector(Origin, canv.drag.c, "orange")
+
                 const v_y = t => Math.sin(2*Math.PI*t  )
                 const v_x = t => Math.cos(2*Math.PI*t*2)
 
@@ -33,18 +35,21 @@
                 let n  = canv.controls.n
                 let dt = canv.controls.dt
 
-                let y  = 0
-                let x  = 0
+                let x  = canv.drag.c.x
+                let y  = canv.drag.c.y
 
                 for(let i = 0; i < n; i++) {
                     let t = i * dt
                     let p_point = new Vector(x, y)
+
                     y += v_y(t) * dt
                     x += v_x(t) * dt
+
                     canv.draw.vector(p_point, new Vector(v_x(t) * dt, v_y(t) * dt), "blue")
                 }
 
                 canv.draw.point(new Vector(x, y), "white", 12)
+                canv.draw.point(canv.drag.c, "orange")
             }
 
         </script>
