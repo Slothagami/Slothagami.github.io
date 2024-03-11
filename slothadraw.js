@@ -142,10 +142,11 @@ class MultiCanv {
             if(canv_bbox.top < window.innerHeight) {
                 if(canv_bbox.bottom > 0) {
                     canv.draw.clear()
-                    this.update_draggables(canv.drag)
+                    
                     if(typeof canv.function == "function") {
                         canv.function(canv)
                     }
+                    this.update_draggables(canv.drag)
                 }
             }
 
@@ -514,7 +515,7 @@ class Draggable extends Vector {
     static anim_time = .25
     static max_radius = 15
     static min_radius = 9
-    static active_dist = .2
+    static active_dist = .05
     constructor(x, y, name, canv, color, offset=Origin) {
         super(x, y)
         this.canv = canv
@@ -552,7 +553,7 @@ class Draggable extends Vector {
         this.canv.draw.point(vpos, this.color + "70", this.radius)
         
 
-        if(vpos.dist(mouse) < Draggable.active_dist) {
+        if(vpos.dist(mouse) < Draggable.active_dist * this.canv.coord_width) {
             
             if(!this.ease_in && !this.canv.dragging) {
                 this.ease_in = true
