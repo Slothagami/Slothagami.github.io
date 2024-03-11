@@ -89,14 +89,73 @@ class MultiCanv {
         let canv = {
             canvas:     canvas,
             c:          canvas.getContext("2d"),
+            controls: {},
             function:   func,
             width:      width || this.def_width,
             ratio:      ratio || this.def_ratio,
             coord_width: cordinate_width || this.def_ord_width,
             set_width: scale => {
-                    canv.coord_width = scale
-                    multicanv.resize_canvas(canv)
+                    // avoid cleaing the canvas every frame again (removing draggables displays)
+                    if(canv.coord_width != scale) {
+                        canv.coord_width = scale
+                        multicanv.resize_canvas(canv)
+                    }
                 },
+            add_control: (value_name, value, min, max, step, color) => {
+                let canvas_element = canv.canvas 
+                let controls = document.querySelector(`#${name}-controls`)
+
+                // create controls panel if it doesn't exist 
+                if(!controls) {
+                    // add controls element underneath canvas
+                    controls = document.createElement("div")
+                    controls.id = `${name}-controls`
+
+                    canvas_element.parentNode.insertBefore(controls, canvas_element.nextSibling)
+
+                    // insert a table to format the elements
+                    let table = document.createElement("table")
+                    controls.appendChild(table)
+                }
+
+                // add slider if it doesn't exist
+                let control = controls.querySelector(`#${value_name}`)
+                if(!control) {
+                    control = document.createElement("input")
+                    control.id = value_name
+                    control.type  = "range"
+                    control.min   = min 
+                    control.max   = max 
+                    control.step  = step 
+                    control.value = value
+
+                    // add a row to the table
+                    let table = controls.querySelector("table")
+                    let row   = document.createElement("tr")
+                    let label_col  = document.createElement("th")
+                    let slider_col = document.createElement("th")
+
+                    if(color) {
+                        label_col.classList.add(color)
+                        slider_col.classList.add(color)
+                        control.classList.add(color)
+                    }
+
+                    label_col.innerText = value_name
+                    slider_col.appendChild(control)
+                    row.appendChild(label_col)
+                    row.appendChild(slider_col)
+
+                    table.appendChild(row)
+
+                    console.log(canv.controls, value_name)
+                    canv.controls[value_name] ??= new NumControler(control)
+                }
+
+                return canv.controls[value_name]
+
+
+            },
             mouse:      () => this.mouse_pos(canv),
             drag: {},
             dragging: false
@@ -142,11 +201,11 @@ class MultiCanv {
             if(canv_bbox.top < window.innerHeight) {
                 if(canv_bbox.bottom > 0) {
                     canv.draw.clear()
+                    this.update_draggables(canv.drag)
                     
                     if(typeof canv.function == "function") {
                         canv.function(canv)
                     }
-                    this.update_draggables(canv.drag)
                 }
             }
 

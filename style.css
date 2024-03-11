@@ -7,6 +7,7 @@
     --theme-bg:      #101010;
     --theme-blue:    #5492f0;
     --theme-dblue:   #3a55dd;
+    --theme-opblue:   #454d6b4d;
     --theme-purple:  #d43cd4;
     --theme-dpurple: #A321A3;
     --theme-dgreen:  #015739;
@@ -14,6 +15,7 @@
     --theme-lgreen:  #3CF06F;
     --theme-orange:  #F09B24;
     --theme-dorange: #A36D21;
+    --theme-oporange: #4d3f2d71;
 
     --theme-gray-0: #c9c9c9;
     --theme-gray-1: #8a8a8a;
@@ -30,6 +32,27 @@
 .lgreen  {color: var(--theme-lgreen)}
 .orange  {color: var(--theme-orange)}
 .dorange {color: var(--theme-dorange)}
+
+/* .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.row p {
+    margin: .4em;
+    font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw;
+} */
+
+table {
+    width: 100%;
+}
+th {
+    font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw;
+}
+tr {
+    height: 2em;
+}
+
 
 
 body {
@@ -192,6 +215,9 @@ input[type=range].blue::-webkit-slider-thumb:hover {
 }
 input[type=range].blue::-webkit-slider-thumb {
     background: var(--theme-blue);
+}
+input[type=range].blue {
+    background: var(--theme-opblue);
 }
 
 select {

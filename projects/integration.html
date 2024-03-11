@@ -17,23 +17,32 @@
     </head>
     <body>
         <p id="date"> Mar 10 2024 </p>
-        <h1> Integration </h1>
+        <h1> The True Meaning of Integration </h1>
+
+        <p>
+            Did you know the fact that the integral calculates the area under a graph is just a mathematical coincidence? When Newton was 
+            creating calculus for use in his kinematic model of physics (\(\vec{F}=m\vec{a}\)) he likely had no idea that it was adding up the area
+            under the graph. Here is an alternate way to think about the integral, much more applicable to physics that tries to explain what 
+            an integral actually means, and how it applies to physics, in a more intuitive way.
+        </p>
         
         <canvas id="demo"></canvas>
         <script>
             
             function demo(canv) {
+                // setup canvas
                 canv.set_width(.8)
                 canv.add_draggable(new Vector(.01, -.1), "c", "orange")
 
-                canv.draw.vector(Origin, canv.drag.c, "orange")
+                n  = canv.add_control("n",  10, 0, 200, 1, "blue")
+                dt = canv.add_control("dt", .05, .005, .1, .001)
+
+                // draw demo
+                canv.draw.axes()
+                canv.draw.vector(Origin, canv.drag.c, "orange", "c")
 
                 const v_y = t => Math.sin(2*Math.PI*t  )
                 const v_x = t => Math.cos(2*Math.PI*t*2)
-
-                canv.draw.axes()
-                let n  = canv.controls.n
-                let dt = canv.controls.dt
 
                 let x  = canv.drag.c.x
                 let y  = canv.drag.c.y
@@ -52,9 +61,5 @@
             }
 
         </script>
-        <div id="demo-controls">
-            <input type="range" id="n"  min="0"    max="250" step="1"    value="10"  >
-            <input type="range" id="dt" min=".005" max=".1"  step=".001" value=".03">
-        </div>
     </body>
 </html>
