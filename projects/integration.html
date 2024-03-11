@@ -32,20 +32,19 @@
             function demo(canv) {
                 // setup canvas
                 canv.set_width(.8)
-                canv.add_draggable(new Vector(.01, -.1), "c", "orange")
-
+                c  = canv.add_draggable(new Vector(.01, -.1), "c", "orange")
                 n  = canv.add_control("n",  10, 0, 200, 1, "blue")
                 dt = canv.add_control("dt", .05, .005, .1, .001)
 
                 // draw demo
                 canv.draw.axes()
-                canv.draw.vector(Origin, canv.drag.c, "orange", "c")
+                canv.draw.vector(Origin, c, "orange", "c")
 
                 const v_y = t => Math.sin(2*Math.PI*t  )
                 const v_x = t => Math.cos(2*Math.PI*t*2)
 
-                let x  = canv.drag.c.x
-                let y  = canv.drag.c.y
+                let x  = c.x
+                let y  = c.y
 
                 for(let i = 0; i < n; i++) {
                     let t = i * dt

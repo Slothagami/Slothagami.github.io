@@ -163,6 +163,7 @@ class MultiCanv {
 
         canv.add_draggable = (pos, name, color, offset=Origin) => {
             new Draggable(pos.x, pos.y, name, canv, color, offset)
+            return canv.drag[name]
         }
         canv.draw = new CDraw(canv)
 
