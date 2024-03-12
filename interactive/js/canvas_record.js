@@ -9,10 +9,10 @@ class CanvasRecorder {
         this.stream.getVideoTracks()[0].requestFrame()
     }
 
-    start() {
+    start(fps=24) {
         if(this.started) return
 
-        this.stream   = this.canvas.captureStream(0)
+        this.stream   = this.canvas.captureStream(fps)
         this.recorder = new MediaRecorder(this.stream)
         this.chunks   = []
         this.recorder.start()
@@ -24,12 +24,13 @@ class CanvasRecorder {
         this.recorder.onstop = e => {
             this.export(new Blob(this.chunks, {type: "video/mp4"}))
         }
-        
+
         this.started = true
     }
 
     stop() {
-        this.recorder.stop()
+        // stop on next frame to actually record this one
+        setTimeout(() => {this.recorder.stop()}, 0)
     }
 
     export(blob) {
