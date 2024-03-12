@@ -43,6 +43,10 @@
     font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw;
 } */
 
+#bottom {
+    margin-bottom: 30vh;
+}
+
 table {
     width: 100%;
 }

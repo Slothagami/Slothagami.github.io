@@ -122,6 +122,9 @@ class MultiCanv {
 
         if(init) init(canv)
 
+        // run the script once to let it scale its size (stops jittering when scrolling up after loading in at bottom of page)
+        func(canv)
+
         this.resize_canvas(canv)
         this.canvases.push(canv)
 
@@ -187,8 +190,16 @@ class Canv {
         return multicanv.mouse_pos(this)
     }
 
-    set_width(scale) {
+    set_ratio(ratio) {
+        if(this.ratio != ratio) {
+            this.ratio = ratio
+            multicanv.resize_canvas(this)
+        }
+    }
+
+    set_scale(scale) {
         // avoid cleaing the canvas every frame again (removing draggables displays)
+        scale = scale / this.ratio * 1/2 // half since it needs to represent the range of values, not the highest value shown
         if(this.coord_width != scale) {
             this.coord_width = scale
             multicanv.resize_canvas(this)
@@ -258,15 +269,16 @@ function get_color(color) {
 }
 
 class CDraw {
-    static max_radius = 10
+    static max_radius = 1
     static arrow_ratio = 1/2
+    static label_text_position = 40
     constructor(canv, arrowhead_size=20) {
-        this.canv = canv
+        this.canv   = canv
         this.canvas = canv.canvas
         this.c = this.canv.c
         this.arrowhead_size = arrowhead_size
 
-        this.margin = CDraw.max_radius * 1.5
+        this.margin = 0//CDraw.max_radius
 
         this.clear()
     }
@@ -400,10 +412,11 @@ class CDraw {
         }
     }
 
-    vector(position, vector, color="white", label="", label_position=40, width=4) {
+    vector(position, vector, color="white", label="", label_position=1, width=4) {
         color  = get_color(color)
         vector = position.add(vector)
-        this.line_label(position, vector, color, label, label_position, true)
+
+        this.line_label(position, vector, color, label, label_position * CDraw.label_text_position, true)
         
         position = this.point_vector(position)
         vector   = this.point_vector(vector)

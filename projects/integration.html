@@ -31,10 +31,10 @@
             
             function demo(canv) {
                 // setup canvas
-                canv.set_width(.8)
+                canv.set_scale(1/2)
                 c  = canv.add_draggable("c", "orange", new Vector(.01, -.1))
-                n  = canv.add_control("n",  "blue",   10,    0, 200,    1)
-                dt = canv.add_control("dt", "white", .05, .005,  .1, .001)
+                n  = canv.add_control("n",  "blue",    27,    0, 200,    1)
+                dt = canv.add_control("dt", "white", .025, .005,  .1, .001)
 
                 // draw demo
                 canv.draw.axes()
@@ -60,5 +60,136 @@
             }
 
         </script>
+
+        <p>
+            imagine you already know the velocity over time for some object. you have a function describing it at every 
+            instant in time that you're interested in, \(v(t)\). how can we construct a function 
+            to describe the position?
+        </p>
+        <p>
+            the first thing you might try is a simpler case. Instead of allowing any velocity function we can imagine, 
+            its simpler to just consider a constant velocity, so lets think about the specific example shown below:
+        </p>
+
+        <canvas id="const_vel"></canvas>
+        <script>
+
+            function const_vel(canv) {
+                canv.set_ratio(1/6)
+                canv.set_scale(1.5)
+
+                let t = canv.add_control("t", "white", .4, 0, 2.6, .01)
+                let v = new Vector(1,1/2)
+
+                let center = new Vector(-1, -1/2)
+
+                canv.draw.axes(center)
+                canv.draw.vector(center, v, "blue", "v", -1)
+                canv.draw.vector(center, v.scale( t), "white", "vt")
+            }
+
+        </script>
+
+        <p>
+            in this case its easy to work out where the object is at any point in time just 
+            by multiplying, since we always move in the same speed and in the same direction.
+        </p>
+        <p>
+            to get closer to our goal of understanding continuously changing speeds, lets now consider 
+            travelling with this velocity for a certain ammount of time, say one second, and then 
+            suddenly changing direction and moving for the same ammount of time.
+        </p>
+
+        <canvas id="change_vel"></canvas>
+        <script>
+
+            function change_vel(canv) {
+                canv.set_ratio(1/6)
+                canv.set_scale(1.5)
+
+                let v  = new Vector(1,1/2)
+                let v2 = new Vector(1,-1).scale(2/3)
+
+                let center = new Vector(-1, -1/2)
+
+                canv.draw.axes(center)
+                canv.draw.vector(center, v, "blue", "v", -1)
+                canv.draw.vector(center.add(v), v2, "white", "ut")
+
+            }
+
+        </script>
+
+        <p>
+            moving in certain directions for certain ammounts of time lets us calculate the position of the 
+            object by adding up the movement in every direction its moved in. this is something we can exploit 
+            to find the position when we have constantly changing speed and direction.
+        </p>
+        <p>
+            we can check the velocity at the current point in time, and move that way for a short duration
+            before checking again to make sure we're going the right way.
+        </p>
+        <p>
+            but where do we start? it actually doesn't matter! you can start at any position you want and move the 
+            object from that starting position (this is what the \(+c\) is) since we are only calculating movement,
+            it doesn't matter where you start, it just shifts everything over by a fixed ammount.
+        </p>
+
+        <canvas id="int1"></canvas>
+        <script>
+
+            function int1(canv) {
+                // setup canvas
+                canv.set_scale(1/3)
+                n  = canv.add_control("n",  "blue",    4,    0, 200,    1)
+                dt = canv.add_control("dt", "white",   .1, .005,  .1, .001)
+
+                // draw demo
+                canv.draw.axes(Origin, true, false)
+
+                const v_y = t => -t + .5
+                const v_x = t => .65
+
+                const pos = t => new Vector(.65*t-1/3, -1/2*t**2+.5*t)
+                canv.draw.parametric_curve(pos, 0, 1, "gray-2")
+
+                let x = -1/3
+                let y = 0
+
+                for(let i = 0; i < n; i++) {
+                    let t = i * dt
+                    let p_point = new Vector(x, y)
+
+                    y += v_y(t) * dt
+                    x += v_x(t) * dt
+
+                    canv.draw.vector(p_point, new Vector(v_x(t) * dt, v_y(t) * dt), "blue")
+                }
+
+                canv.draw.point(pos(dt * n), "gray-1", 8)
+                canv.draw.point(new Vector(x, y), "white", 12)
+            }
+
+        </script>
+
+        <p>
+            as you can see from the demo above, the time we wait before checking our direction again (\(dt\))
+            has a big effect on the accuracy of our result, its closer to reality when we check the direction more 
+            often, but checking more often means adding up more movements to get our final result.
+        </p>
+        <p>
+            This process shown above is the main idea behind integration - not the area under a curve. Its just a coincidence that 
+            \(\text{speed } \times \text{ time}\) to calculate distance traveled is the same formula as \( \text{length } \times \text{ width} \) for an area when looking 
+            at the graph of one dimensional velocity.
+        </p>
+        <p>
+            The proper definition of the integral allows you to shrink the time between changing direction to "infinitely close" to zero so that you 
+            can get a result exactly equal to what the constantly changing velocity would do in the real world.
+        </p>
+        <p id="bottom">
+            This is also why the integral symbol looks the way it does, its meant to look like a big "S" meaning sum, since you're adding up 
+            lots of tiny directions to work out the large movements they create.
+            $$ \int dt $$
+        </p>
     </body>
 </html>
