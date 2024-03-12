@@ -184,10 +184,17 @@ class Canv {
 
         this.drag = {}
         this.dragging = false
+        this.center = Origin
     }
 
     mouse() {
         return multicanv.mouse_pos(this)
+    }
+
+    set_view(pos) {
+        if(this.center != pos) {
+            this.center = pos
+        }
     }
 
     set_ratio(ratio) {
@@ -288,12 +295,14 @@ class CDraw {
     }
 
     point_x(x) {
+        x += this.canv.center.x
         let working_width = (this.canvas.width/2) - this.margin
         let perc = x / this.canv.coord_width
         let ord = perc * working_width
         return ord + (this.canvas.width/2)
     }
     point_y(y) {
+        y += this.canv.center.y
         let working_height = (this.canvas.width/2) - this.margin
         let perc = -y / this.canv.coord_width
         let ord = perc * working_height
