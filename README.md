@@ -4,6 +4,7 @@ I'm a hobbyist programmer that enjoys nice looking simulations. I also sometimes
 ### Todo
 - fourier series allows reducing constants for loaded drawings (show correct number of constants in the slider)
 - record gif of forier series for homepage
+- preload homepage preview gifs
 
 - desmos equivalent
 
