@@ -21,10 +21,31 @@
         <canvas id="demo"></canvas>
         <script>
             function demo(canv) {
-                canv.set_scale(4)
+                let solutions = [6.89897948557, 2.89897948557]
+                r = canv.add_control("r", "blue", 10, 0, 10, .001)
+
+                const func = z => z.pow(2).mult(2).add(z.mult(-8)).add(-40)
+                const circle = t => Complex.exp(t).mult(r)
+                const circle_image = t => func(circle(t))
+
+                canv.set_scale(450)
                 canv.draw.axes()
+
+                canv.draw.point(func(Complex.zero))
+                canv.draw.parametric(circle_image, 0, smoothstep(time()) * pi * 2, "blue")
+
+                // draw solutions if they're there
+                if(Math.abs(r - solutions[0]) < .1) canv.draw.point(circle_image(2*pi), "orange", 10)
+                if(Math.abs(r - solutions[1]) < .1) canv.draw.point(circle_image(pi), "orange", 10)
             }
         </script>
+
+        <p>
+            The Fundimental Theorem of Algebra states that every polynomial of degree \(n\) has \(n\) solutions.
+        </p>
+        <p>
+            To attempt to understand how this works...
+        </p>
 
 
     </body>

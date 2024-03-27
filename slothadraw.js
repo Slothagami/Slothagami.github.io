@@ -2,6 +2,12 @@ const time  = () => performance.now()/1000
 const round = (n, dp=2) => Math.round(n*10**dp)/(10**dp)
 const clamp = (x, min, max) => Math.max(Math.min(max, x), min)
 const lerp  = (a, b, perc) => a + (b-a) * perc
+const smoothstep = (x, min=0, max=1) => {
+    if(x < 0) return 0
+    if(x > 1) return 1
+    return min + (3*x**2 - 2*x**3) * (max - min)
+}
+const pi = Math.PI
 
 class MultiCanv {
     constructor(fps=30, default_width=1, default_ratio=1/3, default_ord_width=4) {
@@ -503,7 +509,7 @@ class CDraw {
         this.c.fill()
     }
 
-    parametric_curve(func, start, stop, color="white", width=4, precision=.03) {
+    parametric(func, start, stop, color="white", precision=.03, width=4) {
         color = get_color(color)
 
         // must draw the line in a single stroke to connect them
@@ -765,14 +771,14 @@ class Complex extends Vector {
 
     constructor(real, imag=0) {
         super(real, imag)
-        this.real = real
-        this.imag = imag
+        this.x = real
+        this.y = imag
     }
 
     round() {
         return new Complex(
-            Math.round(this.real * 10) / 10,
-            Math.round(this.imag * 10) / 10
+            Math.round(this.x * 10) / 10,
+            Math.round(this.y * 10) / 10
         )
     }
 
@@ -783,40 +789,40 @@ class Complex extends Vector {
     toString() {
         let out = ""
 
-        let printimag = this.imag
-        if(this.imag ==  1) printimag = ""
-        if(this.imag == -1) printimag = "-"
+        let printimag = this.y
+        if(this.y ==  1) printimag = ""
+        if(this.y == -1) printimag = "-"
 
         // Purely Real/Imaginary Cases
-        if(this.imag == 0) {
-            out = this.real
-        }else if(this.real == 0) {
+        if(this.y == 0) {
+            out = this.x
+        }else if(this.x == 0) {
             out = printimag + "i"
         } else {
             // Complex Number Case
             let parts = [
-                this.real, 
-                (Math.abs(this.imag)==1? "": Math.abs(this.imag)) + "i"
+                this.x, 
+                (Math.abs(this.y)==1? "": Math.abs(this.y)) + "i"
             ]
-            let delim = this.imag > 0? " + ": " - "
+            let delim = this.y > 0? " + ": " - "
             out = parts.join(delim)
         }
         return out
     }
 
     angle() {
-        return Math.atan2(this.imag, this.real)
+        return Math.atan2(this.y, this.x)
     }
 
     static complexify(n) {
         if(n instanceof Complex) return n
-        if(n instanceof Point)   return new Complex(n.x, n.y)
+        if(n instanceof Vector)  return new Complex(n.x, n.y)
         return new Complex(n)
     }
 
     add(other) {
         other = Complex.complexify(other)
-        return new Complex(this.real + other.real, this.imag + other.imag)
+        return new Complex(this.x + other.x, this.y + other.y)
     }
 
     sub(b) {
@@ -827,26 +833,26 @@ class Complex extends Vector {
     mult(b) {
         b = Complex.complexify(b)
         return new Complex(
-            this.real * b.real - this.imag * b.imag,
-            this.real * b.imag + this.imag * b.real
+            this.x * b.x - this.y * b.y,
+            this.x * b.y + this.y * b.x
         )
     }
 
     div(b) {
         b = Complex.complexify(b)
 
-        let denominator = b.real ** 2 + b.imag ** 2
+        let denominator = b.x ** 2 + b.y ** 2
         return new Complex(
-            (this.real * b.real + this.imag * b.imag) / denominator,
-            (this.imag * b.real - this.real * b.imag) / denominator
+            (this.x * b.x + this.y * b.y) / denominator,
+            (this.y * b.x - this.x * b.y) / denominator
         )
     }
 
     pow(power) {
         power = Complex.complexify(power)
         
-        if(power.imag == 0) {
-            power = power.real
+        if(power.y == 0) {
+            power = power.x
 
             let sign = Math.sign(power)
             power = Math.abs(power)
