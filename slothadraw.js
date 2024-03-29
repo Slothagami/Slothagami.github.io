@@ -46,6 +46,10 @@ class MultiCanv {
         // window.addEventListener("touchcancel", mousestop)
     }
 
+    get(n=0) {
+        return this.canvases[n]
+    }
+
     mouse_pos(canv) {
         let rect = canv.canvas.getBoundingClientRect()
         let canv_corner = new Vector(rect.left, rect.top)
@@ -100,10 +104,6 @@ class MultiCanv {
             cordinate_width || this.def_ord_width
         )
 
-        canv.add_draggable = (name, color, pos, offset=Origin) => {
-            new Draggable(pos.x, pos.y, name, canv, color, offset)
-            return canv.drag[name]
-        }
         canv.draw = new CDraw(canv)
 
         // find controls element if it exists
@@ -162,6 +162,8 @@ class MultiCanv {
     }
 
     resize_canvas(canv) {
+        if(!canv.automatic_resize) return
+
         let canvas = canv.canvas
         let width  = canvas.parentElement.getBoundingClientRect().width * canv.width
 
@@ -187,10 +189,15 @@ class Canv {
         this.width  = width
         this.ratio = ratio
         this.coord_width = coord_width
+        this.automatic_resize = true
 
         this.drag = {}
         this.dragging = false
         this.center = Origin
+    }
+
+    auto_resize() {
+        this.automatic_resize = false
     }
 
     mouse() {
@@ -273,6 +280,11 @@ class Canv {
         }
 
         return this.controls[value_name]
+    }
+
+    add_draggable(name, color, pos, offset=Origin) {
+        new Draggable(pos.x, pos.y, name, this, color, offset)
+        return this.drag[name]
     }
 }
 
