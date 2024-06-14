@@ -10,8 +10,18 @@ class Interpreter {
         this.variables = {}
     }
 
+    reset() {
+        this.variables = {}
+    }
+
     execute(latex) {
         latex = latex.trim()
+        if (latex == "") return
+
+        // already defined variables
+        if(latex in this.variables) {
+            return this.variables[latex]
+        }
 
         // numbers
         let pattern = /^\d+\.?\d*/
@@ -19,7 +29,6 @@ class Interpreter {
             return parseFloat(latex)
         }
 
-        // already defined variables
 
         // variable defintions
         pattern = /^([^\d]\w*)=(.*)/
@@ -32,7 +41,7 @@ class Interpreter {
             return this.variables[variable]
         }
 
-        return latex
+        console.warn("Cannot parse string: \"" + latex + "\"")
     }
 }
 
@@ -59,6 +68,8 @@ function resize() {
 
 function render(canv) {
     canv.draw.axes(undefined, undefined, undefined, "#ffffff0a")
+
+    interpreter.reset()
     cells_list().forEach(draw_cell)
 }
 
@@ -66,17 +77,23 @@ function render(canv) {
 function draw_cell(cell) {
     let latex = cell.value
 
-    // execute cells in order (error if not?)
+    // execute cells in order
     interpreter.execute(latex)
+    // cell.set_value(interpreter.execute(latex))
 }
 
 
 // cell functionality //
-
 function add_cell(after=null) {
+    let wrap = document.createElement("div")
+        wrap.classList.add("cell")
+
     let cell = document.createElement("math-field")
         cell.type = "text"
         cell.classList.add("instruction")
+
+    let cell_out = document.createElement("span")
+        cell_out.innerText = "test"
 
     let body = document.querySelector("#content")
     
@@ -86,32 +103,32 @@ function add_cell(after=null) {
         switch (e.key) {
             case "Enter":
                 // add cell after current one
-                add_cell(cell)
+                add_cell(wrap)
                 break
 
             case "ArrowUp":
                 // focus next cell
                 cells = cells_list()
-                index = cells.indexOf(cell)
+                index = cells.indexOf(wrap)
 
                 if(index - 1 >= 0) {
-                    cells[index-1].focus()
+                    cell_input(cells[index-1]).focus()
                 }
                 break 
 
             case "ArrowDown":
                 // focus prev cell
                 cells = cells_list()
-                index = cells.indexOf(cell)
+                index = cells.indexOf(wrap)
 
                 if(index + 1 <= cells.length-1) {
                     
-                    cells[index+1].focus()
+                    cell_input(cells[index+1]).focus()
                 }
                 break
 
             case "Delete":
-                delete_cell(cell)
+                delete_cell(wrap)
                 break
 
             case "Backspace":
@@ -121,7 +138,7 @@ function add_cell(after=null) {
                 } else {
                     // delete cell if its empty
                     if(cell.value == "") {
-                        delete_cell(cell)
+                        delete_cell(wrap)
                     }
     
                     // TODO: merge with cell above if on first position
@@ -130,20 +147,30 @@ function add_cell(after=null) {
                 break
         }
     })
+    wrap.addEventListener("click", e => {
+        cell.focus() // enlarge hitbox
+    })
 
     if (after == null) {
-        body.appendChild(cell)
+        body.appendChild(wrap)
     } else {
         // insert after specified cell
-        after.parentNode.insertBefore(cell, after.nextSibling)
+        after.parentNode.insertBefore(wrap, after.nextSibling)
     }
+
+    wrap.appendChild(cell)
+    // wrap.appendChild(cell_out)
     cell.focus()
 
     return cell
 }
 
 function cells_list() {
-    return [...document.querySelectorAll(".instruction")]
+    return [...document.querySelectorAll(".cell")]
+}
+
+function cell_input(wrapper) {
+    return wrapper.querySelector("math-field")
 }
 
 function delete_cell(cell) {
@@ -158,7 +185,8 @@ function delete_cell(cell) {
         body.removeChild(cell)
         
         // select next cell (or previous if no next)
-        cells_list()[index].focus()
+        let t_cell = cells_list()[index]
+        cell_input(t_cell).focus()
     } else {
         cell.value = ""
     }
