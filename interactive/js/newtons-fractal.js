@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 
 function render(canv) {
     canv.add_draggable("point", "orange", new Vector(0,0))
-    canv.auto_resize(false)
+    canv.disable_auto_resize(false)
     canv.set_scale(6)
 
     canv.draw.point(canv.mouse())

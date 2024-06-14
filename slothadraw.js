@@ -196,7 +196,7 @@ class Canv {
         this.center = Origin
     }
 
-    auto_resize() {
+    disable_auto_resize() {
         this.automatic_resize = false
     }
 
@@ -547,7 +547,7 @@ class CDraw {
         }, start, stop, color, width, precision)
     }
 
-    axes(origin=Origin, x=true, y=true) {
+    axes(origin=Origin, x=true, y=true, color="#888") {
         let center_rad = .1
         let edge_buffer = .6
 
@@ -555,14 +555,14 @@ class CDraw {
             this.canvas.width/2, this.canvas.height/2, this.canvas.width * center_rad,
             this.canvas.width/2, this.canvas.height/2, this.canvas.width * edge_buffer
         )
-        xgradient.addColorStop(0, "#888")
+        xgradient.addColorStop(0, color)
         xgradient.addColorStop(1, "#00000000")
 
         let ygradient = this.c.createRadialGradient(
             this.canvas.width/2, this.canvas.height/2, this.canvas.width * center_rad,
             this.canvas.width/2, this.canvas.height/2, this.canvas.width * edge_buffer
         )
-        ygradient.addColorStop(0, "#888")
+        ygradient.addColorStop(0, color)
         ygradient.addColorStop(1, "#00000000")
 
         let right_edge  = new Vector(-this.canv.coord_width, origin.y)
