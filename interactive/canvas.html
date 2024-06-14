@@ -10,6 +10,8 @@
         <script src="./js/canvas.js"></script>
         <script src="../slothadraw.js"></script>
 
+        <script src="https://unpkg.com/mathlive"></script>
+
         <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico?v=2">
         <link rel="stylesheet" href="../interactive.css">
 
@@ -27,6 +29,30 @@
                 left: 0;
                 right: unset;
             }
+
+            .instruction {
+                background-color: transparent;
+                border:  none;
+                outline: none;
+
+                font-size: large;
+
+                width: 100%;
+                padding: 1em;
+                box-sizing: border-box;
+            }
+
+            .instruction:focus {
+                border: 2px solid var(--theme-gray-4);
+            }
+
+            math-field::part(menu-toggle),
+            math-field::part(virtual-keyboard-toggle) {
+                display: none;
+            }
+            math-field {
+                --contains-highlight-background-color: transparent;
+            }
         </style>
     </head>
     <body>
@@ -34,9 +60,7 @@
             <canvas id="render"></canvas>
 
             <div id="content">
-                <div id="settings">
-                    <!-- Add fields here -->
-                </div>
+                <!-- Added fields go here -->
             </div>
         </div>
     </body>
