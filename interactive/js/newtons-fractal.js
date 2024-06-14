@@ -16,4 +16,6 @@ function render(canv) {
     canv.auto_resize(false)
     canv.set_scale(6)
 
+    canv.draw.point(canv.mouse())
+    console.log(canv.mouse())
 }
