@@ -1,7 +1,49 @@
+// todo:
+// cell values (evaluate numerical expression)
+// set variables
+// recursively evaluate variable definitions and operations in interpreter
+// slider for variable definitons
+// pan and zoom
+
+class Interpreter {
+    constructor() {
+        this.variables = {}
+    }
+
+    execute(latex) {
+        latex = latex.trim()
+
+        // numbers
+        let pattern = /^\d+\.?\d*/
+        if(pattern.test(latex)) {
+            return parseFloat(latex)
+        }
+
+        // already defined variables
+
+        // variable defintions
+        pattern = /^([^\d]\w*)=(.*)/
+        if(pattern.test(latex)) {
+            let groups   = pattern.exec(latex)
+            let variable = groups[1]
+            let value    = groups[2]
+
+            this.variables[variable] = this.execute(value)
+            return this.variables[variable]
+        }
+
+        return latex
+    }
+}
+
+// setup //
+var interpreter
 function render_init(canv) {
     canv.disable_auto_resize()
     resize()
     window.addEventListener("resize", resize)
+
+    interpreter = new Interpreter()
 
     add_cell()
 }
@@ -17,7 +59,19 @@ function resize() {
 
 function render(canv) {
     canv.draw.axes(undefined, undefined, undefined, "#ffffff0a")
+    cells_list().forEach(draw_cell)
 }
+
+// interpreter //
+function draw_cell(cell) {
+    let latex = cell.value
+
+    // execute cells in order (error if not?)
+    interpreter.execute(latex)
+}
+
+
+// cell functionality //
 
 function add_cell(after=null) {
     let cell = document.createElement("math-field")
@@ -91,7 +145,6 @@ function add_cell(after=null) {
 function cells_list() {
     return [...document.querySelectorAll(".instruction")]
 }
-
 
 function delete_cell(cell) {
     // delete this cell if its not the only one, otherwise clear it
