@@ -4,6 +4,7 @@
 // recursively evaluate variable definitions and operations in interpreter
 // slider for variable definitons
 // pan and zoom
+// auto close brackets
 
 class Interpreter {
     constructor() {
@@ -17,7 +18,7 @@ class Interpreter {
     operation(regex, latex, func) {
         if(regex.test(latex)) {
             let groups = regex.exec(latex)
-            groups.shift() // remove first group with whole expression
+            let expr   = groups.shift() // remove first group with whole expression
 
             return func(...groups)
         } else {
@@ -26,6 +27,7 @@ class Interpreter {
     }
 
     execute(latex) {
+        if(typeof latex == "number") return latex
         latex = latex.trim()
         if (latex == "") return
 
@@ -64,32 +66,33 @@ class Interpreter {
         if(check !== false) return check
 
         // fractions (general) (\frac{?}{?})
-        check = this.operation(/^\\frac{(.*)}{(.*)}/, latex, (a,b) => {
+        check = this.operation(/^\\frac{(.*)}{(.*)}$/, latex, (a,b) => {
             return this.execute(a) / this.execute(b)
         })
         if(check !== false) return check
 
         // multiplication (?\cdot ?)
-        check = this.operation(/^(.*)\\cdot ?(.*)/, latex, (a,b) => {
+        check = this.operation(/^(.*)\\cdot ?(.*)$/, latex, (a,b) => {
             return this.execute(a) * this.execute(b)
         })
         if(check !== false) return check
 
 
         // addition (? + ?)
-        check = this.operation(/^(.*)\+(.*)/, latex, (a,b) => {
+        check = this.operation(/^(.*)\+(.*)$/, latex, (a,b) => {
             return this.execute(a) + this.execute(b)
         })
         if(check !== false) return check
 
         // subtraction (? - ?)
-        check = this.operation(/^(.*)-(.*)/, latex, (a,b) => {
+        check = this.operation(/^(.*)-(.*)$/, latex, (a,b) => {
             return this.execute(a) - this.execute(b)
         })
         if(check !== false) return check
 
 
-        console.warn("Cannot parse string: \"" + latex + "\"")
+        // console.warn("Cannot parse string: \"" + latex + "\"")
+        return undefined
     }
 }
 
