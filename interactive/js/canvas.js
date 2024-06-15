@@ -14,6 +14,17 @@ class Interpreter {
         this.variables = {}
     }
 
+    operation(regex, latex, func) {
+        if(regex.test(latex)) {
+            let groups = regex.exec(latex)
+            groups.shift() // remove first group with whole expression
+
+            return func(...groups)
+        } else {
+            return false
+        }
+    }
+
     execute(latex) {
         latex = latex.trim()
         if (latex == "") return
@@ -24,22 +35,59 @@ class Interpreter {
         }
 
         // numbers
-        let pattern = /^\d+\.?\d*/
+        let pattern = /^\d+\.?\d*$/
         if(pattern.test(latex)) {
             return parseFloat(latex)
         }
 
-
-        // variable defintions
-        pattern = /^([^\d]\w*)=(.*)/
-        if(pattern.test(latex)) {
-            let groups   = pattern.exec(latex)
-            let variable = groups[1]
-            let value    = groups[2]
-
+        // variable definition (? = ?)
+        let check = this.operation(/^([^\d]\w*)=(.*)/, latex, (variable, value) => {
             this.variables[variable] = this.execute(value)
             return this.variables[variable]
-        }
+        })
+        if(check !== false) return check
+
+        // brackets ( () )
+        check = this.operation(/\\left\((.*)\\right\)/, latex, (expr) => {
+            // do the brackets first
+            let expr_value = this.execute(expr)
+            latex = latex.replace("\\left(" + expr + "\\right)", expr_value)
+
+            return this.execute(latex)
+        })
+        if(check !== false) return check
+
+        // fractions (single digit) (\fracXX)
+        check = this.operation(/^\\frac(\d)(\d)/, latex, (a,b) => {
+            return this.execute(a) / this.execute(b)
+        })
+        if(check !== false) return check
+
+        // fractions (general) (\frac{?}{?})
+        check = this.operation(/^\\frac{(.*)}{(.*)}/, latex, (a,b) => {
+            return this.execute(a) / this.execute(b)
+        })
+        if(check !== false) return check
+
+        // multiplication (?\cdot ?)
+        check = this.operation(/^(.*)\\cdot ?(.*)/, latex, (a,b) => {
+            return this.execute(a) * this.execute(b)
+        })
+        if(check !== false) return check
+
+
+        // addition (? + ?)
+        check = this.operation(/^(.*)\+(.*)/, latex, (a,b) => {
+            return this.execute(a) + this.execute(b)
+        })
+        if(check !== false) return check
+
+        // subtraction (? - ?)
+        check = this.operation(/^(.*)-(.*)/, latex, (a,b) => {
+            return this.execute(a) - this.execute(b)
+        })
+        if(check !== false) return check
+
 
         console.warn("Cannot parse string: \"" + latex + "\"")
     }
@@ -75,11 +123,17 @@ function render(canv) {
 
 // interpreter //
 function draw_cell(cell) {
-    let latex = cell.value
+    let latex = cell_input(cell).value
+    let cell_out = cell.querySelector(".output")
 
     // execute cells in order
-    interpreter.execute(latex)
-    // cell.set_value(interpreter.execute(latex))
+    let cell_value = interpreter.execute(latex)
+
+    if(cell_value != 0) { // since zero triggers the or statement
+        cell_value = cell_value || ""
+    }
+
+    cell_out.innerText = cell_value
 }
 
 
@@ -93,7 +147,8 @@ function add_cell(after=null) {
         cell.classList.add("instruction")
 
     let cell_out = document.createElement("span")
-        cell_out.innerText = "test"
+        cell_out.classList.add("output")
+        cell_out.innerText = ""
 
     let body = document.querySelector("#content")
     
@@ -159,7 +214,7 @@ function add_cell(after=null) {
     }
 
     wrap.appendChild(cell)
-    // wrap.appendChild(cell_out)
+    wrap.appendChild(cell_out)
     cell.focus()
 
     return cell
