@@ -22,6 +22,7 @@ function render(canv) {
     let p = r/R
     let a = (p**2 - 2) / 2
     let angle = Math.atan(Math.sqrt(p**2-a**2)/a) - pi/3
+    // angle *= -1 // for the second solution
 
     // drawing
     let triangle_rot = pi
