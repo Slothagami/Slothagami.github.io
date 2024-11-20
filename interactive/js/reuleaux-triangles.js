@@ -24,17 +24,18 @@ function render(canv) {
     let angle = Math.atan(Math.sqrt(p**2-a**2)/a) - pi/3
 
     // drawing
+    let triangle_rot = pi
     let vertex = new Vector(0, 1)
-    let R_vertex = vertex.scale(R).rotate(pi + 2*pi/3)
-    let r_vertex = vertex.scale(r).rotate(angle + pi - 2*pi/3)
+    let R_vertex = vertex.scale(R).rotate(triangle_rot + 2*pi/3)
+    let r_vertex = vertex.scale(r).rotate(triangle_rot + angle - 2*pi/3)
 
     canv.draw.angle_between(r_vertex, R_vertex, Vector.zero, 50)
     canv.draw.vector(Vector.zero, R_vertex, "gray-4", "R")
     canv.draw.circle(Vector.zero, r, "gray-4")
     canv.draw.vector(Vector.zero, r_vertex, "blue", "r", -1)
 
-    draw_releaux(canv, Vector.zero, R, pi, "white", true)
-    draw_releaux(canv, Vector.zero, r, angle + pi, "blue")
+    draw_releaux(canv, Vector.zero, R, triangle_rot, "white", true)
+    draw_releaux(canv, Vector.zero, r, angle + triangle_rot, "blue")
 }
 
 function draw_releaux(canv, pos, size, angle, color="white", scribe=false) {
