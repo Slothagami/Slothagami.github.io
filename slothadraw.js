@@ -4,13 +4,13 @@ const clamp = (x, min, max) => Math.max(Math.min(max, x), min)
 const lerp  = (a, b, perc) => a + (b-a) * perc
 const radians = deg => deg * Math.PI / 180
 const degrees = rad => rad * 180 / Math.PI
+const pi = Math.PI
 
 const smoothstep = (x, min=0, max=1) => {
     if(x < 0) return 0
     if(x > 1) return 1
     return min + (3*x**2 - 2*x**3) * (max - min)
 }
-const pi = Math.PI
 
 class MultiCanv {
     constructor(fps=30, default_width=1, default_ratio=1/3, default_ord_width=4) {

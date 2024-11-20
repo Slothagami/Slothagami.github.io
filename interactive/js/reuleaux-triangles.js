@@ -32,7 +32,7 @@ function render(canv) {
 
     canv.draw.angle_between(r_vertex, R_vertex, Vector.zero, 50)
     canv.draw.vector(Vector.zero, R_vertex, "gray-4", "R")
-    canv.draw.circle(Vector.zero, r, "gray-4")
+    if(show_solution) canv.draw.circle(Vector.zero, r, "gray-4")
     canv.draw.vector(Vector.zero, r_vertex, "blue", "r", -1)
 
     draw_releaux(canv, Vector.zero, R, triangle_rot, "white", true)
@@ -56,7 +56,7 @@ function draw_releaux(canv, pos, size, angle, color="white", scribe=false) {
     let ang1 = -corner3.sub(corner1).angle()
     let ang2 = -corner2.sub(corner1).angle()
 
-    if(scribe) canv.draw.arc(corner1, size * Math.sqrt(3), 0, 2*pi, "gray-4")
+    if(scribe && show_solution) canv.draw.arc(corner1, size * Math.sqrt(3), 0, 2*pi, "gray-4")
     canv.draw.arc(corner1, size * Math.sqrt(3), ang1, ang2, color)
     
     // second arc 

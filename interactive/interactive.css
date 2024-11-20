@@ -6,6 +6,17 @@ body {
     margin-bottom: 30vh;
 }
 
+#solution {
+    padding: 0;
+    margin: auto;
+    width: 100%;
+    display: none;
+}
+
+#show-solution {
+    margin: auto;
+}
+
 .preview {
     display: inline;
     font-family: monospace;
