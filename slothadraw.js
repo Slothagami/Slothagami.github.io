@@ -3,6 +3,7 @@ const round = (n, dp=2) => Math.round(n*10**dp)/(10**dp)
 const clamp = (x, min, max) => Math.max(Math.min(max, x), min)
 const lerp  = (a, b, perc) => a + (b-a) * perc
 const radians = deg => deg * Math.PI / 180
+const degrees = rad => rad * 180 / Math.PI
 
 const smoothstep = (x, min=0, max=1) => {
     if(x < 0) return 0

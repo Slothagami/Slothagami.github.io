@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 function render(canv) {
     // setup
     canv.disable_auto_resize()
-    canv.set_scale(2)
+    canv.set_scale(1.5)
 
     let r = canv.controls.r
     let R = 1 // Math.sqrt(3) - 1
