@@ -7,7 +7,7 @@ body {
 }
 
 .preview {
-    display: block;
+    display: inline;
     font-family: monospace;
     color: var(--theme-gray-2);
     padding: .7em;

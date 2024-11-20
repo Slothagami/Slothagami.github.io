@@ -1,7 +1,6 @@
-var canv, c
+var canv
 window.addEventListener("load", () => {
     canv = document.querySelector("canvas")
-    c = canv.getContext("2d")
     
     const resize = ()=> {
         canv.width  = window.innerWidth
@@ -12,5 +11,6 @@ window.addEventListener("load", () => {
 })
 
 function render(canv) {
-    
+    canv.disable_auto_resize()
+    canv.draw.point(Vector.zero, "white")
 }

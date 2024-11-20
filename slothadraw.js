@@ -2,6 +2,8 @@ const time  = () => performance.now()/1000
 const round = (n, dp=2) => Math.round(n*10**dp)/(10**dp)
 const clamp = (x, min, max) => Math.max(Math.min(max, x), min)
 const lerp  = (a, b, perc) => a + (b-a) * perc
+const radians = deg => deg * Math.PI / 180
+
 const smoothstep = (x, min=0, max=1) => {
     if(x < 0) return 0
     if(x > 1) return 1
@@ -312,6 +314,11 @@ class CDraw {
         this.c.clearRect(0,0, this.canvas.width,this.canvas.height)
     }
 
+    scale_value(value) {
+        let scale = this.point_x(1) - this.point_x(0)
+        return value * scale
+    }
+
     point_x(x) {
         x += this.canv.center.x
         let working_width = (this.canvas.width/2) - this.margin
@@ -340,6 +347,21 @@ class CDraw {
 
         this.c.arc(pt.x, pt.y, radius, 0, 2*Math.PI)
         this.c.fill()
+    }
+
+    arc(center, radius, start, stop, color="white") {
+        let cx = this.point_x(center.x)
+        let cy = this.point_y(center.y)
+        let rad = this.scale_value(radius)
+
+        this.c.beginPath()
+        this.c.strokeStyle = get_color(color)
+        this.c.arc(cx, cy, rad, start, stop)
+        this.c.stroke()
+    }
+
+    circle(center, radius, color) {
+        this.arc(center, radius, 0, 2*pi, color)
     }
 
     rect(x1, y1, x2, y2, color="white", width=2) {
@@ -542,7 +564,7 @@ class CDraw {
     }
 
     graph(func, start, stop, color="white", width=4, precision=.05) {
-        this.parametric_curve(t => {
+        this.parametric(t => {
             return new Vector(t, func(t))
         }, start, stop, color, width, precision)
     }
@@ -582,6 +604,17 @@ class Vector {
         this.y = y
     }
 
+    static zero = new Vector(0,0)
+
+    rotate(angle) {
+        // rotates the vector by the given angle 
+        let rotx = Math.cos(angle)
+        let roty = Math.sin(angle)
+
+        // using complex multiplication
+        return new Vector(this.x * rotx - this.y * roty, this.x * roty + this.y * rotx)
+    }
+
     x_comp() { return new Vector(this.x, 0) }
     y_comp() { return new Vector(0, this.y) }
 
@@ -596,6 +629,9 @@ class Vector {
     }
     length() {
         return Math.hypot(this.x, this.y)
+    }
+    angle() {
+        return Math.atan2(this.y, this.x)
     }
     elem_div(other) {
         return new Vector(this.x / other.x, this.y / other.y)

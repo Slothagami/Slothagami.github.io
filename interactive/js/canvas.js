@@ -60,13 +60,14 @@ class Interpreter {
         if(check !== false) return check
 
         // fractions (single digit) (\fracXX)
-        check = this.operation(/^\\frac(\d)(\d)/, latex, (a,b) => {
+        check = this.operation(/^\\frac(\d)(\d)$/, latex, (a,b) => {
             return this.execute(a) / this.execute(b)
         })
         if(check !== false) return check
 
         // fractions (general) (\frac{?}{?})
         check = this.operation(/^\\frac{(.*)}{(.*)}$/, latex, (a,b) => {
+            console.log(latex, "\n", a, "\n", b)
             return this.execute(a) / this.execute(b)
         })
         if(check !== false) return check
