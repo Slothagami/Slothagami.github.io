@@ -1,7 +1,7 @@
 :root {
     --theme-bg: #101010;
     --theme-blue: #5492f0;
-    --theme-dblue: #3a73dd;
+    --theme-dblue: #2d5aaf;
     --theme-opblue: #454d6b4d;
     --theme-purple: #d43cd4;
     --theme-dpurple: #A321A3;
@@ -22,6 +22,7 @@
 * {
     color: var(--theme-text);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
 }
 
 body {

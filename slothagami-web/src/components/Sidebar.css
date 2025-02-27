@@ -1,0 +1,35 @@
+:root {
+    --sidebar-width: 20vw;
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    padding: 2rem;
+    width: var(--sidebar-width);
+
+    background-color: #00000000;
+
+    transition: background-color 500ms, width 500ms;
+}
+
+.sidebar-content {
+    opacity: 1;
+    transform: translate(0, 0);
+    transition: opacity 500ms, transform 500ms;
+
+    text-wrap: pre-wrap;
+}
+
+.sidebar.closed {
+    background-color: #00000036;
+    width: 1vw;
+}
+
+.sidebar.closed .sidebar-content {
+    opacity: 0;
+    transform: translate(calc(-1 * var(--sidebar-width)), 0);
+}
