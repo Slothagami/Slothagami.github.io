@@ -1,0 +1,5 @@
+#content {
+    padding: 3rem;
+    width: calc(100% - var(--sidebar-width));
+    box-sizing: border-box;
+}

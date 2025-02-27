@@ -27,6 +27,12 @@
 
 body {
     background-color: var(--theme-bg);
+    overflow: hidden;
+}
+
+#root {
+    display: flex;
+    flex-direction: row;
 }
 
 a, .link {
