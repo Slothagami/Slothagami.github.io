@@ -2,6 +2,22 @@
     --sidebar-width: 20vw;
 }
 
+/* LOGO animation */
+#site-title > .title-content {
+    opacity: 1;
+    transition: opacity 400ms;
+}
+
+.sidebar.closed #site-title > .title-content {
+    opacity: 0;
+}
+
+#site-title img {
+    border-radius: 100%;
+}
+
+
+/* Other */
 .sidebar {
     height: 100vh;
     position: fixed;
@@ -10,6 +26,7 @@
 
     padding: 2rem;
     width: var(--sidebar-width);
+    overflow-x: hidden;
 
     background-color: #00000000;
 
