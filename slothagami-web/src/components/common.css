@@ -18,6 +18,10 @@
     font-weight: bold;
 }
 
+.title-box p {
+    margin: 0;
+}
+
 .title-box .icon {
     padding-right: .6em;
 }
