@@ -10,7 +10,7 @@ function Sidebar({ children }: Props) {
     const [closed, setClosed] = useState(false)
 
     return (
-        <div className={"sidebar " + (closed? "closed": "")} onClick={() => setClosed(!closed)}>
+        <div className={"sidebar " + (closed? "closed": "")} onClick={() => {if(closed) setClosed(!closed)}}>
             <Title icon="/img/logo.png" size="2rem" id="site-title"> Slothagami </Title>
             <div className="sidebar-content">
                 {children}
