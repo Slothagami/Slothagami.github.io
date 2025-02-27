@@ -1,7 +1,9 @@
+import SVGIcon from "./components/common"
+
 function App() {
-  return (
-    <p>Hello World</p>
-  )
+    return (
+        <SVGIcon icon="hamburger" />
+    )
 }
 
 export default App
