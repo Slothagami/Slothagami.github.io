@@ -1,5 +1,5 @@
 :root {
-    --sidebar-width: 20vw;
+    --sidebar-width: 23vw;
 }
 
 /* LOGO animation */
@@ -14,6 +14,10 @@
 
 #site-title img {
     border-radius: 100%;
+    transition: transform 500ms;
+}
+.sidebar.closed #site-title img {
+    transform: translate(-50%, -50%);
 }
 
 
@@ -24,13 +28,14 @@
     top: 0;
     left: 0;
 
-    padding: 2rem;
+    padding: 3rem;
     width: var(--sidebar-width);
     overflow-x: hidden;
+    box-sizing: border-box;
 
     background-color: #00000000;
 
-    transition: background-color 500ms, width 500ms;
+    transition: background-color 500ms, width 500ms, padding 500ms;
 }
 
 .sidebar-content {
@@ -44,6 +49,7 @@
 .sidebar.closed {
     background-color: #00000036;
     width: 1vw;
+    padding: 2.5rem;
 }
 
 .sidebar.closed .sidebar-content {
