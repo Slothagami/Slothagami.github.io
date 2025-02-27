@@ -52,3 +52,28 @@
     opacity: 0;
     transform: translate(calc(-1 * var(--sidebar-width)), 0);
 }
+
+
+@media screen and (max-width: 1000px) {
+    .sidebar {
+        width: 100vw;
+        background-color: rgba(0, 0, 0, 0.897);
+        position: fixed;
+    }
+
+    .sidebar.closed {
+        background-color: #00000000;
+    }
+
+    #root {
+        flex-direction: column;
+    }
+
+    body {
+        overflow: scroll;
+    }
+
+    #content {
+        margin-top: 10vh;
+    }
+}
