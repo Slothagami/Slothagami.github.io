@@ -28,6 +28,7 @@
 body {
     background-color: var(--theme-bg);
     overflow: hidden;
+    margin: 0;
 }
 
 #root {
@@ -39,6 +40,7 @@ a, .link {
     color: var(--theme-blue);
     font-weight: bold;
     text-decoration: none;
+    cursor: pointer;
 }
 
 a:hover, .link:hover {
