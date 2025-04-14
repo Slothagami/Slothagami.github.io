@@ -4,3 +4,10 @@
 - background canvas for largeview projects
     - largeview projects minimize sidebar when opened
         - all pages on mobile minimize taskbar
+
+
+Pages
+    Mandelbrot Set
+    Mandelbulb
+    Fourier Drawing
+    3D Rendering
