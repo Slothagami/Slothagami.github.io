@@ -1,12 +1,13 @@
 import "./common.css"
 
 interface IconProps {
-    icon: string
+    icon: string,
+    size?: string
 }
 
-function Icon({ icon }: IconProps) {
+function Icon({ icon, size="inherit" }: IconProps) {
     return (
-        <div className="icon" style={{fontSize: "inherit"}}>
+        <div className="icon" style={{fontSize: size}}>
             <img src={icon} />
         </div>
     )

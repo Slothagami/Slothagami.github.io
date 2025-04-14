@@ -1,5 +1,8 @@
 :root {
     --theme-bg: #0a0a0e;
+    --theme-bg-light: #121216;
+    --theme-text: #f1f1f1;
+
     --theme-blue: #5492f0;
     --theme-dblue: #2d5aaf;
     --theme-opblue: #454d6b4d;
@@ -11,12 +14,6 @@
     --theme-orange: #F09B24;
     --theme-dorange: #A36D21;
     --theme-oporange: #4d3f2d71;
-    --theme-gray-0: #c9c9c9;
-    --theme-gray-1: #8a8a8a;
-    --theme-gray-2: #555555;
-    --theme-gray-3: #404040;
-    --theme-gray-4: #303030;
-    --theme-text: #f1f1f1;
 }
 
 * {
@@ -28,12 +25,6 @@
 body {
     background-color: var(--theme-bg);
     margin: 0;
-    transition: background-image 500ms;
-}
-
-#root {
-    display: flex;
-    flex-direction: row;
 }
 
 a, .link {
