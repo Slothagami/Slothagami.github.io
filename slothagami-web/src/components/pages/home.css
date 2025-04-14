@@ -5,6 +5,9 @@
 
 #page-top-content .title-box {
     margin: 0;
+    font-family: "Poppins", Sans-serif;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
 #page-top-content {
@@ -14,9 +17,32 @@
     justify-content: space-around;
 }
 
-#demolist {
+#demolist-block {
     background-color: var(--theme-bg-light);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-position: center;
+    background-size: cover;
 }
+
+.demolist-item {
+    padding: 1.5rem;
+}
+
+hr {
+    border: 3px solid var(--theme-bg);
+    border-radius: 1em;
+}
+
+#demolist {
+    width: 50%;
+    filter: none;
+}
+
+
 
 .screen-size {
     padding: 6rem;
