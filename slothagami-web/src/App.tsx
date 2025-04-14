@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react"
 import Content from "./components/Content"
 import Sidebar from "./components/Sidebar"
 import Title from "./components/Title"
-import Article from "./components/pages/article"
+import Homepage from "./components/pages/home"
 
 type ArticleList = {
     [article_name: string]: ReactNode
@@ -14,7 +14,7 @@ type SectionList = {
 
 const ARTICLES: SectionList = {
     "": {
-        "Home":  <Article name="Slothagami"> <Title icon="/icons/git.svg"><a href="https://github.com/Slothagami">Github</a></Title> </Article>,
+        "Home":  <Homepage></Homepage>,
     },
     "Interactive": {
         "Mandelbrot Set": <Title size="4rem"> Mandelbrot Set </Title>,

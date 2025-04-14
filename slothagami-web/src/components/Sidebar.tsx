@@ -7,7 +7,7 @@ interface Props {
 }
 
 function Sidebar({ children }: Props) {
-    var [ sidebarOpen, setSidebarOpen ] = useState(true)
+    var [ sidebarOpen, setSidebarOpen ] = useState(false)
 
     return (
         <div className={"sidebar " + (sidebarOpen? "": "closed")}>

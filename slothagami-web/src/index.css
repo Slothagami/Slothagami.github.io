@@ -27,8 +27,8 @@
 
 body {
     background-color: var(--theme-bg);
-    overflow: hidden;
     margin: 0;
+    transition: background-image 500ms;
 }
 
 #root {
