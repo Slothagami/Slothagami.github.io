@@ -43,9 +43,10 @@
 }
 
 .sidebar.closed {
-    background-color: #00000036;
+    background-color: #00000070;
     width: 1vw;
     padding: 2.5rem;
+    overflow: hidden;
 }
 
 .sidebar.closed .sidebar-content {
@@ -54,7 +55,8 @@
 }
 
 .sidebar h2 {
-    margin-top: 4rem;
+    margin-top: 6rem;
+    margin-bottom: 1.5rem;
     font-size: 1.2rem;
 }
 

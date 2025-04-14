@@ -7,11 +7,16 @@ interface Props {
 }
 
 function Sidebar({ children }: Props) {
-    const [closed, setClosed] = useState(false)
+    var [ sidebarOpen, setSidebarOpen ] = useState(true)
 
     return (
-        <div className={"sidebar " + (closed? "closed": "")} onClick={() => {if(closed) setClosed(!closed)}}>
-            <Title icon="/img/logo.png" size="2rem" id="site-title"> Slothagami </Title>
+        <div className={"sidebar " + (sidebarOpen? "": "closed")}>
+            <Title 
+                icon="/img/logo.png" 
+                size="2rem" 
+                id="site-title"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+            > Slothagami </Title>
             <div className="sidebar-content">
                 {children}
             </div>

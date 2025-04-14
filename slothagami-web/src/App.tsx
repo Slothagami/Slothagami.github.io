@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react"
 import Content from "./components/Content"
 import Sidebar from "./components/Sidebar"
 import Title from "./components/Title"
+import Article from "./components/pages/article"
 
 type ArticleList = {
     [article_name: string]: ReactNode
@@ -13,24 +14,18 @@ type SectionList = {
 
 const ARTICLES: SectionList = {
     "": {
-        "Home":  <Title size="5rem"> Slothagami </Title>,
+        "Home":  <Article name="Slothagami"> <Title icon="/icons/git.svg"><a href="https://github.com/Slothagami">Github</a></Title> </Article>,
     },
     "Interactive": {
-        "Mandelbulb Fractals": <Title size="5rem"> Mandelbulb </Title>,
-        "Create your own Fourier Drawing": <Title size="5rem"> Fourier Sketchpad </Title>,
-        "Explore the Mandelbrot Set": <Title size="5rem"> Mandelbrot Set </Title>,
-        "Support Vector Machines": <Title size="5rem"> Support Vector Machines </Title>,
-    },
-    "Maths": {
-        "A Reuleaux Triangle Problem": <Title size="5rem"> A Reuleaux Triangle Problem </Title>,
-        "An Intuitive meaning for Integration": <Title size="5rem"> Integration </Title>,
-        "Uncertainty Principle": <Title size="5rem"> Uncertainty Principle </Title>,
-        "Vectors": <Title size="5rem"> Vectors </Title>,
-        "3D Rendering": <Title size="5rem"> 3D Rendering </Title>,
+        "Mandelbrot Set": <Title size="4rem"> Mandelbrot Set </Title>,
+        "Mandelbulb": <Title size="4rem"> Mandelbulb </Title>,
+
+        "Fourier Drawing": <Title size="4rem"> Fourier Sketchpad </Title>,
+        "3D Rendering": <Title size="4rem"> 3D Rendering </Title>,
     },
     "Games": {
-        "Unended": <Title size="5rem"> Unended </Title>,
-        "Sinwave": <Title size="5rem"> Sinwave </Title>,
+        "Unended": <Title size="4rem"> Unended </Title>,
+        "Sinwave": <Title size="4rem"> Sinwave </Title>,
     }
 }
 

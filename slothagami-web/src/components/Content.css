@@ -1,6 +1,7 @@
 #content {
     padding: 6rem;
-    width: calc(100% - var(--sidebar-width));
+    /* width: calc(100% - var(--sidebar-width)); */
+    width: -webkit-fill-available;
     box-sizing: border-box;
 
     display: flex;
