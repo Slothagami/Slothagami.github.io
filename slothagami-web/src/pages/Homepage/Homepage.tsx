@@ -1,4 +1,4 @@
-import DemoListItem from "../../components/DemoListItem"
+import DemoListItem from "../../components/DemoListItem/DemoListItem"
 import Icon from "../../components/Icon/Icon"
 import Title from "../../components/Title/Title"
 import "./Homepage.css"
@@ -13,6 +13,7 @@ function Homepage() {
             </div>
 
             <div id="demolist-block" className="screen-size">
+                <Title> Featured Projects </Title>
                 <div id="demolist">
                     <DemoListItem parent_id="demolist-block" background="/img/mandelbrot.png" link="#"> Mandelbrot Set </DemoListItem>
                     <DemoListItem parent_id="demolist-block" background="/img/mandelbulb.png" link="#"> Mandelbulb </DemoListItem>

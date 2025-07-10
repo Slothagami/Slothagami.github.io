@@ -11,10 +11,12 @@ interface LinkProps {
 }
 
 function Title({ children, icon, size, id, onClick }: LinkProps) {
+    let fontSize = size || "2em"
+
     return (
-        <div className="title-box" style={{fontSize: size}} id={id} onClick={onClick}>
+        <div className="title-box" style={{fontSize: fontSize}} id={id} onClick={onClick}>
             {icon && <Icon icon={icon} />}
-            <div style={{fontSize: size}} className="title-content">{children}</div>
+            <div style={{fontSize: fontSize}} className="title-content">{children}</div>
         </div>
     )
 }
