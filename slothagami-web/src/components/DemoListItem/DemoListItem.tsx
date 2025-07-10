@@ -1,3 +1,5 @@
+import "./DemoListItem.css"
+
 interface Props {
     background: string,
     parent_id:  string,

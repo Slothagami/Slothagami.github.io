@@ -1,4 +1,4 @@
-import DemoListItem from "../DemoListItem"
+import DemoListItem from "../DemoListItem/DemoListItem"
 import Icon from "../Icon/Icon"
 import Title from "../Title/Title"
 import "./Homepage.css"
