@@ -1,7 +1,7 @@
 import DemoListItem from "../DemoListItem"
-import Icon from "../Icon"
-import Title from "../Title"
-import "./home.css"
+import Icon from "../Icon/Icon"
+import Title from "../Title/Title"
+import "./Homepage.css"
 
 function Homepage() {
     return (

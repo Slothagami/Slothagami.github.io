@@ -1,4 +1,4 @@
-import "./common.css"
+import "./Icon.css"
 
 interface IconProps {
     icon: string,

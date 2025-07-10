@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
-import "./common.css"
-import Icon from "./Icon"
+import "./Title.css"
+import Icon from "../Icon/Icon"
 
 interface LinkProps {
     children: ReactNode,
