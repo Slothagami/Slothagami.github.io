@@ -3,11 +3,9 @@ import "./Homepage.css"
 
 function Homepage() {
     return (
-        <>
-            <div id="content">
-                <Profile />
-            </div>
-        </>
+        <div id="content">
+            <Profile />
+        </div>
     )
 }
 
