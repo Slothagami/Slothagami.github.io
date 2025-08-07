@@ -7,6 +7,10 @@
     font-weight: bold;
 }
 
+.title-content {
+    display: contents;
+}
+
 .title-box p {
     margin: 0;
 }
