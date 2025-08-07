@@ -19,7 +19,7 @@ function TabSelector({tabs} : Props) {
     const makeTabSelectorButton = (tab: Tab) => {
         return (
             <div onClick={() => {setActiveTabId(tab.id)}} key={tab.id} className={`tab-button ${activeTabId === tab.id? "active": "inactive"}`}>
-                <Title size="1.5em"> {tab.label} </Title>
+                <Title size="1.4em"> {tab.label} </Title>
             </div>
         )
     }
