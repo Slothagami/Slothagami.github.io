@@ -1,4 +1,11 @@
 .image-card {
     background-color: var(--theme-bg-light);
     border-radius: 1em;
+    background-size: cover;
+
+    display: flex;
+    align-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }

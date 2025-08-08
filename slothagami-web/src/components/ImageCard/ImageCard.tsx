@@ -11,7 +11,7 @@ interface Props {
 
 function ImageCard({children, icon, link, image}: Props) {
     return (
-        <div className="image-card">
+        <div className="image-card" style={{backgroundImage: `url("${image}")`}}>
             <div className="card-text">
                 <Title icon={icon}><a href={link}> {children} </a></Title>
             </div>
