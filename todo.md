@@ -1,0 +1,4 @@
+- make background change to match hovered project like previous version
+- fade out all cards except the one under the mouse on hover
+- put more of my projects on the list
+- add mobile support for interactive pages

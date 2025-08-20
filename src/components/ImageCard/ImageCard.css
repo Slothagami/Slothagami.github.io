@@ -1,0 +1,37 @@
+.image-card {
+    background-color: var(--theme-bg-light);
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-content: flex-end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    border-radius: .7em;
+    overflow: hidden;
+}
+
+.image-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover; /* So aspect-ratio doesn't stretch the image */
+}
+
+.image-card a {
+    display: block;
+    width: 100%;
+    font-weight: normal;
+}
+
+.card-text {
+    background-color: var(--theme-bg-light);
+    padding: 2em;
+    width: -webkit-fill-available;
+}
+
+.image-card p, .image-card p > * {
+    margin-bottom: 0;
+    color: var(--theme-text-secondary);
+}

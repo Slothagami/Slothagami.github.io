@@ -1,0 +1,19 @@
+.title-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    font-weight: bold;
+}
+
+.title-content {
+    display: contents;
+}
+
+.title-box p {
+    margin: 0;
+}
+
+.title-box .icon {
+    padding-right: .6em;
+}

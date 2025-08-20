@@ -1,0 +1,43 @@
+#content {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 35vh;
+}
+
+@media (max-width: 1300px) {
+    /* change profile layout */
+    #profile {
+        flex-direction: column;
+        text-align: center;
+        margin: 5em 0;
+    }
+    #profile-info {
+        padding: 2em;
+    }
+    #profile-info .title-box {
+        margin: auto;
+    }
+    #logo {
+        margin: auto;
+        margin-bottom: 2em;
+        display: block;
+    }
+}
+
+@media (max-width: 1300px) {
+    /* change margins */
+    #content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 760px) {
+    /* change card layout */
+    .card-list {
+        grid-template-columns: auto;
+    }
+
+    .tab-shelf {
+        justify-content: center;
+    }
+}

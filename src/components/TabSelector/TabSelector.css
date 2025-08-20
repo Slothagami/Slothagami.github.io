@@ -1,0 +1,22 @@
+.tab-shelf {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+    justify-content: flex-start;
+
+    margin-bottom: 2em;
+}
+
+
+
+.tab-button {
+    opacity: .5;
+}
+
+.tab-button:hover {
+    opacity: 1;
+}
+
+.active {
+    opacity: 1;
+}

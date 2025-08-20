@@ -1,0 +1,28 @@
+#profile {
+    margin: 15em 0;
+}
+
+#logo {
+    border-radius: 100%;
+    height: 30vh;
+}
+
+#profile {
+    display: flex;
+}
+
+#profile-info {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    padding-left: 7em;
+}
+
+
+.socials {
+    margin: 2em 0;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
