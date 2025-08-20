@@ -1,8 +1,9 @@
 :root {
-    --theme-bg: #0c1014;
-    --theme-bg-light: #4e5f74;
+    --theme-bg: #07090b;
+    --theme-bg-light: #242d36;
     /* --theme-bg-light: #27303a; */
     --theme-text: #f1f1f1;
+    --theme-text-secondary: #a0a0a0;
 
     --theme-blue: #169bcf;
     --theme-dblue: #1e3d6b;
