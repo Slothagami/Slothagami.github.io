@@ -13,11 +13,13 @@ interface Props {
 function ImageCard({children, title, icon, link, image}: Props) {
     return (
         <div className="image-card">
-            <img src={image} />
-            <div className="card-text">
-                <Title icon={icon} size="1em">{title}</Title>
-                <p>{ children }</p>
-            </div>
+            <a href={link}>
+                    <img src={image} />
+                    <div className="card-text">
+                        <Title icon={icon} size="1em">{title}</Title>
+                        <p>{ children }</p>
+                    </div>
+            </a>
         </div>
     )
 }

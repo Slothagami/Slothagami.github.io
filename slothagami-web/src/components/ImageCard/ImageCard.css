@@ -19,6 +19,12 @@
     object-fit: cover; /* So aspect-ratio doesn't stretch the image */
 }
 
+.image-card a {
+    display: block;
+    width: 100%;
+    font-weight: normal;
+}
+
 .card-text {
     background-color: var(--theme-bg-light);
     padding: 2em;
