@@ -1,9 +1,4 @@
-- make mobile layout
-- footer?
-
-- fill tab selector
-    - make project cards
-    - project data in seperate file to be accessed by article both pages and cards
-    - components for each tab with card components listing projects in that tab
-
-- make featured project panel (large project card)
+- make background change to match hovered project like previous version
+- fade out all cards except the one under the mouse on hover
+- put more of my projects on the list
+- add mobile support for interactive pages
