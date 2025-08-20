@@ -4,6 +4,6 @@
     gap: 1em;
 }
 
-.card-list * {
+.card-list .image-card {
     aspect-ratio: 16 / 9;
 }

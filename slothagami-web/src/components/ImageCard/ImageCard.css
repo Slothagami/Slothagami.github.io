@@ -2,10 +2,18 @@
     background-color: var(--theme-bg-light);
     border-radius: 1em;
     background-size: cover;
+    background-position: center;
 
     display: flex;
     align-content: flex-end;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+}
+
+.card-text {
+    background-color: var(--theme-bg-light);
+    padding: 2em;
+    width: -webkit-fill-available;
+    border-radius: 1em;
 }

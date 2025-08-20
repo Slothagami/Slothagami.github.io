@@ -1,13 +1,13 @@
 import Profile from "../../components/Profile/Profile"
-import InteractiveTab from "../../components/ProjectTabs/InteractiveTab"
+import GamesTab from "../../components/ProjectTabs/GamesTab"
+import ProjectsTab from "../../components/ProjectTabs/ProjectsTab"
 import TabSelector from "../../components/TabSelector/TabSelector"
 import type { Tab } from "../../components/TabSelector/TabSelector"
 import "./Homepage.css"
 
 const tabs: Tab[] = [
-    {id: "interactive", label: "Interactive", content: <InteractiveTab />},
-    {id: "maths", label: "Maths", content: "maths"},
-    {id: "games", label: "Games", content: "games"}
+    {id: "projects", label: "Projects", content: <ProjectsTab />},
+    {id: "games", label: "Games", content: <GamesTab />}
 ]
 
 function Homepage() {
