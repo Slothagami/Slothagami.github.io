@@ -14,7 +14,7 @@ function ProjectsTab() {
                 Explore the beautiful mandelbrot set and related julia sets.
             </ImageCard>
             <ImageCard link="/" image="./img/mnist.jpg" title="Neural Network">
-                An AI implimented from scratch in python.
+                An AI built from scratch in python.
             </ImageCard>
         </CardList>
     )
