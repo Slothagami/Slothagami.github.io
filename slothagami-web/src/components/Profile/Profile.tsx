@@ -9,7 +9,7 @@ function Profile() {
             </div>
 
             <div id="profile-info">
-                <Title>Slothagami</Title>
+                <Title size="5vh">Slothagami</Title>
                 <p id="tagline">
                     I'm a programmer that enjoys nice looking simulations.
                 </p>
