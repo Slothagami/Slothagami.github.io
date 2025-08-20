@@ -4,16 +4,19 @@ import { ReactNode } from "react"
 
 interface Props {
     children: ReactNode,
+    title: string,
     icon?: string,
     link: string,
     image: string
 }
 
-function ImageCard({children, icon, link, image}: Props) {
+function ImageCard({children, title, icon, link, image}: Props) {
     return (
-        <div className="image-card" style={{backgroundImage: `url("${image}")`}}>
+        <div className="image-card">
+            <img src={image} />
             <div className="card-text">
-                <Title icon={icon} size="1em">{children}</Title>
+                <Title icon={icon} size="1em">{title}</Title>
+                <p>{ children }</p>
             </div>
         </div>
     )
