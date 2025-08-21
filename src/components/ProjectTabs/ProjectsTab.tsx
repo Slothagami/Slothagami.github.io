@@ -20,6 +20,10 @@ function ProjectsTab() {
                 An AI built from scratch in python.
             </ImageCard>
 
+            <ImageCard link="https://github.com/Slothagami/robot-soccer" image="./img/robot.png" title="Robocup Soccer AI">
+                Documented AI and robot designs used for RoboCup Competitions.
+            </ImageCard>
+
             <ImageCard link="./old/projects/3d-rendering-and-beyond.html" image="./img/tesseract.png" title="3D Rendering and Beyond">
                 Learn the basics in rendering in 3D, 4D, and more?
             </ImageCard>
