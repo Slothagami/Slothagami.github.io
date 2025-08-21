@@ -163,6 +163,12 @@ function import_csv(text) {
     // remap first constant to position drawing to center of screen
     constants[0] = {x: canv.width/2, y: canv.height/2}
 
+    // load the calculated path as sample points so you can recalculate them with different constants
+    let samples = 1000
+    for(let t = 0; t < 1; t += 1/samples) {
+        path_points.push(apx_path_point(t, constants, samples))
+    }
+
     // update menus
     let n_arms        = document.querySelector("#n_arms")
     let n_arms_slider = document.querySelector("#n_arms_slider")
@@ -273,34 +279,39 @@ function constant(constant, samples) {
 }
 
 function draw_apx_path(constants, samples) {
-    let x = 0, y = 0
     for(let t = 0; t < 1; t += 1/samples) {
-        x = constants[0].x
-        y = constants[0].y
-
-        for(let i = 1; i < constants.length; i += 2) {
-            let speed = (i + 1)/2 // to correspond with labels in the constants
-            let pos_const = constants[i]
-            let neg_const = constants[i+1] 
-            let cos = Math.cos(speed * t * 2 * Math.PI)
-            let sin = Math.sin(speed * t * 2 * Math.PI)
-
-            // complex multiply
-            x += cos * pos_const.x - sin * pos_const.y
-            y += cos * pos_const.y + sin * pos_const.x
-            
-            // negative constant
-            cos = Math.cos(-speed * t * 2 * Math.PI)
-            sin = Math.sin(-speed * t * 2 * Math.PI)
-
-            // complex multiply
-            x += cos * neg_const.x - sin * neg_const.y
-            y += cos * neg_const.y + sin * neg_const.x
-        }
+        let pos = apx_path_point(t, constants, samples)
 
         c.fillStyle = "red"
-        c.fillRect(x, y, 3, 3)
+        c.fillRect(pos.x, pos.y, 3, 3)
     }
+}
+
+function apx_path_point(t, constants, samples) {
+    let x = constants[0].x
+    let y = constants[0].y
+
+    for(let i = 1; i < constants.length; i += 2) {
+        let speed = (i + 1)/2 // to correspond with labels in the constants
+        let pos_const = constants[i]
+        let neg_const = constants[i+1] 
+        let cos = Math.cos(speed * t * 2 * Math.PI)
+        let sin = Math.sin(speed * t * 2 * Math.PI)
+
+        // complex multiply
+        x += cos * pos_const.x - sin * pos_const.y
+        y += cos * pos_const.y + sin * pos_const.x
+        
+        // negative constant
+        cos = Math.cos(-speed * t * 2 * Math.PI)
+        sin = Math.sin(-speed * t * 2 * Math.PI)
+
+        // complex multiply
+        x += cos * neg_const.x - sin * neg_const.y
+        y += cos * neg_const.y + sin * neg_const.x
+    }
+
+    return { x, y }
 }
 
 function draw_arm(constants, t) {
