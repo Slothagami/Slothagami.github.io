@@ -20,6 +20,9 @@ function ProjectsTab() {
                 An AI built from scratch in python.
             </ImageCard>
 
+            {/* <ImageCard link="https://github.com/Slothagami/drawing-gallery/tree/main" image="./img/robot.png" title="Image Gallery">
+                A Full stack image sharing website built with React.js and Flask.
+            </ImageCard> */}
             <ImageCard link="https://github.com/Slothagami/robot-soccer" image="./img/robot.png" title="Robocup Soccer AI">
                 Documented AI and robot designs used for RoboCup Competitions.
             </ImageCard>
